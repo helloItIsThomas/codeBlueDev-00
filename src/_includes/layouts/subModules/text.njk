@@ -1,0 +1,10 @@
+<div class="text-module">
+  {% if component.data.headline %}
+    <h2>{{ component.data.headline }}</h2>
+  {% endif %}
+  <div class="text-grid">
+    {% for p in component.data.cols %}
+      <p>{{ p.src }}</p>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,36 @@
+body {
+  cursor: crosshair;
+  --time: 0.1s;
+}
+
+.cursor {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: black;
+  pointer-events: none;
+  transition: transform 0.1s ease, width 0.1s ease, height 0.1s ease;
+  /* transition: all 0.3s ease; */
+}
+
+body:hover {
+  position: relative;
+}
+
+body:hover::after {
+  pointer-events: none;
+  transition: transform var(--time) ease, width var(--time) ease,
+    height var(--time) ease;
+  content: "";
+  position: absolute;
+  width: var(--div-width);
+  height: var(--div-height);
+  border-radius: calc(2vw + 2vh);
+  border: calc(0.2vw + 0.2vh) solid white;
+  left: calc(var(--mouse-x) - (var(--div-width) / 2));
+  top: calc(var(--mouse-y) - (var(--div-height) / 2));
+  background: none;
+  z-index: 5000;
+  mix-blend-mode: exclusion;
+}

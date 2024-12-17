@@ -1,0 +1,158 @@
+#rightContainer {
+  /* border: 2px solid orange; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  max-width: 66px;
+  height: 100vh;
+  right: 0;
+  color: black;
+  box-sizing: border-box;
+  padding: 5px;
+  gap: 5vh;
+  /* padding-top: 10vh; */
+  /* padding-bottom: 10vh; */
+}
+
+#knobBar {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-evenly; */
+  /* bottom: 0px; */
+}
+
+.knob-container {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  margin: 0;
+  width: 100%;
+  height: auto;
+  padding-right: 4px;
+  padding-left: 2px;
+  box-sizing: border-box;
+}
+
+.lightContainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.knobLight {
+  margin: 0;
+  padding: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border: #c9221e 1px solid;
+  opacity: 0.9;
+  background-color: white;
+}
+
+.knob {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* border: 1px solid #000; */
+  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.8); */
+  /* box-shadow: 0 1px 5px rgba(0, 0, 0, 0.333); */
+  background: #fff;
+
+  position: relative;
+  /* display: none; */
+}
+
+.knob::before {
+  margin: 0;
+  padding: 0;
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 2px;
+  height: 18px;
+  background: black;
+  transform: translate(-50%, 0);
+}
+
+.knob::after {
+  content: "";
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  width: 20%;
+  height: 20%;
+  background: black;
+  /* border: 1px solid #fff; */
+  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.8); */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.knob-display {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 1.5px solid black;
+  background-color: black;
+  padding: 0;
+  margin-top: 5px;
+  border-radius: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.knob-display p {
+  width: 10%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: x-small;
+  color: white;
+  height: auto;
+  white-space: nowrap;
+  animation: marquee 2s cubic-bezier(0.1, 0.85, 1, 0.1) infinite;
+}
+
+/* Define the marquee keyframes */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%); /* Start outside the container */
+  }
+  100% {
+    transform: translateX(
+      -100%
+    ); /* End outside the container on the opposite side */
+  }
+}
+
+.knobBarTwo {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+}
+
+.knob-container-H {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

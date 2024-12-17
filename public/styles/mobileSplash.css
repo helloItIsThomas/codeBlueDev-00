@@ -1,0 +1,11 @@
+#mobile-view h2 {
+  color: black;
+  font-size: 1.111em;
+  /* font-family: maru, sans-serif; */
+}
+
+#mobile-view .auxPageH1 {
+  padding-bottom: 10%;
+  font-size: 6.333em;
+  font-family: maru;
+}

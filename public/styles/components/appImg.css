@@ -1,0 +1,70 @@
+.contentModule {
+  /* margin-top: 10%; */
+  width: 100%;
+  height: 100%;
+  /* box-sizing: border-box; */
+  /* display: flex; */
+  /* padding: 20px; */
+}
+.contentModule .grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  box-sizing: border-box;
+  color: black;
+}
+
+.contentModule .grid .left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+.contentModule .grid .right {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.contentModule .grid .right img {
+  border: 1px white solid;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.appContainer {
+  width: 100%;
+  height: 100%;
+}
+
+#popupImageDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 0; */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 50;
+}
+
+#popupImage {
+  width: 100%;
+  height: 100%;
+  max-width: 80%; /* or any desired percentage */
+  max-height: 80%; /* or any desired percentage */
+  object-fit: contain;
+}
+
+/* .img { */
+/* position: absolute; */
+/* width: 100%; */
+/* height: auto; */
+/* transform: translateY(100%); */
+/* } */

@@ -1,0 +1,32 @@
+<div class="contentModule">
+  <div class="grid">
+    <div class="left">
+      {% if component
+        .mainSrc
+        .endsWith('.mov')or component
+        .mainSrc
+        .endsWith('.mp4') %}
+        <video autoplay playsinline controls loop muted class="imgFullW" data-src="{{ component.mainSrc }}" alt="{{ appImage.main.alt }}"></video>
+      {% elseif component.mainSrc.startsWith('http') %}
+        <iframe class="frame" data-src="{{component.mainSrc}}" allow="autoplay;" allowfullscreen></iframe>
+      {% else %}
+        <img data-src="{{ component.mainSrc }}" alt="{{ appImage.main.alt }}">
+      {% endif %}
+    </div>
+    <div class="right">
+      {% for image in component.sideImages %}
+        {% if image
+          .src
+          .endsWith('.mov')or image
+          .src
+          .endsWith('.mp4') %}
+          <video autoplay playsinline controls loop muted class="imgFullW" data-src="{{ image.src }}" alt="{{ image.alt }}"></video>
+        {% elseif image.src.startsWith('http') %}
+          <iframe class="frame" data-src="{{image.src}}" frameborder="0" allow="autoplay;" allowfullscreen></iframe>
+        {% else %}
+          <img class="img" data-src="{{ image.src }}" alt="{{ image.alt }}">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

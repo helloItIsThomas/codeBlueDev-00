@@ -1,0 +1,22 @@
+{
+  "name": "helloitsthomas-24-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "p5": "^1.9.4",
+    "three": "^0.166.1"
+  }
+}

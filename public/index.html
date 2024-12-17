@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<script src="/js/gsap/gsap.min.js"></script>
+<html lang="en">
+  <head>
+    
+    <script src="/js/globalVars.js"></script>
+
+    <meta charset="UTF-8"/>
+    <meta property=”og:url content=”https://github.com/timClicks/glsl-shader-intro”/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="assets/logos/logo-2-0.ico"/>
+    <link rel="stylesheet" href="/styles/base.css"/>
+    <link rel="stylesheet" href="/styles/components/module.css"/>
+    <link rel="stylesheet" href="/styles/components/appImg.css"/>
+    <link rel="stylesheet" href="/styles/components/imageTile.css"/>
+    <link rel="stylesheet" href="/styles/components/imgFullW.css"/>
+    <link rel="stylesheet" href="/styles/components/text.css"/>
+    <link rel="stylesheet" href="/styles/components/projectText.css"/>
+    <link rel="stylesheet" href="/styles/aboutMe.css"/>
+    <link rel="stylesheet" href="/styles/knob.css"/>
+    <link rel="stylesheet" href="/styles/nav.css"/>
+    <link rel="stylesheet" href="/styles/projectBackBanner.css"/>
+    <link rel="stylesheet" href="/styles/projectBackContent.css"/>
+    <link rel="stylesheet" href="/styles/projectFront.css"/>
+    <link rel="stylesheet" href="/styles/footer.css"/>
+    <link rel="stylesheet" href="/styles/fonts.css"/>
+    <link rel="stylesheet" href="/styles/media.css"/>
+    <link rel="stylesheet" href="/styles/pointer.css"/>
+    <link rel="stylesheet" href="/styles/socialButton.css"/>
+
+    <link rel="stylesheet" href="/styles/mobileSplash.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+    <title id="page-title"></title>
+  </head>
+  <body>
+    <div id="desktop-view">
+      <div id="aboutMe">
+    <div id="aboutLeft">
+        <div id="aboutButtons">
+            <div class="aboutButton" onclick="window.open('https://drive.google.com/file/d/1QD98TFJirNIgP-25xvauB8IzqllKmoUV/view?usp=sharing', '_blank');">
+
+                <div class="aboutBTitle">resume</div>
+            </div>
+            <div class="aboutButton" onclick="window.location.href='mailto:helloitisthomasm@gmail.com';">
+                <div class="aboutBTitle">email</div>
+            </div>
+        </div>
+        <div id="aboutTextContainer">
+hello, it's Thomas McElmeel :]<br>I'm a creative coder who can currently be found in Midtown Detroit. I build digital tools for others to express themselves with, and tools that express themselves. I have the most experience applying my work to branding systems.
+<br>Thanks for checking out my site!<br><br>Photo by Mariana Matos</div>
+    </div>
+    <div id="aboutRight">
+        <div id="imageContainer">
+            <img src="assets/me.png" ></img>
+        </div>
+    </div>
+</div>
+      <div id="layout0">
+        <div id="projectContainer">
+          <div id="navBar">
+  <div id="nav-container">
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+    <div class="socialButtonWrapper">
+      <div class="socialButton"></div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+          <div id="topAndBottomContent">
+            <div id="projectContent"></div>
+            <div id="frontC">
+  <div id="thumbnail">
+    <img ></img>
+    <video autoplay playsinline muted loop></video>
+  </div>
+</div>
+          </div>
+          <div id="rightContainer">
+  <div id="knobBar">
+    <div class="knob-container">
+      <div class="lightContainer">
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+      </div>
+      
+      <div class="knob-display">
+        <p>software</p>
+      </div>
+    </div>
+    <div class="knob-container">
+      <div class="lightContainer">
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+      </div>
+      
+      <div class="knob-display">
+        <p>identity</p>
+      </div>
+    </div>
+    <div class="knob-container">
+      <div class="lightContainer">
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+      </div>
+      
+      <div class="knob-display">
+        <p>experience</p>
+      </div>
+    </div>
+    <div class="knob-container">
+      <div class="lightContainer">
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+        <div class="knobLight"></div>
+      </div>
+      
+      <div class="knob-display">
+        <p>data viz</p>
+      </div>
+    </div>
+  </div>
+  <div id="social-container">
+    <div class="socialIcon" id="aboutIcon">
+      <img data-src="/assets/social-icons/info.png">
+    </div>
+    <div class="socialIcon" target="_blank">
+      <a href="https://github.com/helloItIsThomas" target="_blank">
+        <img data-src="/assets/social-icons/git.png">
+      </a>
+    </div>
+    <div class="socialIcon" target="_blank">
+      <a href="https://www.instagram.com/tom_mcelmeel/" target="_blank">
+        <img data-src="/assets/social-icons/insta.png">
+      </a>
+    </div>
+    <div class="socialIcon" target="_blank">
+      <a href="https://www.linkedin.com/in/thomas-mcelmeel/" target="_blank">
+        <img data-src="/assets/social-icons/linked.png">
+      </a>
+    </div>
+  </div>
+</div>
+        </div>
+        <div id="logo">
+          
+          
+          <img
+            src="/assets/logos/logo-2-0.png"
+            alt="hello logo"
+            decoding="async"/>
+          
+        </div>
+      </div>
+    </div>
+    <div id="mobile-view">
+      <div class="auxPageH1">:(</div>
+      <h2>mobile currently unsupported</h2>
+    </div>
+    <div id="subCursor">
+      <p>+</p>
+    </div>
+
+  </body>
+</html>
+
+<script src="/js/main.js"></script>
+<script src="/js/dynamicContent.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/editClip2.js"></script>
+<script src="/js/handleInteraction.js"></script>
+<script src="/js/updateKnobs.js"></script>
+<script src="/js/updateHKnobs.js"></script>
+<script src="/js/updateButtons.js"></script>
+<script src="/js/mobileDetection.js"></script>
+<script src="/js/popupImage.js"></script>
+<script src="/js/lazyLoad.js"></script>
+<script src="/js/setup.js"></script>
+<script src="/js/infoPanel.js"></script>
+<script src="/js/footer.js"></script>
+<script src="/js/pointer.js"></script>

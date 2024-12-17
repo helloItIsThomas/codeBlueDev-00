@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "maru";
+  src: url("/assets/GT-Maru-Mega-Mini-Glow.woff") format("woff");
+}
+
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+* {
+  font-family: "Space Mono", Verdana, Tahoma;
+}
+
+*::selection {
+  background-color: #adf182;
+  color: #000;
+}
+
+.pH {
+  font-family: "maru", Verdana, Tahoma;
+}

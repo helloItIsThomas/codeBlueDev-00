@@ -1,0 +1,44 @@
+.socialButton {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --offsetTop: 4px;
+  --offsetLeft: -4px;
+  filter: blur(0px);
+}
+
+.socialButton img {
+  /* background-color: black; */
+  width: 26px;
+  height: 26px;
+  border-radius: 30px;
+  position: relative;
+  object-fit: cover;
+  /* filter: blur(4px); */
+  /* z-index: 1; */
+}
+
+.socialButton::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: var(--offsetTop);
+  left: var(--offsetLeft);
+  border-radius: 30px;
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+
+.socialButtonWrapper {
+  /* display: none; */
+  /* background-color: blue; */
+  padding: 8px;
+}

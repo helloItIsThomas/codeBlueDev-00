@@ -1,0 +1,20 @@
+<div class="image-tile">
+  {% for row in component.data.rows %}
+    <div class="row" style="--num-tags: {{ row.images | length }};">
+      {% for image in row.images %}
+        {% if image
+          .src
+          .endsWith('.mov')or image
+          .src
+          .endsWith('.mp4') %}
+          <video autoplay playsinline controls loop muted class="tag" src="{{ image.src }}" alt="{{ image.alt }}"></video>
+        {% elseif image.src.startsWith('http') %}
+          <iframe class="frame" data-src="{{image.src}}" allow="autoplay;" allowfullscreen></iframe>
+          {# <iframe width="560" height="315" data-src="image.src" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="no-referrer" allowfullscreen></iframe> #}
+        {% else %}
+          <img class="tag"  type="image/webp" data-src="{{ image.src }}" alt="{{ image.alt }}">
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

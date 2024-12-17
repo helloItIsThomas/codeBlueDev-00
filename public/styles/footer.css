@@ -1,0 +1,48 @@
+#footer {
+  /* background-color: grey; */
+  box-sizing: border-box;
+  padding-bottom: 2vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  position: relative;
+  color: blue;
+  font-size: small;
+  font-style: italic;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footerText {
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  border-radius: 30px;
+  padding-bottom: 5px;
+  border: 1px solid black;
+  background-color: #adf182;
+  /* color: #adf182; */
+  color: black;
+  font-size: small;
+}
+
+#footerButton {
+  width: 25%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  box-sizing: border-box;
+  border: 2px solid grey;
+  background-color: white;
+}
+
+#footerButton:hover {
+  cursor: pointer;
+  background-color: #c9221e;
+  color: white;
+}
