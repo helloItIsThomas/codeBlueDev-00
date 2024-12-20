@@ -9,6 +9,7 @@ body {
 
 body * {
   box-sizing: inherit;
+  color: white;
 }
 
 #bodyGradient {
@@ -18,4 +19,15 @@ body * {
 #subBody {
   margin-left: 50px;
   margin-right: 50px;
+}
+
+#cursorCanvas {
+  position: fixed;
+  z-index: 4;
+  width: 100vw;
+  height: 100vh;
+}
+
+#defaultCanvas0 {
+  display: none;
 }
