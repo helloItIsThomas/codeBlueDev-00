@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="/styles/fonts.css"/>
         <link rel="stylesheet" href="/styles/media.css"/>
         <link rel="stylesheet" href="/styles/footer.css"/>
-        <link rel="stylesheet" href="/styles/debug.css"/>
         <link rel="stylesheet" href="/styles/globals.css"/>
         <link rel="stylesheet" href="/styles/featuredPartnership.css"/>
         <link rel="stylesheet" href="/styles/buttons.css"/>
@@ -26,8 +25,11 @@
         <title id="page-title">{{ title }}</title>
     </head>
     <body>
-        <div id="subBody">
-            {{ content | safe }}
+        <div id="bodyGradient">
+            {% include "components/homeSections/splash.njk" %}
+            <div id="subBody">
+                {{ content | safe }}
+            </div>
         </div>
         {# {% include "components/footer.njk" %} #}
     </body>

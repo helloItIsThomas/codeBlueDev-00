@@ -5,7 +5,7 @@
 }
 .centered .background img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover; /* This will ensure the image fills the space and crops if needed */
 }
 

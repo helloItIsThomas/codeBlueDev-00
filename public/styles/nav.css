@@ -10,7 +10,7 @@ li {
   transition: background-color 0.3s;
 }
 li:hover {
-  background-color: darkred;
+  background-color: lightblue;
 }
 a {
   text-decoration: none;

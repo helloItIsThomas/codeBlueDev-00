@@ -11,6 +11,10 @@ body * {
   box-sizing: inherit;
 }
 
+#bodyGradient {
+  background: linear-gradient(to top, #0c1b4b, #1e3c72);
+}
+
 #subBody {
   margin-left: 50px;
   margin-right: 50px;
