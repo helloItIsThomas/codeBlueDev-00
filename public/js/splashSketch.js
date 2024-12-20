@@ -2,7 +2,14 @@ import "/js/p5/p5.min.js";
 
 let sketch = (p) => {
   p.setup = () => {
-    const myCanvas = p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL); // Set canvas size
+    let splashCanvas = document.getElementById("splashCanvas");
+    let splashCanvasWidth = splashCanvas.clientWidth; // Get width of splashCanvas
+    let splashCanvasHeight = splashCanvas.clientHeight; // Get height of splashCanvas
+    const myCanvas = p.createCanvas(
+      splashCanvasWidth,
+      splashCanvasHeight,
+      p.WEBGL
+    ); // Set canvas size
     myCanvas.parent("splashCanvas");
     p.pixelDensity(2);
   };
@@ -23,7 +30,10 @@ let sketch = (p) => {
   };
 
   p.windowResized = () => {
-    p.resizeCanvas(p.windowWidth, p.windowHeight);
+    let splashCanvas = document.getElementById("splashCanvas");
+    let splashCanvasWidth = splashCanvas.clientWidth;
+    let splashCanvasHeight = splashCanvas.clientHeight;
+    p.resizeCanvas(splashCanvasWidth, splashCanvasHeight);
   };
 };
 

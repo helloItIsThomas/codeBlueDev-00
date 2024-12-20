@@ -28,6 +28,6 @@ body * {
   height: 100vh;
 }
 
-#defaultCanvas0 {
+main {
   display: none;
 }
