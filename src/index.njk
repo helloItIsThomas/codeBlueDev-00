@@ -5,20 +5,20 @@ title: "Hello from index"
 
 {% include "components/homeSections/splash.njk" %}
 
-{# {% include "components/homeSections/purpose.njk" %} #}
-{#  #}
-{# {% include "components/homeSections/mission.njk" %} #}
-{#  #}
-{# <div class="twoColGrid"> #}
-{# <div id="leftColHeadline" class="h1_0">Featured<br>Film</div> #}
-{# <div id="rightColCopy" class="b2_0">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div> #}
-{# </div> #}
-{#  #}
+{% include "components/homeSections/purpose.njk" %}
+
+{% include "components/homeSections/mission.njk" %}
+
+<div class="twoColGrid">
+    <div id="leftColHeadline" class="h1_0">Featured<br>Film</div>
+    <div id="rightColCopy" class="b2_0">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div>
+</div>
+
 {% include "components/homeSections/featuredFilm.njk" %}
 {#  #}
-{# <div class="oneColHeadline"> #}
-{# <div class="h1_0"> Featured Partnerships</div> #}
-{# </div> #}
-{# {% include "components/homeSections/featuredPartnerships.njk" %} #}
-{#  #}
-{# {% include "components/footer.njk" %} #}
+<div class="centered">
+    <div class="h1_0"> Featured Partnerships</div>
+</div>
+{% include "components/homeSections/featuredPartnerships.njk" %}
+
+{% include "components/footer.njk" %}
