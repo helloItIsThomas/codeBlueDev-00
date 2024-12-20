@@ -1,87 +1,24 @@
-<!DOCTYPE html>
-<script src="/js/gsap/gsap.min.js"></script>
-<html lang="en">
-  <head>
-    {# putting this script tag here, because others rely on it #}
-    <script src="/js/globalVars.js"></script>
+---
+layout: layouts/base.njk
+title: "Hello from index"
+---
 
-    <meta charset="UTF-8"/>
-    <meta property=”og:url content=”https://github.com/timClicks/glsl-shader-intro”/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/x-icon" href="assets/logos/logo-2-0.ico"/>
-    <link rel="stylesheet" href="/styles/base.css"/>
-    <link rel="stylesheet" href="/styles/components/module.css"/>
-    <link rel="stylesheet" href="/styles/components/appImg.css"/>
-    <link rel="stylesheet" href="/styles/components/imageTile.css"/>
-    <link rel="stylesheet" href="/styles/components/imgFullW.css"/>
-    <link rel="stylesheet" href="/styles/components/text.css"/>
-    <link rel="stylesheet" href="/styles/components/projectText.css"/>
-    <link rel="stylesheet" href="/styles/aboutMe.css"/>
-    <link rel="stylesheet" href="/styles/knob.css"/>
-    <link rel="stylesheet" href="/styles/nav.css"/>
-    <link rel="stylesheet" href="/styles/projectBackBanner.css"/>
-    <link rel="stylesheet" href="/styles/projectBackContent.css"/>
-    <link rel="stylesheet" href="/styles/projectFront.css"/>
-    <link rel="stylesheet" href="/styles/footer.css"/>
-    <link rel="stylesheet" href="/styles/fonts.css"/>
-    <link rel="stylesheet" href="/styles/media.css"/>
-    <link rel="stylesheet" href="/styles/pointer.css"/>
-    <link rel="stylesheet" href="/styles/socialButton.css"/>
+{% include "components/homeSections/splash.njk" %}
 
-    <link rel="stylesheet" href="/styles/mobileSplash.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
-    <title id="page-title">{{ title }}</title>
-  </head>
-  <body>
-    <div id="desktop-view">
-      {% include "components/aboutMe.njk" %}
-      <div id="layout0">
-        <div id="projectContainer">
-          {% include "components/navbar.njk" %}
-          <div id="topAndBottomContent">
-            <div id="projectContent"></div>
-            {% include "projectFrontC.njk" %}
-          </div>
-          {% include "components/knobBar.njk" %}
-        </div>
-        <div id="logo">
-          {# <picture> #}
-          {# <source type="image/webp"/> #}
-          <img
-            src="/assets/logos/logo-2-0.png"
-            alt="hello logo"
-            decoding="async"/>
-          {# </picture> #}
-        </div>
-      </div>
-    </div>
-    <div id="mobile-view">
-      <div class="auxPageH1">:(</div>
-      <h2>mobile currently unsupported</h2>
-    </div>
-    <div id="subCursor">
-      <p>+</p>
-    </div>
-
-  </body>
-</html>
-
-<script src="/js/main.js"></script>
-<script src="/js/dynamicContent.js"></script>
-<script src="/js/utils.js"></script>
-<script src="/js/editClip2.js"></script>
-<script src="/js/handleInteraction.js"></script>
-<script src="/js/updateKnobs.js"></script>
-<script src="/js/updateHKnobs.js"></script>
-<script src="/js/updateButtons.js"></script>
-<script src="/js/mobileDetection.js"></script>
-<script src="/js/popupImage.js"></script>
-<script src="/js/lazyLoad.js"></script>
-<script src="/js/setup.js"></script>
-<script src="/js/infoPanel.js"></script>
-<script src="/js/footer.js"></script>
-<script src="/js/pointer.js"></script>
+{# {% include "components/homeSections/purpose.njk" %} #}
+{#  #}
+{# {% include "components/homeSections/mission.njk" %} #}
+{#  #}
+{# <div class="twoColGrid"> #}
+{# <div id="leftColHeadline" class="h1_0">Featured<br>Film</div> #}
+{# <div id="rightColCopy" class="b2_0">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div> #}
+{# </div> #}
+{#  #}
+{% include "components/homeSections/featuredFilm.njk" %}
+{#  #}
+{# <div class="oneColHeadline"> #}
+{# <div class="h1_0"> Featured Partnerships</div> #}
+{# </div> #}
+{# {% include "components/homeSections/featuredPartnerships.njk" %} #}
+{#  #}
+{# {% include "components/footer.njk" %} #}

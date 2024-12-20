@@ -6,6 +6,11 @@ video::-webkit-media-controls-fullscreen-button {
   display: none !important;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .myVideo {
   object-fit: cover;
   pointer-events: none;
@@ -26,10 +31,3 @@ video::-webkit-media-controls-fullscreen-button {
   height: 100%;
   width: 100%;
 }
-
-/* this appear business is currently gsap and in lazyLoad.js */
-
-/* .appear { */
-/* opacity: 1; */
-/* transition: ease-in opacity 0.5s; */
-/* } */

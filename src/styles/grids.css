@@ -1,0 +1,39 @@
+/* 2 Column Horizontal Grid */
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* padding: 2%; */
+  /* gap: 2%; */
+}
+
+.twoColGrid * {
+  /* padding: 2%; */
+}
+
+#leftColHeadline {
+  padding-left: 12%;
+  border: 1px solid red;
+}
+#rightColCopy {
+  border: 1px solid blue;
+}
+/* */
+
+/* 1 Column Headline */
+.oneColHeadline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2%; */
+  border: 1px solid green;
+}
+/* */
+
+/* Centered */
+.centered {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* */

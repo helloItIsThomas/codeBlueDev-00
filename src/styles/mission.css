@@ -1,0 +1,24 @@
+.mission {
+  display: flex;
+  align-items: center;
+  background-color: red;
+  height: 100vh;
+  width: 100%;
+}
+.mission * {
+  border: 1px solid black;
+}
+
+#missionLeft {
+  padding: 20%;
+  height: 100%;
+}
+
+#missionRight {
+  height: 100%;
+}
+
+#missionRight canvas {
+  height: 100%;
+  width: 100%;
+}
