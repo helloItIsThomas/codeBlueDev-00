@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <script src="/js/gsap/gsap.min.js"></script>
+<link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"/>
+
 <html lang="en">
     <head>
-        <script src="/js/globalVars.js"></script>
+        <script type="module" src="/js/globalVars.js"></script>
 
         <meta charset="UTF-8"/>
         <meta property=”og:url content=”https://github.com/timClicks/glsl-shader-intro”/>
@@ -27,7 +29,7 @@
     <body>
         <div id="bodyGradient">
 
-            {# <div id="cursorCanvas"></div> #}
+            <div id="cursorCanvas"></div>
             {% include "components/homeSections/splash.njk" %}
             <div id="subBody">
                 {{ content | safe }}
@@ -37,12 +39,11 @@
     </body>
 </html>
 
-<script src="/js/dynamicContent.js"></script>
-<script src="/js/lazyLoad.js"></script>
-<script src="/js/mobileDetection.js"></script>
-<script src="/js/popupImage.js"></script>
-<script src="/js/setup.js"></script>
-<script src="/js/utils.js"></script>
+<script type="module" src="/js/dynamicContent.js"></script>
+<script type="module" src="/js/lazyLoad.js"></script>
+<script type="module" src="/js/mobileDetection.js"></script>
+<script type="module" src="/js/utils.js"></script>
+<script type="module" src="/js/setup.js"></script>
 <script type="module" src="/js/splashSketch.js"></script>
 <script type="module" src="/js/cursorSketch.js"></script>
 <script type="module" src="/js/sphereSketch.js"></script>

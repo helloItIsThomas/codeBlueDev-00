@@ -1,34 +1,23 @@
-// initial loading stuff logic
-const loadContent = (url) => {
-  fetch(url)
-    .then((response) => response.text())
-    .then((html) => {
-      document.getElementById("projectContent").innerHTML = html;
-      getContentReferences();
-    })
-    .then(() => {
-      updateHLights(globalProjectInfo[imageIndex].knobValues);
-      instantTopFunction();
-      myLazyLoad();
-      setTimeForFooter();
-    })
-    .catch((error) => console.error("Error loading content:", error));
-};
+import { getPosts } from "../sanity/client.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  setup();
-});
-
-function getContentReferences() {
-  appImageListener();
-  imageTileListener();
+function preloadMedia() {
+  globalProjectInfo.forEach((project, index) => {
+    if (
+      project.thumbnail.includes("mov") ||
+      project.thumbnail.includes("mp4")
+    ) {
+      const vid = document.createElement("video");
+      vid.src = project.thumbnail;
+      vid.preload = "auto"; // Preload video
+    } else {
+      const img = new Image();
+      img.src = project.thumbnail;
+    }
+  });
 }
 
-function contentToggle() {
-  const projectContent = document.getElementById("projectContent");
-  if (globalState.isHome) {
-    projectContent.style.opacity = "0.0";
-  } else {
-    projectContent.style.opacity = "1.0";
-  }
+async function getCurrentPosts() {
+  const posts = await getPosts();
+  console.log(posts);
+  return posts;
 }

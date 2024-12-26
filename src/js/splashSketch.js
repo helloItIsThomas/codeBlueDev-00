@@ -1,4 +1,4 @@
-import "/js/p5/p5.min.js";
+import "/js/p5/lib/p5.min.js";
 
 let sketch = (p) => {
   p.setup = () => {
