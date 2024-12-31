@@ -21,7 +21,7 @@
   position: absolute;
   color: white;
   left: 0;
-  margin-left: 10%;
+  /* margin-left: var(--textBoxMarginLeft); */
   display: flex;
   flex-direction: column;
   max-width: 30%;

@@ -28,14 +28,13 @@
     </head>
     <body>
         <div id="bodyGradient">
-
             <div id="cursorCanvas"></div>
             {% include "components/homeSections/splash.njk" %}
             <div id="subBody">
                 {{ content | safe }}
             </div>
-
         </div>
+        {% include "components/footer.njk" %}
     </body>
 </html>
 

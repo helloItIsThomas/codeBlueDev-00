@@ -1,5 +1,6 @@
 .ctaButton {
   border: 1px solid purple;
+  background-color: orange;
   padding: 8px;
   padding-left: 16px;
   padding-right: 16px;
@@ -12,5 +13,5 @@
 .horizontalButtonWrapper {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: var(--padding1);
 }

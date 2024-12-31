@@ -8,37 +8,41 @@
 }
 @font-face {
   font-family: "cdserif";
-  src: url("/assets/fonts/serif.otf");
+  src: url("/assets/fonts/serifLight.otf");
 }
 
-* {
-  font-family: "cdmono";
-  /* font-size: clamp(0.85rem, 1vw, 1.2rem); */
-  font-size: clamp(0.8rem, 1vw, 10rem);
-}
+/* * { */
+/* font-family: "cdmono"; */
+/* font-size: clamp(0.85rem, 1vw, 1.2rem); */
+/* font-size: clamp(0.8rem, 1vw, 10rem); */
+/* } */
 
 .h0_5 {
   font-family: "cdserif";
   font-size: clamp(1.2rem, 1vw, 2.25rem);
-  line-height: clamp(1.2rem, 1vw, 2.25rem);
 }
 
-.h1_0 {
+.h1_0,
+.h1_0 #_blue {
   font-family: "cdserif";
   font-size: clamp(2.8rem, 1.5vw, 3.2rem);
-  line-height: clamp(2.8rem, 1.5vw, 3.2rem);
+  /* line-height: clamp(2.8rem, 1.5vw, 3.2rem); */
+}
+
+.h1_0 #_blue {
+  color: #18d8f9;
 }
 
 .b1_0 {
   font-family: "cdmono";
   font-size: clamp(0.9rem, 1vw, 1.2rem);
-  line-height: clamp(0.9rem, 1vw, 1.2rem);
-  color: blue;
+  /* line-height: clamp(0.9rem, 1vw, 1.2rem); */
+  color: white;
 }
 
 .b2_0 {
   font-family: "cdsans";
   font-size: clamp(1.2rem, 1vw, 2rem);
-  line-height: clamp(1.5rem, 1vw, 2rem);
-  color: purple;
+  /* line-height: clamp(1.5rem, 1vw, 2rem); */
+  color: white;
 }

@@ -8,6 +8,12 @@
   height: 100vh !important;
 }
 
+#splashCentered video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #splash #navBar {
   border: 1px solid red;
   width: 100%;
@@ -42,12 +48,19 @@
 }
 
 #splashForeground #navBar {
-  background-color: black;
-  border: 1px solid white;
+  /* background-color: black; */
+  /* border: 1px solid white; */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: var(--padding1);
+  margin: var(--margin1);
+}
+#splashForeground #navBar img {
+  height: 2rem;
+  width: auto;
+  /* border: 1px solid white; */
 }
 
 #splashForeground #navBar * {
@@ -55,14 +68,14 @@
   color: white;
 }
 
-#splashForeground #navBar #navLogo {
-  border: 1px solid red;
-}
+/* #splashForeground #navBar #navLogo img { */
+/* border: 1px solid white; */
+/* position: relative; */
+/* } */
 
 #splashForeground #navBar #navLinks {
   display: flex;
   flex-direction: row;
-  border: 1px solid red;
 }
 
 #splashSVG {
@@ -70,7 +83,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 #splashCTA {
@@ -78,5 +91,23 @@
   bottom: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#splashCTA #downArrow {
+  animation: oscillate 2s ease-in-out infinite;
+}
+
+@keyframes oscillate {
+  0%,
+  100% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
 }

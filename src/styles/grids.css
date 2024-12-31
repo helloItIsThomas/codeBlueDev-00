@@ -2,16 +2,15 @@
 .twoColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* padding: 2%; */
   /* gap: 2%; */
+  /* margin-left: var(--textBoxMarginLeft); */
 }
 
 .twoColGrid * {
-  /* padding: 2%; */
+  /* padding: var(--textBoxPadding1); */
 }
 
 #leftColHeadline {
-  padding-left: 12%;
   border: 1px solid red;
 }
 #rightColCopy {
