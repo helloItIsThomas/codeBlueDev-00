@@ -7,9 +7,9 @@
   --margin3: /*3rem*/ 0;
   --footerPaddingTop: /* 10vh */ 0;
   --divMargin1: /*0.5rem*/ 0;
-  --textBoxPadding1: /*2.5%*/ 0;
   --textBoxPadding2: /*5%*/ 0;
 
+  --textBoxPadding1: 50px;
   --debug: 20%;
 
   --textBoxMarginLeft: 5%;
