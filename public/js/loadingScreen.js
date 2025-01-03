@@ -1,4 +1,8 @@
 export function initLoading() {
+  const disableScroll = (event) => {
+    event.preventDefault();
+  };
+  window.addEventListener("wheel", disableScroll, { passive: false });
   window.scrollTo({
     top: 0,
     left: 0,
@@ -12,9 +16,10 @@ export function initLoading() {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
   setTimeout(() => {
+    // fake loading
     loadingScreen.style.display = "none";
     document.body.style.overflow = "auto";
-    let splashVideo = document.getElementById("splashVideo");
+    window.removeEventListener("wheel", disableScroll);
   }, 1000);
 
   const toPurposeTimeline = gsap.timeline({
@@ -25,7 +30,7 @@ export function initLoading() {
       start: "top-=45% center",
       end: "bottom-=55% center",
       scrub: false,
-      markers: true,
+      markers: false,
       // onEnter onLeave onEnterBack onLeaveBack
       toggleActions: "play none reverse none",
       onEnter: () => {
@@ -33,13 +38,19 @@ export function initLoading() {
           event.preventDefault();
         };
         window.addEventListener("wheel", disableScroll, { passive: false });
+
+        gsap.to("#navBar", {
+          opacity: 0,
+          y: "-100%",
+          duration: 0.5,
+          ease: "power1.out",
+        });
         gsap.to(window, {
           duration: 1,
           ease: "power3.out",
           scrollTo: { y: "#purpose" },
           onComplete: () => {
             window.removeEventListener("wheel", disableScroll);
-            console.log("scroll enabled");
           },
         });
       },
@@ -48,6 +59,12 @@ export function initLoading() {
           event.preventDefault();
         };
         window.addEventListener("wheel", disableScroll, { passive: false });
+        gsap.to("#navBar", {
+          opacity: 1,
+          y: "0",
+          duration: 0.5,
+          ease: "power1.out",
+        });
         gsap.to(window, {
           duration: 1,
           ease: "power3.out",
