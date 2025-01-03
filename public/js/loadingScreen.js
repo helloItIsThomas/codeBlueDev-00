@@ -22,11 +22,41 @@ export function initLoading() {
     ease: "power3.inOut",
     scrollTrigger: {
       trigger: "#purpose",
-      start: "top-=30% center",
+      start: "top-=45% center",
+      end: "bottom-=55% center",
       scrub: false,
       markers: true,
       // onEnter onLeave onEnterBack onLeaveBack
-      toggleActions: "play none none reverse",
+      toggleActions: "play none reverse none",
+      onEnter: () => {
+        const disableScroll = (event) => {
+          event.preventDefault();
+        };
+        window.addEventListener("wheel", disableScroll, { passive: false });
+        gsap.to(window, {
+          duration: 1,
+          ease: "power3.out",
+          scrollTo: { y: "#purpose" },
+          onComplete: () => {
+            window.removeEventListener("wheel", disableScroll);
+            console.log("scroll enabled");
+          },
+        });
+      },
+      onEnterBack: () => {
+        const disableScroll = (event) => {
+          event.preventDefault();
+        };
+        window.addEventListener("wheel", disableScroll, { passive: false });
+        gsap.to(window, {
+          duration: 1,
+          ease: "power3.out",
+          scrollTo: { y: "#splash" },
+          onComplete: () => {
+            window.removeEventListener("wheel", disableScroll);
+          },
+        });
+      },
     },
   });
   toPurposeTimeline.to(splashVideo, { opacity: 0 }, 0);
