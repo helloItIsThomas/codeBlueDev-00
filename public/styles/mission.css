@@ -1,21 +1,10 @@
-.mission {
+#mission {
   display: flex;
   align-items: center;
-
-  height: 100%;
-  width: 100%;
-}
-.mission * {
-  /* border: 1px solid black; */
-  border: 3px solid red;
 }
 
-#missionLeft {
-  height: 100%;
-}
-
-#missionRight {
-  height: 100%;
+#missionCopy {
+  width: 60%;
 }
 
 #missionRight canvas {

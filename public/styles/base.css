@@ -1,18 +1,44 @@
-:root {
-  --padding1: /*1rem*/ 0;
-  --margin1: /*1rem*/ 0;
-  --padding2: /*2rem*/ 0;
-  --margin2: /*2rem*/ 0;
-  --padding3: /*3rem*/ 0;
-  --margin3: /*3rem*/ 0;
-  --footerPaddingTop: /* 10vh */ 0;
-  --divMargin1: /*0.5rem*/ 0;
-  --textBoxPadding2: /*5%*/ 0;
+* div {
+  /* border: 1px solid white; */
+}
 
-  --textBoxPadding1: 50px;
-  --debug: 20%;
+:root {
+  --padLeft: 4rem;
+  --padRight: 4rem;
+  --textBoxMargin: 2rem;
+  --bodyMargin: 3rem;
 
   --textBoxMarginLeft: 5%;
+}
+
+.fullHeightWidth {
+  height: 100vh;
+  width: 100%;
+}
+
+.padLeft {
+  padding-left: var(--padLeft) !important;
+}
+
+.padRight {
+  padding-right: var(--padRight) !important;
+}
+
+.textBoxMargin {
+  margin: var(--textBoxMargin);
+}
+
+.component {
+  padding-top: 1.5rem;
+}
+
+.componentContainer {
+  padding-top: 10rem;
+}
+
+.reducedVerticalMargin {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 html::-webkit-scrollbar {
@@ -48,8 +74,8 @@ body * {
 }
 
 #subBody {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: var(--bodyMargin);
+  margin-right: var(--bodyMargin);
 }
 
 #cursorCanvas {

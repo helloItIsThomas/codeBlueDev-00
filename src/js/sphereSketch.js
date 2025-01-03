@@ -1,4 +1,4 @@
-import { sculptToMinimalRenderer } from "/js/shaderpark/shader-park-core.esm.js";
+// import { sculptToMinimalRenderer } from "/js/shaderpark/shader-park-core.esm.js";
 
 // console.log(ShaderPark);
 
@@ -46,4 +46,4 @@ reset();
 
 let canvas = document.querySelector("#waterOrb");
 // This converts your Shader Park code into a shader and renders it to the my-canvas element
-sculptToMinimalRenderer(canvas, spCode);
+// sculptToMinimalRenderer(canvas, spCode);
