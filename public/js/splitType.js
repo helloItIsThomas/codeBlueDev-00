@@ -5,8 +5,8 @@ export function splitType() {
     const charsInLine = line.querySelectorAll(".char");
 
     gsap.from(charsInLine, {
-      // opacity: 0,
-      y: 300,
+      opacity: 0,
+      y: 100,
       ease: "power1.inOut",
       stagger: {
         amount: 0.1,

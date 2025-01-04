@@ -1,4 +1,8 @@
 import "/js/p5/lib/p5.min.js";
+import { getTideData } from "./pullData.js";
+
+// https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels&units=english
+// https://tidesandcurrents.noaa.gov/api-helper/url-generator.html
 
 let sketch = (p) => {
   let zoff = 0;
@@ -7,20 +11,28 @@ let sketch = (p) => {
   const noiseScale = 2;
   const noiseSpeed = 0.002;
   const amplitude = 120;
+  let mono;
+  let tideData;
+
+  p.preload = () => {
+    mono = p.loadFont("/assets/fonts/mono.ttf");
+  };
 
   p.setup = () => {
     let splashCanvas = document.getElementById("splashCanvas");
     let splashCanvasWidth = splashCanvas.clientWidth; // Get width of splashCanvas
     let splashCanvasHeight = splashCanvas.clientHeight; // Get height of splashCanvas
+
     const myCanvas = p.createCanvas(
       splashCanvasWidth,
       splashCanvasHeight,
       p.WEBGL
-    ); // Set canvas size
+    );
     myCanvas.parent("splashCanvas");
     p.frameRate(p.max(60, p.getFrameRate())); // Set frame rate to max device frame rate
     p.pixelDensity(2);
     createParticles();
+    getTideData();
   };
 
   function calculateNumParticles() {
@@ -42,9 +54,7 @@ let sketch = (p) => {
 
   p.draw = () => {
     p.translate(-p.width / 2, -p.height / 2, 0);
-    const backgroundColor = p.color(0, 255, 0);
     p.clear();
-    // p.background(0);
     p.noStroke();
 
     for (let i = 0; i < particles.length; i++) {
@@ -77,6 +87,13 @@ let sketch = (p) => {
       p.circle(particle.x, particle.y, particle.size);
     }
 
+    p.textFont(mono);
+    p.textSize(16);
+    const xOff = p.width - 400;
+    p.text("LOCATION", xOff, p.height - 100);
+    p.text("SEA LEVEL", xOff, p.height - 130);
+    p.text("NEXT HIGH TIDE", xOff, p.height - 160);
+
     zoff += noiseSpeed;
   };
 
@@ -89,4 +106,4 @@ let sketch = (p) => {
   };
 };
 
-new p5(sketch, "splashCanvas"); // Create a new p5 instance in 'splashCanvas'
+new p5(sketch, "splashCanvas");
