@@ -1,3 +1,5 @@
+import { splitType } from "./splitType.js";
+
 export function initLoading() {
   const disableScroll = (event) => {
     event.preventDefault();
@@ -34,6 +36,7 @@ export function initLoading() {
       // onEnter onLeave onEnterBack onLeaveBack
       toggleActions: "play none reverse none",
       onEnter: () => {
+        splitType();
         const disableScroll = (event) => {
           event.preventDefault();
         };
