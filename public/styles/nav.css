@@ -1,16 +1,21 @@
 li {
-  list-style-type: none;
-  padding: 0;
-  line-height: 2.25rem;
-  text-decoration: none;
-  text-decoration: none;
-  color: white;
-  text-align: left;
-  transition: background-color 0.3s;
+  /* list-style-type: none; */
+  /* padding: 0; */
+  /* line-height: 2.25rem; */
+  /* text-decoration: none; */
+  /* text-decoration: none; */
+  /* color: white; */
+  /* text-align: left; */
+  /* transition: background-color 0.3s; */
 }
 li:hover {
-  background-color: lightblue;
+  background-color: lightblue !important;
 }
 a {
+  /* color: blue !important; */
   text-decoration: none;
+}
+
+a:hover {
+  color: red !important;
 }

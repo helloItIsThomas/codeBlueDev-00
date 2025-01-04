@@ -13,7 +13,6 @@ img {
 
 .myVideo {
   object-fit: cover;
-  pointer-events: none;
 }
 
 .imgFullW {

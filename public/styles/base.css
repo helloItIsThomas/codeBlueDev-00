@@ -79,6 +79,7 @@ body * {
 }
 
 #cursorCanvas {
+  pointer-events: none;
   position: fixed;
   z-index: 4;
   width: 100vw;
