@@ -1,6 +1,7 @@
 import "/js/p5/lib/p5.min.js";
 import { getTideData } from "./pullData.js";
 
+// OUT OF DATE MAYBE, use the one in pullData.js
 // https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels&units=english
 // https://tidesandcurrents.noaa.gov/api-helper/url-generator.html
 

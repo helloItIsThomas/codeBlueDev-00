@@ -1,6 +1,3 @@
-// https://tidesandcurrents.noaa.gov/api-helper/url-generator.html
-// https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels&units=english
-// https://tidesandcurrents.noaa.gov/waterlevels.html?id=1611400
 // https://tidesandcurrents.noaa.gov/waterlevels.html?id=1611400&units=standard&bdate=20250103&edate=20250104&timezone=GMT&datum=MLLW&interval=6&action=data
 
 function findClosestStation(position, stationList) {
