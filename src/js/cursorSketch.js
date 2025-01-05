@@ -20,6 +20,12 @@ cursorGraphics.drawCircle(0, 0, 10); // Draw a circle with radius 10
 cursorGraphics.endFill();
 cursorGraphics.x = app.renderer.width / 2; // Center the cursor initially
 cursorGraphics.y = app.renderer.height / 2;
+// app.renderer.plugins.interaction.defaultCursorStyle = "inherit";
+// app.renderer.events.cursorStyles.default = "inherit";
+app.renderer.events.cursor = "none";
+app.renderer.events.setCursor("none");
+console.log(app.renderer);
+
 app.stage.addChild(cursorGraphics);
 
 document.addEventListener("mousemove", (event) => {

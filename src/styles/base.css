@@ -2,6 +2,10 @@
   /* border: 1px solid white; */
 }
 
+* {
+  cursor: none !important;
+}
+
 :root {
   --padLeft: 4rem;
   --padRight: 4rem;
