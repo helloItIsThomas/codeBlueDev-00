@@ -19,9 +19,16 @@ export function initLoading() {
 
   setTimeout(() => {
     // fake loading
-    loadingScreen.style.display = "none";
-    document.body.style.overflow = "auto";
-    window.removeEventListener("wheel", disableScroll);
+    gsap.to(loadingScreen, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.inOut",
+      onComplete: () => {
+        loadingScreen.style.display = "none";
+        document.body.style.overflow = "auto";
+        window.removeEventListener("wheel", disableScroll);
+      },
+    });
   }, 1000);
 
   setupToContainer();

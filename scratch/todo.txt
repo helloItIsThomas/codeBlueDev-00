@@ -1,21 +1,14 @@
 
 MONDAY
 
-• trigger splash to purpose anim on DIVE DEEPER click
-• trigger purpose to mission anim on arrow click
-• find a way to make BLUE PLANET blue while retaining the char animations
-• implement paralax footer
-• add smooth scrolling from freight github
-• check to see if the cursor isn't hiding because of cursorceror on my machine
-• paste in the fancy cursor
-
-• add loading screen
+• implement loading progress bar
 • implement tide data
       ° add multiple offet instances of Matty's sketch
       ° add tide data to the mission page
       ° verify the data we are pulling handles edge cases + is accurate
 • follow up with Matty about the sphere
-• add a loading screen
+• check to see if the cursor isn't hiding because of cursorceror on my machine
+• paste in the fancy cursor
 
 
 TUESDAY

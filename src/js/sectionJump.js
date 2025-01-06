@@ -6,19 +6,19 @@ export function setupToContainer() {
     ease: "power3.inOut",
     scrollTrigger: {
       trigger: "#purpose",
-      start: "top-=45% center",
-      end: "bottom-=55% center",
-      scrub: false,
+      start: "top-=49% center",
+      end: "bottom-=85% center",
+      scrub: true,
       markers: true,
       // onEnter onLeave onEnterBack onLeaveBack
-      toggleActions: "play none reverse none",
-      onEnter: () => {
-        splitType();
-        toContainer("purpose");
-      },
-      onEnterBack: () => {
-        toContainer("splash");
-      },
+      // toggleActions: "play none reverse none",
+      // onEnter: () => {
+      //   splitType();
+      //   toContainer("purpose");
+      // },
+      // onEnterBack: () => {
+      //   toContainer("splash");
+      // },
     },
   });
 
@@ -31,14 +31,14 @@ export function setupToContainer() {
       end: "bottom-=55% center",
       scrub: false,
       markers: true,
-      // onEnter onLeave onEnterBack onLeaveBack
-      toggleActions: "play none reverse none",
-      onEnter: () => {
-        toContainer("mission");
-      },
-      onEnterBack: () => {
-        toContainer("purpose");
-      },
+      //   onEnter onLeave onEnterBack onLeaveBack
+      // toggleActions: "play none reverse none",
+      // onEnter: () => {
+      //   toContainer("mission");
+      // },
+      // onEnterBack: () => {
+      //   toContainer("purpose");
+      // },
     },
   });
 
