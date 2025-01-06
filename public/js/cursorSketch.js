@@ -2,7 +2,7 @@ import { Application, Graphics } from "/js/pixi/pixi.min.mjs";
 
 const cursorCanvas = document.getElementById("cursorCanvas");
 const pixiCanvas = document.createElement("canvas");
-cursorCanvas.appendChild(pixiCanvas);
+// cursorCanvas.appendChild(pixiCanvas);
 
 const app = new Application();
 await app.init({

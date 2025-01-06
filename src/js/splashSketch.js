@@ -20,6 +20,7 @@ let sketch = (p) => {
   };
 
   p.setup = () => {
+    p.noCursor();
     let splashCanvas = document.getElementById("splashCanvas");
     let splashCanvasWidth = splashCanvas.clientWidth; // Get width of splashCanvas
     let splashCanvasHeight = splashCanvas.clientHeight; // Get height of splashCanvas
