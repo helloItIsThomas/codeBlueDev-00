@@ -34,7 +34,7 @@ let sketch = (p) => {
     p.frameRate(p.max(60, p.getFrameRate())); // Set frame rate to max device frame rate
     p.pixelDensity(2);
     createParticles();
-    getTideData();
+    // getTideData();
   };
 
   function calculateNumParticles() {

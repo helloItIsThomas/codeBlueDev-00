@@ -1,4 +1,4 @@
-import { splitType } from "./splitType.js";
+import { setupToContainer } from "./sectionJump.js";
 
 export function initLoading() {
   const disableScroll = (event) => {
@@ -24,60 +24,5 @@ export function initLoading() {
     window.removeEventListener("wheel", disableScroll);
   }, 1000);
 
-  const toPurposeTimeline = gsap.timeline({
-    duration: 0.5,
-    ease: "power3.inOut",
-    scrollTrigger: {
-      trigger: "#purpose",
-      start: "top-=45% center",
-      end: "bottom-=55% center",
-      scrub: false,
-      markers: false,
-      // onEnter onLeave onEnterBack onLeaveBack
-      toggleActions: "play none reverse none",
-      onEnter: () => {
-        splitType();
-        const disableScroll = (event) => {
-          event.preventDefault();
-        };
-        window.addEventListener("wheel", disableScroll, { passive: false });
-
-        gsap.to("#navBar", {
-          opacity: 0,
-          y: "-100%",
-          duration: 0.5,
-          ease: "power1.out",
-        });
-        gsap.to(window, {
-          duration: 1,
-          ease: "power3.out",
-          scrollTo: { y: "#purpose" },
-          onComplete: () => {
-            window.removeEventListener("wheel", disableScroll);
-          },
-        });
-      },
-      onEnterBack: () => {
-        const disableScroll = (event) => {
-          event.preventDefault();
-        };
-        window.addEventListener("wheel", disableScroll, { passive: false });
-        gsap.to("#navBar", {
-          opacity: 1,
-          y: "0",
-          duration: 0.5,
-          ease: "power1.out",
-        });
-        gsap.to(window, {
-          duration: 1,
-          ease: "power3.out",
-          scrollTo: { y: "#splash" },
-          onComplete: () => {
-            window.removeEventListener("wheel", disableScroll);
-          },
-        });
-      },
-    },
-  });
-  toPurposeTimeline.to(splashVideo, { opacity: 0 }, 0);
+  setupToContainer();
 }

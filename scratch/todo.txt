@@ -1,13 +1,11 @@
 
 MONDAY
 
-• add arrow to purpose page
-• make all buttons clickable + styled
 • trigger splash to purpose anim on DIVE DEEPER click
-• trigger purpose to mission anim on scroll + arrow click
+• trigger purpose to mission anim on arrow click
 • find a way to make BLUE PLANET blue while retaining the char animations
 • implement paralax footer
-• style all links the same
+• add smooth scrolling from freight github
 • check to see if the cursor isn't hiding because of cursorceror on my machine
 • paste in the fancy cursor
 
@@ -23,4 +21,5 @@ MONDAY
 TUESDAY
 
 • sketch 3 iterations of the tide sketch
-• add aesthetic details
+• style buttons
+• explore other aesthetic details

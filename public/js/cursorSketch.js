@@ -2,7 +2,7 @@ import { Application, Graphics } from "/js/pixi/pixi.min.mjs";
 
 const cursorCanvas = document.getElementById("cursorCanvas");
 const pixiCanvas = document.createElement("canvas");
-// cursorCanvas.appendChild(pixiCanvas);
+cursorCanvas.appendChild(pixiCanvas);
 
 const app = new Application();
 await app.init({
@@ -24,7 +24,6 @@ cursorGraphics.y = app.renderer.height / 2;
 // app.renderer.events.cursorStyles.default = "inherit";
 app.renderer.events.cursor = "none";
 app.renderer.events.setCursor("none");
-console.log(app.renderer);
 
 app.stage.addChild(cursorGraphics);
 

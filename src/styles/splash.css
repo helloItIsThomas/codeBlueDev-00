@@ -81,7 +81,7 @@
   /* border: 1px solid red; */
 }
 
-#splashCTA {
+.arrowCTA {
   position: absolute;
   z-index: 6;
   bottom: 5%;
@@ -94,7 +94,7 @@
   justify-content: center;
 }
 
-#splashCTA #downArrow {
+.arrowCTA #downArrow {
   animation: oscillate 2s ease-in-out infinite;
 }
 
