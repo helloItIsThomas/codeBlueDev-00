@@ -16,10 +16,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setServerOptions({
     browserSync: false,
     // Opt-out of the live reload snippet
-    // enabled: true,
-    enabled: false,
-    // Opt-out of DOM diffing updates and use page reloads
-    // domdiff: false,
+    enabled: true,
   });
 
   return {
@@ -29,6 +26,6 @@ module.exports = function (eleventyConfig) {
       output: "public",
     },
     // The 'watch' option enables Eleventy to automatically rebuild the site when files change.
-    watch: false,
+    watch: true,
   };
 };

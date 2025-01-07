@@ -83,7 +83,7 @@
 
 .arrowCTA {
   position: absolute;
-  z-index: 6;
+  z-index: 4;
   bottom: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -133,4 +133,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+}
+
+#lottieCanvas {
+  transform: scale(0.8);
 }

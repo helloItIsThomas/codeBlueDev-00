@@ -4,7 +4,7 @@ export function setupParallaxFish() {
     start: "top-=25% center",
     end: "top+=15% center",
     scrub: true,
-    markers: true,
+    markers: false,
   };
 
   gsap.from("#footerFish", {

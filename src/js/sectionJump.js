@@ -9,7 +9,7 @@ export function setupToContainer() {
       start: "top-=49% center",
       end: "bottom-=85% center",
       scrub: true,
-      markers: true,
+      markers: false,
       // onEnter onLeave onEnterBack onLeaveBack
       // toggleActions: "play none reverse none",
       // onEnter: () => {
@@ -30,7 +30,7 @@ export function setupToContainer() {
       start: "top-=45% center",
       end: "bottom-=55% center",
       scrub: false,
-      markers: true,
+      markers: false,
       //   onEnter onLeave onEnterBack onLeaveBack
       // toggleActions: "play none reverse none",
       // onEnter: () => {

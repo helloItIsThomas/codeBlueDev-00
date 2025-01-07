@@ -11,6 +11,7 @@ import { getJsonDataFromURL } from "./utils.js";
 // https://api.tidesandcurrents.noaa.gov/api/prod/
 
 export function getTideData() {
+  console.log("running getTideData");
   return new Promise((resolve, reject) => {
     const url =
       "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations.json?type=waterlevels&units=english";

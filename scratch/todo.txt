@@ -2,14 +2,16 @@
 MONDAY
 
 • implement loading progress bar
-• verify we are handling tide data edges cases
 • check to see if the cursor isn't hiding because of cursorceror on my machine
 • paste in the fancy cursor
 
-
 TUESDAY
 
-• sketch some 3 js spheres
+• sketch some threejs spheres
 • sketch 3 iterations of the tide sketch
-• style buttons
 • explore other aesthetic details
+• add some gradients to the loading screen and maybe other places
+
+WEDNESDAY
+
+• verify we are handling tide data edges cases
