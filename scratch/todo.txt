@@ -1,7 +1,6 @@
 
 MONDAY
 
-• implement loading progress bar
 • check to see if the cursor isn't hiding because of cursorceror on my machine
 • paste in the fancy cursor
 
