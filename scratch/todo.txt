@@ -5,8 +5,7 @@ MONDAY
 • implement tide data
       ° add multiple offet instances of Matty's sketch
       ° add tide data to the mission page
-      ° verify the data we are pulling handles edge cases + is accurate
-• follow up with Matty about the sphere
+• verify the data we are pulling handles edge cases + is accurate
 • check to see if the cursor isn't hiding because of cursorceror on my machine
 • paste in the fancy cursor
 

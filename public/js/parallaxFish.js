@@ -1,6 +1,4 @@
 export function setupParallaxFish() {
-  console.log("running setupParallaxFish");
-
   const footerScrollTrigger = {
     trigger: "#footer",
     start: "top-=25% center",

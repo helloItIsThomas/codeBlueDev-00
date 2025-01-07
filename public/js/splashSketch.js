@@ -34,7 +34,7 @@ let sketch = (p) => {
     p.frameRate(p.max(60, p.getFrameRate())); // Set frame rate to max device frame rate
     p.pixelDensity(2);
     createParticles();
-    // getTideData();
+    tideData = getTideData();
   };
 
   function calculateNumParticles() {
@@ -92,9 +92,16 @@ let sketch = (p) => {
     p.textFont(mono);
     p.textSize(16);
     const xOff = p.width - 400;
-    p.text("LOCATION", xOff, p.height - 100);
-    p.text("SEA LEVEL", xOff, p.height - 130);
-    p.text("NEXT HIGH TIDE", xOff, p.height - 160);
+
+    tideData
+      .then((data) => {
+        p.text(`Location: ${data.name}`, xOff, p.height - 100);
+        p.text(`Sea Level: ${data.lastData.v} ft`, xOff, p.height - 130);
+        p.text(`Date: ${data.lastData.t}`, xOff, p.height - 160);
+      })
+      .catch((error) => {
+        console.error("Error fetching tide data: ", error);
+      });
 
     zoff += noiseSpeed;
   };
