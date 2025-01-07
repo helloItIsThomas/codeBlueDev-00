@@ -31,10 +31,10 @@ let sketch = (p) => {
       p.WEBGL
     );
     myCanvas.parent("splashCanvas");
-    p.frameRate(p.max(60, p.getFrameRate())); // Set frame rate to max device frame rate
+    p.frameRate(p.max(60, p.getFrameRate()));
     p.pixelDensity(2);
     createParticles();
-    tideData = getTideData();
+    // tideData = getTideData();
   };
 
   function calculateNumParticles() {
@@ -55,55 +55,98 @@ let sketch = (p) => {
   }
 
   p.draw = () => {
-    p.translate(-p.width / 2, -p.height / 2, 0);
-    p.clear();
-    p.noStroke();
+    if (tideData) {
+      tideData
+        .then((data) => {
+          const textXOff = p.width - 400;
+          p.translate(-p.width / 2, -p.height / 2, 0);
+          p.clear();
+          p.noStroke();
+          p.textFont(mono);
+          p.textSize(16);
 
-    for (let i = 0; i < particles.length; i++) {
-      const particle = particles[i];
+          var gmtDate = new Date(data.lastData.t);
+          var localTimeZoneOffset = new Date().getTimezoneOffset();
+          gmtDate.setMinutes(gmtDate.getMinutes() - localTimeZoneOffset);
+          var localDateString = gmtDate.toLocaleString();
+          const seaLevel =
+            parseFloat(data.lastData.v) +
+            parseFloat(data.datums.datums[5].value);
+          const aveHighLevel = data.datums.datums[1].value;
+          const aveLowLevel = data.datums.datums[7].value;
 
-      const xoff = p.map(particle.x, 0, p.width, 0, noiseScale);
-      const mainNoise = p.noise(xoff, zoff);
-      const subtleNoise = p.noise(xoff * 2, zoff * 0.5) * 0.15;
-      const yoff = p.map(
-        mainNoise + subtleNoise,
-        0,
-        1.15,
-        -amplitude,
-        amplitude
-      );
+          p.text(`Date: ${localDateString}`, textXOff, p.height - 220);
+          p.text(`Location: ${data.name}`, textXOff, p.height - 190);
+          p.text(`Sea Level: ${seaLevel} ft`, textXOff, p.height - 160);
+          p.text(
+            `Average High Sea Level: ${aveHighLevel} ft`,
+            textXOff,
+            p.height - 130
+          );
+          p.text(
+            `Average Low Sea Level: ${aveLowLevel} ft`,
+            textXOff,
+            p.height - 100
+          );
 
-      const lineHeightMult = 0.5;
+          for (let n = 1; n < 5; n++) {
+            for (let i = 0; i < particles.length; i++) {
+              const particle = particles[i];
 
-      particle.y = p.height * lineHeightMult + yoff;
+              const xoff = p.map(particle.x, 0, p.width, 0, noiseScale);
+              const mainNoise = p.noise(xoff, zoff);
+              const subtleNoise =
+                p.noise(xoff * 2 * n, zoff * 0.5 * n) * n * 0.1;
+              const yoff = p.map(
+                mainNoise + subtleNoise,
+                0,
+                1.15,
+                -amplitude,
+                amplitude
+              );
+              const dataYOff = p.map(
+                seaLevel,
+                aveLowLevel,
+                aveHighLevel,
+                p.height * 0.05,
+                p.height * 0.95
+              );
 
-      const fadeEdge = p.width * 0;
-      let opacity = 160;
-      if (particle.x < fadeEdge) {
-        opacity = map(particle.x, 0, fadeEdge, 0, 255);
-      } else if (particle.x > p.width - fadeEdge) {
-        opacity = map(particle.x, p.width - fadeEdge, p.width, 255, 0);
-      }
+              particle.y = p.height - (yoff + dataYOff);
 
-      p.fill(255, opacity);
-      p.circle(particle.x, particle.y, particle.size);
+              const fadeEdge = p.width * 0;
+              let opacity = 160;
+              if (particle.x < fadeEdge) {
+                opacity = map(particle.x, 0, fadeEdge, 0, 255);
+              } else if (particle.x > p.width - fadeEdge) {
+                opacity = map(particle.x, p.width - fadeEdge, p.width, 255, 0);
+              }
+
+              p.fill(255, opacity);
+              p.circle(particle.x, particle.y, particle.size);
+            }
+          }
+
+          zoff += noiseSpeed;
+        })
+        .catch((error) => {
+          const textXOff = p.width - 400;
+          p.text(
+            `Sea Level Data Currently Unavailable`,
+            textXOff,
+            p.height - 100
+          );
+          console.error("Error fetching tide data: ", error);
+        });
+    } else {
+      const textXOff = p.width - 400;
+      p.translate(-p.width / 2, -p.height / 2, 0);
+      p.clear();
+      p.noStroke();
+      p.textFont(mono);
+      p.textSize(16);
+      p.text(`Sea Level Data Currently Unavailable`, textXOff, p.height - 100);
     }
-
-    p.textFont(mono);
-    p.textSize(16);
-    const xOff = p.width - 400;
-
-    tideData
-      .then((data) => {
-        p.text(`Location: ${data.name}`, xOff, p.height - 100);
-        p.text(`Sea Level: ${data.lastData.v} ft`, xOff, p.height - 130);
-        p.text(`Date: ${data.lastData.t}`, xOff, p.height - 160);
-      })
-      .catch((error) => {
-        console.error("Error fetching tide data: ", error);
-      });
-
-    zoff += noiseSpeed;
   };
 
   p.windowResized = () => {

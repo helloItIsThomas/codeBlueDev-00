@@ -2,16 +2,14 @@
 MONDAY
 
 • implement loading progress bar
-• implement tide data
-      ° add multiple offet instances of Matty's sketch
-      ° add tide data to the mission page
-• verify the data we are pulling handles edge cases + is accurate
+• verify we are handling tide data edges cases
 • check to see if the cursor isn't hiding because of cursorceror on my machine
 • paste in the fancy cursor
 
 
 TUESDAY
 
+• sketch some 3 js spheres
 • sketch 3 iterations of the tide sketch
 • style buttons
 • explore other aesthetic details

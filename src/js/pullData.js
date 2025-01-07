@@ -1,5 +1,6 @@
 import { getJsonDataFromURL } from "./utils.js";
 
+// OLD URL: https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=20250103&end_date=20250104&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json
 // t: time of observation
 // s: standard deviation of 1 second samples used to computer height
 // f: [O (no one cares), F (no one cares), R (when 1, indicates the rate of change tolerance limit was exceeded) , L (when 1, indicates that either the max or min expected water level height limit was exceeded)]
@@ -23,20 +24,20 @@ export function getTideData() {
           datumsURL: station.datums.self,
           id: station.id,
         }));
-      const closestStation = await getClosestStation(stationList);
-      // console.log("closestStation: ", closestStation);
-      const closestStationID = closestStation.id;
-      //  we hardcode this here for debugging purposes
-      // const closestStationID = 8594900;
-      const datum = "MSL"; // MSL means Mean Sea Level
 
-      const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=NOS.COOPS.TAC.WL&begin_date=20250103&end_date=20250104&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json`;
+      // const closestStation = await getClosestStation(stationList);
+      const closestStation = stationList[0];
+      const closestStationID = closestStation.id;
+      const datum = "MSL"; // MSL means Mean Sea Level
+      const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=Code_Blue_Foundation&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json&date=latest`;
       getJsonDataFromURL(specificDataURL).then((data) => {
+        console.log("data: ", data);
         const name = data.metadata.name;
         const coords = [data.metadata.lat, data.metadata.lon];
-        const lastData = data.data[data.data.length - 1];
-        // console.log("data: ", name, coords, lastData);
-        resolve({ name, coords, lastData });
+        const lastData = data.data[0];
+        getJsonDataFromURL(closestStation.datumsURL).then((datums) => {
+          resolve({ name, coords, lastData, datums });
+        });
       });
     });
   });
