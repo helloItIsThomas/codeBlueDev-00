@@ -26,8 +26,8 @@ export function getTideData() {
           id: station.id,
         }));
 
-      // const closestStation = await getClosestStation(stationList);
-      const closestStation = stationList[0];
+      const closestStation = await getClosestStation(stationList);
+      // const closestStation = stationList[0];
       const closestStationID = closestStation.id;
       const datum = "MSL"; // MSL means Mean Sea Level
       const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=Code_Blue_Foundation&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json&date=latest`;
