@@ -3,8 +3,6 @@ import { setupToContainer } from "./sectionJump.js";
 export function initLoading(_logoLottie) {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
-  console.log("running initLoading");
-
   const disableScroll = (event) => {
     event.preventDefault();
   };

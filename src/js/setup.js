@@ -4,7 +4,6 @@ import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-w
 
 document.addEventListener("DOMContentLoaded", async () => {
   const logoLottie = await setup();
-  console.log(logoLottie);
   initLoading(logoLottie);
   setupParallaxFish();
 });
@@ -23,7 +22,6 @@ export async function setup() {
   });
   await new Promise((resolve) => {
     logoLottie.addEventListener("load", () => {
-      console.log(logoLottie.totalFrames);
       resolve(logoLottie);
     });
   });

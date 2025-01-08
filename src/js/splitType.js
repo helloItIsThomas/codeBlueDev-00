@@ -1,10 +1,7 @@
 export function splitType() {
-  console.log("splitting type");
   // const text = new SplitType("#split-type", { types: "words, chars" });
-  // console.log(text);
   // const debug = document.querySelectorAll(".split-type");
   // const debugText = new SplitType(debug);
-  // console.log(debugText);
   // text.lines.forEach((line) => {
   // const charsInLine = line.querySelectorAll(".char");
   // gsap.from(charsInLine, {

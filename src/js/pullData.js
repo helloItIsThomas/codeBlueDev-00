@@ -32,7 +32,6 @@ export function getTideData() {
       const datum = "MSL"; // MSL means Mean Sea Level
       const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=Code_Blue_Foundation&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json&date=latest`;
       getJsonDataFromURL(specificDataURL).then((data) => {
-        console.log("data: ", data);
         const name = data.metadata.name;
         const coords = [data.metadata.lat, data.metadata.lon];
         const lastData = data.data[0];
