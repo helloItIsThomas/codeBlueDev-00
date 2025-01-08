@@ -34,7 +34,7 @@ let sketch = (p) => {
     p.frameRate(p.max(60, p.getFrameRate()));
     p.pixelDensity(2);
     createParticles();
-    // tideData = getTideData();
+    tideData = getTideData();
   };
 
   function calculateNumParticles() {
