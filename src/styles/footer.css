@@ -57,14 +57,17 @@
   position: relative;
   /* background-color: red; */
   padding-bottom: 2.5rem !important;
+  transform: translate3d(0, 0, 0);
+  mix-blend-mode: screen;
 }
 #footerRight img {
-  /* padding-top: 10%; */
-  mix-blend-mode: screen;
+  padding-left: 10%;
+  /* mix-blend-mode: hard-light; */
+  /* transform: translate3d(0, 0, 0); */
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%;
+  width: 60%;
 }
 #footerRightCopy {
   text-align: right;

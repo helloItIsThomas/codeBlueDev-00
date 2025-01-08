@@ -1,16 +1,6 @@
 
-MONDAY
-
-• check to see if the cursor isn't hiding because of cursorceror on my machine
-• paste in the fancy cursor
-
-TUESDAY
-
-• sketch some threejs spheres
-• sketch 3 iterations of the tide sketch
-• explore other aesthetic details
-• add some gradients to the loading screen and maybe other places
 
 WEDNESDAY
 
 • verify we are handling tide data edges cases
+• add some gradients to the loading screen and maybe other places
