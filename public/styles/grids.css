@@ -1,23 +1,8 @@
 /* 2 Column Horizontal Grid */
 .twoColGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* padding: 2%; */
-  /* gap: 2%; */
+  grid-template-columns: 1fr 1fr !important;
 }
-
-.twoColGrid * {
-  /* padding: 2%; */
-}
-
-#leftColHeadline {
-  padding-left: 12%;
-  border: 1px solid red;
-}
-#rightColCopy {
-  border: 1px solid blue;
-}
-/* */
 
 /* Centered */
 .centered {
@@ -27,4 +12,7 @@
   align-items: center;
   justify-content: center;
 }
-/* */
+
+.alignVertCenter {
+  align-items: center;
+}

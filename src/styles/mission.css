@@ -1,26 +1,23 @@
-.mission {
+#mission {
   display: flex;
   align-items: center;
-
-  height: 100%;
-  width: 100%;
-}
-.mission * {
-  border: 1px solid black;
 }
 
-#missionLeft {
-  padding: 20%;
-  height: 100%;
+#missionCopy {
+  width: 60%;
 }
 
 #missionRight {
-  height: 100%;
-}
-
-#missionRight canvas {
+  position: relative;
   height: 100%;
   width: 100%;
+}
+
+#missionRight iframe {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
 }
 
 #waterOrb {

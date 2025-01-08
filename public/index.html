@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <script src="/js/gsap/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"/>
+<script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 
 <html lang="en">
     <head>
@@ -9,6 +15,7 @@
         <meta charset="UTF-8"/>
         <meta property=”og:url content=”https://github.com/timClicks/glsl-shader-intro”/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/styles/base.css"/>
         <link rel="stylesheet" href="/styles/nav.css"/>
@@ -23,152 +30,194 @@
         <link rel="stylesheet" href="/styles/splash.css"/>
         <link rel="stylesheet" href="/styles/mission.css"/>
         <link rel="stylesheet" href="/styles/grids.css"/>
-
+        <link rel="stylesheet" href="/styles/textFX.css"/>
         <title id="page-title">Hello from index</title>
     </head>
     <body>
         <div id="bodyGradient">
-
             <div id="cursorCanvas"></div>
-            <div class="centered" id="splashCentered">
-    <div class="background">
-        <img src="/assets/images/video-bg.png" alt="Ocean Reef">
-    </div>
-    <div id="splashCanvas"></div>
-    <div id="splashForeground">
-        <div id="navBar">
-            <div id="navLogo">LOGO</div>
-            <div id="navLinks">
-                <div id="navLink">
-                    <a href="/">IMPACT MEDIA</a>
-                </div>
-                <div id="navLink">
-                    <a href="/">CONSERVATION GRANTEES</a>
-                </div>
-                <div id="navLink">
-                    <a href="/">ABOUT</a>
-                </div>
-            </div>
+            <div class="centered" id="splash">
+  <div class="background" id="splashVideo">
+    <video src="/assets/images/splashBG.mp4" autoplay loop muted></video>
+  </div>
+  <div id="splashCanvas"></div>
+  <div id="splashForeground">
+    <div id="navBar">
+      <div id="navLogo">
+        <img src="/assets/images/logo.svg" alt="Code Blue">
+      </div>
+      <div id="navLinks">
+        <div class="b1_0 navLink" >
+          <a href="/" data-replace="IMPACT MEDIA">
+            <span>IMPACT MEDIA</span>
+          </a>
         </div>
-        <div class="h1_0" id="splashSVG">code blue</div>
-        <div class="b_0" id="splashCTA">DIVE DEEPER</div>
+        <div class="b1_0 navLink" >
+          <a href="/" data-replace="CONSERVATION GRANTEES">
+            <span>CONSERVATION GRANTEES</span></a>
+        </div>
+        <div class="b1_0 navLink">
+          <a href="/" data-replace="ABOUT">
+            <span>ABOUT</span></a>
+        </div>
+      </div>
     </div>
+  </div>
+  <div id="loadingScreen"></div>
+  <div class="h1_0" id="splashSVG">
+    <canvas id="lottieCanvas"></canvas>
+  </div>
+  <div class="b1_0 arrowCTA" id="splashCTA">
+            DIVE DEEPER
+            <div id="downArrow">
+      <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
 </div>
             <div id="subBody">
                 
-<div class="purpose">
+<div class="fullHeightWidth" id="purpose">
     <div class="background"></div>
     <div class="foreground">
-        <div id="featuredPartnershipEventTitle" class="h1_0">Protection and Restoration of our blue planet through innovative projects and strategic alliances.</div>
+        <div class="h1_0" id="split-type">PROTECTION AND RESTORATION OF OUR <span class="_blue">BLUE PLANET</span> THROUGH INNOVATIVE PROJECTS AND STRATEGIC ALLIANCES.</div>
+    </div>
+    <div class="b1_0 arrowCTA" id="purposeCTA">
+        <div id="downArrow">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
     </div>
 </div>
 
-<div class="mission">
-    <div class="twoColGrid">
-        <div id="missionLeft">
-            <div class="h1_0" id="missionTitle">Our Mission</div>
-            
-            
-            <div class="b2_0" id="missionCopy">Code Blue Foundation is a private charitable foundation supporting innovative projects that promote protection, restoration and resilience of critical ocean exosystems and climate stability. <br><br> We also support media projects which raise awareness of the importance of these essential natural systems which support all life on the planet.</div>
+<div class="fullHeightWidth" id="mission">
+    <div class="twoColGrid alignVertCenter" >
+        <div class="padLeft">
+            <div class="h1_0 textBoxMargin" id="missionTitle">OUR<br>MISSION</div>
+            <div class="b2_0 textBoxMargin" id="missionCopy">Code Blue Foundation is a private charitable foundation supporting innovative projects that promote protection, restoration and resilience of critical ocean exosystems and climate stability. <br><br> We also support media projects which raise awareness of the importance of these essential natural systems which support all life on the planet.</div>
             <div class="horizontalButtonWrapper">
-                <div class="ctaButton">ABOUT US</div>
-                <div class="ctaButton">CONTACT</div>
+                <button class="ctaButton b1_0 textBoxMargin">
+                    <a href="#" data-replace="ABOUT US">
+                        <span>ABOUT US</span>
+                    </a>
+                </button>
+                <button class="ctaButton b1_0 textBoxMargin">
+                    <a href="#" data-replace="CONTACT">
+                        <span>CONTACT</span>
+                    </a>
+                </button>
+                
+                
             </div>
         </div>
-        <div id="missionRight">
-            <canvas id="waterOrb"></canvas>
+        <div class="padRight" id="missionRight">
+            <iframe id="mission-iframe" src="https://my.spline.design/meeet-a08e4591ecc4a7ebca9c763d8f38a995/" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+            
         </div>
     </div>
+
 </div>
 
-<div class="twoColGrid">
-    <div id="leftColHeadline" class="h1_0">Featured<br>Film</div>
-    <div id="rightColCopy" class="b2_0">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div>
-</div>
-
-<div class="centered">
+<div class="componentContainer">
+    <div class="twoColGrid padLeft">
+        <div id="leftColHeadline" class="h1_0 textBoxMargin">FEATURED<br>FILM</div>
+        <div id="rightColCopy" class="b2_0 textBoxMargin">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div>
+    </div>
+    <div class="centered component">
     <div class="background">
-        <img src="/assets/images/whales.png" alt="Sylvia Earle">
+        <img src="/assets/images/whales.png">
     </div>
     <div class="foreground" id="featuredFilmForeground">
-        <div class="featuredPartnershipType">FILM</div>
-        <div id="featuredPartnershipEventTitle" class="h1_0">Deep Rising</div>
-        <div class="featuredPartnershipEventCopy">A heart-stopping journey to the most inaccessible part of our planet.</div>
-        <div class="ctaButton">WATCH NOW</div>
+        <div id="featuredFilmInfo">
+            <div class="b1_0">FILM</div>
+            <div  class="h1_0">Deep Rising</div>
+            <div class="featuredPartnershipEventCopy b2_0">A heart-stopping journey to the most inaccessible part of our planet.</div>
+            <button class="ctaButton b1_0">
+                <a href="#" data-replace="WATCH NOW">
+                    <span>WATCH NOW</span>
+                </a>
+            </button>
+
+        </div>
+        <img src="/assets/images/sundance.png">
+    </div>
+</div>
+</div>
+
+<div class="componentContainer">
+    <div class="centered">
+        <div class="h1_0 textBoxMargin"> FEATURED PARTNERSHIPS</div>
+    </div>
+    <div class="featuredPartnership component">
+    <div class="background">
+        <img src="/assets/images/sylviaEarle.png" alt="Sylvia Earle">
+    </div>
+    <div class="foreground padLeft">
+        <div class="b1_0 textBoxMargin reducedVerticalMargin">EVENT</div>
+        <div class="h1_0 textBoxMargin reducedVerticalMargin">Sylvia Earle's 90th Birthday</div>
+        <div class="b2_0 featuredPartnershipEventCopy textBoxMargin reducedVerticalMargin">From record breaking free diver to icon of conservation, Sylvia Earle has done more for the ocean than perhaps any other person in history.</div>
+        
+        <button class="ctaButton b1_0 textBoxMargin reducedVerticalMargin">
+            <a href="#" data-replace="LEARN MORE">
+                <span>LEARN MORE</span>
+            </a>
+        </button>
     </div>
 </div>
 
-<div class="centered">
-    <div class="h1_0"> Featured Partnerships</div>
-</div>
-<div class="featuredPartnership">
-    <div class="background">
-        <img src="/assets/images/sylviaEarle.png" alt="Sylvia Earle">
-    </div>
-    <div class="foreground">
-        <div class="featuredPartnershipType">EVENT</div>
-        <div id="featuredPartnershipEventTitle" class="h1_0">Sylvia Earle's 90th Birthday</div>
-        <div class="featuredPartnershipEventCopy">From record breaking free diver to icon of conservation, Sylvia Earle has done more for the ocean than perhaps any other person in history.</div>
-        <div class="ctaButton">LEARN MORE</div>
-    </div>
-</div>
-<div class="featuredPartnership">
-    <div class="background">
-        <img src="/assets/images/sylviaEarle.png" alt="Sylvia Earle">
-    </div>
-    <div class="foreground">
-        <div class="featuredPartnershipType">EVENT</div>
-        <div id="featuredPartnershipEventTitle" class="h1_0">Sylvia Earle's 90th Birthday</div>
-        <div class="featuredPartnershipEventCopy">From record breaking free diver to icon of conservation, Sylvia Earle has done more for the ocean than perhaps any other person in history.</div>
-        <div class="ctaButton">LEARN MORE</div>
-    </div>
-</div>
-<div class="featuredPartnership">
-    <div class="background">
-        <img src="/assets/images/sylviaEarle.png" alt="Sylvia Earle">
-    </div>
-    <div class="foreground">
-        <div class="featuredPartnershipType">EVENT</div>
-        <div id="featuredPartnershipEventTitle" class="h1_0">Sylvia Earle's 90th Birthday</div>
-        <div class="featuredPartnershipEventCopy">From record breaking free diver to icon of conservation, Sylvia Earle has done more for the ocean than perhaps any other person in history.</div>
-        <div class="ctaButton">LEARN MORE</div>
-    </div>
-</div>
 
-<div id="footer">
+</div>
+            </div>
+        </div>
+        <div id="footer">
     <div id="wrapper">
         <div class="footerChild" id="footerLeftCenter">
-            <div class="footerChild" id="footerLeftCenterTop">top</div>
+            <div class="footerChild" id="footerLeftCenterTop"></div>
             <div class="footerChild" id="footerLeftCenterBottom">
                 <div class="footerChild" id="footerLeft">
-                    
+                    <img src="/assets/images/logo.svg" alt="Code Blue Logo">
                 </div>
                 <div class="footerChild" id="footerCenter">
-                    <div class = "h0_5">Protection and Restoration of our blue planet through innovative projects and strategic alliances.</div>
+                    <div class="h0_5" >PROTECTION AND RESTORATION OF OUR BLUE PLANET THROUGH INNOVATIVE PROJECTS AND STRATEGIC ALLIANCES.</div>
                     <div id="footerCenterChildBottom">
                         <div class="b1_0">Quick Links
+                        <!---
+                        <div class="b1_0 navLink" >
+                            <a href="/" data-replace="CONSERVATION GRANTEES">
+                            <span>CONSERVATION GRANTEES</span></a>
+                        </div>
+                        -->
                             <ul>
                                 <li>
-                                    <a class="b2_0" href="#link1">About Us</a>
+                                    <a class="b2_0" href="#link1" data-replace="About Us">
+                                        <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link2">Impact Media</a>
+                                    <a class="b2_0" href="#link2" data-replace="Impact Media">
+                                        <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link3">Conservation</a>
+                                    <a class="b2_0" href="#link3" data-replace="Conservation">
+                                        <span>Conservation</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link4">Grantees</a>
+                                    <a class="b2_0" href="#link4" data-replace="Grantees">
+                                        <span>Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
+                        <div></div>
                         <div class="b1_0">Contact
                             <ul>
                                 <li>
-                                    <a class="b2_0" href="#link1">contact@codeblue.org</a>
+                                    <a class="b2_0" href="#link1" data-replace="contact@codeblue.org">
+                                        <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link2">LinkedIn</a>
+                                    <a class="b2_0" href="#link2" data-replace="LinkedIn">
+                                        <span>LinkedIn</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -177,16 +226,11 @@
             </div>
         </div>
         <div class="footerChild" id="footerRight">
-
-            
-
+            <img id="footerFish" src="/assets/images/fish.png" alt="Sea Creature">
             <div class="b1_0" id="footerRightCopy">Copyright 2024 Code Blue Foundation. All rights reserved.</div>
         </div>
     </div>
 </div>
-            </div>
-
-        </div>
     </body>
 </html>
 
@@ -197,4 +241,4 @@
 <script type="module" src="/js/setup.js"></script>
 <script type="module" src="/js/splashSketch.js"></script>
 <script type="module" src="/js/cursorSketch.js"></script>
-<script type="module" src="/js/sphereSketch.js"></script>
+<script type="module" src="/js/parallaxFish.js"></script>

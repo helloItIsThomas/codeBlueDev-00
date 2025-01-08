@@ -14,10 +14,9 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.setServerOptions({
+    browserSync: false,
     // Opt-out of the live reload snippet
     enabled: true,
-    // Opt-out of DOM diffing updates and use page reloads
-    domdiff: false,
   });
 
   return {
@@ -26,7 +25,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       output: "public",
     },
-    // watch: false,
+    // The 'watch' option enables Eleventy to automatically rebuild the site when files change.
     watch: true,
   };
 };

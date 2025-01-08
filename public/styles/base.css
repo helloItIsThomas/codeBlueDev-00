@@ -1,3 +1,64 @@
+* div {
+  /* border: 1px solid white; */
+}
+
+* {
+  cursor: none !important;
+}
+
+:root {
+  --padLeft: 4rem;
+  --padRight: 4rem;
+  --textBoxMargin: 2rem;
+  --bodyMargin: 3rem;
+
+  --textBoxMarginLeft: 5%;
+}
+
+.fullHeightWidth {
+  height: 100vh;
+  width: 100%;
+}
+
+.padLeft {
+  padding-left: var(--padLeft) !important;
+}
+
+.padRight {
+  padding-right: var(--padRight) !important;
+}
+
+.textBoxMargin {
+  margin: var(--textBoxMargin);
+}
+
+.component {
+  padding-top: 1.5rem;
+}
+
+.componentContainer {
+  padding-top: 10rem;
+}
+
+.reducedVerticalMargin {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 html,
 body {
   width: 100%;
@@ -5,6 +66,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #030b22;
 }
 
 body * {
@@ -13,18 +75,19 @@ body * {
 }
 
 #bodyGradient {
-  background: linear-gradient(to top, #0c1b4b, #1e3c72);
+  background: linear-gradient(to bottom, #0c1b4b, #030b22);
 }
 
 #subBody {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: var(--bodyMargin);
+  margin-right: var(--bodyMargin);
 }
 
 #cursorCanvas {
+  pointer-events: none;
   position: fixed;
-  z-index: 4;
-  width: 100vw ;
+  z-index: 6;
+  width: 100vw;
   height: 100vh;
 }
 
