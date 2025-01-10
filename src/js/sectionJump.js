@@ -1,5 +1,5 @@
 import { splitType } from "./splitType.js";
-
+import { disableScroll } from "./utils.js";
 export function setupToContainer() {
   const toPurposeTimeline = gsap.timeline({
     duration: 0.5,
@@ -60,9 +60,6 @@ export function setupToContainer() {
 }
 
 function toContainer(container) {
-  const disableScroll = (event) => {
-    event.preventDefault();
-  };
   window.addEventListener("wheel", disableScroll, {
     passive: false,
   });

@@ -44,6 +44,7 @@ export function getTideData() {
 }
 
 async function getClosestStation(_stationList) {
+  console.log("running getClosestStation");
   // Get Local Coordinates Start
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
