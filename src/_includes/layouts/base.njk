@@ -34,14 +34,14 @@
         <title id="page-title">{{ title }}</title>
     </head>
     <body>
-        <div id="bodyGradient">
-            <div id="cursorCanvas"></div>
-            {% include "components/homeSections/splash.njk" %}
-            <div id="subBody">
-                {{ content | safe }}
-            </div>
-        </div>
-        {% include "components/footer.njk" %}
+        {# <div id="bodyGradient"> #}
+        {# <div id="cursorCanvas"></div> #}
+        {# {% include "components/homeSections/splash.njk" %} #}
+        {# <div id="subBody"> #}
+        {# {{ content | safe }} #}
+        {# </div> #}
+        {# </div> #}
+        {# {% include "components/footer.njk" %} #}
     </body>
 </html>
 
@@ -51,6 +51,6 @@
 <script type="module" src="/js/utils.js"></script>
 <script type="module" src="/js/setup.js"></script>
 <script type="module" src="/js/splashSketch.js"></script>
-<script type="module" src="/js/cursorSketch.js"></script>
+{# <script type="module" src="/js/cursorSketch.js"></script> #}
 <script type="module" src="/js/parallaxFish.js"></script>
 {# <script type="module" src="/js/sphereSketch.js"></script> #}
