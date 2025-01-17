@@ -11,6 +11,22 @@
   gap: 0.5rem;
 }
 
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  object-fit: cover;
+  object-position: center;
+  gap: 0.5rem;
+}
+
+.galleryGrid img {
+  aspect-ratio: 1.8 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Centered */
 .centered {
   height: 100%;

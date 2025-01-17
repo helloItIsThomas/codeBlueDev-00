@@ -5,9 +5,8 @@
 }
 
 .subFeaturedFilmComp img {
-  border-radius: 1rem;
-  object-fit: cover; /* This will ensure the image fills the space and crops if needed */
-  object-position: top; /* This will crop the image from the top */
-  width: 100%; /* Ensures the image takes the full width of the container */
-  max-height: 70%; /* Ensures the image takes the full width of the container */
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  max-height: 70%;
 }
