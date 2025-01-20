@@ -4,6 +4,7 @@ import { getTideData } from "./pullData.js";
 import { v } from "./variables.js";
 
 // test for test branch
+// a second test for test branch
 
 export async function initLoadingScreen(_logoLottie) {
   const timer = {
