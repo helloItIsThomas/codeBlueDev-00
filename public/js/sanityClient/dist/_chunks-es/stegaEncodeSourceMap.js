@@ -290,8 +290,7 @@ function stegaEncodeSourceMap(result, resultSourceMap, config) {
       const { baseUrl, workspace, tool } = resolveStudioBaseRoute(
         typeof config.studioUrl == "function" ? config.studioUrl(sourceDocument) : config.studioUrl
       );
-      if (!baseUrl)
-        return value;
+      if (!baseUrl) return value;
       const { _id: id, _type: type, _projectId: projectId, _dataset: dataset } = sourceDocument;
       return C(
         value,

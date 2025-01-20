@@ -2,8 +2,7 @@ import { walkMap, resolveMapping, parseJsonPath, toString, DRAFTS_PREFIX, getPub
 import { jsonPathToStudioPath, studioPath } from "./_chunks-es/resolveEditInfo.js";
 const defaultUpdateFunction = (changed) => changed;
 function applySourceDocuments(result, resultSourceMap, getCachedDocument, updateFn = defaultUpdateFunction, perspective = "raw") {
-  if (!resultSourceMap)
-    return result;
+  if (!resultSourceMap) return result;
   if (perspective !== "published" && perspective !== "raw" && perspective !== "previewDrafts")
     throw new Error(`Unknown perspective "${perspective}"`);
   return walkMap(JSON.parse(JSON.stringify(result)), (value, path) => {

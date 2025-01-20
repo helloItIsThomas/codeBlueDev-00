@@ -256,8 +256,7 @@ function resolveEditInfo(options) {
     const { baseUrl, workspace, tool } = resolveStudioBaseRoute(
       typeof options.studioUrl == "function" ? options.studioUrl(sourceDoc) : options.studioUrl
     );
-    if (!baseUrl)
-      return;
+    if (!baseUrl) return;
     const { _id, _type, _projectId, _dataset } = sourceDoc;
     return {
       baseUrl,

@@ -312,6 +312,16 @@ export declare class BaseTransaction {
 }
 
 /**
+ * @public
+ * The server sent a `channelError` message. Usually indicative of a bad or malformed request
+ */
+export declare class ChannelError extends Error {
+  readonly name = 'ChannelError'
+  readonly data?: unknown
+  constructor(message: string, data: unknown)
+}
+
+/**
  * An error occurred. This is different from a network-level error (which will be emitted as 'error').
  * Possible causes are things such as malformed filters, non-existant datasets or similar.
  *
@@ -402,6 +412,39 @@ export declare type ClientReturn<
   GroqString extends string,
   Fallback = Any,
 > = GroqString extends keyof SanityQueries ? SanityQueries[GroqString] : Fallback
+
+/**
+ * Sanity API specific EventSource handler shared between the listen and live APIs
+ *
+ * Since the `EventSource` API is not provided by all environments, this function enables custom initialization of the EventSource instance
+ * for runtimes that requires polyfilling or custom setup logic (e.g. custom HTTP headers)
+ * via the passed `initEventSource` function which must return an EventSource instance.
+ *
+ * Possible errors to be thrown on the returned observable are:
+ * - {@link MessageError}
+ * - {@link MessageParseError}
+ * - {@link ChannelError}
+ * - {@link DisconnectError}
+ * - {@link ConnectionFailedError}
+ *
+ * @param initEventSource - A function that returns an EventSource instance or an Observable that resolves to an EventSource instance
+ * @param events - an array of named events from the API to listen for.
+ *
+ * @internal
+ */
+export declare function connectEventSource<EventName extends string>(
+  initEventSource: () => EventSourceInstance | Observable<EventSourceInstance>,
+  events: EventName[],
+): Observable<ServerSentEvent<EventName>>
+
+/**
+ * @public
+ * Thrown if the EventSource connection could not be established.
+ * Note that ConnectionFailedErrors are rare, and disconnects will normally be handled by the EventSource instance itself and emitted as `reconnect` events.
+ */
+export declare class ConnectionFailedError extends Error {
+  readonly name = 'ConnectionFailedError'
+}
 
 /** @public */
 export declare interface ContentSourceMap {
@@ -643,6 +686,18 @@ export declare type DiscardAction = {
 }
 
 /**
+ * The listener has been told to explicitly disconnect.
+ *  This is a rare situation, but may occur if the API knows reconnect attempts will fail,
+ *  eg in the case of a deleted dataset, a blocked project or similar events.
+ * @public
+ */
+export declare class DisconnectError extends Error {
+  readonly name = 'DisconnectError'
+  readonly reason?: string
+  constructor(message: string, reason?: string, options?: ErrorOptions)
+}
+
+/**
  * The listener has been told to explicitly disconnect and not reconnect.
  * This is a rare situation, but may occur if the API knows reconnect attempts will fail,
  * eg in the case of a deleted dataset, a blocked project or similar events.
@@ -687,6 +742,16 @@ export declare interface ErrorProps {
   responseBody: Any
   details: Any
 }
+
+/**
+ * @internal
+ */
+export declare type EventSourceEvent<Name extends string> = ServerSentEvent<Name>
+
+/**
+ * @internal
+ */
+export declare type EventSourceInstance = InstanceType<typeof globalThis.EventSource>
 
 /** @public */
 export declare type FilterDefault = (props: {
@@ -826,7 +891,7 @@ export declare function _listen<R extends Record<string, Any> = Record<string, A
   this: SanityClient | ObservableSanityClient,
   query: string,
   params?: ListenParams,
-): Observable<MutationEvent_2<R>>
+): Observable<MutationEvent<R>>
 
 /**
  * Set up a listener that will be notified when mutations occur on documents matching the provided query/filter.
@@ -845,11 +910,12 @@ export declare function _listen<R extends Record<string, Any> = Record<string, A
 
 /** @public */
 export declare type ListenEvent<R extends Record<string, Any>> =
-  | MutationEvent_2<R>
+  | MutationEvent<R>
   | ChannelErrorEvent
   | DisconnectEvent
   | ReconnectEvent
   | WelcomeEvent
+  | OpenEvent
 
 /** @public */
 export declare type ListenEventName =
@@ -974,6 +1040,24 @@ export declare type Logger =
       Pick<typeof console, 'debug' | 'error' | 'groupCollapsed' | 'groupEnd' | 'log' | 'table'>
     >
 
+/**
+ * @public
+ * The server sent an `error`-event to tell the client that an unexpected error has happened.
+ */
+export declare class MessageError extends Error {
+  readonly name = 'MessageError'
+  readonly data?: unknown
+  constructor(message: string, data: unknown, options?: ErrorOptions)
+}
+
+/**
+ * @public
+ * An error occurred while parsing the message sent by the server as JSON. Should normally not happen.
+ */
+export declare class MessageParseError extends Error {
+  readonly name = 'MessageParseError'
+}
+
 /** @internal */
 export declare interface MultipleActionResult {
   transactionId: string
@@ -1031,7 +1115,7 @@ export declare interface MutationErrorItem {
  *
  * @public
  */
-declare type MutationEvent_2<R extends Record<string, Any> = Record<string, Any>> = {
+export declare type MutationEvent<R extends Record<string, Any> = Record<string, Any>> = {
   type: 'mutation'
   /**
    * The ID of the document that was affected
@@ -1120,7 +1204,6 @@ declare type MutationEvent_2<R extends Record<string, Any> = Record<string, Any>
    */
   transactionCurrentEvent: number
 }
-export {MutationEvent_2 as MutationEvent}
 
 /** @internal */
 export declare type MutationOperation = 'create' | 'delete' | 'update' | 'none'
@@ -1884,6 +1967,15 @@ export declare class ObservableUsersClient {
   getById<T extends 'me' | string>(
     id: T,
   ): Observable<T extends 'me' ? CurrentSanityUser : SanityUser>
+}
+
+/**
+ * The listener connection has been established
+ * note: it's usually a better option to use the 'welcome' event
+ * @public
+ */
+export declare type OpenEvent = {
+  type: 'open'
 }
 
 /** @public */
@@ -2872,6 +2964,15 @@ export declare class ServerError extends Error {
   constructor(res: Any)
 }
 
+/**
+ * @public
+ */
+export declare interface ServerSentEvent<Name extends string> {
+  type: Name
+  id?: string
+  data?: unknown
+}
+
 /** @internal */
 export declare interface SingleActionResult {
   transactionId: string
@@ -2979,6 +3080,13 @@ export declare class Transaction extends BaseTransaction {
    * @param patchOps - Operations to perform, or a builder function
    */
   patch(documentId: string, patchOps?: PatchBuilder | PatchOperations): this
+  /**
+   * Performs a patch on the given selection. Can either be a builder function or an object of patch operations.
+   *
+   * @param selection - An object with `query` and optional `params`, defining which document(s) to patch
+   * @param patchOps - Operations to perform, or a builder function
+   */
+  patch(patch: MutationSelection, patchOps?: PatchBuilder | PatchOperations): this
   /**
    * Adds the given patch instance to the transaction.
    * The operation is added to the current transaction, ready to be commited by `commit()`

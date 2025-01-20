@@ -4,6 +4,17 @@ import {defineHttpRequest} from './http/request'
 import type {Any, ClientConfig, HttpRequest} from './types'
 
 export {validateApiPerspective} from './config'
+export {
+  ChannelError,
+  connectEventSource,
+  ConnectionFailedError,
+  DisconnectError,
+  type EventSourceEvent,
+  type EventSourceInstance,
+  MessageError,
+  MessageParseError,
+  type ServerSentEvent,
+} from './data/eventsource'
 export * from './data/patch'
 export * from './data/transaction'
 export {ClientError, CorsOriginError, ServerError} from './http/errors'
@@ -27,10 +38,11 @@ export default function defineCreateClientExports<
   // Set the http client to use for requests, and its environment specific middleware
   const defaultRequester = defineHttpRequest(envMiddleware)
 
-  const createClient = (config: ClientConfigType) =>
-    new ClassConstructor(
+  const createClient = (config: ClientConfigType) => {
+    const clientRequester = defineHttpRequest(envMiddleware)
+    return new ClassConstructor(
       (options, requester) =>
-        (requester || defaultRequester)({
+        (requester || clientRequester)({
           maxRedirects: 0,
           maxRetries: config.maxRetries,
           retryDelay: config.retryDelay,
@@ -38,6 +50,7 @@ export default function defineCreateClientExports<
         } as Any),
       config,
     )
+  }
 
   return {requester: defaultRequester, createClient}
 }

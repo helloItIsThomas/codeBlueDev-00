@@ -1,21 +1,8 @@
-import {Any} from '@sanity/client'
-import {ClientPerspective} from '@sanity/client'
-import {ContentSourceMap} from '@sanity/client'
-import {ContentSourceMapDocument} from '@sanity/client'
-import {ContentSourceMapDocumentBase} from '@sanity/client'
-import {ContentSourceMapDocuments} from '@sanity/client'
-import {ContentSourceMapDocumentValueSource} from '@sanity/client'
-import {ContentSourceMapLiteralSource} from '@sanity/client'
-import {ContentSourceMapMapping} from '@sanity/client'
-import {ContentSourceMapMappings} from '@sanity/client'
-import {ContentSourceMapPaths} from '@sanity/client'
-import {ContentSourceMapRemoteDocument} from '@sanity/client'
-import {ContentSourceMapSource} from '@sanity/client'
-import {ContentSourceMapUnknownSource} from '@sanity/client'
-import {ContentSourceMapValueMapping} from '@sanity/client'
-import {SanityDocument} from '@sanity/client'
-
-export {Any}
+/**
+ * Used to tag types that is set to `any` as a temporary measure, but should be replaced with proper typings in the future
+ * @internal
+ */
+export declare type Any = any
 
 /**
  * Optimistically applies source documents to a result, using the content source map to trace fields.
@@ -45,23 +32,62 @@ export declare type ApplySourceDocumentsUpdateFunction = <T = unknown>(
   },
 ) => T
 
-export {ClientPerspective}
+/** @public */
+export declare type ClientPerspective =
+  | 'previewDrafts'
+  | 'published'
+  | 'drafts'
+  | 'raw'
+  | ('published' | 'drafts' | ReleaseId)[]
 
-export {ContentSourceMap}
+/** @public */
+export declare interface ContentSourceMap {
+  mappings: ContentSourceMapMappings
+  documents: ContentSourceMapDocuments
+  paths: ContentSourceMapPaths
+}
 
-export {ContentSourceMapDocument}
+/** @public */
+export declare interface ContentSourceMapDocument extends ContentSourceMapDocumentBase {
+  _projectId?: undefined
+  _dataset?: undefined
+}
 
-export {ContentSourceMapDocumentBase}
+/** @public */
+export declare interface ContentSourceMapDocumentBase {
+  _id: string
+  _type: string
+}
 
-export {ContentSourceMapDocuments}
+/** @public */
+export declare type ContentSourceMapDocuments = (
+  | ContentSourceMapDocument
+  | ContentSourceMapRemoteDocument
+)[]
 
-export {ContentSourceMapDocumentValueSource}
+/**
+ * DocumentValueSource is a path to a value within a document
+ * @public
+ */
+export declare interface ContentSourceMapDocumentValueSource {
+  type: 'documentValue'
+  document: number
+  path: number
+}
 
-export {ContentSourceMapLiteralSource}
+/**
+ * When a value is not from a source, its a literal
+ * @public
+ */
+export declare interface ContentSourceMapLiteralSource {
+  type: 'literal'
+}
 
-export {ContentSourceMapMapping}
+/** @public */
+export declare type ContentSourceMapMapping = ContentSourceMapValueMapping
 
-export {ContentSourceMapMappings}
+/** @public */
+export declare type ContentSourceMapMappings = Record<string, ContentSourceMapMapping>
 
 /** @alpha */
 export declare type ContentSourceMapParsedPath = (
@@ -82,15 +108,38 @@ export declare type ContentSourceMapParsedPathKeyedSegment = {
  */
 export declare type ContentSourceMapParsedPathSegment = ContentSourceMapParsedPath[number]
 
-export {ContentSourceMapPaths}
+/** @public */
+export declare type ContentSourceMapPaths = string[]
 
-export {ContentSourceMapRemoteDocument}
+/** @public */
+export declare interface ContentSourceMapRemoteDocument extends ContentSourceMapDocumentBase {
+  _projectId: string
+  _dataset: string
+}
 
-export {ContentSourceMapSource}
+/** @public */
+export declare type ContentSourceMapSource =
+  | ContentSourceMapDocumentValueSource
+  | ContentSourceMapLiteralSource
+  | ContentSourceMapUnknownSource
 
-export {ContentSourceMapUnknownSource}
+/**
+ * When a field source is unknown
+ * @public
+ */
+export declare interface ContentSourceMapUnknownSource {
+  type: 'unknown'
+}
 
-export {ContentSourceMapValueMapping}
+/**
+ * ValueMapping is a mapping when for value that is from a single source value
+ * It may refer to a field within a document or a literal value
+ * @public
+ */
+export declare interface ContentSourceMapValueMapping {
+  type: 'value'
+  source: ContentSourceMapSource
+}
 
 /** @internal */
 export declare function createEditUrl(
@@ -169,6 +218,9 @@ export declare type PathSegment = string | number | KeyedSegment | IndexTuple
 /** @internal */
 declare const reKeySegment: RegExp
 
+/** @public */
+declare type ReleaseId = `r${string}`
+
 /**
  * @internal
  */
@@ -219,7 +271,20 @@ export declare type ResolveStudioUrl = (
   sourceDocument: ContentSourceMapDocuments[number],
 ) => StudioUrl
 
-export {SanityDocument}
+/** @internal */
+export declare type SanityDocument<T extends Record<string, Any> = Record<string, Any>> = {
+  [P in keyof T]: T[P]
+} & {
+  _id: string
+  _rev: string
+  _type: string
+  _createdAt: string
+  _updatedAt: string
+  /**
+   * Present when `perspective` is set to `previewDrafts`
+   */
+  _originalId?: string
+}
 
 /** @alpha */
 export declare type StudioBaseRoute = {

@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 });
 var resolveEditInfo = require("./_chunks-cjs/resolveEditInfo.cjs");
 const defaultUpdateFunction = (changed) => changed;
 function applySourceDocuments(result, resultSourceMap, getCachedDocument, updateFn = defaultUpdateFunction, perspective = "raw") {
-  if (!resultSourceMap)
-    return result;
+  if (!resultSourceMap) return result;
   if (perspective !== "published" && perspective !== "raw" && perspective !== "previewDrafts")
     throw new Error(`Unknown perspective "${perspective}"`);
   return resolveEditInfo.walkMap(JSON.parse(JSON.stringify(result)), (value, path) => {

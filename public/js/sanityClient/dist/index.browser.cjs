@@ -97,17 +97,23 @@ const httpError = {
       throw new ClientError(res);
     return res;
   }
-}, printWarnings = {
-  onResponse: (res) => {
-    const warn = res.headers["x-sanity-warning"];
-    return (Array.isArray(warn) ? warn : [warn]).filter(Boolean).forEach((msg) => console.warn(msg)), res;
-  }
 };
+function printWarnings() {
+  const seen = {};
+  return {
+    onResponse: (res) => {
+      const warn = res.headers["x-sanity-warning"], warnings = Array.isArray(warn) ? warn : [warn];
+      for (const msg of warnings)
+        !msg || seen[msg] || (seen[msg] = !0, console.warn(msg));
+      return res;
+    }
+  };
+}
 function defineHttpRequest(envMiddleware2) {
   return getIt.getIt([
     middleware.retry({ shouldRetry }),
     ...envMiddleware2,
-    printWarnings,
+    printWarnings(),
     middleware.jsonRequest(),
     middleware.jsonResponse(),
     middleware.progress(),
@@ -116,8 +122,7 @@ function defineHttpRequest(envMiddleware2) {
   ]);
 }
 function shouldRetry(err, attempt, options) {
-  if (options.maxRetries === 0)
-    return !1;
+  if (options.maxRetries === 0) return !1;
   const isSafe = options.method === "GET" || options.method === "HEAD", isQuery = (options.uri || options.url).startsWith("/data/query"), isRetriableResponse = err.response && (err.response.statusCode === 429 || err.response.statusCode === 502 || err.response.statusCode === 503);
   return (isSafe || isQuery) && isRetriableResponse ? !0 : middleware.retry.shouldRetry(err, attempt, options);
 }
@@ -269,6 +274,112 @@ const initConfig = (config, prevConfig) => {
   const hostParts = newConfig.apiHost.split("://", 2), protocol = hostParts[0], host = hostParts[1], cdnHost = newConfig.isDefaultApi ? defaultCdnHost : host;
   return newConfig.useProjectHostname ? (newConfig.url = `${protocol}://${newConfig.projectId}.${host}/v${newConfig.apiVersion}`, newConfig.cdnUrl = `${protocol}://${newConfig.projectId}.${cdnHost}/v${newConfig.apiVersion}`) : (newConfig.url = `${newConfig.apiHost}/v${newConfig.apiVersion}`, newConfig.cdnUrl = newConfig.url), newConfig;
 };
+class ConnectionFailedError extends Error {
+  name = "ConnectionFailedError";
+}
+class DisconnectError extends Error {
+  name = "DisconnectError";
+  reason;
+  constructor(message, reason, options = {}) {
+    super(message, options), this.reason = reason;
+  }
+}
+class ChannelError extends Error {
+  name = "ChannelError";
+  data;
+  constructor(message, data) {
+    super(message), this.data = data;
+  }
+}
+class MessageError extends Error {
+  name = "MessageError";
+  data;
+  constructor(message, data, options = {}) {
+    super(message, options), this.data = data;
+  }
+}
+class MessageParseError extends Error {
+  name = "MessageParseError";
+}
+const REQUIRED_EVENTS = ["channelError", "disconnect"];
+function connectEventSource(initEventSource, events) {
+  return rxjs.defer(() => {
+    const es = initEventSource();
+    return rxjs.isObservable(es) ? es : rxjs.of(es);
+  }).pipe(rxjs.mergeMap((es) => connectWithESInstance(es, events)));
+}
+function connectWithESInstance(es, events) {
+  return new rxjs.Observable((observer) => {
+    const emitOpen = events.includes("open"), emitReconnect = events.includes("reconnect");
+    function onError(evt) {
+      if ("data" in evt) {
+        const [parseError, event] = parseEvent(evt);
+        observer.error(
+          parseError ? new MessageParseError("Unable to parse EventSource error message", { cause: event }) : new MessageError((event?.data).message, event)
+        );
+        return;
+      }
+      es.readyState === es.CLOSED ? observer.error(new ConnectionFailedError("EventSource connection failed")) : emitReconnect && observer.next({ type: "reconnect" });
+    }
+    function onOpen() {
+      observer.next({ type: "open" });
+    }
+    function onMessage(message) {
+      const [parseError, event] = parseEvent(message);
+      if (parseError) {
+        observer.error(
+          new MessageParseError("Unable to parse EventSource message", { cause: parseError })
+        );
+        return;
+      }
+      if (message.type === "channelError") {
+        observer.error(new ChannelError(extractErrorMessage(event?.data), event.data));
+        return;
+      }
+      if (message.type === "disconnect") {
+        observer.error(
+          new DisconnectError(
+            `Server disconnected client: ${event.data?.reason || "unknown error"}`
+          )
+        );
+        return;
+      }
+      observer.next({
+        type: message.type,
+        id: message.lastEventId,
+        ...event.data ? { data: event.data } : {}
+      });
+    }
+    es.addEventListener("error", onError), emitOpen && es.addEventListener("open", onOpen);
+    const cleanedEvents = [.../* @__PURE__ */ new Set([...REQUIRED_EVENTS, ...events])].filter((type) => type !== "error" && type !== "open" && type !== "reconnect");
+    return cleanedEvents.forEach((type) => es.addEventListener(type, onMessage)), () => {
+      es.removeEventListener("error", onError), emitOpen && es.removeEventListener("open", onOpen), cleanedEvents.forEach((type) => es.removeEventListener(type, onMessage)), es.close();
+    };
+  });
+}
+function parseEvent(message) {
+  try {
+    const data = typeof message.data == "string" && JSON.parse(message.data);
+    return [
+      null,
+      {
+        type: message.type,
+        id: message.lastEventId,
+        ...isEmptyObject(data) ? {} : { data }
+      }
+    ];
+  } catch (err) {
+    return [err, null];
+  }
+}
+function extractErrorMessage(err) {
+  return err.error ? err.error.description ? err.error.description : typeof err.error == "string" ? err.error : JSON.stringify(err.error, null, 2) : err.message || "Unknown listener error";
+}
+function isEmptyObject(data) {
+  for (const _ in data)
+    return !1;
+  return !0;
+}
 function getSelection(sel) {
   if (typeof sel == "string")
     return { id: sel };
@@ -553,13 +664,17 @@ class Transaction extends BaseTransaction {
     );
   }
   patch(patchOrDocumentId, patchOps) {
-    const isBuilder = typeof patchOps == "function";
-    if (typeof patchOrDocumentId != "string" && patchOrDocumentId instanceof Patch)
+    const isBuilder = typeof patchOps == "function", isPatch = typeof patchOrDocumentId != "string" && patchOrDocumentId instanceof Patch, isMutationSelection = typeof patchOrDocumentId == "object" && ("query" in patchOrDocumentId || "id" in patchOrDocumentId);
+    if (isPatch)
       return this._add({ patch: patchOrDocumentId.serialize() });
     if (isBuilder) {
       const patch = patchOps(new Patch(patchOrDocumentId, {}, this.#client));
       if (!(patch instanceof Patch))
         throw new Error("function passed to `patch()` must return the patch");
+      return this._add({ patch: patch.serialize() });
+    }
+    if (isMutationSelection) {
+      const patch = new Patch(patchOrDocumentId, patchOps || {}, this.#client);
       return this._add({ patch: patch.serialize() });
     }
     return this._add({ patch: { id: patchOrDocumentId, ...patchOps } });
@@ -887,7 +1002,18 @@ function optionsFromFile(opts, file) {
   );
 }
 var defaults = (obj, defaults2) => Object.keys(defaults2).concat(Object.keys(obj)).reduce((target, prop) => (target[prop] = typeof obj[prop] > "u" ? defaults2[prop] : obj[prop], target), {});
-const pick = (obj, props) => props.reduce((selection, prop) => (typeof obj[prop] > "u" || (selection[prop] = obj[prop]), selection), {}), MAX_URL_LENGTH = 14800, possibleOptions = [
+const pick = (obj, props) => props.reduce((selection, prop) => (typeof obj[prop] > "u" || (selection[prop] = obj[prop]), selection), {}), eventSourcePolyfill = rxjs.defer(() => import("@sanity/eventsource")).pipe(
+  operators.map(({ default: EventSource2 }) => EventSource2),
+  rxjs.shareReplay(1)
+);
+function reconnectOnConnectionFailure() {
+  return function(source) {
+    return source.pipe(
+      rxjs.catchError((err, caught) => err instanceof ConnectionFailedError ? rxjs.concat(rxjs.of({ type: "reconnect" }), rxjs.timer(1e3).pipe(rxjs.mergeMap(() => caught))) : rxjs.throwError(() => err))
+    );
+  };
+}
+const MAX_URL_LENGTH = 14800, possibleOptions = [
   "includePreviousRevision",
   "includeResult",
   "includeMutations",
@@ -900,68 +1026,23 @@ const pick = (obj, props) => props.reduce((selection, prop) => (typeof obj[prop]
 function _listen(query, params, opts = {}) {
   const { url, token, withCredentials, requestTagPrefix } = this.config(), tag = opts.tag && requestTagPrefix ? [requestTagPrefix, opts.tag].join(".") : opts.tag, options = { ...defaults(opts, defaultOptions), tag }, listenOpts = pick(options, possibleOptions), qs = encodeQueryString({ query, params, options: { tag, ...listenOpts } }), uri = `${url}${_getDataUrl(this, "listen", qs)}`;
   if (uri.length > MAX_URL_LENGTH)
-    return new rxjs.Observable((observer) => observer.error(new Error("Query too large for listener")));
-  const listenFor = options.events ? options.events : ["mutation"], shouldEmitReconnect = listenFor.indexOf("reconnect") !== -1, esOptions = {};
+    return rxjs.throwError(() => new Error("Query too large for listener"));
+  const listenFor = options.events ? options.events : ["mutation"], esOptions = {};
   return (token || withCredentials) && (esOptions.withCredentials = !0), token && (esOptions.headers = {
     Authorization: `Bearer ${token}`
-  }), new rxjs.Observable((observer) => {
-    let es, reconnectTimer, stopped = !1, unsubscribed = !1;
-    open();
-    function onError() {
-      stopped || (emitReconnect(), !stopped && es.readyState === es.CLOSED && (unsubscribe(), clearTimeout(reconnectTimer), reconnectTimer = setTimeout(open, 100)));
-    }
-    function onChannelError(err) {
-      observer.error(cooerceError(err));
-    }
-    function onMessage(evt) {
-      const event = parseEvent$1(evt);
-      return event instanceof Error ? observer.error(event) : observer.next(event);
-    }
-    function onDisconnect() {
-      stopped = !0, unsubscribe(), observer.complete();
-    }
-    function unsubscribe() {
-      es && (es.removeEventListener("error", onError), es.removeEventListener("channelError", onChannelError), es.removeEventListener("disconnect", onDisconnect), listenFor.forEach((type) => es.removeEventListener(type, onMessage)), es.close());
-    }
-    function emitReconnect() {
-      shouldEmitReconnect && observer.next({ type: "reconnect" });
-    }
-    async function getEventSource() {
-      const { default: EventSource2 } = await import("@sanity/eventsource");
-      if (unsubscribed)
-        return;
-      const evs = new EventSource2(uri, esOptions);
-      return evs.addEventListener("error", onError), evs.addEventListener("channelError", onChannelError), evs.addEventListener("disconnect", onDisconnect), listenFor.forEach((type) => evs.addEventListener(type, onMessage)), evs;
-    }
-    function open() {
-      getEventSource().then((eventSource) => {
-        eventSource && (es = eventSource, unsubscribed && unsubscribe());
-      }).catch((reason) => {
-        observer.error(reason), stop();
-      });
-    }
-    function stop() {
-      stopped = !0, unsubscribe(), unsubscribed = !0;
-    }
-    return stop;
-  });
-}
-function parseEvent$1(event) {
-  try {
-    const data = event.data && JSON.parse(event.data) || {};
-    return Object.assign({ type: event.type }, data);
-  } catch (err) {
-    return err;
-  }
-}
-function cooerceError(err) {
-  if (err instanceof Error)
-    return err;
-  const evt = parseEvent$1(err);
-  return evt instanceof Error ? evt : new Error(extractErrorMessage(evt));
-}
-function extractErrorMessage(err) {
-  return err.error ? err.error.description ? err.error.description : typeof err.error == "string" ? err.error : JSON.stringify(err.error, null, 2) : err.message || "Unknown listener error";
+  }), connectEventSource(() => (
+    // use polyfill if there is no global EventSource or if we need to set headers
+    (typeof EventSource > "u" || esOptions.headers ? eventSourcePolyfill : rxjs.of(EventSource)).pipe(operators.map((EventSource2) => new EventSource2(uri, esOptions)))
+  ), listenFor).pipe(
+    reconnectOnConnectionFailure(),
+    operators.filter((event) => listenFor.includes(event.type)),
+    operators.map(
+      (event) => ({
+        type: event.type,
+        ..."data" in event ? event.data : {}
+      })
+    )
+  );
 }
 const requiredApiVersion = "2021-03-26";
 class LiveClient {
@@ -997,75 +1078,53 @@ class LiveClient {
       );
     const path = _getDataUrl(this.#client, "live/events"), url = new URL(this.#client.getUrl(path, !1)), tag = _tag && requestTagPrefix ? [requestTagPrefix, _tag].join(".") : _tag;
     tag && url.searchParams.set("tag", tag), includeDrafts && url.searchParams.set("includeDrafts", "true");
-    const listenFor = ["restart", "message", "welcome", "reconnect"], esOptions = {};
-    return includeDrafts && token && (esOptions.headers = {
+    const esOptions = {};
+    includeDrafts && token && (esOptions.headers = {
       Authorization: `Bearer ${token}`
-    }), includeDrafts && withCredentials && (esOptions.withCredentials = !0), new rxjs.Observable((observer) => {
-      let es, reconnectTimer, stopped = !1, unsubscribed = !1;
-      open();
-      function onError(evt) {
-        if (!stopped) {
-          if ("data" in evt) {
-            const event = parseEvent(evt);
-            observer.error(new Error(event.message, { cause: event }));
-          }
-          es.readyState === es.CLOSED && (unsubscribe(), clearTimeout(reconnectTimer), reconnectTimer = setTimeout(open, 100));
+    }), includeDrafts && withCredentials && (esOptions.withCredentials = !0);
+    const events = connectEventSource(() => (
+      // use polyfill if there is no global EventSource or if we need to set headers
+      (typeof EventSource > "u" || esOptions.headers ? eventSourcePolyfill : rxjs.of(EventSource)).pipe(operators.map((EventSource2) => new EventSource2(url.href, esOptions)))
+    ), [
+      "message",
+      "restart",
+      "welcome",
+      "reconnect"
+    ]).pipe(
+      reconnectOnConnectionFailure(),
+      operators.map((event) => {
+        if (event.type === "message") {
+          const { data, ...rest } = event;
+          return { ...rest, tags: data.tags };
         }
-      }
-      function onMessage(evt) {
-        const event = parseEvent(evt);
-        return event instanceof Error ? observer.error(event) : observer.next(event);
-      }
-      function unsubscribe() {
-        if (es) {
-          es.removeEventListener("error", onError);
-          for (const type of listenFor)
-            es.removeEventListener(type, onMessage);
-          es.close();
-        }
-      }
-      async function getEventSource() {
-        const EventSourceImplementation = typeof EventSource > "u" || esOptions.headers || esOptions.withCredentials ? (await import("@sanity/eventsource")).default : EventSource;
-        if (unsubscribed)
-          return;
-        try {
-          if (await fetch(url, {
-            method: "OPTIONS",
-            mode: "cors",
-            credentials: esOptions.withCredentials ? "include" : "omit",
-            headers: esOptions.headers
-          }), unsubscribed)
-            return;
-        } catch {
-          throw new CorsOriginError({ projectId: projectId2 });
-        }
-        const evs = new EventSourceImplementation(url.toString(), esOptions);
-        evs.addEventListener("error", onError);
-        for (const type of listenFor)
-          evs.addEventListener(type, onMessage);
-        return evs;
-      }
-      function open() {
-        getEventSource().then((eventSource) => {
-          eventSource && (es = eventSource, unsubscribed && unsubscribe());
-        }).catch((reason) => {
-          observer.error(reason), stop();
-        });
-      }
-      function stop() {
-        stopped = !0, unsubscribe(), unsubscribed = !0;
-      }
-      return stop;
-    });
+        return event;
+      })
+    ), checkCors = fetchObservable(url, {
+      method: "OPTIONS",
+      mode: "cors",
+      credentials: esOptions.withCredentials ? "include" : "omit",
+      headers: esOptions.headers
+    }).pipe(
+      rxjs.mergeMap(() => rxjs.EMPTY),
+      rxjs.catchError(() => {
+        throw new CorsOriginError({ projectId: projectId2 });
+      })
+    );
+    return rxjs.concat(checkCors, events);
   }
 }
-function parseEvent(event) {
-  try {
-    const data = event.data && JSON.parse(event.data) || {};
-    return { type: event.type, id: event.lastEventId, ...data };
-  } catch (err) {
-    return err;
-  }
+function fetchObservable(url, init) {
+  return new rxjs.Observable((observer) => {
+    const controller = new AbortController(), signal = controller.signal;
+    return fetch(url, { ...init, signal: controller.signal }).then(
+      (response) => {
+        observer.next(response), observer.complete();
+      },
+      (err) => {
+        signal.aborted || observer.error(err);
+      }
+    ), () => controller.abort();
+  });
 }
 class ObservableDatasetsClient {
   #client;
@@ -1567,16 +1626,18 @@ class SanityClient {
   }
 }
 function defineCreateClientExports(envMiddleware2, ClassConstructor) {
-  const defaultRequester = defineHttpRequest(envMiddleware2);
-  return { requester: defaultRequester, createClient: (config) => new ClassConstructor(
-    (options, requester2) => (requester2 || defaultRequester)({
-      maxRedirects: 0,
-      maxRetries: config.maxRetries,
-      retryDelay: config.retryDelay,
-      ...options
-    }),
-    config
-  ) };
+  return { requester: defineHttpRequest(envMiddleware2), createClient: (config) => {
+    const clientRequester = defineHttpRequest(envMiddleware2);
+    return new ClassConstructor(
+      (options, requester2) => (requester2 || clientRequester)({
+        maxRedirects: 0,
+        maxRetries: config.maxRetries,
+        retryDelay: config.retryDelay,
+        ...options
+      }),
+      config
+    );
+  } };
 }
 function defineDeprecatedCreateClient(createClient2) {
   return function(config) {
@@ -1599,8 +1660,13 @@ Object.defineProperty(exports, "unstable__environment", {
 });
 exports.BasePatch = BasePatch;
 exports.BaseTransaction = BaseTransaction;
+exports.ChannelError = ChannelError;
 exports.ClientError = ClientError;
+exports.ConnectionFailedError = ConnectionFailedError;
 exports.CorsOriginError = CorsOriginError;
+exports.DisconnectError = DisconnectError;
+exports.MessageError = MessageError;
+exports.MessageParseError = MessageParseError;
 exports.ObservablePatch = ObservablePatch;
 exports.ObservableSanityClient = ObservableSanityClient;
 exports.ObservableTransaction = ObservableTransaction;
@@ -1608,6 +1674,7 @@ exports.Patch = Patch;
 exports.SanityClient = SanityClient;
 exports.ServerError = ServerError;
 exports.Transaction = Transaction;
+exports.connectEventSource = connectEventSource;
 exports.createClient = createClient;
 exports.default = deprecatedCreateClient;
 exports.requester = requester;

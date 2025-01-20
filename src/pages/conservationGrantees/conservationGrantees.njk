@@ -3,8 +3,19 @@ layout: layouts/base.njk
 title: "Hello from Conservation Media"
 ---
 
-
 Supporting impactful organizations that champion conservation and restoration of critical planetary ecosystems.
+
+
+{# <script type="module"> #}
+{# import {getGrantees} from "../../sanity/client.js"; #}
+{# getGrantees().then(grantees => { #}
+{# grantees.forEach(grantee => { #}
+{# console.log("title", grantee.title); #}
+{# console.log("link", grantee.link); #}
+{# console.log("image", grantee.image); #}
+{# }); #}
+{# }); #}
+{# </script> #}
 
 {%- for post in collections.post -%}
       <div class="grantee">

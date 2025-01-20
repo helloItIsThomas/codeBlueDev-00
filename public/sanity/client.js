@@ -4,7 +4,7 @@ import { createClient } from "https://esm.sh/@sanity/client";
 // I would prefer the above import to be a local path, as the url might not be supported in all environments. However we will go with this url for now.
 
 export const client = createClient({
-  projectId: "oxm4gldh",
+  projectId: "6jpkko0l",
   dataset: "production",
   useCdn: false, // set to `true` for deployment / production
   apiVersion: "2024-12-25",
@@ -15,4 +15,11 @@ export const client = createClient({
 export async function getPosts() {
   const posts = await client.fetch('*[_type == "post"]');
   return posts;
+}
+
+export async function getGrantees() {
+  const grantees = await client.fetch(
+    '*[_type == "grantee"]{title, link, image}'
+  );
+  return grantees;
 }

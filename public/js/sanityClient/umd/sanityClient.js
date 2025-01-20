@@ -4,11 +4,26 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.SanityClient = {}));
 })(this, (function (exports) { 'use strict';
 
-  const e=!(typeof navigator>"u")&&"ReactNative"===navigator.product,t={timeout:e?6e4:12e4},r=function(r){const a={...t,..."string"==typeof r?{url:r}:r};if(a.timeout=n$1(a.timeout),a.query){const{url:t,searchParams:r}=function(t){const r=t.indexOf("?");if(-1===r)return {url:t,searchParams:new URLSearchParams};const n=t.slice(0,r),a=t.slice(r+1);if(!e)return {url:n,searchParams:new URLSearchParams(a)};if("function"!=typeof decodeURIComponent)throw new Error("Broken `URLSearchParams` implementation, and `decodeURIComponent` is not defined");const s=new URLSearchParams;for(const e of a.split("&")){const[t,r]=e.split("=");t&&s.append(o$1(t),o$1(r||""));}return {url:n,searchParams:s}}(a.url);for(const[e,o]of Object.entries(a.query)){if(void 0!==o)if(Array.isArray(o))for(const t of o)r.append(e,t);else r.append(e,o);const n=r.toString();n&&(a.url=`${t}?${n}`);}}return a.method=a.body&&!a.method?"POST":(a.method||"GET").toUpperCase(),a};function o$1(e){return decodeURIComponent(e.replace(/\+/g," "))}function n$1(e){if(!1===e||0===e)return !1;if(e.connect||e.socket)return e;const r=Number(e);return isNaN(r)?n$1(t.timeout):{connect:r,socket:r}}const a$2=/^https?:\/\//i,s$2=function(e){if(!a$2.test(e.url))throw new Error(`"${e.url}" is not a valid URL`)};function c$3(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}
+  function _mergeNamespaces(n, m) {
+    m.forEach(function (e) {
+      e && typeof e !== 'string' && !Array.isArray(e) && Object.keys(e).forEach(function (k) {
+        if (k !== 'default' && !(k in n)) {
+          var d = Object.getOwnPropertyDescriptor(e, k);
+          Object.defineProperty(n, k, d.get ? d : {
+            enumerable: true,
+            get: function () { return e[k]; }
+          });
+        }
+      });
+    });
+    return Object.freeze(n);
+  }
 
-  const o=["request","response","progress","error","abort"],s$1=["processOptions","validateOptions","interceptRequest","finalizeOptions","onRequest","onResponse","onError","onReturn","onHeaders"];function n(r$1,a){const i=[],u=s$1.reduce(((e,t)=>(e[t]=e[t]||[],e)),{processOptions:[r],validateOptions:[s$2]});function l(e){const t=o.reduce(((e,t)=>(e[t]=function(){const e=Object.create(null);let t=0;return {publish:function(t){for(const r in e)e[r](t);},subscribe:function(r){const o=t++;return e[o]=r,function(){delete e[o];}}}}(),e)),{}),r=(e=>function(t,r,...o){const s="onError"===t;let n=r;for(let r=0;r<e[t].length&&(n=(0, e[t][r])(n,...o),!s||n);r++);return n})(u),s=r("processOptions",e);r("validateOptions",s);const n={options:s,channels:t,applyMiddleware:r};let i;const l=t.request.subscribe((e=>{i=a(e,((o,s)=>((e,o,s)=>{let n=e,a=o;if(!n)try{a=r("onResponse",o,s);}catch(e){a=null,n=e;}n=n&&r("onError",n,s),n?t.error.publish(n):a&&t.response.publish(a);})(o,s,e)));}));t.abort.subscribe((()=>{l(),i&&i.abort();}));const c=r("onReturn",t,n);return c===t&&t.request.publish(n),c}return l.use=function(e){if(!e)throw new Error("Tried to add middleware that resolved to falsey value");if("function"==typeof e)throw new Error("Tried to add middleware that was a function. It probably expects you to pass options to it.");if(e.onReturn&&u.onReturn.length>0)throw new Error("Tried to add new middleware with `onReturn` handler, but another handler has already been registered for this event");return s$1.forEach((t=>{e[t]&&u[t].push(e[t]);})),i.push(e),l},l.clone=()=>n(i,a),r$1.forEach(l.use),l}var a$1=function(e){return e.replace(/^\s+|\s+$/g,"")},i=c$3((function(e){if(!e)return {};for(var t={},r=a$1(e).split("\n"),o=0;o<r.length;o++){var s=r[o],n=s.indexOf(":"),i=a$1(s.slice(0,n)).toLowerCase(),u=a$1(s.slice(n+1));typeof t[i]>"u"?t[i]=u:(l=t[i],"[object Array]"===Object.prototype.toString.call(l)?t[i].push(u):t[i]=[t[i],u]);}var l;return t}));let u$2 = class u{onabort;onerror;onreadystatechange;ontimeout;readyState=0;response;responseText="";responseType="";status;statusText;withCredentials;#e;#t;#r;#o={};#s;#n={};#a;open(e,t,r){this.#e=e,this.#t=t,this.#r="",this.readyState=1,this.onreadystatechange?.(),this.#s=void 0;}abort(){this.#s&&this.#s.abort();}getAllResponseHeaders(){return this.#r}setRequestHeader(e,t){this.#o[e]=t;}setInit(e,t=!0){this.#n=e,this.#a=t;}send(e){const t="arraybuffer"!==this.responseType,r={...this.#n,method:this.#e,headers:this.#o,body:e};"function"==typeof AbortController&&this.#a&&(this.#s=new AbortController,typeof EventTarget<"u"&&this.#s.signal instanceof EventTarget&&(r.signal=this.#s.signal)),typeof document<"u"&&(r.credentials=this.withCredentials?"include":"omit"),fetch(this.#t,r).then((e=>(e.headers.forEach(((e,t)=>{this.#r+=`${t}: ${e}\r\n`;})),this.status=e.status,this.statusText=e.statusText,this.readyState=3,this.onreadystatechange?.(),t?e.text():e.arrayBuffer()))).then((e=>{"string"==typeof e?this.responseText=e:this.response=e,this.readyState=4,this.onreadystatechange?.();})).catch((e=>{"AbortError"!==e.name?this.onerror?.(e):this.onabort?.();}));}};const l$1="function"==typeof XMLHttpRequest?"xhr":"fetch",c$2="xhr"===l$1?XMLHttpRequest:u$2,h=(e,t)=>{const r=e.options,o=e.applyMiddleware("finalizeOptions",r),s={},n=e.applyMiddleware("interceptRequest",void 0,{adapter:l$1,context:e});if(n){const e=setTimeout(t,0,null,n);return {abort:()=>clearTimeout(e)}}let a=new c$2;a instanceof u$2&&"object"==typeof o.fetch&&a.setInit(o.fetch,o.useAbortSignal??!0);const h=o.headers,d=o.timeout;let p=!1,f=!1,b=!1;if(a.onerror=e=>{m(a instanceof u$2?e instanceof Error?e:new Error(`Request error while attempting to reach is ${o.url}`,{cause:e}):new Error(`Request error while attempting to reach is ${o.url}${e.lengthComputable?`(${e.loaded} of ${e.total} bytes transferred)`:""}`));},a.ontimeout=e=>{m(new Error(`Request timeout while attempting to reach ${o.url}${e.lengthComputable?`(${e.loaded} of ${e.total} bytes transferred)`:""}`));},a.onabort=()=>{w(!0),p=!0;},a.onreadystatechange=()=>{d&&(w(),s.socket=setTimeout((()=>y("ESOCKETTIMEDOUT")),d.socket)),!p&&4===a.readyState&&0!==a.status&&function(){if(!(p||f||b)){if(0===a.status)return void m(new Error("Unknown XHR error"));w(),f=!0,t(null,{body:a.response||(""===a.responseType||"text"===a.responseType?a.responseText:""),url:o.url,method:o.method,headers:i(a.getAllResponseHeaders()),statusCode:a.status,statusMessage:a.statusText});}}();},a.open(o.method,o.url,!0),a.withCredentials=!!o.withCredentials,h&&a.setRequestHeader)for(const e in h)h.hasOwnProperty(e)&&a.setRequestHeader(e,h[e]);return o.rawBody&&(a.responseType="arraybuffer"),e.applyMiddleware("onRequest",{options:o,adapter:l$1,request:a,context:e}),a.send(o.body||null),d&&(s.connect=setTimeout((()=>y("ETIMEDOUT")),d.connect)),{abort:function(){p=!0,a&&a.abort();}};function y(t){b=!0,a.abort();const r=new Error("ESOCKETTIMEDOUT"===t?`Socket timed out on request to ${o.url}`:`Connection timed out on request to ${o.url}`);r.code=t,e.channels.error.publish(r);}function w(e){(e||p||a.readyState>=2&&s.connect)&&clearTimeout(s.connect),s.socket&&clearTimeout(s.socket);}function m(e){if(f)return;w(!0),f=!0,a=null;const r=e||new Error(`Network error while attempting to reach ${o.url}`);r.isNetworkError=!0,r.request=o,t(r);}},d=(e=[],t=h)=>n(e,t),p$1="browser";
+  const e=!(typeof navigator>"u")&&"ReactNative"===navigator.product,t={timeout:e?6e4:12e4},r=function(r){const a={...t,..."string"==typeof r?{url:r}:r};if(a.timeout=n$1(a.timeout),a.query){const{url:t,searchParams:r}=function(t){const r=t.indexOf("?");if(-1===r)return {url:t,searchParams:new URLSearchParams};const n=t.slice(0,r),a=t.slice(r+1);if(!e)return {url:n,searchParams:new URLSearchParams(a)};if("function"!=typeof decodeURIComponent)throw new Error("Broken `URLSearchParams` implementation, and `decodeURIComponent` is not defined");const s=new URLSearchParams;for(const e of a.split("&")){const[t,r]=e.split("=");t&&s.append(o$1(t),o$1(r||""));}return {url:n,searchParams:s}}(a.url);for(const[e,o]of Object.entries(a.query)){if(undefined!==o)if(Array.isArray(o))for(const t of o)r.append(e,t);else r.append(e,o);const n=r.toString();n&&(a.url=`${t}?${n}`);}}return a.method=a.body&&!a.method?"POST":(a.method||"GET").toUpperCase(),a};function o$1(e){return decodeURIComponent(e.replace(/\+/g," "))}function n$1(e){if(false===e||0===e)return  false;if(e.connect||e.socket)return e;const r=Number(e);return isNaN(r)?n$1(t.timeout):{connect:r,socket:r}}const a$2=/^https?:\/\//i,s$2=function(e){if(!a$2.test(e.url))throw new Error(`"${e.url}" is not a valid URL`)};function c$3(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}
 
-  var a,c$1,u$1={exports:{}};function l(){if(c$1)return a;c$1=1;var e=1e3,t=60*e,s=60*t,n=24*s,r=7*n,o=365.25*n;function i(e,t,s,n){var r=t>=1.5*s;return Math.round(e/s)+" "+n+(r?"s":"")}return a=function(a,c){c=c||{};var u,l,p=typeof a;if("string"===p&&a.length>0)return function(i){if(!((i=String(i)).length>100)){var a=/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(i);if(a){var c=parseFloat(a[1]);switch((a[2]||"ms").toLowerCase()){case"years":case"year":case"yrs":case"yr":case"y":return c*o;case"weeks":case"week":case"w":return c*r;case"days":case"day":case"d":return c*n;case"hours":case"hour":case"hrs":case"hr":case"h":return c*s;case"minutes":case"minute":case"mins":case"min":case"m":return c*t;case"seconds":case"second":case"secs":case"sec":case"s":return c*e;case"milliseconds":case"millisecond":case"msecs":case"msec":case"ms":return c;default:return}}}}(a);if("number"===p&&isFinite(a))return c.long?(u=a,(l=Math.abs(u))>=n?i(u,l,n,"day"):l>=s?i(u,l,s,"hour"):l>=t?i(u,l,t,"minute"):l>=e?i(u,l,e,"second"):u+" ms"):function(r){var o=Math.abs(r);return o>=n?Math.round(r/n)+"d":o>=s?Math.round(r/s)+"h":o>=t?Math.round(r/t)+"m":o>=e?Math.round(r/e)+"s":r+"ms"}(a);throw new Error("val is not a non-empty string or a valid number. val="+JSON.stringify(a))}}var p=function(e){function t(e){let n,r,o,i=null;function a(...e){if(!a.enabled)return;const s=a,r=Number(new Date),o=r-(n||r);s.diff=o,s.prev=n,s.curr=r,n=r,e[0]=t.coerce(e[0]),"string"!=typeof e[0]&&e.unshift("%O");let i=0;e[0]=e[0].replace(/%([a-zA-Z%])/g,((n,r)=>{if("%%"===n)return "%";i++;const o=t.formatters[r];if("function"==typeof o){const t=e[i];n=o.call(s,t),e.splice(i,1),i--;}return n})),t.formatArgs.call(s,e),(s.log||t.log).apply(s,e);}return a.namespace=e,a.useColors=t.useColors(),a.color=t.selectColor(e),a.extend=s,a.destroy=t.destroy,Object.defineProperty(a,"enabled",{enumerable:!0,configurable:!1,get:()=>null!==i?i:(r!==t.namespaces&&(r=t.namespaces,o=t.enabled(e)),o),set:e=>{i=e;}}),"function"==typeof t.init&&t.init(a),a}function s(e,s){const n=t(this.namespace+(typeof s>"u"?":":s)+e);return n.log=this.log,n}function n(e){return e.toString().substring(2,e.toString().length-2).replace(/\.\*\?$/,"*")}return t.debug=t,t.default=t,t.coerce=function(e){return e instanceof Error?e.stack||e.message:e},t.disable=function(){const e=[...t.names.map(n),...t.skips.map(n).map((e=>"-"+e))].join(",");return t.enable(""),e},t.enable=function(e){let s;t.save(e),t.namespaces=e,t.names=[],t.skips=[];const n=("string"==typeof e?e:"").split(/[\s,]+/),r=n.length;for(s=0;s<r;s++)n[s]&&("-"===(e=n[s].replace(/\*/g,".*?"))[0]?t.skips.push(new RegExp("^"+e.slice(1)+"$")):t.names.push(new RegExp("^"+e+"$")));},t.enabled=function(e){if("*"===e[e.length-1])return !0;let s,n;for(s=0,n=t.skips.length;s<n;s++)if(t.skips[s].test(e))return !1;for(s=0,n=t.names.length;s<n;s++)if(t.names[s].test(e))return !0;return !1},t.humanize=l(),t.destroy=function(){console.warn("Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.");},Object.keys(e).forEach((s=>{t[s]=e[s];})),t.names=[],t.skips=[],t.formatters={},t.selectColor=function(e){let s=0;for(let t=0;t<e.length;t++)s=(s<<5)-s+e.charCodeAt(t),s|=0;return t.colors[Math.abs(s)%t.colors.length]},t.enable(t.load()),t};!function(e,t){t.formatArgs=function(t){if(t[0]=(this.useColors?"%c":"")+this.namespace+(this.useColors?" %c":" ")+t[0]+(this.useColors?"%c ":" ")+"+"+e.exports.humanize(this.diff),!this.useColors)return;const s="color: "+this.color;t.splice(1,0,s,"color: inherit");let n=0,r=0;t[0].replace(/%[a-zA-Z%]/g,(e=>{"%%"!==e&&(n++,"%c"===e&&(r=n));})),t.splice(r,0,s);},t.save=function(e){try{e?t.storage.setItem("debug",e):t.storage.removeItem("debug");}catch{}},t.load=function(){let e;try{e=t.storage.getItem("debug");}catch{}return !e&&typeof process<"u"&&"env"in process&&(e=process.env.DEBUG),e},t.useColors=function(){return !(!(typeof window<"u"&&window.process)||"renderer"!==window.process.type&&!window.process.__nwjs)||!(typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/))&&(typeof document<"u"&&document.documentElement&&document.documentElement.style&&document.documentElement.style.WebkitAppearance||typeof window<"u"&&window.console&&(window.console.firebug||window.console.exception&&window.console.table)||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)&&parseInt(RegExp.$1,10)>=31||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/))},t.storage=function(){try{return localStorage}catch{}}(),t.destroy=(()=>{let e=!1;return ()=>{e||(e=!0,console.warn("Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`."));}})(),t.colors=["#0000CC","#0000FF","#0033CC","#0033FF","#0066CC","#0066FF","#0099CC","#0099FF","#00CC00","#00CC33","#00CC66","#00CC99","#00CCCC","#00CCFF","#3300CC","#3300FF","#3333CC","#3333FF","#3366CC","#3366FF","#3399CC","#3399FF","#33CC00","#33CC33","#33CC66","#33CC99","#33CCCC","#33CCFF","#6600CC","#6600FF","#6633CC","#6633FF","#66CC00","#66CC33","#9900CC","#9900FF","#9933CC","#9933FF","#99CC00","#99CC33","#CC0000","#CC0033","#CC0066","#CC0099","#CC00CC","#CC00FF","#CC3300","#CC3333","#CC3366","#CC3399","#CC33CC","#CC33FF","#CC6600","#CC6633","#CC9900","#CC9933","#CCCC00","#CCCC33","#FF0000","#FF0033","#FF0066","#FF0099","#FF00CC","#FF00FF","#FF3300","#FF3333","#FF3366","#FF3399","#FF33CC","#FF33FF","#FF6600","#FF6633","#FF9900","#FF9933","#FFCC00","#FFCC33"],t.log=console.debug||console.log||(()=>{}),e.exports=p(t);const{formatters:s}=e.exports;s.j=function(e){try{return JSON.stringify(e)}catch(e){return "[UnexpectedJSONParseError]: "+e.message}};}(u$1,u$1.exports);c$3(u$1.exports);const w=typeof Buffer>"u"?()=>!1:e=>Buffer.isBuffer(e);function F(e){return "[object Object]"===Object.prototype.toString.call(e)}function O$1(e){if(!1===F(e))return !1;const t=e.constructor;if(void 0===t)return !0;const s=t.prototype;return !(!1===F(s)||!1===s.hasOwnProperty("isPrototypeOf"))}const j=["boolean","string","number"];function v(){return {processOptions:e=>{const t=e.body;return !t||"function"==typeof t.pipe||w(t)||-1===j.indexOf(typeof t)&&!Array.isArray(t)&&!O$1(t)?e:Object.assign({},e,{body:JSON.stringify(e.body),headers:Object.assign({},e.headers,{"Content-Type":"application/json"})})}}}function x(e){return {onResponse:s=>{const n=s.headers["content-type"]||"",r=-1!==n.indexOf("application/json");return s.body&&n&&r?Object.assign({},s,{body:t(s.body)}):s},processOptions:e=>Object.assign({},e,{headers:Object.assign({Accept:"application/json"},e.headers)})};function t(e){try{return JSON.parse(e)}catch(e){throw e.message=`Failed to parsed response body as JSON: ${e.message}`,e}}}let R={};typeof globalThis<"u"?R=globalThis:typeof window<"u"?R=window:typeof global<"u"?R=global:typeof self<"u"&&(R=self);var k=R;function q(e={}){const t=e.implementation||k.Observable;if(!t)throw new Error("`Observable` is not available in global scope, and no implementation was passed");return {onReturn:(e,s)=>new t((t=>(e.error.subscribe((e=>t.error(e))),e.progress.subscribe((e=>t.next(Object.assign({type:"progress"},e)))),e.response.subscribe((e=>{t.next(Object.assign({type:"response"},e)),t.complete();})),e.request.publish(s),()=>e.abort.publish())))}}function A(){return {onRequest:e=>{if("xhr"!==e.adapter)return;const t=e.request,s=e.context;function n(e){return t=>{const n=t.lengthComputable?t.loaded/t.total*100:-1;s.channels.progress.publish({stage:e,percent:n,total:t.total,loaded:t.loaded,lengthComputable:t.lengthComputable});}}"upload"in t&&"onprogress"in t.upload&&(t.upload.onprogress=n("upload")),"onprogress"in t&&(t.onprogress=n("download"));}}}var I$1=(e,t,s)=>("GET"===s.method||"HEAD"===s.method)&&(e.isNetworkError||!1);function M(e){return 100*Math.pow(2,e)+100*Math.random()}const _$1=(e={})=>(e=>{const t=e.maxRetries||5,s=e.retryDelay||M,n=e.shouldRetry;return {onError:(e,r)=>{const o=r.options,i=o.maxRetries||t,a=o.retryDelay||s,c=o.shouldRetry||n,u=o.attemptNumber||0;if(null!==(l=o.body)&&"object"==typeof l&&"function"==typeof l.pipe||!c(e,u,o)||u>=i)return e;var l;const p=Object.assign({},r,{options:Object.assign({},o,{attemptNumber:u+1})});return setTimeout((()=>r.channels.request.publish(p)),a(u)),null}}})({shouldRetry:I$1,...e});_$1.shouldRetry=I$1;
+  const o=["request","response","progress","error","abort"],s$1=["processOptions","validateOptions","interceptRequest","finalizeOptions","onRequest","onResponse","onError","onReturn","onHeaders"];function n(r$1,a){const i=[],u=s$1.reduce(((e,t)=>(e[t]=e[t]||[],e)),{processOptions:[r],validateOptions:[s$2]});function l(e){const t=o.reduce(((e,t)=>(e[t]=function(){const e=/* @__PURE__ */Object.create(null);let t=0;return {publish:function(t){for(const r in e)e[r](t);},subscribe:function(r){const o=t++;return e[o]=r,function(){delete e[o];}}}}(),e)),{}),r=(e=>function(t,r,...o){const s="onError"===t;let n=r;for(let r=0;r<e[t].length&&(n=(0, e[t][r])(n,...o),!s||n);r++);return n})(u),s=r("processOptions",e);r("validateOptions",s);const n={options:s,channels:t,applyMiddleware:r};let i;const l=t.request.subscribe((e=>{i=a(e,((o,s)=>((e,o,s)=>{let n=e,a=o;if(!n)try{a=r("onResponse",o,s);}catch(e){a=null,n=e;}n=n&&r("onError",n,s),n?t.error.publish(n):a&&t.response.publish(a);})(o,s,e)));}));t.abort.subscribe((()=>{l(),i&&i.abort();}));const c=r("onReturn",t,n);return c===t&&t.request.publish(n),c}return l.use=function(e){if(!e)throw new Error("Tried to add middleware that resolved to falsey value");if("function"==typeof e)throw new Error("Tried to add middleware that was a function. It probably expects you to pass options to it.");if(e.onReturn&&u.onReturn.length>0)throw new Error("Tried to add new middleware with `onReturn` handler, but another handler has already been registered for this event");return s$1.forEach((t=>{e[t]&&u[t].push(e[t]);})),i.push(e),l},l.clone=()=>n(i,a),r$1.forEach(l.use),l}var a$1,i,u$2=/* @__PURE__ */c$3(function(){if(i)return a$1;i=1;var e=function(e){return e.replace(/^\s+|\s+$/g,"")};return a$1=function(t){if(!t)return {};for(var r={},o=e(t).split("\n"),s=0;s<o.length;s++){var n=o[s],a=n.indexOf(":"),i=e(n.slice(0,a)).toLowerCase(),u=e(n.slice(a+1));typeof r[i]>"u"?r[i]=u:(l=r[i],"[object Array]"===Object.prototype.toString.call(l)?r[i].push(u):r[i]=[r[i],u]);}var l;return r}}());let l$1 = class l{onabort;onerror;onreadystatechange;ontimeout;readyState=0;response;responseText="";responseType="";status;statusText;withCredentials;#e;#t;#r;#o={};#s;#n={};#a;open(e,t,r){this.#e=e,this.#t=t,this.#r="",this.readyState=1,this.onreadystatechange?.(),this.#s=undefined;}abort(){this.#s&&this.#s.abort();}getAllResponseHeaders(){return this.#r}setRequestHeader(e,t){this.#o[e]=t;}setInit(e,t=true){this.#n=e,this.#a=t;}send(e){const t="arraybuffer"!==this.responseType,r={...this.#n,method:this.#e,headers:this.#o,body:e};"function"==typeof AbortController&&this.#a&&(this.#s=new AbortController,typeof EventTarget<"u"&&this.#s.signal instanceof EventTarget&&(r.signal=this.#s.signal)),typeof document<"u"&&(r.credentials=this.withCredentials?"include":"omit"),fetch(this.#t,r).then((e=>(e.headers.forEach(((e,t)=>{this.#r+=`${t}: ${e}\r\n`;})),this.status=e.status,this.statusText=e.statusText,this.readyState=3,this.onreadystatechange?.(),t?e.text():e.arrayBuffer()))).then((e=>{"string"==typeof e?this.responseText=e:this.response=e,this.readyState=4,this.onreadystatechange?.();})).catch((e=>{"AbortError"!==e.name?this.onerror?.(e):this.onabort?.();}));}};const c$2="function"==typeof XMLHttpRequest?"xhr":"fetch",h="xhr"===c$2?XMLHttpRequest:l$1,d$1=(e,t)=>{const r=e.options,o=e.applyMiddleware("finalizeOptions",r),s={},n=e.applyMiddleware("interceptRequest",undefined,{adapter:c$2,context:e});if(n){const e=setTimeout(t,0,null,n);return {abort:()=>clearTimeout(e)}}let a=new h;a instanceof l$1&&"object"==typeof o.fetch&&a.setInit(o.fetch,o.useAbortSignal??true);const i=o.headers,d=o.timeout;let p=false,f=false,b=false;if(a.onerror=e=>{m(a instanceof l$1?e instanceof Error?e:new Error(`Request error while attempting to reach is ${o.url}`,{cause:e}):new Error(`Request error while attempting to reach is ${o.url}${e.lengthComputable?`(${e.loaded} of ${e.total} bytes transferred)`:""}`));},a.ontimeout=e=>{m(new Error(`Request timeout while attempting to reach ${o.url}${e.lengthComputable?`(${e.loaded} of ${e.total} bytes transferred)`:""}`));},a.onabort=()=>{w(true),p=true;},a.onreadystatechange=()=>{d&&(w(),s.socket=setTimeout((()=>y("ESOCKETTIMEDOUT")),d.socket)),!p&&4===a.readyState&&0!==a.status&&function(){if(!(p||f||b)){if(0===a.status)return void m(new Error("Unknown XHR error"));w(),f=true,t(null,{body:a.response||(""===a.responseType||"text"===a.responseType?a.responseText:""),url:o.url,method:o.method,headers:u$2(a.getAllResponseHeaders()),statusCode:a.status,statusMessage:a.statusText});}}();},a.open(o.method,o.url,true),a.withCredentials=!!o.withCredentials,i&&a.setRequestHeader)for(const e in i)i.hasOwnProperty(e)&&a.setRequestHeader(e,i[e]);return o.rawBody&&(a.responseType="arraybuffer"),e.applyMiddleware("onRequest",{options:o,adapter:c$2,request:a,context:e}),a.send(o.body||null),d&&(s.connect=setTimeout((()=>y("ETIMEDOUT")),d.connect)),{abort:function(){p=true,a&&a.abort();}};function y(t){b=true,a.abort();const r=new Error("ESOCKETTIMEDOUT"===t?`Socket timed out on request to ${o.url}`:`Connection timed out on request to ${o.url}`);r.code=t,e.channels.error.publish(r);}function w(e){(e||p||a.readyState>=2&&s.connect)&&clearTimeout(s.connect),s.socket&&clearTimeout(s.socket);}function m(e){if(f)return;w(true),f=true,a=null;const r=e||new Error(`Network error while attempting to reach ${o.url}`);r.isNetworkError=true,r.request=o,t(r);}},p$1=(e=[],t=d$1)=>n(e,t),f$1="browser";
+
+  var a,c$1,u$1,l,p,d={exports:{}};/* @__PURE__ */c$3((p||(p=1,function(e,t){t.formatArgs=function(t){if(t[0]=(this.useColors?"%c":"")+this.namespace+(this.useColors?" %c":" ")+t[0]+(this.useColors?"%c ":" ")+"+"+e.exports.humanize(this.diff),!this.useColors)return;const s="color: "+this.color;t.splice(1,0,s,"color: inherit");let n=0,r=0;t[0].replace(/%[a-zA-Z%]/g,(e=>{"%%"!==e&&(n++,"%c"===e&&(r=n));})),t.splice(r,0,s);},t.save=function(e){try{e?t.storage.setItem("debug",e):t.storage.removeItem("debug");}catch{}},t.load=function(){let e;try{e=t.storage.getItem("debug");}catch{}return !e&&typeof process<"u"&&"env"in process&&(e=process.env.DEBUG),e},t.useColors=function(){return !(!(typeof window<"u"&&window.process)||"renderer"!==window.process.type&&!window.process.__nwjs)||!(typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/))&&(typeof document<"u"&&document.documentElement&&document.documentElement.style&&document.documentElement.style.WebkitAppearance||typeof window<"u"&&window.console&&(window.console.firebug||window.console.exception&&window.console.table)||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)&&parseInt(RegExp.$1,10)>=31||typeof navigator<"u"&&navigator.userAgent&&navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/))},t.storage=function(){try{return localStorage}catch{}}(),t.destroy=/* @__PURE__ */(()=>{let e=false;return ()=>{e||(e=true,console.warn("Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`."));}})(),t.colors=["#0000CC","#0000FF","#0033CC","#0033FF","#0066CC","#0066FF","#0099CC","#0099FF","#00CC00","#00CC33","#00CC66","#00CC99","#00CCCC","#00CCFF","#3300CC","#3300FF","#3333CC","#3333FF","#3366CC","#3366FF","#3399CC","#3399FF","#33CC00","#33CC33","#33CC66","#33CC99","#33CCCC","#33CCFF","#6600CC","#6600FF","#6633CC","#6633FF","#66CC00","#66CC33","#9900CC","#9900FF","#9933CC","#9933FF","#99CC00","#99CC33","#CC0000","#CC0033","#CC0066","#CC0099","#CC00CC","#CC00FF","#CC3300","#CC3333","#CC3366","#CC3399","#CC33CC","#CC33FF","#CC6600","#CC6633","#CC9900","#CC9933","#CCCC00","#CCCC33","#FF0000","#FF0033","#FF0066","#FF0099","#FF00CC","#FF00FF","#FF3300","#FF3333","#FF3366","#FF3399","#FF33CC","#FF33FF","#FF6600","#FF6633","#FF9900","#FF9933","#FFCC00","#FFCC33"],t.log=console.debug||console.log||(()=>{}),e.exports=(l?u$1:(l=1,u$1=function(e){function t(e){let n,r,o,i=null;function a(...e){if(!a.enabled)return;const s=a,r=Number(/* @__PURE__ */new Date),o=r-(n||r);s.diff=o,s.prev=n,s.curr=r,n=r,e[0]=t.coerce(e[0]),"string"!=typeof e[0]&&e.unshift("%O");let i=0;e[0]=e[0].replace(/%([a-zA-Z%])/g,((n,r)=>{if("%%"===n)return "%";i++;const o=t.formatters[r];if("function"==typeof o){const t=e[i];n=o.call(s,t),e.splice(i,1),i--;}return n})),t.formatArgs.call(s,e),(s.log||t.log).apply(s,e);}return a.namespace=e,a.useColors=t.useColors(),a.color=t.selectColor(e),a.extend=s,a.destroy=t.destroy,Object.defineProperty(a,"enabled",{enumerable:true,configurable:false,get:()=>null!==i?i:(r!==t.namespaces&&(r=t.namespaces,o=t.enabled(e)),o),set:e=>{i=e;}}),"function"==typeof t.init&&t.init(a),a}function s(e,s){const n=t(this.namespace+(typeof s>"u"?":":s)+e);return n.log=this.log,n}function n(e){return e.toString().substring(2,e.toString().length-2).replace(/\.\*\?$/,"*")}return t.debug=t,t.default=t,t.coerce=function(e){return e instanceof Error?e.stack||e.message:e},t.disable=function(){const e=[...t.names.map(n),...t.skips.map(n).map((e=>"-"+e))].join(",");return t.enable(""),e},t.enable=function(e){let s;t.save(e),t.namespaces=e,t.names=[],t.skips=[];const n=("string"==typeof e?e:"").split(/[\s,]+/),r=n.length;for(s=0;s<r;s++)n[s]&&("-"===(e=n[s].replace(/\*/g,".*?"))[0]?t.skips.push(new RegExp("^"+e.slice(1)+"$")):t.names.push(new RegExp("^"+e+"$")));},t.enabled=function(e){if("*"===e[e.length-1])return  true;let s,n;for(s=0,n=t.skips.length;s<n;s++)if(t.skips[s].test(e))return  false;for(s=0,n=t.names.length;s<n;s++)if(t.names[s].test(e))return  true;return  false},t.humanize=function(){if(c$1)return a;c$1=1;var e=1e3,t=60*e,s=60*t,n=24*s,r=7*n;function o(e,t,s,n){var r=t>=1.5*s;return Math.round(e/s)+" "+n+(r?"s":"")}return a=function(i,a){a=a||{};var c,u,l=typeof i;if("string"===l&&i.length>0)return function(o){if(!((o=String(o)).length>100)){var i=/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(o);if(i){var a=parseFloat(i[1]);switch((i[2]||"ms").toLowerCase()){case "years":case "year":case "yrs":case "yr":case "y":return 315576e5*a;case "weeks":case "week":case "w":return a*r;case "days":case "day":case "d":return a*n;case "hours":case "hour":case "hrs":case "hr":case "h":return a*s;case "minutes":case "minute":case "mins":case "min":case "m":return a*t;case "seconds":case "second":case "secs":case "sec":case "s":return a*e;case "milliseconds":case "millisecond":case "msecs":case "msec":case "ms":return a;default:return}}}}(i);if("number"===l&&isFinite(i))return a.long?(c=i,(u=Math.abs(c))>=n?o(c,u,n,"day"):u>=s?o(c,u,s,"hour"):u>=t?o(c,u,t,"minute"):u>=e?o(c,u,e,"second"):c+" ms"):function(r){var o=Math.abs(r);return o>=n?Math.round(r/n)+"d":o>=s?Math.round(r/s)+"h":o>=t?Math.round(r/t)+"m":o>=e?Math.round(r/e)+"s":r+"ms"}(i);throw new Error("val is not a non-empty string or a valid number. val="+JSON.stringify(i))}}(),t.destroy=function(){console.warn("Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.");},Object.keys(e).forEach((s=>{t[s]=e[s];})),t.names=[],t.skips=[],t.formatters={},t.selectColor=function(e){let s=0;for(let t=0;t<e.length;t++)s=(s<<5)-s+e.charCodeAt(t),s|=0;return t.colors[Math.abs(s)%t.colors.length]},t.enable(t.load()),t}))(t);const{formatters:s}=e.exports;s.j=function(e){try{return JSON.stringify(e)}catch(e){return "[UnexpectedJSONParseError]: "+e.message}};}(d,d.exports)),d.exports));const F=typeof Buffer>"u"?()=>false:e=>Buffer.isBuffer(e);function O$1(e){return "[object Object]"===Object.prototype.toString.call(e)}function j(e){if(false===O$1(e))return  false;const t=e.constructor;if(undefined===t)return  true;const s=t.prototype;return !(false===O$1(s)||false===s.hasOwnProperty("isPrototypeOf"))}const v=["boolean","string","number"];function x(){return {processOptions:e=>{const t=e.body;return !t||"function"==typeof t.pipe||F(t)||-1===v.indexOf(typeof t)&&!Array.isArray(t)&&!j(t)?e:Object.assign({},e,{body:JSON.stringify(e.body),headers:Object.assign({},e.headers,{"Content-Type":"application/json"})})}}}function E$1(e){return {onResponse:s=>{const n=s.headers["content-type"]||"",r=e&&e.force||-1!==n.indexOf("application/json");return s.body&&n&&r?Object.assign({},s,{body:t(s.body)}):s},processOptions:e=>Object.assign({},e,{headers:Object.assign({Accept:"application/json"},e.headers)})};function t(e){try{return JSON.parse(e)}catch(e){throw e.message=`Failed to parsed response body as JSON: ${e.message}`,e}}}let k={};typeof globalThis<"u"?k=globalThis:typeof window<"u"?k=window:typeof global<"u"?k=global:typeof self<"u"&&(k=self);var q=k;function A(e={}){const t=e.implementation||q.Observable;if(!t)throw new Error("`Observable` is not available in global scope, and no implementation was passed");return {onReturn:(e,s)=>new t((t=>(e.error.subscribe((e=>t.error(e))),e.progress.subscribe((e=>t.next(Object.assign({type:"progress"},e)))),e.response.subscribe((e=>{t.next(Object.assign({type:"response"},e)),t.complete();})),e.request.publish(s),()=>e.abort.publish())))}}function S$1(){return {onRequest:e=>{if("xhr"!==e.adapter)return;const t=e.request,s=e.context;function n(e){return t=>{const n=t.lengthComputable?t.loaded/t.total*100:-1;s.channels.progress.publish({stage:e,percent:n,total:t.total,loaded:t.loaded,lengthComputable:t.lengthComputable});}}"upload"in t&&"onprogress"in t.upload&&(t.upload.onprogress=n("upload")),"onprogress"in t&&(t.onprogress=n("download"));}}}var M=(e,t,s)=>("GET"===s.method||"HEAD"===s.method)&&(e.isNetworkError||false);function _$1(e){return 100*Math.pow(2,e)+100*Math.random()}const P=(e={})=>(e=>{const t=e.maxRetries||5,s=e.retryDelay||_$1,n=e.shouldRetry;return {onError:(e,r)=>{const o=r.options,i=o.maxRetries||t,a=o.retryDelay||s,c=o.shouldRetry||n,u=o.attemptNumber||0;if(null!==(l=o.body)&&"object"==typeof l&&"function"==typeof l.pipe||!c(e,u,o)||u>=i)return e;var l;const p=Object.assign({},r,{options:Object.assign({},o,{attemptNumber:u+1})});return setTimeout((()=>r.channels.request.publish(p)),a(u)),null}}})({shouldRetry:M,...e});P.shouldRetry=M;
 
   /******************************************************************************
   Copyright (c) Microsoft Corporation.
@@ -24,7 +39,7 @@
   OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   PERFORMANCE OF THIS SOFTWARE.
   ***************************************************************************** */
-  /* global Reflect, Promise, SuppressedError, Symbol */
+  /* global Reflect, Promise, SuppressedError, Symbol, Iterator */
 
   var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
@@ -52,8 +67,8 @@
   }
 
   function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -75,7 +90,7 @@
             }
             op = body.call(thisArg, _);
         } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : undefined, done: true };
     }
   }
 
@@ -84,7 +99,7 @@
     if (m) return m.call(o);
     if (o && typeof o.length === "number") return {
         next: function () {
-            if (o && i >= o.length) o = void 0;
+            if (o && i >= o.length) o = undefined;
             return { value: o && o[i++], done: !o };
         }
     };
@@ -125,8 +140,9 @@
   function __asyncGenerator(thisArg, _arguments, generator) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
     var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    return i = Object.create((typeof AsyncIterator === "function" ? AsyncIterator : Object).prototype), verb("next"), verb("throw"), verb("return", awaitReturn), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function awaitReturn(f) { return function (v) { return Promise.resolve(v).then(f, reject); }; }
+    function verb(n, f) { if (g[n]) { i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; if (f) i[n] = f(i[n]); } }
     function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
     function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
     function fulfill(value) { resume("next", value); }
@@ -269,7 +285,7 @@
                       }
                       teardown._addParent(this);
                   }
-                  (this._finalizers = (_a = this._finalizers) !== null && _a !== void 0 ? _a : []).push(teardown);
+                  (this._finalizers = (_a = this._finalizers) !== null && _a !== undefined ? _a : []).push(teardown);
               }
           }
       };
@@ -304,7 +320,7 @@
       })();
       return Subscription;
   }());
-  Subscription.EMPTY;
+  var EMPTY_SUBSCRIPTION = Subscription.EMPTY;
   function isSubscription(value) {
       return (value instanceof Subscription ||
           (value && 'closed' in value && isFunction(value.remove) && isFunction(value.add) && isFunction(value.unsubscribe)));
@@ -332,11 +348,11 @@
           for (var _i = 2; _i < arguments.length; _i++) {
               args[_i - 2] = arguments[_i];
           }
-          return setTimeout.apply(void 0, __spreadArray([handler, timeout], __read(args)));
+          return setTimeout.apply(undefined, __spreadArray([handler, timeout], __read(args)));
       },
       clearTimeout: function (handle) {
           var delegate = timeoutProvider.delegate;
-          return ((delegate === null || delegate === void 0 ? void 0 : delegate.clearTimeout) || clearTimeout)(handle);
+          return ((delegate === null || delegate === undefined ? undefined : delegate.clearTimeout) || clearTimeout)(handle);
       },
       delegate: undefined,
   };
@@ -424,10 +440,6 @@
       };
       return Subscriber;
   }(Subscription));
-  var _bind = Function.prototype.bind;
-  function bind(fn, thisArg) {
-      return _bind.call(fn, thisArg);
-  }
   var ConsumerObserver = (function () {
       function ConsumerObserver(partialObserver) {
           this.partialObserver = partialObserver;
@@ -477,23 +489,13 @@
           var partialObserver;
           if (isFunction(observerOrNext) || !observerOrNext) {
               partialObserver = {
-                  next: (observerOrNext !== null && observerOrNext !== void 0 ? observerOrNext : undefined),
-                  error: error !== null && error !== void 0 ? error : undefined,
-                  complete: complete !== null && complete !== void 0 ? complete : undefined,
+                  next: (observerOrNext !== null && observerOrNext !== undefined ? observerOrNext : undefined),
+                  error: error !== null && error !== undefined ? error : undefined,
+                  complete: complete !== null && complete !== undefined ? complete : undefined,
               };
           }
           else {
-              var context_1;
-              if (_this && config.useDeprecatedNextContext) {
-                  context_1 = Object.create(observerOrNext);
-                  context_1.unsubscribe = function () { return _this.unsubscribe(); };
-                  partialObserver = {
-                      next: observerOrNext.next && bind(observerOrNext.next, context_1),
-                      error: observerOrNext.error && bind(observerOrNext.error, context_1),
-                      complete: observerOrNext.complete && bind(observerOrNext.complete, context_1),
-                  };
-              }
-              else {
+              {
                   partialObserver = observerOrNext;
               }
           }
@@ -600,7 +602,7 @@
       };
       Observable.prototype._subscribe = function (subscriber) {
           var _a;
-          return (_a = this.source) === null || _a === void 0 ? void 0 : _a.subscribe(subscriber);
+          return (_a = this.source) === null || _a === undefined ? undefined : _a.subscribe(subscriber);
       };
       Observable.prototype[observable] = function () {
           return this;
@@ -627,7 +629,7 @@
   }());
   function getPromiseCtor(promiseCtor) {
       var _a;
-      return (_a = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a !== void 0 ? _a : Promise;
+      return (_a = promiseCtor !== null && promiseCtor !== undefined ? promiseCtor : config.Promise) !== null && _a !== undefined ? _a : Promise;
   }
   function isObserver(value) {
       return value && isFunction(value.next) && isFunction(value.error) && isFunction(value.complete);
@@ -637,7 +639,7 @@
   }
 
   function hasLift(source) {
-      return isFunction(source === null || source === void 0 ? void 0 : source.lift);
+      return isFunction(source === null || source === undefined ? undefined : source.lift);
   }
   function operate(init) {
       return function (source) {
@@ -707,11 +709,400 @@
           if (!this.shouldUnsubscribe || this.shouldUnsubscribe()) {
               var closed_1 = this.closed;
               _super.prototype.unsubscribe.call(this);
-              !closed_1 && ((_a = this.onFinalize) === null || _a === void 0 ? void 0 : _a.call(this));
+              !closed_1 && ((_a = this.onFinalize) === null || _a === undefined ? undefined : _a.call(this));
           }
       };
       return OperatorSubscriber;
   }(Subscriber));
+
+  var ObjectUnsubscribedError = createErrorClass(function (_super) {
+      return function ObjectUnsubscribedErrorImpl() {
+          _super(this);
+          this.name = 'ObjectUnsubscribedError';
+          this.message = 'object unsubscribed';
+      };
+  });
+
+  var Subject = (function (_super) {
+      __extends(Subject, _super);
+      function Subject() {
+          var _this = _super.call(this) || this;
+          _this.closed = false;
+          _this.currentObservers = null;
+          _this.observers = [];
+          _this.isStopped = false;
+          _this.hasError = false;
+          _this.thrownError = null;
+          return _this;
+      }
+      Subject.prototype.lift = function (operator) {
+          var subject = new AnonymousSubject(this, this);
+          subject.operator = operator;
+          return subject;
+      };
+      Subject.prototype._throwIfClosed = function () {
+          if (this.closed) {
+              throw new ObjectUnsubscribedError();
+          }
+      };
+      Subject.prototype.next = function (value) {
+          var _this = this;
+          errorContext(function () {
+              var e_1, _a;
+              _this._throwIfClosed();
+              if (!_this.isStopped) {
+                  if (!_this.currentObservers) {
+                      _this.currentObservers = Array.from(_this.observers);
+                  }
+                  try {
+                      for (var _b = __values(_this.currentObservers), _c = _b.next(); !_c.done; _c = _b.next()) {
+                          var observer = _c.value;
+                          observer.next(value);
+                      }
+                  }
+                  catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                  finally {
+                      try {
+                          if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+                      }
+                      finally { if (e_1) throw e_1.error; }
+                  }
+              }
+          });
+      };
+      Subject.prototype.error = function (err) {
+          var _this = this;
+          errorContext(function () {
+              _this._throwIfClosed();
+              if (!_this.isStopped) {
+                  _this.hasError = _this.isStopped = true;
+                  _this.thrownError = err;
+                  var observers = _this.observers;
+                  while (observers.length) {
+                      observers.shift().error(err);
+                  }
+              }
+          });
+      };
+      Subject.prototype.complete = function () {
+          var _this = this;
+          errorContext(function () {
+              _this._throwIfClosed();
+              if (!_this.isStopped) {
+                  _this.isStopped = true;
+                  var observers = _this.observers;
+                  while (observers.length) {
+                      observers.shift().complete();
+                  }
+              }
+          });
+      };
+      Subject.prototype.unsubscribe = function () {
+          this.isStopped = this.closed = true;
+          this.observers = this.currentObservers = null;
+      };
+      Object.defineProperty(Subject.prototype, "observed", {
+          get: function () {
+              var _a;
+              return ((_a = this.observers) === null || _a === undefined ? undefined : _a.length) > 0;
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Subject.prototype._trySubscribe = function (subscriber) {
+          this._throwIfClosed();
+          return _super.prototype._trySubscribe.call(this, subscriber);
+      };
+      Subject.prototype._subscribe = function (subscriber) {
+          this._throwIfClosed();
+          this._checkFinalizedStatuses(subscriber);
+          return this._innerSubscribe(subscriber);
+      };
+      Subject.prototype._innerSubscribe = function (subscriber) {
+          var _this = this;
+          var _a = this, hasError = _a.hasError, isStopped = _a.isStopped, observers = _a.observers;
+          if (hasError || isStopped) {
+              return EMPTY_SUBSCRIPTION;
+          }
+          this.currentObservers = null;
+          observers.push(subscriber);
+          return new Subscription(function () {
+              _this.currentObservers = null;
+              arrRemove(observers, subscriber);
+          });
+      };
+      Subject.prototype._checkFinalizedStatuses = function (subscriber) {
+          var _a = this, hasError = _a.hasError, thrownError = _a.thrownError, isStopped = _a.isStopped;
+          if (hasError) {
+              subscriber.error(thrownError);
+          }
+          else if (isStopped) {
+              subscriber.complete();
+          }
+      };
+      Subject.prototype.asObservable = function () {
+          var observable = new Observable();
+          observable.source = this;
+          return observable;
+      };
+      Subject.create = function (destination, source) {
+          return new AnonymousSubject(destination, source);
+      };
+      return Subject;
+  }(Observable));
+  var AnonymousSubject = (function (_super) {
+      __extends(AnonymousSubject, _super);
+      function AnonymousSubject(destination, source) {
+          var _this = _super.call(this) || this;
+          _this.destination = destination;
+          _this.source = source;
+          return _this;
+      }
+      AnonymousSubject.prototype.next = function (value) {
+          var _a, _b;
+          (_b = (_a = this.destination) === null || _a === undefined ? undefined : _a.next) === null || _b === undefined ? undefined : _b.call(_a, value);
+      };
+      AnonymousSubject.prototype.error = function (err) {
+          var _a, _b;
+          (_b = (_a = this.destination) === null || _a === undefined ? undefined : _a.error) === null || _b === undefined ? undefined : _b.call(_a, err);
+      };
+      AnonymousSubject.prototype.complete = function () {
+          var _a, _b;
+          (_b = (_a = this.destination) === null || _a === undefined ? undefined : _a.complete) === null || _b === undefined ? undefined : _b.call(_a);
+      };
+      AnonymousSubject.prototype._subscribe = function (subscriber) {
+          var _a, _b;
+          return (_b = (_a = this.source) === null || _a === undefined ? undefined : _a.subscribe(subscriber)) !== null && _b !== undefined ? _b : EMPTY_SUBSCRIPTION;
+      };
+      return AnonymousSubject;
+  }(Subject));
+
+  var dateTimestampProvider = {
+      now: function () {
+          return (dateTimestampProvider.delegate || Date).now();
+      },
+      delegate: undefined,
+  };
+
+  var ReplaySubject = (function (_super) {
+      __extends(ReplaySubject, _super);
+      function ReplaySubject(_bufferSize, _windowTime, _timestampProvider) {
+          if (_bufferSize === undefined) { _bufferSize = Infinity; }
+          if (_windowTime === undefined) { _windowTime = Infinity; }
+          if (_timestampProvider === undefined) { _timestampProvider = dateTimestampProvider; }
+          var _this = _super.call(this) || this;
+          _this._bufferSize = _bufferSize;
+          _this._windowTime = _windowTime;
+          _this._timestampProvider = _timestampProvider;
+          _this._buffer = [];
+          _this._infiniteTimeWindow = true;
+          _this._infiniteTimeWindow = _windowTime === Infinity;
+          _this._bufferSize = Math.max(1, _bufferSize);
+          _this._windowTime = Math.max(1, _windowTime);
+          return _this;
+      }
+      ReplaySubject.prototype.next = function (value) {
+          var _a = this, isStopped = _a.isStopped, _buffer = _a._buffer, _infiniteTimeWindow = _a._infiniteTimeWindow, _timestampProvider = _a._timestampProvider, _windowTime = _a._windowTime;
+          if (!isStopped) {
+              _buffer.push(value);
+              !_infiniteTimeWindow && _buffer.push(_timestampProvider.now() + _windowTime);
+          }
+          this._trimBuffer();
+          _super.prototype.next.call(this, value);
+      };
+      ReplaySubject.prototype._subscribe = function (subscriber) {
+          this._throwIfClosed();
+          this._trimBuffer();
+          var subscription = this._innerSubscribe(subscriber);
+          var _a = this, _infiniteTimeWindow = _a._infiniteTimeWindow, _buffer = _a._buffer;
+          var copy = _buffer.slice();
+          for (var i = 0; i < copy.length && !subscriber.closed; i += _infiniteTimeWindow ? 1 : 2) {
+              subscriber.next(copy[i]);
+          }
+          this._checkFinalizedStatuses(subscriber);
+          return subscription;
+      };
+      ReplaySubject.prototype._trimBuffer = function () {
+          var _a = this, _bufferSize = _a._bufferSize, _timestampProvider = _a._timestampProvider, _buffer = _a._buffer, _infiniteTimeWindow = _a._infiniteTimeWindow;
+          var adjustedBufferSize = (_infiniteTimeWindow ? 1 : 2) * _bufferSize;
+          _bufferSize < Infinity && adjustedBufferSize < _buffer.length && _buffer.splice(0, _buffer.length - adjustedBufferSize);
+          if (!_infiniteTimeWindow) {
+              var now = _timestampProvider.now();
+              var last = 0;
+              for (var i = 1; i < _buffer.length && _buffer[i] <= now; i += 2) {
+                  last = i;
+              }
+              last && _buffer.splice(0, last + 1);
+          }
+      };
+      return ReplaySubject;
+  }(Subject));
+
+  var Action = (function (_super) {
+      __extends(Action, _super);
+      function Action(scheduler, work) {
+          return _super.call(this) || this;
+      }
+      Action.prototype.schedule = function (state, delay) {
+          return this;
+      };
+      return Action;
+  }(Subscription));
+
+  var intervalProvider = {
+      setInterval: function (handler, timeout) {
+          var args = [];
+          for (var _i = 2; _i < arguments.length; _i++) {
+              args[_i - 2] = arguments[_i];
+          }
+          return setInterval.apply(undefined, __spreadArray([handler, timeout], __read(args)));
+      },
+      clearInterval: function (handle) {
+          return (clearInterval)(handle);
+      },
+      delegate: undefined,
+  };
+
+  var AsyncAction = (function (_super) {
+      __extends(AsyncAction, _super);
+      function AsyncAction(scheduler, work) {
+          var _this = _super.call(this, scheduler, work) || this;
+          _this.scheduler = scheduler;
+          _this.work = work;
+          _this.pending = false;
+          return _this;
+      }
+      AsyncAction.prototype.schedule = function (state, delay) {
+          var _a;
+          if (delay === undefined) { delay = 0; }
+          if (this.closed) {
+              return this;
+          }
+          this.state = state;
+          var id = this.id;
+          var scheduler = this.scheduler;
+          if (id != null) {
+              this.id = this.recycleAsyncId(scheduler, id, delay);
+          }
+          this.pending = true;
+          this.delay = delay;
+          this.id = (_a = this.id) !== null && _a !== undefined ? _a : this.requestAsyncId(scheduler, this.id, delay);
+          return this;
+      };
+      AsyncAction.prototype.requestAsyncId = function (scheduler, _id, delay) {
+          if (delay === undefined) { delay = 0; }
+          return intervalProvider.setInterval(scheduler.flush.bind(scheduler, this), delay);
+      };
+      AsyncAction.prototype.recycleAsyncId = function (_scheduler, id, delay) {
+          if (delay === undefined) { delay = 0; }
+          if (delay != null && this.delay === delay && this.pending === false) {
+              return id;
+          }
+          if (id != null) {
+              intervalProvider.clearInterval(id);
+          }
+          return undefined;
+      };
+      AsyncAction.prototype.execute = function (state, delay) {
+          if (this.closed) {
+              return new Error('executing a cancelled action');
+          }
+          this.pending = false;
+          var error = this._execute(state, delay);
+          if (error) {
+              return error;
+          }
+          else if (this.pending === false && this.id != null) {
+              this.id = this.recycleAsyncId(this.scheduler, this.id, null);
+          }
+      };
+      AsyncAction.prototype._execute = function (state, _delay) {
+          var errored = false;
+          var errorValue;
+          try {
+              this.work(state);
+          }
+          catch (e) {
+              errored = true;
+              errorValue = e ? e : new Error('Scheduled action threw falsy error');
+          }
+          if (errored) {
+              this.unsubscribe();
+              return errorValue;
+          }
+      };
+      AsyncAction.prototype.unsubscribe = function () {
+          if (!this.closed) {
+              var _a = this, id = _a.id, scheduler = _a.scheduler;
+              var actions = scheduler.actions;
+              this.work = this.state = this.scheduler = null;
+              this.pending = false;
+              arrRemove(actions, this);
+              if (id != null) {
+                  this.id = this.recycleAsyncId(scheduler, id, null);
+              }
+              this.delay = null;
+              _super.prototype.unsubscribe.call(this);
+          }
+      };
+      return AsyncAction;
+  }(Action));
+
+  var Scheduler = (function () {
+      function Scheduler(schedulerActionCtor, now) {
+          if (now === undefined) { now = Scheduler.now; }
+          this.schedulerActionCtor = schedulerActionCtor;
+          this.now = now;
+      }
+      Scheduler.prototype.schedule = function (work, delay, state) {
+          if (delay === undefined) { delay = 0; }
+          return new this.schedulerActionCtor(this, work).schedule(state, delay);
+      };
+      Scheduler.now = dateTimestampProvider.now;
+      return Scheduler;
+  }());
+
+  var AsyncScheduler = (function (_super) {
+      __extends(AsyncScheduler, _super);
+      function AsyncScheduler(SchedulerAction, now) {
+          if (now === undefined) { now = Scheduler.now; }
+          var _this = _super.call(this, SchedulerAction, now) || this;
+          _this.actions = [];
+          _this._active = false;
+          return _this;
+      }
+      AsyncScheduler.prototype.flush = function (action) {
+          var actions = this.actions;
+          if (this._active) {
+              actions.push(action);
+              return;
+          }
+          var error;
+          this._active = true;
+          do {
+              if ((error = action.execute(action.state, action.delay))) {
+                  break;
+              }
+          } while ((action = actions.shift()));
+          this._active = false;
+          if (error) {
+              while ((action = actions.shift())) {
+                  action.unsubscribe();
+              }
+              throw error;
+          }
+      };
+      return AsyncScheduler;
+  }(Scheduler));
+
+  var asyncScheduler = new AsyncScheduler(AsyncAction);
+  var async = asyncScheduler;
+
+  var EMPTY = new Observable(function (subscriber) { return subscriber.complete(); });
+
+  function isScheduler(value) {
+      return value && isFunction(value.schedule);
+  }
 
   function last(arr) {
       return arr[arr.length - 1];
@@ -719,11 +1110,14 @@
   function popResultSelector(args) {
       return isFunction(last(args)) ? args.pop() : undefined;
   }
+  function popScheduler(args) {
+      return isScheduler(last(args)) ? args.pop() : undefined;
+  }
 
   var isArrayLike = (function (x) { return x && typeof x.length === 'number' && typeof x !== 'function'; });
 
   function isPromise(value) {
-      return isFunction(value === null || value === void 0 ? void 0 : value.then);
+      return isFunction(value === null || value === undefined ? undefined : value.then);
   }
 
   function isInteropObservable(input) {
@@ -731,7 +1125,7 @@
   }
 
   function isAsyncIterable(obj) {
-      return Symbol.asyncIterator && isFunction(obj === null || obj === void 0 ? void 0 : obj[Symbol.asyncIterator]);
+      return Symbol.asyncIterator && isFunction(obj === null || obj === undefined ? undefined : obj[Symbol.asyncIterator]);
   }
 
   function createInvalidObservableTypeError(input) {
@@ -747,7 +1141,7 @@
   var iterator = getSymbolIterator();
 
   function isIterable(input) {
-      return isFunction(input === null || input === void 0 ? void 0 : input[iterator]);
+      return isFunction(input === null || input === undefined ? undefined : input[iterator]);
   }
 
   function readableStreamLikeToAsyncGenerator(readableStream) {
@@ -766,7 +1160,7 @@
                   case 3:
                       _a = _b.sent(), value = _a.value, done = _a.done;
                       if (!done) return [3, 5];
-                      return [4, __await(void 0)];
+                      return [4, __await(undefined)];
                   case 4: return [2, _b.sent()];
                   case 5: return [4, __await(value)];
                   case 6: return [4, _b.sent()];
@@ -783,7 +1177,7 @@
       });
   }
   function isReadableStreamLike(obj) {
-      return isFunction(obj === null || obj === void 0 ? void 0 : obj.getReader);
+      return isFunction(obj === null || obj === undefined ? undefined : obj.getReader);
   }
 
   function innerFrom(input) {
@@ -874,7 +1268,7 @@
   function process$1(asyncIterable, subscriber) {
       var asyncIterable_1, asyncIterable_1_1;
       var e_2, _a;
-      return __awaiter(this, void 0, void 0, function () {
+      return __awaiter(this, undefined, undefined, function () {
           var value, e_2_1;
           return __generator(this, function (_b) {
               switch (_b.label) {
@@ -917,8 +1311,161 @@
       });
   }
 
+  function executeSchedule(parentSubscription, scheduler, work, delay, repeat) {
+      if (delay === undefined) { delay = 0; }
+      if (repeat === undefined) { repeat = false; }
+      var scheduleSubscription = scheduler.schedule(function () {
+          work();
+          if (repeat) {
+              parentSubscription.add(this.schedule(null, delay));
+          }
+          else {
+              this.unsubscribe();
+          }
+      }, delay);
+      parentSubscription.add(scheduleSubscription);
+      if (!repeat) {
+          return scheduleSubscription;
+      }
+  }
+
+  function observeOn(scheduler, delay) {
+      if (delay === undefined) { delay = 0; }
+      return operate(function (source, subscriber) {
+          source.subscribe(createOperatorSubscriber(subscriber, function (value) { return executeSchedule(subscriber, scheduler, function () { return subscriber.next(value); }, delay); }, function () { return executeSchedule(subscriber, scheduler, function () { return subscriber.complete(); }, delay); }, function (err) { return executeSchedule(subscriber, scheduler, function () { return subscriber.error(err); }, delay); }));
+      });
+  }
+
+  function subscribeOn(scheduler, delay) {
+      if (delay === undefined) { delay = 0; }
+      return operate(function (source, subscriber) {
+          subscriber.add(scheduler.schedule(function () { return source.subscribe(subscriber); }, delay));
+      });
+  }
+
+  function scheduleObservable(input, scheduler) {
+      return innerFrom(input).pipe(subscribeOn(scheduler), observeOn(scheduler));
+  }
+
+  function schedulePromise(input, scheduler) {
+      return innerFrom(input).pipe(subscribeOn(scheduler), observeOn(scheduler));
+  }
+
+  function scheduleArray(input, scheduler) {
+      return new Observable(function (subscriber) {
+          var i = 0;
+          return scheduler.schedule(function () {
+              if (i === input.length) {
+                  subscriber.complete();
+              }
+              else {
+                  subscriber.next(input[i++]);
+                  if (!subscriber.closed) {
+                      this.schedule();
+                  }
+              }
+          });
+      });
+  }
+
+  function scheduleIterable(input, scheduler) {
+      return new Observable(function (subscriber) {
+          var iterator$1;
+          executeSchedule(subscriber, scheduler, function () {
+              iterator$1 = input[iterator]();
+              executeSchedule(subscriber, scheduler, function () {
+                  var _a;
+                  var value;
+                  var done;
+                  try {
+                      (_a = iterator$1.next(), value = _a.value, done = _a.done);
+                  }
+                  catch (err) {
+                      subscriber.error(err);
+                      return;
+                  }
+                  if (done) {
+                      subscriber.complete();
+                  }
+                  else {
+                      subscriber.next(value);
+                  }
+              }, 0, true);
+          });
+          return function () { return isFunction(iterator$1 === null || iterator$1 === undefined ? undefined : iterator$1.return) && iterator$1.return(); };
+      });
+  }
+
+  function scheduleAsyncIterable(input, scheduler) {
+      if (!input) {
+          throw new Error('Iterable cannot be null');
+      }
+      return new Observable(function (subscriber) {
+          executeSchedule(subscriber, scheduler, function () {
+              var iterator = input[Symbol.asyncIterator]();
+              executeSchedule(subscriber, scheduler, function () {
+                  iterator.next().then(function (result) {
+                      if (result.done) {
+                          subscriber.complete();
+                      }
+                      else {
+                          subscriber.next(result.value);
+                      }
+                  });
+              }, 0, true);
+          });
+      });
+  }
+
+  function scheduleReadableStreamLike(input, scheduler) {
+      return scheduleAsyncIterable(readableStreamLikeToAsyncGenerator(input), scheduler);
+  }
+
+  function scheduled(input, scheduler) {
+      if (input != null) {
+          if (isInteropObservable(input)) {
+              return scheduleObservable(input, scheduler);
+          }
+          if (isArrayLike(input)) {
+              return scheduleArray(input, scheduler);
+          }
+          if (isPromise(input)) {
+              return schedulePromise(input, scheduler);
+          }
+          if (isAsyncIterable(input)) {
+              return scheduleAsyncIterable(input, scheduler);
+          }
+          if (isIterable(input)) {
+              return scheduleIterable(input, scheduler);
+          }
+          if (isReadableStreamLike(input)) {
+              return scheduleReadableStreamLike(input, scheduler);
+          }
+      }
+      throw createInvalidObservableTypeError(input);
+  }
+
   function from(input, scheduler) {
-      return innerFrom(input);
+      return scheduler ? scheduled(input, scheduler) : innerFrom(input);
+  }
+
+  function of() {
+      var args = [];
+      for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+      }
+      var scheduler = popScheduler(args);
+      return from(args, scheduler);
+  }
+
+  function throwError(errorOrErrorFactory, scheduler) {
+      var errorFactory = isFunction(errorOrErrorFactory) ? errorOrErrorFactory : function () { return errorOrErrorFactory; };
+      var init = function (subscriber) { return subscriber.error(errorFactory()); };
+      return new Observable(init);
+  }
+
+  function isObservable(obj) {
+      return !!obj && (obj instanceof Observable || (isFunction(obj.lift) && isFunction(obj.subscribe)));
   }
 
   var EmptyError = createErrorClass(function (_super) { return function EmptyErrorImpl() {
@@ -949,6 +1496,10 @@
       });
   }
 
+  function isValidDate$1(value) {
+      return value instanceof Date && !isNaN(value);
+  }
+
   function map(project, thisArg) {
       return operate(function (source, subscriber) {
           var index = 0;
@@ -960,14 +1511,14 @@
 
   var isArray$2 = Array.isArray;
   function callOrApply(fn, args) {
-      return isArray$2(args) ? fn.apply(void 0, __spreadArray([], __read(args))) : fn(args);
+      return isArray$2(args) ? fn.apply(undefined, __spreadArray([], __read(args))) : fn(args);
   }
   function mapOneOrManyArgs(fn) {
       return map(function (args) { return callOrApply(fn, args); });
   }
 
   function combineLatestInit(observables, scheduler, valueTransform) {
-      if (valueTransform === void 0) { valueTransform = identity; }
+      if (valueTransform === undefined) { valueTransform = identity; }
       return function (subscriber) {
           maybeSchedule(scheduler, function () {
               var length = observables.length;
@@ -976,7 +1527,7 @@
               var remainingFirstValues = length;
               var _loop_1 = function (i) {
                   maybeSchedule(scheduler, function () {
-                      var source = from(observables[i]);
+                      var source = from(observables[i], scheduler);
                       var hasFirstValue = false;
                       source.subscribe(createOperatorSubscriber(subscriber, function (value) {
                           values[i] = value;
@@ -1006,6 +1557,108 @@
       }
   }
 
+  function mergeInternals(source, subscriber, project, concurrent, onBeforeNext, expand, innerSubScheduler, additionalFinalizer) {
+      var buffer = [];
+      var active = 0;
+      var index = 0;
+      var isComplete = false;
+      var checkComplete = function () {
+          if (isComplete && !buffer.length && !active) {
+              subscriber.complete();
+          }
+      };
+      var outerNext = function (value) { return (active < concurrent ? doInnerSub(value) : buffer.push(value)); };
+      var doInnerSub = function (value) {
+          active++;
+          var innerComplete = false;
+          innerFrom(project(value, index++)).subscribe(createOperatorSubscriber(subscriber, function (innerValue) {
+              {
+                  subscriber.next(innerValue);
+              }
+          }, function () {
+              innerComplete = true;
+          }, undefined, function () {
+              if (innerComplete) {
+                  try {
+                      active--;
+                      var _loop_1 = function () {
+                          var bufferedValue = buffer.shift();
+                          if (innerSubScheduler) ;
+                          else {
+                              doInnerSub(bufferedValue);
+                          }
+                      };
+                      while (buffer.length && active < concurrent) {
+                          _loop_1();
+                      }
+                      checkComplete();
+                  }
+                  catch (err) {
+                      subscriber.error(err);
+                  }
+              }
+          }));
+      };
+      source.subscribe(createOperatorSubscriber(subscriber, outerNext, function () {
+          isComplete = true;
+          checkComplete();
+      }));
+      return function () {
+      };
+  }
+
+  function mergeMap(project, resultSelector, concurrent) {
+      if (concurrent === undefined) { concurrent = Infinity; }
+      if (isFunction(resultSelector)) {
+          return mergeMap(function (a, i) { return map(function (b, ii) { return resultSelector(a, b, i, ii); })(innerFrom(project(a, i))); }, concurrent);
+      }
+      else if (typeof resultSelector === 'number') {
+          concurrent = resultSelector;
+      }
+      return operate(function (source, subscriber) { return mergeInternals(source, subscriber, project, concurrent); });
+  }
+
+  function mergeAll(concurrent) {
+      return mergeMap(identity, concurrent);
+  }
+
+  function concatAll() {
+      return mergeAll(1);
+  }
+
+  function concat() {
+      var args = [];
+      for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+      }
+      return concatAll()(from(args, popScheduler(args)));
+  }
+
+  function defer(observableFactory) {
+      return new Observable(function (subscriber) {
+          innerFrom(observableFactory()).subscribe(subscriber);
+      });
+  }
+
+  function timer(dueTime, intervalOrScheduler, scheduler) {
+      if (scheduler === undefined) { scheduler = async; }
+      return new Observable(function (subscriber) {
+          var due = isValidDate$1(dueTime) ? 1e3 - scheduler.now() : dueTime;
+          if (due < 0) {
+              due = 0;
+          }
+          var n = 0;
+          return scheduler.schedule(function () {
+              if (!subscriber.closed) {
+                  subscriber.next(n++);
+                  {
+                      subscriber.complete();
+                  }
+              }
+          }, due);
+      });
+  }
+
   var isArray$1 = Array.isArray;
   function argsOrArgArray(args) {
       return args.length === 1 && isArray$1(args[0]) ? args[0] : args;
@@ -1018,6 +1671,30 @@
       });
   }
 
+  function catchError(selector) {
+      return operate(function (source, subscriber) {
+          var innerSub = null;
+          var syncUnsub = false;
+          var handledResult;
+          innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, undefined, function (err) {
+              handledResult = innerFrom(selector(err, catchError(selector)(source)));
+              if (innerSub) {
+                  innerSub.unsubscribe();
+                  innerSub = null;
+                  handledResult.subscribe(subscriber);
+              }
+              else {
+                  syncUnsub = true;
+              }
+          }));
+          if (syncUnsub) {
+              innerSub.unsubscribe();
+              innerSub = null;
+              handledResult.subscribe(subscriber);
+          }
+      });
+  }
+
   function combineLatest() {
       var args = [];
       for (var _i = 0; _i < arguments.length; _i++) {
@@ -1025,7 +1702,7 @@
       }
       var resultSelector = popResultSelector(args);
       return resultSelector
-          ? pipe(combineLatest.apply(void 0, __spreadArray([], __read(args))), mapOneOrManyArgs(resultSelector))
+          ? pipe(combineLatest.apply(undefined, __spreadArray([], __read(args))), mapOneOrManyArgs(resultSelector))
           : operate(function (source, subscriber) {
               combineLatestInit(__spreadArray([source], __read(argsOrArgArray(args))))(subscriber);
           });
@@ -1036,7 +1713,101 @@
       for (var _i = 0; _i < arguments.length; _i++) {
           otherSources[_i] = arguments[_i];
       }
-      return combineLatest.apply(void 0, __spreadArray([], __read(otherSources)));
+      return combineLatest.apply(undefined, __spreadArray([], __read(otherSources)));
+  }
+
+  function share(options) {
+      if (options === undefined) { options = {}; }
+      var _a = options.connector, connector = _a === undefined ? function () { return new Subject(); } : _a, _b = options.resetOnError, resetOnError = _b === undefined ? true : _b, _c = options.resetOnComplete, resetOnComplete = _c === undefined ? true : _c, _d = options.resetOnRefCountZero, resetOnRefCountZero = _d === undefined ? true : _d;
+      return function (wrapperSource) {
+          var connection;
+          var resetConnection;
+          var subject;
+          var refCount = 0;
+          var hasCompleted = false;
+          var hasErrored = false;
+          var cancelReset = function () {
+              resetConnection === null || resetConnection === undefined ? undefined : resetConnection.unsubscribe();
+              resetConnection = undefined;
+          };
+          var reset = function () {
+              cancelReset();
+              connection = subject = undefined;
+              hasCompleted = hasErrored = false;
+          };
+          var resetAndUnsubscribe = function () {
+              var conn = connection;
+              reset();
+              conn === null || conn === undefined ? undefined : conn.unsubscribe();
+          };
+          return operate(function (source, subscriber) {
+              refCount++;
+              if (!hasErrored && !hasCompleted) {
+                  cancelReset();
+              }
+              var dest = (subject = subject !== null && subject !== void 0 ? subject : connector());
+              subscriber.add(function () {
+                  refCount--;
+                  if (refCount === 0 && !hasErrored && !hasCompleted) {
+                      resetConnection = handleReset(resetAndUnsubscribe, resetOnRefCountZero);
+                  }
+              });
+              dest.subscribe(subscriber);
+              if (!connection &&
+                  refCount > 0) {
+                  connection = new SafeSubscriber({
+                      next: function (value) { return dest.next(value); },
+                      error: function (err) {
+                          hasErrored = true;
+                          cancelReset();
+                          resetConnection = handleReset(reset, resetOnError, err);
+                          dest.error(err);
+                      },
+                      complete: function () {
+                          hasCompleted = true;
+                          cancelReset();
+                          resetConnection = handleReset(reset, resetOnComplete);
+                          dest.complete();
+                      },
+                  });
+                  innerFrom(source).subscribe(connection);
+              }
+          })(wrapperSource);
+      };
+  }
+  function handleReset(reset, on) {
+      var args = [];
+      for (var _i = 2; _i < arguments.length; _i++) {
+          args[_i - 2] = arguments[_i];
+      }
+      if (on === true) {
+          reset();
+          return;
+      }
+      if (on === false) {
+          return;
+      }
+      var onSubscriber = new SafeSubscriber({
+          next: function () {
+              onSubscriber.unsubscribe();
+              reset();
+          },
+      });
+      return innerFrom(on.apply(undefined, __spreadArray([], __read(args)))).subscribe(onSubscriber);
+  }
+
+  function shareReplay(configOrBufferSize, windowTime, scheduler) {
+      var bufferSize;
+      var refCount = false;
+      {
+          bufferSize = (configOrBufferSize );
+      }
+      return share({
+          connector: function () { return new ReplaySubject(bufferSize, windowTime, scheduler); },
+          resetOnError: true,
+          resetOnComplete: false,
+          resetOnRefCountZero: refCount,
+      });
   }
 
   var s = { 0: 8203, 1: 8204, 2: 8205, 3: 8290, 4: 8291, 5: 8288, 6: 65279, 7: 8289, 8: 119155, 9: 119156, a: 119157, b: 119158, c: 119159, d: 119160, e: 119161, f: 119162 }, c = { 0: 8203, 1: 8204, 2: 8205, 3: 65279 }, u = new Array(4).fill(String.fromCodePoint(c[0])).join("");
@@ -1044,31 +1815,30 @@
     let e = JSON.stringify(t);
     return `${u}${Array.from(e).map((r) => {
     let n = r.charCodeAt(0);
-    if (n > 255)
-      throw new Error(`Only ASCII edit info can be encoded. Error attempting to encode ${e} on character ${r} (${n})`);
+    if (n > 255) throw new Error(`Only ASCII edit info can be encoded. Error attempting to encode ${e} on character ${r} (${n})`);
     return Array.from(n.toString(4).padStart(4, "0")).map((o) => String.fromCodePoint(c[o])).join("");
   }).join("")}`;
   }
   function I(t) {
-    return !Number.isNaN(Number(t)) || /[a-z]/i.test(t) && !/\d+(?:[-:\/]\d+){2}(?:T\d+(?:[-:\/]\d+){1,2}(\.\d+)?Z?)?/.test(t) ? !1 : !!Date.parse(t);
+    return !Number.isNaN(Number(t)) || /[a-z]/i.test(t) && !/\d+(?:[-:\/]\d+){2}(?:T\d+(?:[-:\/]\d+){1,2}(\.\d+)?Z?)?/.test(t) ? false : !!Date.parse(t);
   }
   function T(t) {
     try {
       new URL(t, t.startsWith("/") ? "https://acme.com" : void 0);
     } catch {
-      return !1;
+      return false;
     }
-    return !0;
+    return true;
   }
   function C(t, e, r = "auto") {
-    return r === !0 || r === "auto" && (I(t) || T(t)) ? t : `${t}${E(e)}`;
+    return r === true || r === "auto" && (I(t) || T(t)) ? t : `${t}${E(e)}`;
   }
   Object.fromEntries(Object.entries(c).map((t) => t.reverse()));
   Object.fromEntries(Object.entries(s).map((t) => t.reverse()));
   var S = `${Object.values(s).map((t) => `\\u{${t.toString(16)}}`).join("")}`, f = new RegExp(`[${S}]{4,}`, "gu");
   function _(t) {
     var e;
-    return { cleaned: t.replace(f, ""), encoded: ((e = t.match(f)) == null ? void 0 : e[0]) || "" };
+    return { cleaned: t.replace(f, ""), encoded: ((e = t.match(f)) == null ? undefined : e[0]) || "" };
   }
   function O(t) {
     return t && JSON.parse(_(JSON.stringify(t)).cleaned);
@@ -1103,7 +1873,7 @@
       statusCode: res.statusCode,
       responseBody: stringifyBody(body, res),
       message: "",
-      details: void 0
+      details: undefined
     };
     if (body.error && body.message)
       return props.message = `${body.error} - ${body.message}`, props;
@@ -1154,29 +1924,34 @@
         throw new ClientError(res);
       return res;
     }
-  }, printWarnings = {
-    onResponse: (res) => {
-      const warn = res.headers["x-sanity-warning"];
-      return (Array.isArray(warn) ? warn : [warn]).filter(Boolean).forEach((msg) => console.warn(msg)), res;
-    }
   };
+  function printWarnings() {
+    const seen = {};
+    return {
+      onResponse: (res) => {
+        const warn = res.headers["x-sanity-warning"], warnings = Array.isArray(warn) ? warn : [warn];
+        for (const msg of warnings)
+          !msg || seen[msg] || (seen[msg] = true, console.warn(msg));
+        return res;
+      }
+    };
+  }
   function defineHttpRequest(envMiddleware2) {
-    return d([
-      _$1({ shouldRetry }),
+    return p$1([
+      P({ shouldRetry }),
       ...envMiddleware2,
-      printWarnings,
-      v(),
+      printWarnings(),
       x(),
-      A(),
+      E$1(),
+      S$1(),
       httpError,
-      q({ implementation: Observable })
+      A({ implementation: Observable })
     ]);
   }
   function shouldRetry(err, attempt, options) {
-    if (options.maxRetries === 0)
-      return !1;
+    if (options.maxRetries === 0) return false;
     const isSafe = options.method === "GET" || options.method === "HEAD", isQuery = (options.uri || options.url).startsWith("/data/query"), isRetriableResponse = err.response && (err.response.statusCode === 429 || err.response.statusCode === 502 || err.response.statusCode === 503);
-    return (isSafe || isQuery) && isRetriableResponse ? !0 : _$1.shouldRetry(err, attempt, options);
+    return (isSafe || isQuery) && isRetriableResponse ? true : P.shouldRetry(err, attempt, options);
   }
   const BASE_URL = "https://www.sanity.io/help/";
   function generateHelpUrl(slug) {
@@ -1225,8 +2000,8 @@
     return tag;
   };
   function once(fn) {
-    let didCall = !1, returnValue;
-    return (...args) => (didCall || (returnValue = fn(...args), didCall = !0), returnValue);
+    let didCall = false, returnValue;
+    return (...args) => (didCall || (returnValue = fn(...args), didCall = true), returnValue);
   }
   const createWarningPrinter = (message) => (
     // eslint-disable-next-line no-console
@@ -1254,8 +2029,8 @@
   ]), defaultCdnHost = "apicdn.sanity.io", defaultConfig = {
     apiHost: "https://api.sanity.io",
     apiVersion: "1",
-    useProjectHostname: !0,
-    stega: { enabled: !1 }
+    useProjectHostname: true,
+    stega: { enabled: false }
   }, LOCALHOSTS = ["localhost", "127.0.0.1", "0.0.0.0"], isLocal = (host) => LOCALHOSTS.indexOf(host) !== -1;
   function validateApiVersion(apiVersion) {
     if (apiVersion === "1" || apiVersion === "X")
@@ -1315,17 +2090,123 @@
       );
     if (typeof newConfig.stega.enabled != "boolean")
       throw new Error(`stega.enabled must be a boolean, received ${newConfig.stega.enabled}`);
-    if (newConfig.stega.enabled && newConfig.stega.studioUrl === void 0)
+    if (newConfig.stega.enabled && newConfig.stega.studioUrl === undefined)
       throw new Error("stega.studioUrl must be defined when stega.enabled is true");
     if (newConfig.stega.enabled && typeof newConfig.stega.studioUrl != "string" && typeof newConfig.stega.studioUrl != "function")
       throw new Error(
         `stega.studioUrl must be a string or a function, received ${newConfig.stega.studioUrl}`
       );
     const isBrowser = typeof window < "u" && window.location && window.location.hostname, isLocalhost = isBrowser && isLocal(window.location.hostname);
-    isBrowser && isLocalhost && newConfig.token && newConfig.ignoreBrowserTokenWarning !== !0 ? printBrowserTokenWarning() : typeof newConfig.useCdn > "u" && printCdnWarning(), projectBased && projectId(newConfig.projectId), newConfig.dataset && dataset(newConfig.dataset), "requestTagPrefix" in newConfig && (newConfig.requestTagPrefix = newConfig.requestTagPrefix ? requestTag(newConfig.requestTagPrefix).replace(/\.+$/, "") : void 0), newConfig.apiVersion = `${newConfig.apiVersion}`.replace(/^v/, ""), newConfig.isDefaultApi = newConfig.apiHost === defaultConfig.apiHost, newConfig.useCdn === !0 && newConfig.withCredentials && printCdnAndWithCredentialsWarning(), newConfig.useCdn = newConfig.useCdn !== !1 && !newConfig.withCredentials, validateApiVersion(newConfig.apiVersion);
+    isBrowser && isLocalhost && newConfig.token && newConfig.ignoreBrowserTokenWarning !== true ? printBrowserTokenWarning() : typeof newConfig.useCdn > "u" && printCdnWarning(), projectBased && projectId(newConfig.projectId), newConfig.dataset && dataset(newConfig.dataset), "requestTagPrefix" in newConfig && (newConfig.requestTagPrefix = newConfig.requestTagPrefix ? requestTag(newConfig.requestTagPrefix).replace(/\.+$/, "") : undefined), newConfig.apiVersion = `${newConfig.apiVersion}`.replace(/^v/, ""), newConfig.isDefaultApi = newConfig.apiHost === defaultConfig.apiHost, newConfig.useCdn === true && newConfig.withCredentials && printCdnAndWithCredentialsWarning(), newConfig.useCdn = newConfig.useCdn !== false && !newConfig.withCredentials, validateApiVersion(newConfig.apiVersion);
     const hostParts = newConfig.apiHost.split("://", 2), protocol = hostParts[0], host = hostParts[1], cdnHost = newConfig.isDefaultApi ? defaultCdnHost : host;
     return newConfig.useProjectHostname ? (newConfig.url = `${protocol}://${newConfig.projectId}.${host}/v${newConfig.apiVersion}`, newConfig.cdnUrl = `${protocol}://${newConfig.projectId}.${cdnHost}/v${newConfig.apiVersion}`) : (newConfig.url = `${newConfig.apiHost}/v${newConfig.apiVersion}`, newConfig.cdnUrl = newConfig.url), newConfig;
   };
+  class ConnectionFailedError extends Error {
+    name = "ConnectionFailedError";
+  }
+  class DisconnectError extends Error {
+    name = "DisconnectError";
+    reason;
+    constructor(message, reason, options = {}) {
+      super(message, options), this.reason = reason;
+    }
+  }
+  class ChannelError extends Error {
+    name = "ChannelError";
+    data;
+    constructor(message, data) {
+      super(message), this.data = data;
+    }
+  }
+  class MessageError extends Error {
+    name = "MessageError";
+    data;
+    constructor(message, data, options = {}) {
+      super(message, options), this.data = data;
+    }
+  }
+  class MessageParseError extends Error {
+    name = "MessageParseError";
+  }
+  const REQUIRED_EVENTS = ["channelError", "disconnect"];
+  function connectEventSource(initEventSource, events) {
+    return defer(() => {
+      const es = initEventSource();
+      return isObservable(es) ? es : of(es);
+    }).pipe(mergeMap((es) => connectWithESInstance(es, events)));
+  }
+  function connectWithESInstance(es, events) {
+    return new Observable((observer) => {
+      const emitOpen = events.includes("open"), emitReconnect = events.includes("reconnect");
+      function onError(evt) {
+        if ("data" in evt) {
+          const [parseError, event] = parseEvent(evt);
+          observer.error(
+            parseError ? new MessageParseError("Unable to parse EventSource error message", { cause: event }) : new MessageError((event?.data).message, event)
+          );
+          return;
+        }
+        es.readyState === es.CLOSED ? observer.error(new ConnectionFailedError("EventSource connection failed")) : emitReconnect && observer.next({ type: "reconnect" });
+      }
+      function onOpen() {
+        observer.next({ type: "open" });
+      }
+      function onMessage(message) {
+        const [parseError, event] = parseEvent(message);
+        if (parseError) {
+          observer.error(
+            new MessageParseError("Unable to parse EventSource message", { cause: parseError })
+          );
+          return;
+        }
+        if (message.type === "channelError") {
+          observer.error(new ChannelError(extractErrorMessage(event?.data), event.data));
+          return;
+        }
+        if (message.type === "disconnect") {
+          observer.error(
+            new DisconnectError(
+              `Server disconnected client: ${event.data?.reason || "unknown error"}`
+            )
+          );
+          return;
+        }
+        observer.next({
+          type: message.type,
+          id: message.lastEventId,
+          ...event.data ? { data: event.data } : {}
+        });
+      }
+      es.addEventListener("error", onError), emitOpen && es.addEventListener("open", onOpen);
+      const cleanedEvents = [.../* @__PURE__ */ new Set([...REQUIRED_EVENTS, ...events])].filter((type) => type !== "error" && type !== "open" && type !== "reconnect");
+      return cleanedEvents.forEach((type) => es.addEventListener(type, onMessage)), () => {
+        es.removeEventListener("error", onError), emitOpen && es.removeEventListener("open", onOpen), cleanedEvents.forEach((type) => es.removeEventListener(type, onMessage)), es.close();
+      };
+    });
+  }
+  function parseEvent(message) {
+    try {
+      const data = typeof message.data == "string" && JSON.parse(message.data);
+      return [
+        null,
+        {
+          type: message.type,
+          id: message.lastEventId,
+          ...isEmptyObject(data) ? {} : { data }
+        }
+      ];
+    } catch (err) {
+      return [err, null];
+    }
+  }
+  function extractErrorMessage(err) {
+    return err.error ? err.error.description ? err.error.description : typeof err.error == "string" ? err.error : JSON.stringify(err.error, null, 2) : err.message || "Unknown listener error";
+  }
+  function isEmptyObject(data) {
+    for (const _ in data)
+      return false;
+    return true;
+  }
   function getSelection(sel) {
     if (typeof sel == "string")
       return { id: sel };
@@ -1469,13 +2350,13 @@ ${selectionOpts}`);
     reset() {
       return this.operations = {}, this;
     }
-    _assign(op, props, merge = !0) {
+    _assign(op, props, merge = true) {
       return validateObject(op, props), this.operations = Object.assign({}, this.operations, {
         [op]: Object.assign({}, merge && this.operations[op] || {}, props)
       }), this;
     }
     _set(op, props) {
-      return this._assign(op, props, !1);
+      return this._assign(op, props, false);
     }
   }
   class ObservablePatch extends BasePatch {
@@ -1494,7 +2375,7 @@ ${selectionOpts}`);
         throw new Error(
           "No `client` passed to patch, either provide one or pass the patch to a clients `mutate()` method"
         );
-      const returnFirst = typeof this.selection == "string", opts = Object.assign({ returnFirst, returnDocuments: !0 }, options);
+      const returnFirst = typeof this.selection == "string", opts = Object.assign({ returnFirst, returnDocuments: true }, options);
       return this.#client.mutate({ patch: this.serialize() }, opts);
     }
   }
@@ -1514,11 +2395,11 @@ ${selectionOpts}`);
         throw new Error(
           "No `client` passed to patch, either provide one or pass the patch to a clients `mutate()` method"
         );
-      const returnFirst = typeof this.selection == "string", opts = Object.assign({ returnFirst, returnDocuments: !0 }, options);
+      const returnFirst = typeof this.selection == "string", opts = Object.assign({ returnFirst, returnDocuments: true }, options);
       return this.#client.mutate({ patch: this.serialize() }, opts);
     }
   }
-  const defaultMutateOptions = { returnDocuments: !1 };
+  const defaultMutateOptions = { returnDocuments: false };
   class BaseTransaction {
     operations;
     trxId;
@@ -1610,13 +2491,17 @@ ${selectionOpts}`);
       );
     }
     patch(patchOrDocumentId, patchOps) {
-      const isBuilder = typeof patchOps == "function";
-      if (typeof patchOrDocumentId != "string" && patchOrDocumentId instanceof Patch)
+      const isBuilder = typeof patchOps == "function", isPatch = typeof patchOrDocumentId != "string" && patchOrDocumentId instanceof Patch, isMutationSelection = typeof patchOrDocumentId == "object" && ("query" in patchOrDocumentId || "id" in patchOrDocumentId);
+      if (isPatch)
         return this._add({ patch: patchOrDocumentId.serialize() });
       if (isBuilder) {
         const patch = patchOps(new Patch(patchOrDocumentId, {}, this.#client));
         if (!(patch instanceof Patch))
           throw new Error("function passed to `patch()` must return the patch");
+        return this._add({ patch: patch.serialize() });
+      }
+      if (isMutationSelection) {
+        const patch = new Patch(patchOrDocumentId, patchOps || {}, this.#client);
         return this._add({ patch: patch.serialize() });
       }
       return this._add({ patch: { id: patchOrDocumentId, ...patchOps } });
@@ -1665,7 +2550,7 @@ ${selectionOpts}`);
       headers: Object.assign({}, headers, overrides.headers || {}),
       timeout: typeof timeout > "u" ? 5 * 60 * 1e3 : timeout,
       proxy: overrides.proxy || config.proxy,
-      json: !0,
+      json: true,
       withCredentials,
       fetch: typeof overrides.fetch == "object" && typeof config.fetch == "object" ? { ...config.fetch, ...overrides.fetch } : overrides.fetch || config.fetch
     });
@@ -1681,11 +2566,11 @@ ${selectionOpts}`);
       searchParams.append(`$${key}`, JSON.stringify(value));
     for (const [key, value] of Object.entries(opts))
       value && searchParams.append(key, `${value}`);
-    return returnQuery === !1 && searchParams.append("returnQuery", "false"), includeMutations === !1 && searchParams.append("includeMutations", "false"), `?${searchParams}`;
-  }, excludeFalsey = (param, defValue) => param === !1 ? void 0 : typeof param > "u" ? defValue : param, getMutationQuery = (options = {}) => ({
+    return returnQuery === false && searchParams.append("returnQuery", "false"), includeMutations === false && searchParams.append("includeMutations", "false"), `?${searchParams}`;
+  }, excludeFalsey = (param, defValue) => param === false ? undefined : typeof param > "u" ? defValue : param, getMutationQuery = (options = {}) => ({
     dryRun: options.dryRun,
-    returnIds: !0,
-    returnDocuments: excludeFalsey(options.returnDocuments, !0),
+    returnIds: true,
+    returnDocuments: excludeFalsey(options.returnDocuments, true),
     visibility: options.visibility || "sync",
     autoGenerateArrayKeys: options.autoGenerateArrayKeys,
     skipCrossDatasetReferenceValidation: options.skipCrossDatasetReferenceValidation
@@ -1694,7 +2579,7 @@ ${selectionOpts}`);
     const stega = "stega" in options ? {
       ..._stega || {},
       ...typeof options.stega == "boolean" ? { enabled: options.stega } : options.stega || {}
-    } : _stega, params = stega.enabled ? stegaClean(_params) : _params, mapResponse = options.filterResponse === !1 ? (res) => res : (res) => res.result, { cache, next, ...opts } = {
+    } : _stega, params = stega.enabled ? stegaClean(_params) : _params, mapResponse = options.filterResponse === false ? (res) => res : (res) => res.result, { cache, next, ...opts } = {
       // Opt out of setting a `signal` on an internal `fetch` if one isn't provided.
       // This is necessary in React Server Components to avoid opting out of Request Memoization.
       useAbortSignal: typeof options.signal < "u",
@@ -1703,7 +2588,7 @@ ${selectionOpts}`);
       ...options,
       // Default to not returning the query, unless `filterResponse` is `false`,
       // or `returnQuery` is explicitly set. `true` is the default in Content Lake, so skip if truthy
-      returnQuery: options.filterResponse === !1 && options.returnQuery !== !1
+      returnQuery: options.filterResponse === false && options.returnQuery !== false
     }, reqOpts = typeof cache < "u" || typeof next < "u" ? { ...opts, fetch: { cache, next } } : opts, $request = _dataRequest(client, httpRequest, "query", { query, params }, reqOpts);
     return stega.enabled ? $request.pipe(
       combineLatestWith(
@@ -1726,7 +2611,7 @@ ${selectionOpts}`);
   function _getDocument(client, httpRequest, id, opts = {}) {
     const options = {
       uri: _getDataUrl(client, "doc", id),
-      json: !0,
+      json: true,
       tag: opts.tag,
       signal: opts.signal
     };
@@ -1738,7 +2623,7 @@ ${selectionOpts}`);
   function _getDocuments(client, httpRequest, ids, opts = {}) {
     const options = {
       uri: _getDataUrl(client, "doc", ids.join(",")),
-      json: !0,
+      json: true,
       tag: opts.tag,
       signal: opts.signal
     };
@@ -1768,11 +2653,11 @@ ${selectionOpts}`);
   function _mutate(client, httpRequest, mutations, options) {
     let mut;
     mutations instanceof Patch || mutations instanceof ObservablePatch ? mut = { patch: mutations.serialize() } : mutations instanceof Transaction || mutations instanceof ObservableTransaction ? mut = mutations.serialize() : mut = mutations;
-    const muts = Array.isArray(mut) ? mut : [mut], transactionId = options && options.transactionId || void 0;
+    const muts = Array.isArray(mut) ? mut : [mut], transactionId = options && options.transactionId || undefined;
     return _dataRequest(client, httpRequest, "mutate", { mutations: muts, transactionId }, options);
   }
   function _action(client, httpRequest, actions, options) {
-    const acts = Array.isArray(actions) ? actions : [actions], transactionId = options && options.transactionId || void 0, skipCrossDatasetReferenceValidation = options && options.skipCrossDatasetReferenceValidation || void 0, dryRun = options && options.dryRun || void 0;
+    const acts = Array.isArray(actions) ? actions : [actions], transactionId = options && options.transactionId || undefined, skipCrossDatasetReferenceValidation = options && options.skipCrossDatasetReferenceValidation || undefined, dryRun = options && options.dryRun || undefined;
     return _dataRequest(
       client,
       httpRequest,
@@ -1785,8 +2670,8 @@ ${selectionOpts}`);
     const isMutation = endpoint === "mutate", isAction = endpoint === "actions", isQuery = endpoint === "query", strQuery = isMutation || isAction ? "" : encodeQueryString(body), useGet = !isMutation && !isAction && strQuery.length < getQuerySizeLimit, stringQuery = useGet ? strQuery : "", returnFirst = options.returnFirst, { timeout, token, tag, headers, returnQuery, lastLiveEventId, cacheMode } = options, uri = _getDataUrl(client, endpoint, stringQuery), reqOptions = {
       method: useGet ? "GET" : "POST",
       uri,
-      json: !0,
-      body: useGet ? void 0 : body,
+      json: true,
+      body: useGet ? undefined : body,
       query: isMutation && getMutationQuery(options),
       timeout,
       headers,
@@ -1822,7 +2707,7 @@ ${selectionOpts}`);
     );
   }
   function _create(client, httpRequest, doc, op, options = {}) {
-    const mutation = { [op]: doc }, opts = Object.assign({ returnFirst: !0, returnDocuments: !0 }, options);
+    const mutation = { [op]: doc }, opts = Object.assign({ returnFirst: true, returnDocuments: true }, options);
     return _dataRequest(client, httpRequest, "mutate", { mutations: [mutation] }, opts);
   }
   function _requestObservable(client, httpRequest, options) {
@@ -1831,12 +2716,12 @@ ${selectionOpts}`);
     const tag = options.tag && config.requestTagPrefix ? [config.requestTagPrefix, options.tag].join(".") : options.tag || config.requestTagPrefix;
     if (tag && options.tag !== null && (options.query = { tag: requestTag(tag), ...options.query }), ["GET", "HEAD", "POST"].indexOf(options.method || "GET") >= 0 && uri.indexOf("/data/query/") === 0) {
       const resultSourceMap = options.resultSourceMap ?? config.resultSourceMap;
-      resultSourceMap !== void 0 && resultSourceMap !== !1 && (options.query = { resultSourceMap, ...options.query });
+      resultSourceMap !== undefined && resultSourceMap !== false && (options.query = { resultSourceMap, ...options.query });
       const perspectiveOption = options.perspective || config.perspective;
       typeof perspectiveOption < "u" && (validateApiPerspective(perspectiveOption), options.query = {
         perspective: Array.isArray(perspectiveOption) ? perspectiveOption.join(",") : perspectiveOption,
         ...options.query
-      }, perspectiveOption === "previewDrafts" && useCdn && (useCdn = !1, printCdnPreviewDraftsWarning())), options.lastLiveEventId && (options.query = { ...options.query, lastLiveEventId: options.lastLiveEventId }), options.returnQuery === !1 && (options.query = { returnQuery: "false", ...options.query }), useCdn && options.cacheMode == "noStale" && (options.query = { cacheMode: "noStale", ...options.query });
+      }, perspectiveOption === "previewDrafts" && useCdn && (useCdn = false, printCdnPreviewDraftsWarning())), options.lastLiveEventId && (options.query = { ...options.query, lastLiveEventId: options.lastLiveEventId }), options.returnQuery === false && (options.query = { returnQuery: "false", ...options.query }), useCdn && options.cacheMode == "noStale" && (options.query = { cacheMode: "noStale", ...options.query });
     }
     const reqOptions = requestOptions(
       config,
@@ -1858,7 +2743,7 @@ ${selectionOpts}`);
     const config = client.config(), catalog = hasDataset(config), baseUri = `/${operation}/${catalog}`;
     return `/data${path ? `${baseUri}/${path}` : baseUri}`.replace(/\/($|\?)/, "$1");
   }
-  function _getUrl(client, uri, canUseCdn = !1) {
+  function _getUrl(client, uri, canUseCdn = false) {
     const { url, cdnUrl } = client.config();
     return `${canUseCdn ? cdnUrl : url}/${uri.replace(/^\//, "")}`;
   }
@@ -1912,7 +2797,7 @@ ${selectionOpts}`);
   }
   function _upload(client, httpRequest, assetType, body, opts = {}) {
     validateAssetType(assetType);
-    let meta = opts.extract || void 0;
+    let meta = opts.extract || undefined;
     meta && !meta.length && (meta = ["none"]);
     const dataset2 = hasDataset(client.config()), assetEndpoint = assetType === "image" ? "images" : "files", options = optionsFromFile(opts, body), { tag, label, title, description, creditLine, filename, source } = options, query = {
       label,
@@ -1935,14 +2820,25 @@ ${selectionOpts}`);
   function optionsFromFile(opts, file) {
     return typeof File > "u" || !(file instanceof File) ? opts : Object.assign(
       {
-        filename: opts.preserveFilename === !1 ? void 0 : file.name,
+        filename: opts.preserveFilename === false ? undefined : file.name,
         contentType: file.type
       },
       opts
     );
   }
   var defaults = (obj, defaults2) => Object.keys(defaults2).concat(Object.keys(obj)).reduce((target, prop) => (target[prop] = typeof obj[prop] > "u" ? defaults2[prop] : obj[prop], target), {});
-  const pick = (obj, props) => props.reduce((selection, prop) => (typeof obj[prop] > "u" || (selection[prop] = obj[prop]), selection), {}), MAX_URL_LENGTH = 14800, possibleOptions = [
+  const pick = (obj, props) => props.reduce((selection, prop) => (typeof obj[prop] > "u" || (selection[prop] = obj[prop]), selection), {}), eventSourcePolyfill = defer(() => Promise.resolve().then(function () { return browser$1; })).pipe(
+    map(({ default: EventSource2 }) => EventSource2),
+    shareReplay(1)
+  );
+  function reconnectOnConnectionFailure() {
+    return function(source) {
+      return source.pipe(
+        catchError((err, caught) => err instanceof ConnectionFailedError ? concat(of({ type: "reconnect" }), timer(1e3).pipe(mergeMap(() => caught))) : throwError(() => err))
+      );
+    };
+  }
+  const MAX_URL_LENGTH = 14800, possibleOptions = [
     "includePreviousRevision",
     "includeResult",
     "includeMutations",
@@ -1950,73 +2846,28 @@ ${selectionOpts}`);
     "effectFormat",
     "tag"
   ], defaultOptions = {
-    includeResult: !0
+    includeResult: true
   };
   function _listen(query, params, opts = {}) {
     const { url, token, withCredentials, requestTagPrefix } = this.config(), tag = opts.tag && requestTagPrefix ? [requestTagPrefix, opts.tag].join(".") : opts.tag, options = { ...defaults(opts, defaultOptions), tag }, listenOpts = pick(options, possibleOptions), qs = encodeQueryString({ query, params, options: { tag, ...listenOpts } }), uri = `${url}${_getDataUrl(this, "listen", qs)}`;
     if (uri.length > MAX_URL_LENGTH)
-      return new Observable((observer) => observer.error(new Error("Query too large for listener")));
-    const listenFor = options.events ? options.events : ["mutation"], shouldEmitReconnect = listenFor.indexOf("reconnect") !== -1, esOptions = {};
-    return (token || withCredentials) && (esOptions.withCredentials = !0), token && (esOptions.headers = {
+      return throwError(() => new Error("Query too large for listener"));
+    const listenFor = options.events ? options.events : ["mutation"], esOptions = {};
+    return (token || withCredentials) && (esOptions.withCredentials = true), token && (esOptions.headers = {
       Authorization: `Bearer ${token}`
-    }), new Observable((observer) => {
-      let es, reconnectTimer, stopped = !1, unsubscribed = !1;
-      open();
-      function onError() {
-        stopped || (emitReconnect(), !stopped && es.readyState === es.CLOSED && (unsubscribe(), clearTimeout(reconnectTimer), reconnectTimer = setTimeout(open, 100)));
-      }
-      function onChannelError(err) {
-        observer.error(cooerceError(err));
-      }
-      function onMessage(evt) {
-        const event = parseEvent$1(evt);
-        return event instanceof Error ? observer.error(event) : observer.next(event);
-      }
-      function onDisconnect() {
-        stopped = !0, unsubscribe(), observer.complete();
-      }
-      function unsubscribe() {
-        es && (es.removeEventListener("error", onError), es.removeEventListener("channelError", onChannelError), es.removeEventListener("disconnect", onDisconnect), listenFor.forEach((type) => es.removeEventListener(type, onMessage)), es.close());
-      }
-      function emitReconnect() {
-        shouldEmitReconnect && observer.next({ type: "reconnect" });
-      }
-      async function getEventSource() {
-        const { default: EventSource2 } = await Promise.resolve().then(function () { return browser$1; });
-        if (unsubscribed)
-          return;
-        const evs = new EventSource2(uri, esOptions);
-        return evs.addEventListener("error", onError), evs.addEventListener("channelError", onChannelError), evs.addEventListener("disconnect", onDisconnect), listenFor.forEach((type) => evs.addEventListener(type, onMessage)), evs;
-      }
-      function open() {
-        getEventSource().then((eventSource) => {
-          eventSource && (es = eventSource, unsubscribed && unsubscribe());
-        }).catch((reason) => {
-          observer.error(reason), stop();
-        });
-      }
-      function stop() {
-        stopped = !0, unsubscribe(), unsubscribed = !0;
-      }
-      return stop;
-    });
-  }
-  function parseEvent$1(event) {
-    try {
-      const data = event.data && JSON.parse(event.data) || {};
-      return Object.assign({ type: event.type }, data);
-    } catch (err) {
-      return err;
-    }
-  }
-  function cooerceError(err) {
-    if (err instanceof Error)
-      return err;
-    const evt = parseEvent$1(err);
-    return evt instanceof Error ? evt : new Error(extractErrorMessage(evt));
-  }
-  function extractErrorMessage(err) {
-    return err.error ? err.error.description ? err.error.description : typeof err.error == "string" ? err.error : JSON.stringify(err.error, null, 2) : err.message || "Unknown listener error";
+    }), connectEventSource(() => (
+      // use polyfill if there is no global EventSource or if we need to set headers
+      (typeof EventSource > "u" || esOptions.headers ? eventSourcePolyfill : of(EventSource)).pipe(map((EventSource2) => new EventSource2(uri, esOptions)))
+    ), listenFor).pipe(
+      reconnectOnConnectionFailure(),
+      filter((event) => listenFor.includes(event.type)),
+      map(
+        (event) => ({
+          type: event.type,
+          ..."data" in event ? event.data : {}
+        })
+      )
+    );
   }
   const requiredApiVersion = "2021-03-26";
   class LiveClient {
@@ -2028,7 +2879,7 @@ ${selectionOpts}`);
      * Requires `apiVersion` to be `2021-03-26` or later.
      */
     events({
-      includeDrafts = !1,
+      includeDrafts = false,
       tag: _tag
     } = {}) {
       const {
@@ -2050,77 +2901,55 @@ ${selectionOpts}`);
         throw new Error(
           "The live events API requires API version X when 'includeDrafts: true'. This API is experimental and may change or even be removed."
         );
-      const path = _getDataUrl(this.#client, "live/events"), url = new URL(this.#client.getUrl(path, !1)), tag = _tag && requestTagPrefix ? [requestTagPrefix, _tag].join(".") : _tag;
+      const path = _getDataUrl(this.#client, "live/events"), url = new URL(this.#client.getUrl(path, false)), tag = _tag && requestTagPrefix ? [requestTagPrefix, _tag].join(".") : _tag;
       tag && url.searchParams.set("tag", tag), includeDrafts && url.searchParams.set("includeDrafts", "true");
-      const listenFor = ["restart", "message", "welcome", "reconnect"], esOptions = {};
-      return includeDrafts && token && (esOptions.headers = {
+      const esOptions = {};
+      includeDrafts && token && (esOptions.headers = {
         Authorization: `Bearer ${token}`
-      }), includeDrafts && withCredentials && (esOptions.withCredentials = !0), new Observable((observer) => {
-        let es, reconnectTimer, stopped = !1, unsubscribed = !1;
-        open();
-        function onError(evt) {
-          if (!stopped) {
-            if ("data" in evt) {
-              const event = parseEvent(evt);
-              observer.error(new Error(event.message, { cause: event }));
-            }
-            es.readyState === es.CLOSED && (unsubscribe(), clearTimeout(reconnectTimer), reconnectTimer = setTimeout(open, 100));
+      }), includeDrafts && withCredentials && (esOptions.withCredentials = true);
+      const events = connectEventSource(() => (
+        // use polyfill if there is no global EventSource or if we need to set headers
+        (typeof EventSource > "u" || esOptions.headers ? eventSourcePolyfill : of(EventSource)).pipe(map((EventSource2) => new EventSource2(url.href, esOptions)))
+      ), [
+        "message",
+        "restart",
+        "welcome",
+        "reconnect"
+      ]).pipe(
+        reconnectOnConnectionFailure(),
+        map((event) => {
+          if (event.type === "message") {
+            const { data, ...rest } = event;
+            return { ...rest, tags: data.tags };
           }
-        }
-        function onMessage(evt) {
-          const event = parseEvent(evt);
-          return event instanceof Error ? observer.error(event) : observer.next(event);
-        }
-        function unsubscribe() {
-          if (es) {
-            es.removeEventListener("error", onError);
-            for (const type of listenFor)
-              es.removeEventListener(type, onMessage);
-            es.close();
-          }
-        }
-        async function getEventSource() {
-          const EventSourceImplementation = typeof EventSource > "u" || esOptions.headers || esOptions.withCredentials ? (await Promise.resolve().then(function () { return browser$1; })).default : EventSource;
-          if (unsubscribed)
-            return;
-          try {
-            if (await fetch(url, {
-              method: "OPTIONS",
-              mode: "cors",
-              credentials: esOptions.withCredentials ? "include" : "omit",
-              headers: esOptions.headers
-            }), unsubscribed)
-              return;
-          } catch {
-            throw new CorsOriginError({ projectId: projectId2 });
-          }
-          const evs = new EventSourceImplementation(url.toString(), esOptions);
-          evs.addEventListener("error", onError);
-          for (const type of listenFor)
-            evs.addEventListener(type, onMessage);
-          return evs;
-        }
-        function open() {
-          getEventSource().then((eventSource) => {
-            eventSource && (es = eventSource, unsubscribed && unsubscribe());
-          }).catch((reason) => {
-            observer.error(reason), stop();
-          });
-        }
-        function stop() {
-          stopped = !0, unsubscribe(), unsubscribed = !0;
-        }
-        return stop;
-      });
+          return event;
+        })
+      ), checkCors = fetchObservable(url, {
+        method: "OPTIONS",
+        mode: "cors",
+        credentials: esOptions.withCredentials ? "include" : "omit",
+        headers: esOptions.headers
+      }).pipe(
+        mergeMap(() => EMPTY),
+        catchError(() => {
+          throw new CorsOriginError({ projectId: projectId2 });
+        })
+      );
+      return concat(checkCors, events);
     }
   }
-  function parseEvent(event) {
-    try {
-      const data = event.data && JSON.parse(event.data) || {};
-      return { type: event.type, id: event.lastEventId, ...data };
-    } catch (err) {
-      return err;
-    }
+  function fetchObservable(url, init) {
+    return new Observable((observer) => {
+      const controller = new AbortController(), signal = controller.signal;
+      return fetch(url, { ...init, signal: controller.signal }).then(
+        (response) => {
+          observer.next(response), observer.complete();
+        },
+        (err) => {
+          signal.aborted || observer.error(err);
+        }
+      ), () => controller.abort();
+    });
   }
   class ObservableDatasetsClient {
     #client;
@@ -2224,7 +3053,7 @@ ${selectionOpts}`);
       this.#client = client, this.#httpRequest = httpRequest;
     }
     list(options) {
-      const uri = options?.includeMembers === !1 ? "/projects?includeMembers=false" : "/projects";
+      const uri = options?.includeMembers === false ? "/projects?includeMembers=false" : "/projects";
       return _request(this.#client, this.#httpRequest, { uri });
     }
     /**
@@ -2243,7 +3072,7 @@ ${selectionOpts}`);
       this.#client = client, this.#httpRequest = httpRequest;
     }
     list(options) {
-      const uri = options?.includeMembers === !1 ? "/projects?includeMembers=false" : "/projects";
+      const uri = options?.includeMembers === false ? "/projects?includeMembers=false" : "/projects";
       return lastValueFrom(_request(this.#client, this.#httpRequest, { uri }));
     }
     /**
@@ -2320,9 +3149,9 @@ ${selectionOpts}`);
       return new ObservableSanityClient(this.#httpRequest, this.config());
     }
     config(newConfig) {
-      if (newConfig === void 0)
+      if (newConfig === undefined)
         return { ...this.#clientConfig };
-      if (this.#clientConfig && this.#clientConfig.allowReconfigure === !1)
+      if (this.#clientConfig && this.#clientConfig.allowReconfigure === false)
         throw new Error(
           "Existing client instance cannot be reconfigured - use `withConfig(newConfig)` to return a new client"
         );
@@ -2473,9 +3302,9 @@ ${selectionOpts}`);
       return new SanityClient(this.#httpRequest, this.config());
     }
     config(newConfig) {
-      if (newConfig === void 0)
+      if (newConfig === undefined)
         return { ...this.#clientConfig };
-      if (this.#clientConfig && this.#clientConfig.allowReconfigure === !1)
+      if (this.#clientConfig && this.#clientConfig.allowReconfigure === false)
         throw new Error(
           "Existing client instance cannot be reconfigured - use `withConfig(newConfig)` to return a new client"
         );
@@ -2622,16 +3451,18 @@ ${selectionOpts}`);
     }
   }
   function defineCreateClientExports(envMiddleware2, ClassConstructor) {
-    const defaultRequester = defineHttpRequest(envMiddleware2);
-    return { requester: defaultRequester, createClient: (config) => new ClassConstructor(
-      (options, requester2) => (requester2 || defaultRequester)({
-        maxRedirects: 0,
-        maxRetries: config.maxRetries,
-        retryDelay: config.retryDelay,
-        ...options
-      }),
-      config
-    ) };
+    return { requester: defineHttpRequest(envMiddleware2), createClient: (config) => {
+      const clientRequester = defineHttpRequest(envMiddleware2);
+      return new ClassConstructor(
+        (options, requester2) => (requester2 || clientRequester)({
+          maxRedirects: 0,
+          maxRetries: config.maxRetries,
+          retryDelay: config.retryDelay,
+          ...options
+        }),
+        config
+      );
+    } };
   }
   function defineDeprecatedCreateClient(createClient2) {
     return function(config) {
@@ -2686,16 +3517,16 @@ ${selectionOpts}`);
     const parsed = [], parseRe = /\['(.*?)'\]|\[(\d+)\]|\[\?\(@\._key=='(.*?)'\)\]/g;
     let match;
     for (; (match = parseRe.exec(path)) !== null; ) {
-      if (match[1] !== void 0) {
+      if (match[1] !== undefined) {
         const key = match[1].replace(/\\(\\|f|n|r|t|')/g, (m) => UNESCAPE[m]);
         parsed.push(key);
         continue;
       }
-      if (match[2] !== void 0) {
+      if (match[2] !== undefined) {
         parsed.push(parseInt(match[2], 10));
         continue;
       }
-      if (match[3] !== void 0) {
+      if (match[3] !== undefined) {
         const _key = match[3].replace(/\\(\\')/g, (m) => UNESCAPE[m]);
         parsed.push({
           _key,
@@ -2730,7 +3561,7 @@ ${selectionOpts}`);
     if (!csm?.mappings)
       return;
     const resultMappingPath = jsonPath(jsonPathToMappingPath(resultPath));
-    if (csm.mappings[resultMappingPath] !== void 0)
+    if (csm.mappings[resultMappingPath] !== undefined)
       return {
         mapping: csm.mappings[resultMappingPath],
         matchedPath: resultMappingPath,
@@ -2811,7 +3642,7 @@ ${selectionOpts}`);
       throw new Error("id is required");
     if (baseUrl !== "/" && baseUrl.endsWith("/"))
       throw new Error("baseUrl must not end with a slash");
-    const workspace = _workspace === "default" ? void 0 : _workspace, tool = _tool === "default" ? void 0 : _tool, id = getPublishedId(_id), stringifiedPath = Array.isArray(path) ? toString(jsonPathToStudioPath(path)) : path, searchParams = new URLSearchParams({
+    const workspace = _workspace === "default" ? undefined : _workspace, tool = _tool === "default" ? undefined : _tool, id = getPublishedId(_id), stringifiedPath = Array.isArray(path) ? toString(jsonPathToStudioPath(path)) : path, searchParams = new URLSearchParams({
       baseUrl,
       id,
       type,
@@ -2834,7 +3665,7 @@ ${selectionOpts}`);
   }
   const filterDefault = ({ sourcePath, resultPath, value }) => {
     if (isValidDate(value) || isValidURL(value))
-      return !1;
+      return false;
     const endPath = sourcePath.at(-1);
     return !(sourcePath.at(-2) === "slug" && endPath === "current" || typeof endPath == "string" && (endPath.startsWith("_") || endPath.endsWith("Id")) || sourcePath.some(
       (path) => path === "meta" || path === "metadata" || path === "openGraph" || path === "seo"
@@ -2881,15 +3712,15 @@ ${selectionOpts}`);
     "website"
   ]);
   function isValidDate(dateString) {
-    return /^\d{4}-\d{2}-\d{2}/.test(dateString) ? !!Date.parse(dateString) : !1;
+    return /^\d{4}-\d{2}-\d{2}/.test(dateString) ? !!Date.parse(dateString) : false;
   }
   function isValidURL(url) {
     try {
       new URL(url, url.startsWith("/") ? "https://acme.com" : void 0);
     } catch {
-      return !1;
+      return false;
     }
-    return !0;
+    return true;
   }
   function hasTypeLike(path) {
     return path.some((segment) => typeof segment == "string" && segment.match(/type/i) !== null);
@@ -2918,7 +3749,7 @@ ${selectionOpts}`);
       result,
       resultSourceMap,
       ({ sourcePath, sourceDocument, resultPath, value }) => {
-        if ((typeof filter == "function" ? filter({ sourcePath, resultPath, filterDefault, sourceDocument, value }) : filterDefault({ sourcePath, resultPath, filterDefault, sourceDocument, value })) === !1)
+        if ((typeof filter == "function" ? filter({ sourcePath, resultPath, filterDefault, sourceDocument, value }) : filterDefault({ sourcePath, resultPath, filterDefault, sourceDocument, value })) === false)
           return logger && report.skipped.push({
             path: prettyPathForLogging(sourcePath),
             value: `${value.slice(0, TRUNCATE_LENGTH)}${value.length > TRUNCATE_LENGTH ? "..." : ""}`,
@@ -2932,8 +3763,7 @@ ${selectionOpts}`);
         const { baseUrl, workspace, tool } = resolveStudioBaseRoute(
           typeof config.studioUrl == "function" ? config.studioUrl(sourceDocument) : config.studioUrl
         );
-        if (!baseUrl)
-          return value;
+        if (!baseUrl) return value;
         const { _id: id, _type: type, _projectId: projectId, _dataset: dataset } = sourceDocument;
         return C(
           value,
@@ -2950,7 +3780,7 @@ ${selectionOpts}`);
             })
           },
           // We use custom logic to determine if we should skip encoding
-          !1
+          false
         );
       }
     );
@@ -4054,15 +4884,20 @@ ${selectionOpts}`);
   var browserExports = /*@__PURE__*/ requireBrowser();
   var browser = /*@__PURE__*/getDefaultExportFromCjs(browserExports);
 
-  var browser$1 = /*#__PURE__*/Object.freeze({
+  var browser$1 = /*#__PURE__*/_mergeNamespaces({
     __proto__: null,
     default: browser
-  });
+  }, [browserExports]);
 
   exports.BasePatch = BasePatch;
   exports.BaseTransaction = BaseTransaction;
+  exports.ChannelError = ChannelError;
   exports.ClientError = ClientError;
+  exports.ConnectionFailedError = ConnectionFailedError;
   exports.CorsOriginError = CorsOriginError;
+  exports.DisconnectError = DisconnectError;
+  exports.MessageError = MessageError;
+  exports.MessageParseError = MessageParseError;
   exports.ObservablePatch = ObservablePatch;
   exports.ObservableSanityClient = ObservableSanityClient;
   exports.ObservableTransaction = ObservableTransaction;
@@ -4070,11 +4905,12 @@ ${selectionOpts}`);
   exports.SanityClient = SanityClient;
   exports.ServerError = ServerError;
   exports.Transaction = Transaction;
+  exports.connectEventSource = connectEventSource;
   exports.createClient = createClient;
   exports.default = deprecatedCreateClient;
   exports.requester = requester;
-  exports.unstable__adapter = l$1;
-  exports.unstable__environment = p$1;
+  exports.unstable__adapter = c$2;
+  exports.unstable__environment = f$1;
   exports.validateApiPerspective = validateApiPerspective;
 
   Object.defineProperty(exports, '__esModule', { value: true });
