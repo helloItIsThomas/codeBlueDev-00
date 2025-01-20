@@ -43,4 +43,3 @@ export async function getJsonDataFromURL(url) {
 export const disableScroll = (event) => {
   event.preventDefault();
 };
-// window.addEventListener("wheel", disableScroll, { passive: false });

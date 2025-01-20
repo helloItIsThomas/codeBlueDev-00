@@ -12,11 +12,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 export async function setup() {
-  // SETUP LENIS start
-  const lenis = new Lenis({
-    autoRaf: true,
+  // The 'passive' option here indicates whether the event listener can call preventDefault() to prevent the default scrolling behavior. Setting it to false allows preventDefault() to be used.
+  window.addEventListener("wheel", disableScroll, { passive: false });
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
   });
-  lenis.on("scroll", (e) => {});
+  const loadingScreen = document.getElementById("loadingScreen");
+  loadingScreen.style.overflow = "hidden"; // Prevent scrolling
+  document.body.style.overflow = "hidden"; // Lock the body scroll
+  loadingScreen.scrollTo(0, 0); // Scroll to the top of the loading screen
+
+  // SETUP LENIS start
+  // const lenis = new Lenis({
+  // autoRaf: true,
+  // });
+  // lenis.on("scroll", (e) => {});
   // SETUP LENIS end
 
   // LOAD logoLottie start
@@ -56,17 +68,6 @@ export async function setup() {
   // SETUP PARALLAX FISH end
 
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
-
-  window.addEventListener("wheel", disableScroll, { passive: false });
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "instant",
-  });
-  const loadingScreen = document.getElementById("loadingScreen");
-  loadingScreen.style.overflow = "hidden"; // Prevent scrolling
-  document.body.style.overflow = "hidden"; // Lock the body scroll
-  loadingScreen.scrollTo(0, 0); // Scroll to the top of the loading screen
 
   return logoLottie;
 }
