@@ -3,21 +3,68 @@ layout: layouts/base.njk
 title: "Code Blue"
 ---
 
+<script type="module" src="/js/cursorSketch.js"></script>
+<script type="module" src="/js/setupSplash.js"></script>
+
+<div id="cursorCanvas"></div>
+<div class="centered" id="splash">
+    <div class="background" id="splashVideo">
+        <video src="/assets/images/splashBG.mp4" autoplay loop muted></video>
+    </div>
+    <div id="splashCanvas"></div>
+    <div id="splashForeground">
+        <div id="navBar">
+            <div id="navLogo">
+                <img src="/assets/images/logo.svg" alt="Code Blue">
+            </div>
+            <div id="navLinks">
+                <div class="b1_0 navLink" >
+                    <a href="/" data-replace="IMPACT MEDIA">
+                        <span>IMPACT MEDIA</span>
+                    </a>
+                </div>
+                <div class="b1_0 navLink" >
+                    <a href="/" data-replace="CONSERVATION GRANTEES">
+                        <span>CONSERVATION GRANTEES</span></a>
+                </div>
+                <div class="b1_0 navLink">
+                    <a href="/" data-replace="ABOUT">
+                        <span>ABOUT</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loadingScreen"></div>
+    <div class="h1_0" id="splashSVG">
+        <canvas id="lottieCanvas"></canvas>
+    </div>
+    <div class="b1_0 arrowCTA" id="splashCTA">
+            DIVE DEEPER
+            <div id="downArrow">
+            <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
 {% include "components/homeSections/purpose.njk" %}
 
 {% include "components/homeSections/mission.njk" %}
 
-<div class="componentContainer">
-    <div class="twoColGrid padLeft">
-        <div id="leftColHeadline" class="h1_0 textBoxMargin">FEATURED<br>FILM</div>
-        <div id="rightColCopy" class="b2_0 textBoxMargin">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div>
+<div id="subBody">
+    <div class="componentContainer">
+        <div class="twoColGrid padLeft">
+            <div id="leftColHeadline" class="h1_0 textBoxMargin">FEATURED<br>FILM</div>
+            <div id="rightColCopy" class="b2_0 textBoxMargin">Directed by Matthieu Rytz and Narrated by Jason Momoa, Deep Rising exposes the corporations and corrupted world leaders trying to exploit our common heritage of humankind.</div>
+        </div>
+        {% include "components/homeSections/featuredFilm.njk" %}
     </div>
-    {% include "components/homeSections/featuredFilm.njk" %}
-</div>
 
-<div class="componentContainer">
-    <div class="centered">
-        <div class="h1_0 textBoxMargin"> FEATURED PARTNERSHIPS</div>
+    <div class="componentContainer">
+        <div class="centered">
+            <div class="h1_0 textBoxMargin"> FEATURED PARTNERSHIPS</div>
+        </div>
+        {% include "components/homeSections/featuredPartnerships.njk" %}
     </div>
-    {% include "components/homeSections/featuredPartnerships.njk" %}
 </div>

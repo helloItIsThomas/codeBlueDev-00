@@ -120,9 +120,9 @@ export const sketch = (p) => {
           const fadeEdge = p.width * 0;
           let opacity = 160;
           if (particle.x < fadeEdge) {
-            opacity = map(particle.x, 0, fadeEdge, 0, 255);
+            opacity = p.map(particle.x, 0, fadeEdge, 0, 255);
           } else if (particle.x > p.width - fadeEdge) {
-            opacity = map(particle.x, p.width - fadeEdge, p.width, 255, 0);
+            opacity = p.map(particle.x, p.width - fadeEdge, p.width, 255, 0);
           }
 
           p.fill(255, opacity);

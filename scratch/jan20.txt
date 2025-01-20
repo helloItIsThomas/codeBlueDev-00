@@ -7,3 +7,7 @@ Let's start with the Conservation Grantees page.
 It is static, so there is only one.
 It has templated content though.
 It has n number of instances of the conservation grantees layout.
+
+So, i want to see how to add multiple instances of the same layout.
+let's verify i have this layout first.
+well first lets make sure this new page goes through my base template.
