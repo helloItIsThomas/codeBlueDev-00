@@ -3,10 +3,12 @@ layout: layouts/base.njk
 title: "Code Blue"
 ---
 
-<script type="module" src="/js/cursorSketch.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 <script type="module" src="/js/setupSplash.js"></script>
+<script type="module" src="/js/splashSketch.js"></script>
+{# <script type="module" src="/js/sphereSketch.js"></script> #}
 
-<div id="cursorCanvas"></div>
 <div class="centered" id="splash">
     <div class="background" id="splashVideo">
         <video src="/assets/images/splashBG.mp4" autoplay loop muted></video>
@@ -24,7 +26,7 @@ title: "Code Blue"
                     </a>
                 </div>
                 <div class="b1_0 navLink" >
-                    <a href="/" data-replace="CONSERVATION GRANTEES">
+                    <a href="/pages/conservationGrantees" data-replace="CONSERVATION GRANTEES">
                         <span>CONSERVATION GRANTEES</span></a>
                 </div>
                 <div class="b1_0 navLink">

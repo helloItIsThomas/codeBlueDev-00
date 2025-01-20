@@ -5,19 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"/>
-<script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 
 <script type="module" src="/js/setup.js"></script>
+<script type="module" src="/js/cursorSketch.js"></script>
 
-<script type="module" src="/js/dynamicContent.js"></script>
-<script type="module" src="/js/lazyLoad.js"></script>
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/splashSketch.js"></script>
-<script type="module" src="/js/parallaxFish.js"></script>
-{# <script type="module" src="/js/sphereSketch.js"></script> #}
 
 <html lang="en">
     <head>
@@ -51,15 +45,10 @@
 
         {# {% include "layouts/threeFeaturedFilms.njk" %} #}
         {# {% include "layouts/imageGallery.njk" %} #}
-        {# {% include "components/conservationGrantees.njk" %} #}
 
         <div id="bodyGradient">
+            <div id="cursorCanvas"></div>
             {{ content | safe }}
-            {# <div id="cursorCanvas"></div> #}
-            {# {% include "components/homeSections/splash.njk" %} #}
-            {# <div id="subBody"> #}
-            {# {{ content | safe }} #}
-            {# </div> #}
         </div>
         {% include "components/footer.njk" %}
     </body>
