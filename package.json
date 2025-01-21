@@ -15,6 +15,7 @@
     "@11ty/eleventy": "^2.0.1"
   },
   "dependencies": {
+    "@11ty/eleventy-fetch": "^5.0.2",
     "@portabletext/react": "^3.2.0",
     "@sanity/client": "^6.25.0",
     "@sanity/image-url": "^1.1.0",

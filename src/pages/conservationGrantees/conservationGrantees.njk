@@ -5,29 +5,17 @@ title: "Hello from Conservation Media"
 
 Supporting impactful organizations that champion conservation and restoration of critical planetary ecosystems.
 
-
-{# <script type="module"> #}
-{# import {getGrantees} from "../../sanity/client.js"; #}
-{# getGrantees().then(grantees => { #}
-{# grantees.forEach(grantee => { #}
-{# console.log("title", grantee.title); #}
-{# console.log("link", grantee.link); #}
-{# console.log("image", grantee.image); #}
-{# }); #}
-{# }); #}
-{# </script> #}
-
-{%- for post in collections.post -%}
+{%- for grantee in someData.grantees -%}
       <div class="grantee">
             <hr>
             <div class="threeSevenGrid">
                   <div class="grantee_left">
-                        <h1 class="h0_5">{{ post.data.title }}</h1>
-                        <img src="{{ post.data.image }}"  class="grantee_logo">
+                        <h1 class="h0_5">{{ grantee.title }}</h1>
+                        <img src="{{ grantee.image }}"  class="grantee_logo">
                   </div>
                   <div class="grantee_right">
-                        <p>{{ post.data.description }}</p>
-                        <button class="ctaButton">VISIT {{ post.data.link }}</button>
+                        <p>{{ grantee.description }}</p>
+                        <button class="ctaButton">VISIT {{ grantee.link }}</button>
                   </div>
             </div>
       </div>
