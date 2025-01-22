@@ -1,0 +1,10 @@
+---
+pagination:
+  data: someData.grantees
+  size: 1
+  alias: grantee
+permalink: "grantee/{{ grantee.title | slugify }}/"
+---
+
+{{ grantee.title | slugify }}
+{{ grantee.description }}
