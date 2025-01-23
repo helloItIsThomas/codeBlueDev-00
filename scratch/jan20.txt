@@ -1,10 +1,7 @@
 
+Every time we instantiate a film from the schema, we want to have a new page generated.
+So I think we should start by making the film schema and instancing it once.
 
-Let's start with the Conservation Grantees page.
-It is static, so there is only one.
-It has templated content though.
-It has n number of instances of the conservation grantees layout.
+ok. now what?
 
-So, i want to see how to add multiple instances of the same layout.
-let's verify i have this layout first.
-well first lets make sure this new page goes through my base template.
+Let's gather all films and create a new page for each.

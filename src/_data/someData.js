@@ -25,7 +25,15 @@ module.exports = async function () {
     return grantees;
   }
 
-  const grantees = await getGrantees();
+  async function getFilms() {
+    const films = await client.fetch(
+      '*[_type == "film"]{title,"description": pt::text(description), metadata, ctaButton, trailerLink,"posterImage": posterImage.asset->url, galleryImages[] {"url": asset->url}, isFeatured, credits, slug}'
+    );
+    return films;
+  }
 
-  return { json, grantees };
+  const grantees = await getGrantees();
+  const films = await getFilms();
+
+  return { json, grantees, films };
 };

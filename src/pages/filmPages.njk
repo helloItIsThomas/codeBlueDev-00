@@ -1,10 +1,46 @@
 ---
 pagination:
-  data: someData.grantees
+  data: someData.films
   size: 1
-  alias: grantee
-permalink: "grantee/{{ grantee.title | slugify }}/"
+  alias: film
+permalink: "films/{{ film.slug.current }}/"
 ---
 
-{{ grantee.title | slugify }}
-{{ grantee.description }}
+{{ film.title }}
+<br>
+{{ film.description }}
+<br>
+<br>
+is featured: {{ film.isFeatured }}
+<br>
+{% for key, value in film.metadata %}
+  {% if key != "awards" %}
+    {{ key }}: {{ value }}
+    <br>
+  {% else %}
+    {% for key, value in value %}
+      {{ key }}: {{ value }}
+      <br>
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% for credit in film.credits %}
+  Name: {{ credit.fullName }}
+  ___
+  Role: {{ credit.role }}
+  <br>
+{% endfor %}
+
+<img src="{{ film.posterImage }}" alt="{{ film.title }}">
+
+{% for image in film.galleryImages %}
+  <img src="{{ image.url }}" alt="{{ image.alt }}">
+{% endfor %}
+
+<video width="560" height="315" controls>
+  <source src="{{ film.trailerLink }}" >
+  Your browser does not support the video tag.
+</video>
+
+<button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
