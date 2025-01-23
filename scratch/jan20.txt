@@ -1,7 +1,4 @@
 
-today I would like to:
-review how to add pages both statically and dynamically.
-Static being pages that aren't generated.
 
 Let's start with the Conservation Grantees page.
 It is static, so there is only one.
