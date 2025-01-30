@@ -7,11 +7,11 @@ permalink: "films/{{ film.slug.current }}/"
 layout: layouts/base.njk
 ---
 {% from 'macros/filmCreditsComp.njk' import fcc %}
-<br>
-<br>
-<br>
 
 <div class="padLeft padRight">
+  <div class="h0_5 textBoxMargin">
+    FEATURED FILM
+  </div>
   <div class="h2_0 textBoxMargin">
     {{film.title}}
   </div>
@@ -30,9 +30,6 @@ layout: layouts/base.njk
     </div>
   </div>
 
-  {{ fcc(film.credits, "producer") }}
-  {{ fcc(film.credits, "director") }}
-
 </div>
 
 <video width="100%" height="auto" controls>
@@ -40,11 +37,32 @@ layout: layouts/base.njk
   Your browser does not support the video tag.
   </video>
 
-<div class="galleryGrid">
-  {% for image in film.galleryImages %}
-    <img src="{{ image.url }}" alt="{{ image.alt }}">
-  {% endfor %}
+<div class="padLeft padRight textBoxMarginLROnly">
+  <div class="h0_5">
+  IMAGE GALLERY
+  </div>
+  <div class="galleryGrid">
+    {% for image in film.galleryImages %}
+      <img src="{{ image.url }}" alt="{{ image.alt }}">
+    {% endfor %}
+  </div>
+
+  <div class="h0_5">
+    CREDITS
+  </div>
+  {{ fcc(film.credits, "producer") }}
+  {{ fcc(film.credits, "director") }}
 </div>
+
+{{ film.metadata.awards | dump }}
+
+{# {% for key, value in film.metadata.awards %} #}
+{# {{ key }} : #}
+{# {{ value }} #}
+{# <br> #}
+{# {% endfor %} #}
+
+{# *[_type == "film"][1]{metadata{awards}} #}
 
 {# is featured: {{ film.isFeatured }} #}
 {# <img src="{{ film.posterImage }}" alt="{{ film.title }}"> #}
