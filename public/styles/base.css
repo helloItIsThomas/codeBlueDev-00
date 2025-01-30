@@ -32,6 +32,11 @@
   margin: var(--textBoxMargin);
 }
 
+.textBoxMarginLROnly {
+  margin-left: var(--textBoxMargin) !important;
+  margin-right: var(--textBoxMargin) !important;
+}
+
 .component {
   padding-top: 1.5rem;
 }

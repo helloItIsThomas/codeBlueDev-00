@@ -10,6 +10,11 @@ import { getJsonDataFromURL } from "./utils.js";
 // https://api.tidesandcurrents.noaa.gov/api/prod/responseHelp.html
 // https://api.tidesandcurrents.noaa.gov/api/prod/
 
+// NEW (01/30/25) sea level trends
+// https://tidesandcurrents.noaa.gov/sltrends/sltrends_station.shtml?id=1612340
+// phone call result:
+// https://tidesandcurrents.noaa.gov/web_services_info.html
+
 export function getTideData() {
   console.log("running getTideData");
   return new Promise((resolve, reject) => {

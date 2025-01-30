@@ -4,43 +4,47 @@ pagination:
   size: 1
   alias: film
 permalink: "films/{{ film.slug.current }}/"
+layout: layouts/base.njk
 ---
+{% from 'macros/filmCreditsComp.njk' import fcc %}
+<br>
+<br>
+<br>
 
-{{ film.title }}
-<br>
-{{ film.description }}
-<br>
-<br>
-is featured: {{ film.isFeatured }}
-<br>
-{% for key, value in film.metadata %}
-  {% if key != "awards" %}
-    {{ key }}: {{ value }}
-    <br>
-  {% else %}
-    {% for key, value in value %}
-      {{ key }}: {{ value }}
+<div class="padLeft padRight">
+  <div class="h2_0 textBoxMargin">
+    {{film.title}}
+  </div>
+  <div class="b2_0 textBoxMargin sevenThreeGrid">
+    {{ film.description }}
+    <div>
+      <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
       <br>
-    {% endfor %}
-  {% endif %}
-{% endfor %}
+      <br>
+      {% for key, value in film.metadata %}
+        {% if key != "awards" %}
+          {{ value }}
+          <br>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 
-{% for credit in film.credits %}
-  Name: {{ credit.fullName }}
-  ___
-  Role: {{ credit.role }}
-  <br>
-{% endfor %}
+  {{ fcc(film.credits, "producer") }}
+  {{ fcc(film.credits, "director") }}
 
-<img src="{{ film.posterImage }}" alt="{{ film.title }}">
+</div>
 
-{% for image in film.galleryImages %}
-  <img src="{{ image.url }}" alt="{{ image.alt }}">
-{% endfor %}
-
-<video width="560" height="315" controls>
+<video width="100%" height="auto" controls>
   <source src="{{ film.trailerLink }}" >
   Your browser does not support the video tag.
-</video>
+  </video>
 
-<button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
+<div class="galleryGrid">
+  {% for image in film.galleryImages %}
+    <img src="{{ image.url }}" alt="{{ image.alt }}">
+  {% endfor %}
+</div>
+
+{# is featured: {{ film.isFeatured }} #}
+{# <img src="{{ film.posterImage }}" alt="{{ film.title }}"> #}

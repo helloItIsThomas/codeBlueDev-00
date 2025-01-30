@@ -1,0 +1,25 @@
+{# {% macro fcc(role, fullName, targetRole) %} #}
+{# {% set arr = [] %} #}
+{# {% if targetRole in role %} #}
+{# {% set arr = (arr.push(fullName), arr) %} #}
+{# {% endif %} #}
+{# {{ arr }} #}
+{# {% endmacro %} #}
+
+{% macro fcc(credits, targetRole) %}
+      <div class="textBoxMarginLROnly">
+            <div class="threeSevenGrid">
+                  <div>
+                        {{ targetRole }}
+                  </div>
+                  {% for credit in credits %}
+                        {% set arr = [] %}
+                        {% if targetRole in credit.role %}
+                              {% set arr = (arr.push(credit.fullName), arr) %}
+                        {% endif %}
+                        {{ arr }}
+                  {% endfor %}
+            </div>
+            <hr>
+      </div>
+{% endmacro %}

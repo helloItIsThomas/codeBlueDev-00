@@ -25,6 +25,12 @@
   gap: 0.5rem;
 }
 
+.sevenThreeGrid {
+  display: grid;
+  grid-template-columns: 7fr 3fr !important;
+  gap: 0.5rem;
+}
+
 .galleryGrid img {
   aspect-ratio: 1.8 / 1;
   width: 100%;

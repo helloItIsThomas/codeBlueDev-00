@@ -29,6 +29,13 @@
   color: #18d8f9;
 }
 
+.h2_0 {
+  font-family: "cdserif";
+  font-size: clamp(3.3rem, 5vw, 5.5rem);
+  /* font-size: clamp(2.8rem, 5vw, 4.5rem); */
+  /* line-height: clamp(2.3rem, 5vw, 4rem); */
+}
+
 .b1_0 {
   font-family: "cdmono";
   font-size: clamp(0.9rem, 1vw, 1.2rem);
