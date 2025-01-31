@@ -27,7 +27,7 @@ module.exports = async function () {
 
   async function getFilms() {
     const films = await client.fetch(
-      '*[_type == "film"]{title,"description": pt::text(description), metadata, ctaButton, trailerLink,"posterImage": posterImage.asset->url, galleryImages[] {"url": asset->url}, isFeatured, credits, slug}'
+      '*[_type == "film"]{title,"description": pt::text(description), metadata {..., awards[]{ award -> { name, graphic{"url": asset->url}}}}, ctaButton, trailerLink,"posterImage": posterImage.asset->url, galleryImages[] {"url": asset->url}, isFeatured, credits, slug}'
     );
     return films;
   }

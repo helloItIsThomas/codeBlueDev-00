@@ -51,3 +51,33 @@
 .alignVertCenter {
   align-items: center;
 }
+
+.awardsTicker {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  mix-blend-mode: screen;
+  animation: ticker 1s linear infinite;
+}
+
+.awardsTicker img {
+  height: auto;
+  width: 100%;
+  max-height: 20%;
+  object-fit: contain;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.awardsTicker {
+  animation: ticker 5s linear infinite;
+}
