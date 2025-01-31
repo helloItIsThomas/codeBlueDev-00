@@ -66,19 +66,56 @@ layout: layouts/base.njk
 </div>
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
+{% set notThisFilm = [] %}
 {% set newFilmsArray = [] %}
+
+{# here we are getting a list of all films that arent this page #}
 {% for f in someData.films %}
   {% if f.title != film.title %}
-    {% set newFilmsArray = (newFilmsArray.push(f), newFilmsArray) %}
+    {% set notThisFilm = (notThisFilm.push(f), notThisFilm) %}
   {% endif %}
 {% endfor %}
 
+<br>
+
 <div class="threeFeaturedFilmsComp">
   <div class="threeColGrid">
-    {% set rVal = range(0, someData.films | length - 1) | random %}
-    {{ sffC(newFilmsArray[rVal])}}
+    {% set randomFilms = notThisFilm | sort(attribute = 'title') | random(1) %}
+    {{randomFilms.title | dump }}
+    {# {{ sffC(notThisFilm[(rVal) % notThisFilm.length])}} #}
+    {# {{ sffC(notThisFilm[(rVal+1) % notThisFilm.length])}} #}
+    {# {{ sffC(notThisFilm[(rVal+2) % notThisFilm.length])}} #}
   </div>
 </div>
+
+{% set uniqueValues = [] %}
+
+{# Generate unique random values until we have three #}
+{% for i in range(20) %}
+  {# Limit attempts to avoid infinite loops #}
+  {% set rand = range(0, notThisFilm.length) | random %}
+
+  {# Check if the random value is already in the uniqueValues array #}
+  {% set isDuplicate = false %}
+  {% for value in uniqueValues %}
+    {% if value == rand %}
+      {% set isDuplicate = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% if not isDuplicate %}
+    {% set uniqueValues = (uniqueValues.push(rand), uniqueValues) %}
+  {% endif %}
+{% endfor %}
+
+{# If we have fewer than 3 unique values, fill with random values #}
+{% for i in range(3 - uniqueValues | length) %}
+  {% set rand = range(0, 5) | random %}
+  {% set uniqueValues = (uniqueValues.push(rand), uniqueValues) %}
+{% endfor %}
+
+{# Output the unique random values #}
+{{ uniqueValues | join(", ") }}
 
 {# is featured: {{ film.isFeatured }} #}
 {# <img src="{{ film.posterImage }}" alt="{{ film.title }}"> #}
