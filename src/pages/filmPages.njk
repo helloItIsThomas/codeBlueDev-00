@@ -65,5 +65,20 @@ layout: layouts/base.njk
   {{ fcc(film.credits, "director") }}
 </div>
 
+{% from 'macros/subFeaturedFilmComp.njk' import sffC %}
+{% set newFilmsArray = [] %}
+{% for f in someData.films %}
+  {% if f.title != film.title %}
+    {% set newFilmsArray = (newFilmsArray.push(f), newFilmsArray) %}
+  {% endif %}
+{% endfor %}
+
+<div class="threeFeaturedFilmsComp">
+  <div class="threeColGrid">
+    {% set rVal = range(0, someData.films | length - 1) | random %}
+    {{ sffC(newFilmsArray[rVal])}}
+  </div>
+</div>
+
 {# is featured: {{ film.isFeatured }} #}
 {# <img src="{{ film.posterImage }}" alt="{{ film.title }}"> #}
