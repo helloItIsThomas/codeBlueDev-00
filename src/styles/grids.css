@@ -60,7 +60,6 @@
   height: auto;
   align-items: center;
   mix-blend-mode: screen;
-  animation: ticker 1s linear infinite;
 }
 
 .awardsTicker img {
@@ -77,7 +76,4 @@
   100% {
     transform: translateX(-100%);
   }
-}
-.awardsTicker {
-  animation: ticker 5s linear infinite;
 }

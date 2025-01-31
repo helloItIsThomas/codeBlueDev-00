@@ -99,14 +99,12 @@ layout: layouts/base.njk
   {% set rand = range(0, 5) | random %}
   {% set uniqueValues = (uniqueValues.push(rand), uniqueValues) %}
 {% endfor %}
-{# Output the unique random values #}
-
-{# {{ uniqueValues | truncate(3) }} #}
 
 {% set threeUniqueValues = [] %}
 {% for i in range(3) %}
   {% set threeUniqueValues = (threeUniqueValues.push(uniqueValues[i]), threeUniqueValues) %}
 {% endfor %}
+
 <div class="threeFeaturedFilmsComp">
   <div class="threeColGrid">
     {% for i in threeUniqueValues %}
