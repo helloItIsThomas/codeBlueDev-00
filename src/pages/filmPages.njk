@@ -108,7 +108,9 @@ layout: layouts/base.njk
 <div class="threeFeaturedFilmsComp">
   <div class="threeColGrid">
     {% for i in threeUniqueValues %}
-      {{ sffC(notThisFilm[i]) }}
+      {% if notThisFilm[i] %}
+        {{ sffC(notThisFilm[i]) }}
+      {% endif %}
     {% endfor %}
   </div>
 </div>

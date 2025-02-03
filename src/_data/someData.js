@@ -25,6 +25,11 @@ module.exports = async function () {
     return grantees;
   }
 
+  async function getMediaPartners() {
+    const mediaPartners = await client.fetch('*[_type == "mediaPartner"]');
+    return mediaPartners;
+  }
+
   async function getFilms() {
     const films = await client.fetch(
       '*[_type == "film"]{title,"description": pt::text(description), metadata {..., awards[]{ award -> { name, graphic{"url": asset->url}}}}, ctaButton, trailerLink,"posterImage": posterImage.asset->url, galleryImages[] {"url": asset->url}, isFeatured, credits, slug}'
@@ -34,6 +39,7 @@ module.exports = async function () {
 
   const grantees = await getGrantees();
   const films = await getFilms();
+  const mediaPartners = await getMediaPartners();
 
-  return { json, grantees, films };
+  return { json, grantees, films, mediaPartners };
 };
