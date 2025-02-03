@@ -6,10 +6,8 @@ title: "Impact Media"
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
 {# IMG CAROUSEL HERE #}
 {# https://codepen.io/GreenSock/pen/wvdJEXV #}
-{# {{ thisPartner.partnerProject }} by {{ thisPartner.partnerName}} #}
 
 {% set thisPartner = someData.mediaPartners[0] %}
-{# {{ thisPartner.works | dump}} #}
 
 <div class="threeFeaturedFilmsComp">
       <div class="threeColGrid">
@@ -19,34 +17,46 @@ title: "Impact Media"
       </div>
 </div>
 
-{# main | imgCarousel #}
-{# slides-container #}
-{# slides-inner #}
-{# slide #}
-
+<div class="h1_0 textBoxMargin">
+      {{ thisPartner.partnerProject }} by {{ thisPartner.partnerName}}
+</div>
 <div class="imgCarousel">
       <div class="slides-container">
             <div class="slides-inner">
-                  {# {% for work in thisPartner.works %} #}
-                  <div class="carouselSlide">ONE</div>
-                  <div class="carouselSlide">TWO</div>
-                  {# {% endfor %} #}
+                  {% for work in thisPartner.works %}
+                        <div class="carouselSlide">
+                              <div class="sevenFiveGrid" >
+                                    <div>
+                                          <img src="{{ work.image.url }}" alt="{{ work.title }}">
+                                    </div>
+                                    <div>
+                                          <div class="b1_0 textBoxMargin">{{work.typeOfMedia}}</div>
+                                          <div class="h1_5 textBoxMargin">{{work.title}}</div>
+                                          <div class="b2_0 textBoxMargin">{{work.description}}</div>
+                                          <button class="ctaButton b1_0 textBoxMarginLROnly">
+                                                <a href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
+                                                      <span>{{work.ctaButton.name}}</span>
+                                                </a>
+                                          </button>
+                                          <div class="controls">
+                                                <button class="prevButton">Prev</button>
+                                                <button class="nextButton">Next</button>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  {% endfor %}
             </div>
       </div>
 </div>
-<div class="controls">
-      <button id="prevButton">Prev</button>
-      <button id="nextButton">Next</button>
-</div>
+{# <div class="controls"> #}
+{# <button id="prevButton">Prev</button> #}
+{# <button id="nextButton">Next</button> #}
+{# </div> #}
 
 {# <div> #}
 {# <div class="b1_0 textBoxMargin">10 PART SHORT FILM SERIES</div> #}
 {# <div class="h1_5 textBoxMargin">Dispatches from the Outlaw Ocean</div> #}
 {# <div class="b2_0 textBoxMargin">The high seas are a lawless frontier where crimes such as murder, slavery and environmental destruction are often met with impunity and overlooked by the media. But the ocean is also a place of discovery and reinvention, offering freedom from the constraints of society.</div> #}
-{# <button class="ctaButton b1_0 textBoxMarginLROnly"> #}
-{# <a href="#" data-replace="CTA CONTENT"> #}
-{# <span>CTA CONTENT</span> #}
-{# </a> #}
-{# </button> #}
 {# </div> #}
 {# </div> #}

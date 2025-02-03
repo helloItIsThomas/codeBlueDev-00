@@ -1,13 +1,15 @@
-gsap.registerPlugin(Draggable);
+// gsap.registerPlugin(Draggable);
 console.log("hello from imgCarousel.js");
 
-var slideDelay = 1.5;
+var slideDelay = 2.5;
 var slideDuration = 0.3;
 var snapX;
 
 var slides = document.querySelectorAll(".carouselSlide");
-var prevButton = document.querySelector("#prevButton");
-var nextButton = document.querySelector("#nextButton");
+var prevButtons = document.querySelectorAll(".prevButton");
+var nextButtons = document.querySelectorAll(".nextButton");
+// var prevButton = document.querySelector("#prevButton");
+// var nextButton = document.querySelector("#nextButton");
 var progressWrap = gsap.utils.wrap(0, 1);
 
 var numSlides = slides.length;
@@ -36,24 +38,30 @@ var slideWidth = 0;
 var wrapWidth = 0;
 resize();
 
-var draggable = new Draggable(proxy, {
-  trigger: ".slides-container",
-  onPress: updateDraggable,
-  onDrag: updateProgress,
-  onThrowUpdate: updateProgress,
-  snap: {
-    x: snapX,
-  },
-});
+// var draggable = new Draggable(proxy, {
+// trigger: ".slides-container",
+// onPress: updateDraggable,
+// onDrag: updateProgress,
+// onThrowUpdate: updateProgress,
+// snap: {
+// x: snapX,
+// },
+// });
 
 window.addEventListener("resize", resize);
 
-prevButton.addEventListener("click", function () {
-  animateSlides(1);
+prevButtons.forEach(function (prevButton) {
+  prevButton.addEventListener("click", function () {
+    animateSlides(1);
+    console.log("prev button clicked");
+  });
 });
 
-nextButton.addEventListener("click", function () {
-  animateSlides(-1);
+nextButtons.forEach(function (nextButton) {
+  nextButton.addEventListener("click", function () {
+    console.log("next button clicked");
+    animateSlides(-1);
+  });
 });
 
 function updateDraggable() {
@@ -77,11 +85,12 @@ function animateSlides(direction) {
 }
 
 function autoPlay() {
-  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
-    timer.restart(true);
-  } else {
-    animateSlides(-1);
-  }
+  // if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
+  // timer.restart(true);
+  // } else {
+  // animateSlides(-1);
+  // }
+  animateSlides(-1);
 }
 
 function updateProgress() {
