@@ -26,7 +26,9 @@ module.exports = async function () {
   }
 
   async function getMediaPartners() {
-    const mediaPartners = await client.fetch('*[_type == "mediaPartner"]');
+    const mediaPartners = await client.fetch(
+      '*[_type == "mediaPartner"]{partnerName, partnerProject, "works": [...works]{title, typeOfMedia, "description": pt::text(description), image{"url": asset->url}, ctaButton}}'
+    );
     return mediaPartners;
   }
 

@@ -5,9 +5,7 @@ var slideDelay = 1.5;
 var slideDuration = 0.3;
 var snapX;
 
-var slides = document.querySelectorAll(".slide");
-var autoPlayLimit = slides.length * 2;
-var autoPlayCount = 0;
+var slides = document.querySelectorAll(".carouselSlide");
 var prevButton = document.querySelector("#prevButton");
 var nextButton = document.querySelector("#nextButton");
 var progressWrap = gsap.utils.wrap(0, 1);
@@ -15,8 +13,6 @@ var progressWrap = gsap.utils.wrap(0, 1);
 var numSlides = slides.length;
 
 gsap.set(slides, {
-  backgroundColor:
-    "random([red, blue, green, purple, orange, yellow, lime, pink])",
   xPercent: (i) => i * 100,
 });
 
@@ -84,10 +80,7 @@ function autoPlay() {
   if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
     timer.restart(true);
   } else {
-    autoPlayCount++;
-    if (autoPlayCount < autoPlayLimit) {
-      animateSlides(-1);
-    }
+    animateSlides(-1);
   }
 }
 
