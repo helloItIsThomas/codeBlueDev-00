@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: "The Code Blue Story"
+---
+{% from 'macros/headerComp.njk' import headerComp %}
+
+{{ headerComp(someData.headers.story, someData.story) }}
+
+<div class="vSpacer"></div>
+
+<div class="padLeft padRight textBoxMargin">
+      <div class="threeSevenGrid">
+            <div>
+                  <div>Shari Sant</div>
+                  <img src="{{someData.story.shariPhoto}}" alt="Photograph of Shari">
+            </div>
+            <div class="b2_0 textBoxMargin">
+                  {{someData.story.shariBio}}
+            </div>
+      </div>
+</div>

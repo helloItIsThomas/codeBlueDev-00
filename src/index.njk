@@ -15,26 +15,7 @@ title: "Code Blue"
     </div>
     <div id="splashCanvas"></div>
     <div id="splashForeground">
-        <div id="navBar">
-            <div id="navLogo">
-                <img src="/assets/images/logo.svg" alt="Code Blue">
-            </div>
-            <div id="navLinks">
-                <div class="b1_0 navLink" >
-                    <a href="/" data-replace="IMPACT MEDIA">
-                        <span>IMPACT MEDIA</span>
-                    </a>
-                </div>
-                <div class="b1_0 navLink" >
-                    <a href="/pages/conservationGrantees" data-replace="CONSERVATION GRANTEES">
-                        <span>CONSERVATION GRANTEES</span></a>
-                </div>
-                <div class="b1_0 navLink">
-                    <a href="/" data-replace="ABOUT">
-                        <span>ABOUT</span></a>
-                </div>
-            </div>
-        </div>
+        {% include "components/navBar.njk" %}
     </div>
     <div id="loadingScreen"></div>
     <div class="h1_0" id="splashSVG">

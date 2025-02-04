@@ -1,0 +1,15 @@
+{% macro fcc(credits, targetRole) %}
+      <div class="threeSevenGrid">
+            <div>
+                  {{ targetRole }}
+            </div>
+            {% for credit in credits %}
+                  {% set arr = [] %}
+                  {% if targetRole in credit.role %}
+                        {% set arr = (arr.push(credit.fullName), arr) %}
+                  {% endif %}
+                  {{ arr }}
+            {% endfor %}
+      </div>
+      <hr>
+{% endmacro %}

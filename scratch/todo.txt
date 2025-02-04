@@ -4,3 +4,7 @@ WEDNESDAY
 
 • verify we are handling tide data edges cases
 • add some gradients to the loading screen and maybe other places
+
+
+Re-implement smooth scroll.
+This is a good reference: https://deeprising.com/documentary/

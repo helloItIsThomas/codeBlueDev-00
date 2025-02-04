@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+title: "Impact Media"
+---
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
+<script type="module" src="/js/imgCarousel.js"></script>
+{# https://codepen.io/GreenSock/pen/wvdJEXV #}
+{% from 'macros/headerComp.njk' import headerComp %}
+
+{{ headerComp(someData.headers.impactMedia, someData.impactMedia) }}
+
+{% from 'macros/subFeaturedFilmComp.njk' import sffC %}
+
+{% set thisPartner = someData.mediaPartners[0] %}
+
+<div class="threeFeaturedFilmsComp">
+      <div class="threeColGrid">
+            {% for f in someData.films %}
+                  {{ sffC(f) }}
+            {% endfor %}
+      </div>
+</div>
+
+<div class="h1_0 textBoxMargin">
+      {{ thisPartner.partnerProject }} by {{ thisPartner.partnerName}}
+</div>
+<div class="imgCarousel">
+      <div class="slides-container">
+            <div class="slides-inner">
+                  {% for work in thisPartner.works %}
+                        <div class="carouselSlide">
+                              <div class="sevenFiveGrid" >
+                                    <div>
+                                          <img src="{{ work.image.url }}" alt="{{ work.title }}">
+                                    </div>
+                                    <div>
+                                          <div class="b1_0 textBoxMargin">{{work.typeOfMedia}}</div>
+                                          <div class="h1_5 textBoxMargin">{{work.title}}</div>
+                                          <div class="b2_0 textBoxMargin">{{work.description}}</div>
+                                          <button class="ctaButton b1_0 textBoxMarginLROnly">
+                                                <a href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
+                                                      <span>{{work.ctaButton.name}}</span>
+                                                </a>
+                                          </button>
+                                          <div class="controls">
+                                                <button class="prevButton">Prev</button>
+                                                <button class="nextButton">Next</button>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  {% endfor %}
+            </div>
+      </div>
+</div>

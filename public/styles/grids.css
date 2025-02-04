@@ -25,6 +25,18 @@
   gap: 0.5rem;
 }
 
+.sevenThreeGrid {
+  display: grid;
+  grid-template-columns: 7fr 3fr !important;
+  gap: 0.5rem;
+}
+
+.sevenFiveGrid {
+  display: grid;
+  grid-template-columns: 7fr 5fr !important;
+  gap: 0.5rem;
+}
+
 .galleryGrid img {
   aspect-ratio: 1.8 / 1;
   width: 100%;
@@ -44,4 +56,30 @@
 
 .alignVertCenter {
   align-items: center;
+}
+
+.awardsTicker {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  mix-blend-mode: screen;
+}
+
+.awardsTicker img {
+  height: auto;
+  width: 100%;
+  max-height: 20%;
+  object-fit: contain;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

@@ -25,7 +25,79 @@ module.exports = async function () {
     return grantees;
   }
 
-  const grantees = await getGrantees();
+  async function getMediaPartners() {
+    const mediaPartners = await client.fetch(
+      '*[_type == "mediaPartner"]{partnerName, partnerProject, "works": [...works]{title, typeOfMedia, "description": pt::text(description), image{"url": asset->url}, ctaButton}}'
+    );
+    return mediaPartners;
+  }
 
-  return { json, grantees };
+  async function getFilms() {
+    const films = await client.fetch(
+      '*[_type == "film"]{title,"description": pt::text(description), metadata {..., awards[]{ award -> { name, graphic{"url": asset->url}}}}, ctaButton, trailerLink,"posterImage": posterImage.asset->url, galleryImages[] {"url": asset->url}, isFeatured, credits, slug}'
+    );
+    return films;
+  }
+
+  async function getStory() {
+    const story = await client.fetch(
+      '*[_type == "story"][0]{ description, shariBio, imageCredit, "heroImage": heroImage.asset->url, "shariPhoto": shariPhoto.asset->url }'
+    );
+    return story;
+  }
+
+  async function getConservationGrantees() {
+    const conservationGrantees = await client.fetch(
+      '*[_type == "conservationGrantees"][0]{imageCredit, "heroImage": heroImage.asset->url, description, subDescription}'
+    );
+    return conservationGrantees;
+  }
+
+  async function getImpactMedia() {
+    const impactMedia = await client.fetch(
+      '*[_type == "impactMedia"][0]{imageCredit, "heroImage": heroImage.asset->url, description, subDescription}'
+    );
+    return impactMedia;
+  }
+
+  function getHeaders() {
+    const headers = {
+      grantees: {
+        title: "Conservation Grantees",
+        subDescription:
+          "Supporting impactful organizations that champion conservation and restoration of critical planetary ecosystems.",
+      },
+      impactMedia: {
+        title: "Impact Media",
+        subDescription:
+          "We work with filmmakers and photographers who share critical conservation messages in a way that inspires ocean conservation and climate resilience.",
+      },
+      story: {
+        title: "The Code Blue Story",
+        subTitle: "About Us",
+      },
+      films: {
+        subTitle: "Featured Film",
+      },
+    };
+    return headers;
+  }
+
+  const grantees = await getGrantees();
+  const films = await getFilms();
+  const mediaPartners = await getMediaPartners();
+  const story = await getStory();
+  const headers = getHeaders();
+  const conservationGrantees = await getConservationGrantees();
+  const impactMedia = await getImpactMedia();
+  return {
+    json,
+    grantees,
+    films,
+    mediaPartners,
+    story,
+    headers,
+    conservationGrantees,
+    impactMedia,
+  };
 };
