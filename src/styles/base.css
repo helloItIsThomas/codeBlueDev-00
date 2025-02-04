@@ -87,7 +87,8 @@ body * {
 }
 
 #bodyGradient {
-  background: linear-gradient(to bottom, #0c1b4b, #030b22);
+  background-color: #03091c;
+  /* background: linear-gradient(to bottom, #03091c, #1a2a4b); */
 }
 
 #subBody {

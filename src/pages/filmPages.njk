@@ -8,29 +8,31 @@ layout: layouts/base.njk
 ---
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 
-<div class="headerHero" style="background-image: url('{{ film.heroImage }}');">
+<div class="headerHero" style="background-image: url('{{ film.heroImage }}'); ">
   {% include "components/navBar.njk" %}
+  <div class="bottomGradient"></div>
   <div class="headerTop textBoxMarginLROnly padLeft padRight">
     <div class="headerText">
       <div class="h0_5">FEATURED FILM</div>
       <div class="h0_5">{{film.subTitle}}</div>
       <div class="h2_0">{{film.title}}</div>
-      <div class="sevenThreeGrid">
-        <div>
-          <div class="h0_5">{{film.description}}</div>
-        </div>
-        <div>
-          <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
-          <br>
-          {% for key, value in film.metadata %}
-            {% if key != "awards" %}
-              {{ value }}
-              <br>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
     </div>
+  </div>
+</div>
+
+<div class="sevenThreeGrid textBoxMarginLROnly padLeft padRight">
+  <div>
+    <div class="h0_5">{{film.description}}</div>
+  </div>
+  <div>
+    <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
+    <br>
+    {% for key, value in film.metadata %}
+      {% if key != "awards" %}
+        {{ value }}
+        <br>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
@@ -46,10 +48,9 @@ layout: layouts/base.njk
 
 {# https://www.youtube.com/embed/t_O5Y8FWXpE?si=Lmak45m0oyMXDryB #}
 {# the link must be from the embed code like the above #}
-{{ film.trailerLink | dump }}
+
 <div class="responsive-iframe textBoxMarginLROnly">
   <iframe class="" src="{{ film.trailerLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 </div>
 
 <div class="padLeft padRight textBoxMarginLROnly">
@@ -65,8 +66,18 @@ layout: layouts/base.njk
   <div class="h0_5">
     CREDITS
   </div>
-  {{ fcc(film.credits, "producer") }}
+
   {{ fcc(film.credits, "director") }}
+  {{ fcc(film.credits, "editor") }}
+  {{ fcc(film.credits, "producer") }}
+  {{ fcc(film.credits, "writer") }}
+  {{ fcc(film.credits, "cinematographer") }}
+  {{ fcc(film.credits, "productionDesigner") }}
+  {{ fcc(film.credits, "sound") }}
+  {{ fcc(film.credits, "cast") }}
+  {{ fcc(film.credits, "associateProducer") }}
+  {{ fcc(film.credits, "executiveProducer") }}
+
 </div>
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}

@@ -1,10 +1,33 @@
 
 
-WEDNESDAY
 
-• verify we are handling tide data edges cases
-• add some gradients to the loading screen and maybe other places
+TUESDAY / WEDNESDAY
 
+• Finish uploading Featured Media Partner content
 
-Re-implement smooth scroll.
-This is a good reference: https://deeprising.com/documentary/
+• Finish uploading all Conservation Grantees
+
+• Change tide data to reflect Matty's new sketch
+
+• Plug in Matty's cursor
+
+• Re-implement smooth scroll.
+      This is a good reference: https://deeprising.com/documentary/
+
+• Remove chunky image loading
+
+POST WEDNESDAY
+
+• Mobile
+
+• Add awards to all films.
+
+POST FRIDAY
+
+• Make the desired film link (the one from the embed code) easier to get (aka not pull out the line from the iframe code).
+
+• Make sure all images crop correctly (aka there are no aspect ratio issues with oddly shaped images)
+
+• Try to get the slug to auto-generate and remove it from the UI.
+
+• Put required on the necessary fields.
