@@ -1,8 +1,20 @@
-{% macro headerComp(someData) %}
-      <div class="twoColGrid">
-            <div>
-                  <div class="h0_5">{{someData.headers.story.subTitle}}</div>
-                  <div class="h2_0">{{someData.headers.story.title}}</div>
+{% macro headerComp(headers, page) %}
+      <div class="headerHero" style="background-image: url('{{ page.heroImage }}');">
+            {% include "components/navBar.njk" %}
+            <div class="headerTop textBoxMarginLROnly padLeft padRight">
+                  <div class="headerText">
+                        <div class="twoColGrid">
+                              <div>
+                                    <div class="h0_5">{{headers.story.subTitle}}</div>
+                                    <div class="h2_0">{{headers.story.title}}</div>
+                              </div>
+                        </div>
+                        <div>Photo: {{page.imageCredit}}</div>
+                  </div>
+                  <div class="vSpacer"></div>
+                  <div class="h1_0">
+                        {{page.description}}
+                  </div>
             </div>
       </div>
 {% endmacro %}
