@@ -39,9 +39,40 @@ module.exports = async function () {
     return films;
   }
 
+  async function getStory() {
+    const story = await client.fetch(
+      '*[_type == "story"][0]{ description, shariBio, imageCredit, "heroImage": heroImage.asset->url, "shariPhoto": shariPhoto.asset->url }'
+    );
+    return story;
+  }
+
+  function getHeaders() {
+    const headers = {
+      grantees: {
+        title: "Conservation Grantees",
+        subDescription:
+          "Supporting impactful organizations that champion conservation and restoration of critical planetary ecosystems.",
+      },
+      impactMedia: {
+        title: "Impact Media",
+        subDescription:
+          "We work with filmmakers and photographers who share critical conservation messages in a way that inspires ocean conservation and climate resilience.",
+      },
+      story: {
+        title: "The Code Blue Story",
+        subTitle: "About Us",
+      },
+      films: {
+        subTitle: "Featured Film",
+      },
+    };
+    return headers;
+  }
+
   const grantees = await getGrantees();
   const films = await getFilms();
   const mediaPartners = await getMediaPartners();
-
-  return { json, grantees, films, mediaPartners };
+  const story = await getStory();
+  const headers = getHeaders();
+  return { json, grantees, films, mediaPartners, story, headers };
 };

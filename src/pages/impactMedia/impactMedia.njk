@@ -2,10 +2,11 @@
 layout: layouts/base.njk
 title: "Impact Media"
 ---
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
+<script type="module" src="/js/imgCarousel.js"></script>
+{# https://codepen.io/GreenSock/pen/wvdJEXV #}
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
-{# IMG CAROUSEL HERE #}
-{# https://codepen.io/GreenSock/pen/wvdJEXV #}
 
 {% set thisPartner = someData.mediaPartners[0] %}
 
@@ -49,14 +50,3 @@ title: "Impact Media"
             </div>
       </div>
 </div>
-{# <div class="controls"> #}
-{# <button id="prevButton">Prev</button> #}
-{# <button id="nextButton">Next</button> #}
-{# </div> #}
-
-{# <div> #}
-{# <div class="b1_0 textBoxMargin">10 PART SHORT FILM SERIES</div> #}
-{# <div class="h1_5 textBoxMargin">Dispatches from the Outlaw Ocean</div> #}
-{# <div class="b2_0 textBoxMargin">The high seas are a lawless frontier where crimes such as murder, slavery and environmental destruction are often met with impunity and overlooked by the media. But the ocean is also a place of discovery and reinvention, offering freedom from the constraints of society.</div> #}
-{# </div> #}
-{# </div> #}
