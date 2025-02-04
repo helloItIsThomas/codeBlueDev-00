@@ -46,6 +46,20 @@ module.exports = async function () {
     return story;
   }
 
+  async function getConservationGrantees() {
+    const conservationGrantees = await client.fetch(
+      '*[_type == "conservationGrantees"][0]{imageCredit, "heroImage": heroImage.asset->url, description, subDescription}'
+    );
+    return conservationGrantees;
+  }
+
+  async function getImpactMedia() {
+    const impactMedia = await client.fetch(
+      '*[_type == "impactMedia"][0]{imageCredit, "heroImage": heroImage.asset->url, description, subDescription}'
+    );
+    return impactMedia;
+  }
+
   function getHeaders() {
     const headers = {
       grantees: {
@@ -74,5 +88,16 @@ module.exports = async function () {
   const mediaPartners = await getMediaPartners();
   const story = await getStory();
   const headers = getHeaders();
-  return { json, grantees, films, mediaPartners, story, headers };
+  const conservationGrantees = await getConservationGrantees();
+  const impactMedia = await getImpactMedia();
+  return {
+    json,
+    grantees,
+    films,
+    mediaPartners,
+    story,
+    headers,
+    conservationGrantees,
+    impactMedia,
+  };
 };

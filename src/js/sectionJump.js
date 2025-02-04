@@ -42,9 +42,10 @@ export function setupToContainer() {
     },
   });
 
+  const splashNavBar = document.querySelector("#splashForeground .navBar");
   toPurposeTimeline.to(splashVideo, { opacity: 0 }, 0);
   toPurposeTimeline.to(
-    navBar,
+    splashNavBar,
     { opacity: 0, y: "-100%", duration: 0.5, ease: "power1.out" },
     0
   );
