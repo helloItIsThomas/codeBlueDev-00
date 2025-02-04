@@ -2,9 +2,9 @@
 layout: layouts/base.njk
 title: "The Code Blue Story"
 ---
-{% from 'macros/headerComp.njk' import headerComp %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
-{{ headerComp(someData.headers.story, someData.story) }}
+{{ staticHeaderComp(someData.headers.story, someData.story) }}
 
 <div class="vSpacer"></div>
 

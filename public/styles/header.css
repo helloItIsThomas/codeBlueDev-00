@@ -1,9 +1,9 @@
 .headerHero {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   width: 100%;
-  height: 100%;
   position: relative;
-  border: 1px solid red;
+  height: 100%;
+  border: 1px solid white;
   background-size: 100% auto; /* Changed to ensure width is always 100% of the parent */
   background-position: top;
   background-repeat: no-repeat;

@@ -5,9 +5,9 @@ title: "Impact Media"
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
 <script type="module" src="/js/imgCarousel.js"></script>
 {# https://codepen.io/GreenSock/pen/wvdJEXV #}
-{% from 'macros/headerComp.njk' import headerComp %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
-{{ headerComp(someData.headers.impactMedia, someData.impactMedia) }}
+{{ staticHeaderComp(someData.headers.impactMedia, someData.impactMedia) }}
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
 
@@ -21,8 +21,11 @@ title: "Impact Media"
       </div>
 </div>
 
-<div class="h1_0 textBoxMargin">
-      {{ thisPartner.partnerProject }} by {{ thisPartner.partnerName}}
+<div class="h1_0 textBoxMarginLROnly centered">
+      FEATURED MEDIA PARTNER
+</div>
+<div class="h1_0 _blue textBoxMarginLROnly centered">
+      {{ thisPartner.partnerProject | upper }} BY {{ thisPartner.partnerName | upper }}
 </div>
 <div class="imgCarousel">
       <div class="slides-container">

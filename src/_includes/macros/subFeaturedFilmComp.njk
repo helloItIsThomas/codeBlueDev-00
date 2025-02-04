@@ -1,6 +1,9 @@
 {% macro sffC(film) %}
+
       <div class="subFeaturedFilmComp">
-            <img src="{{ film.posterImage }}">
+            <a href="/films/{{ film.slug.current }}">
+                  <img src="{{ film.posterImage }}" alt="{{ film.title }} poster">
+            </a>
             <div class="b1_0">
             FILM
       </div>
@@ -11,8 +14,8 @@
                   {{ film.description }}
             </div>
             <button class="ctaButton b1_0">
-                  <a href="#" data-replace="{{ film.ctaButton.name }}">
-                        <span>{{ film.ctaButton.name }}</span>
+                  <a href="/films/{{film.slug.current}}" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
                   </a>
             </button>
       </div>

@@ -3,9 +3,9 @@ layout: layouts/base.njk
 title: "Conservation Grantees"
 ---
 
-{% from 'macros/headerComp.njk' import headerComp %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
-{{ headerComp(someData.headers.grantees, someData.conservationGrantees) }}
+{{ staticHeaderComp(someData.headers.grantees, someData.conservationGrantees) }}
 
 {%- for grantee in someData.grantees -%}
       <div class="grantee">

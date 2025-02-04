@@ -4,9 +4,16 @@
   gap: 1rem;
 }
 
-.subFeaturedFilmComp img {
+.subFeaturedFilmComp a {
   object-fit: cover;
   object-position: top;
   width: 100%;
   max-height: 70%;
 }
+
+/* .subFeaturedFilmComp img { */
+/* object-fit: cover; */
+/* object-position: top; */
+/* width: 100%; */
+/* max-height: 70%; */
+/* } */

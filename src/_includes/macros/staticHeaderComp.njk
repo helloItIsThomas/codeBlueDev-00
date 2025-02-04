@@ -1,4 +1,4 @@
-{% macro headerComp(headers, page) %}
+{% macro staticHeaderComp(headers, page) %}
       <div class="headerHero" style="background-image: url('{{ page.heroImage }}');">
             {% include "components/navBar.njk" %}
             <div class="headerTop textBoxMarginLROnly padLeft padRight">
@@ -12,7 +12,9 @@
                         <div class="b1_0 twoColGrid">
                               {{headers.subDescription}}
                         </div>
-                        <div>Photo: {{page.imageCredit}}</div>
+                        {% if page.imageCredit %}
+                              <div>Photo: {{page.imageCredit}}</div>
+                        {% endif %}
                   </div>
                   <div class="vSpacer"></div>
                   <div class="h1_0">

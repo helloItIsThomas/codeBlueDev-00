@@ -25,6 +25,10 @@
   /* line-height: clamp(2.5rem, 1vw, 3rem); */
 }
 
+._blue {
+  color: #18d8f9;
+}
+
 .h1_0 ._blue {
   color: #18d8f9;
 }
