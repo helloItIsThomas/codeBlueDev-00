@@ -1,8 +1,8 @@
-{% macro headerComp(page) %}
+{% macro headerComp(someData) %}
       <div class="twoColGrid">
             <div>
-                  <div class="h0_5">{{page.subTitle}}</div>
-                  <div class="h2_0">{{page.title}}</div>
+                  <div class="h0_5">{{someData.headers.story.subTitle}}</div>
+                  <div class="h2_0">{{someData.headers.story.title}}</div>
             </div>
       </div>
 {% endmacro %}

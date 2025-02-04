@@ -14,11 +14,17 @@
   --borderRadius: 15px;
 
   --textBoxMarginLeft: 5%;
+  --vSpacer: 10rem;
 }
 
 .fullHeightWidth {
   height: 100vh;
   width: 100%;
+}
+
+.vSpacer {
+  margin-top: var(--vSpacer);
+  margin-bottom: var(--vSpacer);
 }
 
 .padLeft {

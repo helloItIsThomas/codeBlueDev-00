@@ -4,16 +4,21 @@ title: "The Code Blue Story"
 ---
 {% from 'macros/headerComp.njk' import headerComp %}
 
-<div class="headerHero">
-      <img src="{{someData.story.heroImage}}" alt="Hero Image">
-      <div class="headerText textBoxMarginLROnly padLeft padRight">
-            {{ headerComp(someData.headers.story) }}
-            <div>Photo: {{someData.story.imageCredit}}</div>
-      </div>
-      <div class="h1_0 textBoxMargin padLeft padRight">
-            {{someData.story.description}}
+<div class="headerHero" style="background-image: url('{{ someData.story.heroImage }}');">
+      {% include "components/navBar.njk" %}
+      <div class="headerTop textBoxMarginLROnly padLeft padRight">
+            <div class="headerText">
+                  {{ headerComp(someData) }}
+                  <div>Photo: {{someData.story.imageCredit}}</div>
+            </div>
+            <div class="vSpacer"></div>
+            <div class="h1_0">
+                  {{someData.story.description}}
+            </div>
       </div>
 </div>
+
+<div class="vSpacer"></div>
 
 <div class="padLeft padRight textBoxMargin">
       <div class="threeSevenGrid">
