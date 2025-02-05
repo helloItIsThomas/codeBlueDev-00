@@ -21,6 +21,7 @@
     "@sanity/image-url": "^1.1.0",
     "gsap": "^3.12.5",
     "p5": "^1.11.2",
+    "pixi-filters": "^6.1.0",
     "pixi.js": "^8.6.6",
     "shader-park-core": "^0.2.8",
     "three": "^0.166.1",

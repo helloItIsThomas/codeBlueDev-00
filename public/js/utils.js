@@ -55,7 +55,4 @@ document.addEventListener("mousemove", (event) => {
   sv.prevMousePos.y = sv.mousePos.y;
   sv.mousePos.x = event.clientX;
   sv.mousePos.y = event.clientY;
-
-  console.log("x: ", event.clientX);
-  console.log("y: ", event.clientY);
 });

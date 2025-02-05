@@ -14,8 +14,7 @@ import {
   Texture,
 } from "/js/pixi/pixi.min.mjs";
 
-// import { BloomFilter } from "pixi-filters/bloom";
-// import { GlowFilter } from "pixi-filters/glow";
+import { BloomFilter, GlowFilter } from "/js/pixi-filters/pixi-filters.mjs";
 
 import { loadShaders } from "./cursor/loadShaders.js";
 import { render } from "./cursor/render.js";
@@ -103,7 +102,7 @@ async function mySetup() {
 
   // document.body.appendChild(sv.pApp.canvas);
 
-  const spinnyBG = await Assets.load("../assets/images/dot2.png");
+  const spinnyBG = await Assets.load("/assets/images/dot2.png");
 
   const { vertex, fragment } = await loadShaders();
 
@@ -193,19 +192,19 @@ async function mySetup() {
   container.filterArea = sv.pApp.screen;
 
   // try glow, displacement, convolution?, shockwave?,
-  // container.filters = [
-  //   new BloomFilter({
-  //     strength: 10,
-  //     quality: 5,
-  //     kernelSize: 7,
-  // }),
-  // new GlowFilter({
-  // color: 0x64f0f5,
-  // distance: 1,
-  // innerStrength: 0,
-  // outerStrength: 5.0,
-  // }),
-  // ];
+  container.filters = [
+    new BloomFilter({
+      strength: 10,
+      quality: 5,
+      kernelSize: 7,
+    }),
+    new GlowFilter({
+      color: 0x64f0f5,
+      distance: 1,
+      innerStrength: 0,
+      outerStrength: 5.0,
+    }),
+  ];
 
   container.addChild(triangleMesh);
   sv.pApp.stage.addChild(container);
