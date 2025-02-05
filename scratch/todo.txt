@@ -3,9 +3,13 @@
 
 TUESDAY / WEDNESDAY
 
-• Finish uploading Featured Media Partner content
+• Remove chunky image loading
 
-• Finish uploading all Conservation Grantees
+• fix film header image
+
+• try to add a gradient to the bottom of the film header image
+
+• finish spacing and margins for things
 
 • Change tide data to reflect Matty's new sketch
 
@@ -14,13 +18,13 @@ TUESDAY / WEDNESDAY
 • Re-implement smooth scroll.
       This is a good reference: https://deeprising.com/documentary/
 
-• Remove chunky image loading
-
 POST WEDNESDAY
 
 • Mobile
 
 • Add awards to all films.
+
+• Finish uploading Featured Media Partner content
 
 POST FRIDAY
 

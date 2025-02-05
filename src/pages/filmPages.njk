@@ -9,7 +9,7 @@ layout: layouts/base.njk
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 
 <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); ">
-  <div class="headerTop">
+  <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="bm3">FEATURED FILM</div>
       <div class="h0_5">{{film.subTitle}}</div>
@@ -18,9 +18,11 @@ layout: layouts/base.njk
   </div>
 </div>
 
-<div class="sevenThreeGrid">
+<div class="vSpacer2"></div>
+
+<div class="sevenThreeGrid margin0LR padding1LRLeft ">
   <div>
-    <div class="h0_5">{{film.description}}</div>
+    <div class="bs3">{{film.description}}</div>
   </div>
   <div>
     <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
@@ -34,36 +36,51 @@ layout: layouts/base.njk
   </div>
 </div>
 
+<div class="vSpacer2"></div>
+
 <div class="awardsTicker">
+  {% set areAwards = false %}
   {% for award in film.metadata.awards %}
+    {% set areAwards = true %}
     <img src="{{ award.award.graphic.url }}" alt="{{ award.award.name }}">
   {% endfor %}
 </div>
+{% if areAwards %}
+  <div class="vSpacer2"></div>
+{% endif %}
 
-<div class="">
+<div class="margin0LR padding1LR">
   <div class="h0_5">WATCH THE TRAILER</div>
 </div>
 
+<div class="vSpacer0"></div>
 {# https://www.youtube.com/embed/t_O5Y8FWXpE?si=Lmak45m0oyMXDryB #}
 {# the link must be from the embed code like the above #}
 
-<div class="responsive-iframe ">
+<div class="responsive-iframe margin0LR">
   <iframe class="" src="{{ film.trailerLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<div class="">
+<div class="vSpacer2"></div>
+
+<div class="margin0LR padding1LR">
   <div class="h0_5">
   IMAGE GALLERY
   </div>
+  <div class="vSpacer0"></div>
   <div class="galleryGrid">
     {% for image in film.galleryImages %}
       <img src="{{ image.url }}" alt="{{ image.alt }}">
     {% endfor %}
   </div>
 
+  <div class="vSpacer2"></div>
+
   <div class="h0_5">
     CREDITS
   </div>
+
+  <div class="vSpacer0"></div>
 
   {{ fcc(film.credits, "director") }}
   {{ fcc(film.credits, "editor") }}
@@ -75,7 +92,6 @@ layout: layouts/base.njk
   {{ fcc(film.credits, "cast") }}
   {{ fcc(film.credits, "associateProducer") }}
   {{ fcc(film.credits, "executiveProducer") }}
-
 </div>
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
@@ -118,7 +134,15 @@ layout: layouts/base.njk
   {% set threeUniqueValues = (threeUniqueValues.push(uniqueValues[i]), threeUniqueValues) %}
 {% endfor %}
 
-<div class="threeFeaturedFilmsComp">
+<div class="vSpacer2"></div>
+
+<div class="margin0LR padding1LR">
+  <div class="h0_5">MORE FEATURED FILMS</div>
+</div>
+
+<div class="vSpacer0"></div>
+
+<div class="threeFeaturedFilmsComp margin0LR">
   <div class="threeColGrid">
     {% for i in threeUniqueValues %}
       {% if notThisFilm[i] %}
@@ -127,6 +151,3 @@ layout: layouts/base.njk
     {% endfor %}
   </div>
 </div>
-
-{# is featured: {{ film.isFeatured }} #}
-{# <img src="{{ film.posterImage }}" alt="{{ film.title }}"> #}
