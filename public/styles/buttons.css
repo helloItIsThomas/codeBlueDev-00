@@ -1,0 +1,16 @@
+.ctaButton {
+  border: 1px solid white;
+  padding: 8px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  width: fit-content;
+  border-radius: 50px;
+  height: fit-content;
+  background-color: transparent;
+}
+
+.horizontalButtonWrapper {
+  display: flex;
+  flex-direction: row;
+}

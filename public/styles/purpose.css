@@ -1,0 +1,22 @@
+#purpose {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#purpose .background {
+  overflow: hidden;
+}
+
+#purpose .foreground {
+  gap: 1rem;
+  position: absolute;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 56%;
+  min-width: 10%;
+}

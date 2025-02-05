@@ -1,0 +1,29 @@
+#mission {
+  display: flex;
+  align-items: center;
+}
+
+#missionCopy {
+  width: 60%;
+}
+
+#missionRight {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#missionRight iframe {
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  position: absolute;
+}
+
+#waterOrb {
+  height: auto !important;
+  width: 100% !important;
+  border: none;
+  background-color: transparent;
+  mix-blend-mode: multiply;
+}
