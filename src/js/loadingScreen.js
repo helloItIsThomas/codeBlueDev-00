@@ -13,6 +13,8 @@ export async function initLoadingScreen(_logoLottie) {
   const tideData = await getTideData();
   v.tideData = tideData;
 
+  console.log(v.tideData);
+
   gsap.to(timer, {
     val: 1.0,
     duration: 2.0,

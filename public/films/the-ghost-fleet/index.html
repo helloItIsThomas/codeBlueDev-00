@@ -75,13 +75,38 @@
   bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg)';
 </script>
 
+<hr id="lineCheck">
+<div id ="overlayGrad"></div>
+<script>
+  const img = new Image();
+  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg';
+  img.onload = function () {
+    console.log("lskdjf")
+    let lineCheck = document.getElementById('lineCheck');
+    lineCheck.style.bottom = `10px`;
+    let overlayGrad = document.getElementById('overlayGrad');
+    const imageWidth = img.width;
+    const imageHeight = img.height;
+    console.log(imageHeight, imageWidth);
+    const imgRatio = imageWidth / imageHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const viewportRatio = viewportWidth / viewportHeight;
+    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
+    lineCheck.style.bottom = `${gradientHeight}px`;
+    overlayGrad.style.bottom = `${gradientHeight}px`;
+  };
+</script>
+
 <div class ="overlayGrad"></div>
+<script></script>
 
 
 <div class="headerHero">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="bm3">FEATURED FILM</div>
+      <div class="vertGap0"></div>
       <div class="h0_5"></div>
       <div class="h2_0">The Ghost Fleet</div>
     </div>
@@ -100,28 +125,24 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   </div>
   <div style="position: relative;">
     <button onclick="location.href='https://www.amazon.com/Ghost-Fleet-Patima-Tungpuchayakul/dp/B081R6535W'" class="ctaButton">Watch Now</button>
-    <br>
+    <div class="vSpacer0"></div>
     
       
-        Thai,English [CC]
-        <br>
-      
-    
+        <div class="bm2">2018</div>
       
     
       
-        United States
-        <br>
+        <div class="bm2">Thai,English [CC]</div>
       
     
       
-        89
-        <br>
+        <div class="bm2">United States</div>
       
     
       
-        2018
-        <br>
+        <div class="bm2">89</div>
+      
+    
       
     
   </div>
@@ -655,33 +676,9 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-      
-    
-  
-  
-
-  
-  
-  
   
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
   
 
   
@@ -703,13 +700,30 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-      
-    
   
     
   
     
   
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
   
 
   
@@ -725,17 +739,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
     
   
     
@@ -746,6 +749,10 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
   
+  
+    
+  
+    
   
     
   
@@ -768,127 +775,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
       
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
     
   
     
@@ -946,6 +832,177 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
     
   
     
@@ -981,6 +1038,31 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
         
 
       <div class="subFeaturedFilmComp">
+            <a href="/films/deep-rising">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+            </a>
+            <div class="bm3">
+                  2023
+            </div>
+            <div class="h0_5">
+                  Deep Rising
+            </div>
+            <div class="bs1">
+                  The deep sea harbors millions of undiscovered species and stores 80% of the carbon on Earth—and it is under siege. Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier. But this is about more than just defending the deep—it’s our last chance to solve the climate crisis.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/deep-rising" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
             <a href="/films/gaucho-gaucho">
                   <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
             </a>
@@ -995,31 +1077,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
             </div>
             <button class="ctaButton ">
                   <a href="/films/gaucho-gaucho" data-replace="LEARN MORE">
-                        <span>LEARN MORE</span>
-                  </a>
-            </button>
-      </div>
-
-      
-    
-      
-        
-
-      <div class="subFeaturedFilmComp">
-            <a href="/films/mission-blue">
-                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
-            </a>
-            <div class="bm3">
-                  2014
-            </div>
-            <div class="h0_5">
-                  Mission Blue
-            </div>
-            <div class="bs1">
-                  This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
-            </div>
-            <button class="ctaButton ">
-                  <a href="/films/mission-blue" data-replace="LEARN MORE">
                         <span>LEARN MORE</span>
                   </a>
             </button>
@@ -1069,12 +1126,7 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                     <div class="bser0" >Protection and Restoration of Our Blue Planet through Innovative Projects and Strategic Alliances.</div>
                     <div id="footerCenterChildBottom">
                         <div class="bm0">Quick Links
-                        <!---
-                        <div class="b1_0 navLink" >
-                            <a href="/" data-replace="CONSERVATION GRANTEES">
-                            <span>CONSERVATION GRANTEES</span></a>
-                        </div>
-                        -->
+
                             <ul>
                                 <li>
                                     <a class="bs3" href="#link1" data-replace="About Us">

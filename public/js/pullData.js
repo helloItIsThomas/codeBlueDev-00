@@ -35,13 +35,15 @@ export function getTideData() {
       // const closestStation = stationList[0];
       const closestStationID = closestStation.id;
       const datum = "MSL"; // MSL means Mean Sea Level
-      const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=Code_Blue_Foundation&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json&date=latest`;
+      // const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?product=water_level&application=Code_Blue_Foundation&datum=${datum}&station=${closestStationID}&time_zone=GMT&units=english&format=json&date=latest`;
+      const specificDataURL = `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=19740101&end_date=20241231&station=${closestStationID}&product=monthly_mean&datum=MSL&time_zone=gmt&units=metric&format=json`;
       getJsonDataFromURL(specificDataURL).then((data) => {
         const name = data.metadata.name;
         const coords = [data.metadata.lat, data.metadata.lon];
-        const lastData = data.data[0];
+        const historicData = data.data[0];
+        const currentData = data.data[data.data.length - 1];
         getJsonDataFromURL(closestStation.datumsURL).then((datums) => {
-          resolve({ name, coords, lastData, datums });
+          resolve({ name, coords, historicData, currentData, datums });
         });
       });
     });

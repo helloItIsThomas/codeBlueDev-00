@@ -13,13 +13,38 @@ layout: layouts/base.njk
   bodyGradient.style.backgroundImage = 'url({{ film.heroImage | url }})';
 </script>
 
+<hr id="lineCheck">
+<div id ="overlayGrad"></div>
+<script>
+  const img = new Image();
+  img.src = '{{ film.heroImage | url }}';
+  img.onload = function () {
+    console.log("lskdjf")
+    let lineCheck = document.getElementById('lineCheck');
+    lineCheck.style.bottom = `10px`;
+    let overlayGrad = document.getElementById('overlayGrad');
+    const imageWidth = img.width;
+    const imageHeight = img.height;
+    console.log(imageHeight, imageWidth);
+    const imgRatio = imageWidth / imageHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const viewportRatio = viewportWidth / viewportHeight;
+    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
+    lineCheck.style.bottom = `${gradientHeight}px`;
+    overlayGrad.style.bottom = `${gradientHeight}px`;
+  };
+</script>
+
 <div class ="overlayGrad"></div>
+<script></script>
 
 {# <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); "> #}
 <div class="headerHero">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="bm3">FEATURED FILM</div>
+      <div class="vertGap0"></div>
       <div class="h0_5">{{film.subTitle}}</div>
       <div class="h2_0">{{film.title}}</div>
     </div>
@@ -34,11 +59,10 @@ layout: layouts/base.njk
   </div>
   <div style="position: relative;">
     <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
-    <br>
+    <div class="vSpacer0"></div>
     {% for key, value in film.metadata %}
       {% if key != "awards" %}
-        {{ value }}
-        <br>
+        <div class="bm2">{{ value }}</div>
       {% endif %}
     {% endfor %}
   </div>

@@ -18,15 +18,17 @@
   padding-bottom: 1rem; /* Optional: Add some padding at the bottom */
 }
 
-.overlayGrad {
+#overlayGrad {
   position: absolute;
-  top: 0;
+  /* top: 0; */
   left: 0;
   width: 100%;
   /* the height of this should be calculated based on the height of the image */
   height: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #030b22);
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #fff); */
   z-index: 0;
+  pointer-events: none;
 }
 
 .headerDescription {
