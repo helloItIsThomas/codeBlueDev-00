@@ -184,6 +184,12 @@ body * {
   mix-blend-mode: screen;
 }
 
+hr {
+  height: 0.5px; /* Adjust the height to make it thinner */
+  background-color: white; /* Keep the color as red */
+  border: none; /* Remove any default border */
+}
+
 main {
   display: none;
 }
