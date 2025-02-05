@@ -42,7 +42,9 @@ export function setupToContainer() {
     },
   });
 
-  const splashNavBar = document.querySelector("#splashForeground .navBar");
+  // const splashNavBar = document.querySelector("#splashForeground .navBar");
+  const splashNavBar = document.querySelectorAll(".navBar");
+  console.log(splashNavBar);
   toPurposeTimeline.to(splashVideo, { opacity: 0 }, 0);
   toPurposeTimeline.to(
     splashNavBar,

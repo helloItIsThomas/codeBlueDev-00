@@ -11,56 +11,122 @@
   src: url("/assets/fonts/serifLight.otf");
 }
 
-.h0_5 {
-  font-family: "cdserif";
-  font-size: clamp(1.6rem, 1vw, 2.8rem);
-}
-
-.h1_0,
-.h1_0 ._blue {
-  font-family: "cdserif";
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  line-height: clamp(2.3rem, 5vw, 4rem);
-  /* font-size: 6rem; */
-  /* line-height: clamp(2.5rem, 1vw, 3rem); */
-}
-
 ._blue {
   color: #18d8f9;
 }
 
+/* .b0_5 { */
+/* font-family: "cdserif"; */
+/* font-size: clamp(1.2rem, 1vw, 2.25rem); */
+/* } */
+/* .b1_0 { */
+/* font-family: "cdmono"; */
+/* font-size: clamp(0.9rem, 1vw, 1.2rem); */
+/* /////  line-height: clamp(0.9rem, 1vw, 1.2rem); */
+/* color: white; */
+/* } */
+/* .b2_0 { */
+/* font-family: "cdsans"; */
+/* font-size: clamp(0.8rem, 1vw, 2rem); */
+/* ////// line-height: clamp(1.5rem, 1vw, 2rem); */
+/* color: white; */
+/* } */
+
+.h0_5 {
+  font-size: var(--pt36);
+  font-family: "cdserif";
+  /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
+  /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
+}
+
+.h1_0,
 .h1_0 ._blue {
-  color: #18d8f9;
-}
-
-.h1_5 {
+  font-size: var(--pt60);
   font-family: "cdserif";
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: clamp(3rem, 5vw, 4.5rem);
-}
-
-.h2_0 {
-  font-family: "cdserif";
-  font-size: clamp(3.3rem, 5vw, 5.5rem);
   /* font-size: clamp(2.8rem, 5vw, 4.5rem); */
   /* line-height: clamp(2.3rem, 5vw, 4rem); */
 }
 
-.b0_5 {
+.h1_5 {
+  font-size: var(--pt72);
   font-family: "cdserif";
-  font-size: clamp(1.2rem, 1vw, 2.25rem);
+  /* font-size: clamp(3rem, 5vw, 5rem); */
+  /* line-height: clamp(3rem, 5vw, 4.5rem); */
 }
 
-.b1_0 {
+.h2_0 {
+  font-size: var(--pt96);
+  font-family: "cdserif";
+  /* font-size: clamp(3.3rem, 5vw, 5.5rem); */
+  /* line-height: clamp(2.3rem, 5vw, 4rem); */
+}
+
+/* *****************  */
+/*   NEW BODY FONTS   */
+/* *****************  */
+
+/*        MONO        */
+.bm0 {
   font-family: "cdmono";
-  font-size: clamp(0.9rem, 1vw, 1.2rem);
-  /* line-height: clamp(0.9rem, 1vw, 1.2rem); */
-  color: white;
+  text-transform: uppercase;
+  font-size: var(--pt10);
+}
+.bm1 {
+  font-family: "cdmono";
+  text-transform: uppercase;
+  font-size: var(--pt11);
+  font-weight: bolder;
+}
+.bm2 {
+  font-family: "cdmono";
+  text-transform: uppercase;
+  font-size: var(--pt12);
+}
+.bm3 {
+  font-family: "cdmono";
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: var(--pt14);
 }
 
-.b2_0 {
+/*        SANS        */
+.bs0 {
   font-family: "cdsans";
-  font-size: clamp(0.8rem, 1vw, 2rem);
-  /* line-height: clamp(1.5rem, 1vw, 2rem); */
-  color: white;
+  font-weight: light;
+  font-size: var(--pt16);
+}
+.bs1 {
+  font-family: "cdsans";
+  font-weight: 100;
+  font-size: var(--pt18);
+}
+.bs2 {
+  font-family: "cdsans";
+  font-weight: light;
+  color: #104eb2;
+  font-size: var(--pt19);
+}
+.bs3 {
+  font-family: "cdsans";
+  font-weight: light;
+  font-size: var(--pt20);
+}
+
+/*        SERIF        */
+.bser0 {
+  font-family: "cdserif";
+  font-weight: light;
+  font-size: var(--pt20);
+}
+.bser1 {
+  font-family: "cdserif";
+  font-weight: light;
+  text-decoration: underline;
+  font-size: var(--pt24);
+}
+.bser2 {
+  font-family: "cdserif";
+  font-weight: light;
+  font-size: var(--pt30);
+  line-height: 1.3;
 }

@@ -1,24 +1,18 @@
 {% macro staticHeaderComp(headers, page) %}
-      <div class="headerHero" style="background-image: url('{{ page.heroImage }}');">
-            {% include "components/navBar.njk" %}
-            <div class="headerTop textBoxMarginLROnly padLeft padRight">
+      <div class="headerHero margin0LR">
+            <div class="headerTop margin1LR">
                   <div class="headerText">
                         <div class="twoColGrid">
                               <div>
-                                    <div class="h0_5">{{headers.subTitle}}</div>
+                                    <div class="bm3">{{headers.subTitle}}</div>
                                     <div class="h2_0">{{headers.title}}</div>
+                                    <div class="bs3">{{headers.subDescription}}</div>
                               </div>
-                        </div>
-                        <div class="b1_0 twoColGrid">
-                              {{headers.subDescription}}
+                              <div></div>
                         </div>
                         {% if page.imageCredit %}
-                              <div>Photo: {{page.imageCredit}}</div>
+                              <div class="bm0">Photo: {{page.imageCredit}}</div>
                         {% endif %}
-                  </div>
-                  <div class="vSpacer"></div>
-                  <div class="h1_0">
-                        {{page.description}}
                   </div>
             </div>
       </div>

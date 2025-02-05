@@ -1,20 +1,64 @@
-* div {
-  /* border: 1px solid white; */
-}
-
 * {
   cursor: none !important;
 }
 
 :root {
-  --padLeft: 4rem;
-  --padRight: 4rem;
-  --textBoxMargin: 2rem;
-  --bodyMargin: 3rem;
+  --margin0LR: 4rem;
+  --margin1LR: 6rem;
+  --padding1LR: 6rem;
   --borderRadius: 15px;
+  --vSpacer0: 7rem;
+  --vSpacer1: 10rem;
+  --vSpacer2: 15rem;
 
-  --textBoxMarginLeft: 5%;
-  --vSpacer: 10rem;
+  --padding1LRLeft: calc(var(--padding1LR) / 1);
+  --padding1LRRight: calc(var(--padding1LR) / 1);
+
+  /* FONTS */
+  --pt0: 10px;
+  --pt1: 11px;
+  --pt2: 12px;
+  --pt10: 10px;
+  --pt14: 14px;
+  --pt16: 16px;
+  --pt18: 18px;
+  --pt19: 19px;
+  --pt20: 20px;
+  --pt24: 24px;
+  --pt30: 30px;
+
+  --pt36: 36px;
+  --pt60: 60px;
+  --pt72: 72px;
+  --pt96: 96px;
+}
+
+.margin0LR {
+  box-sizing: border-box;
+  margin-left: var(--margin0LR);
+  margin-right: var(--margin0LR);
+}
+.margin1LR {
+  box-sizing: border-box;
+  margin-left: var(--margin1LR);
+  margin-right: var(--margin1LR);
+}
+.padding1LR {
+  box-sizing: border-box;
+  padding-left: var(--padding1LRLeft);
+  padding-right: var(--padding1LRRight);
+}
+.padding1LRLeft {
+  box-sizing: border-box;
+  padding-left: var(--padding1LRLeft);
+}
+.padding1LRRight {
+  box-sizing: border-box;
+  padding-right: var(--padding1LRRight);
+}
+
+.cheatUp {
+  margin-top: -5%;
 }
 
 .fullHeightWidth {
@@ -22,9 +66,19 @@
   width: 100%;
 }
 
-.vSpacer {
-  margin-top: var(--vSpacer);
-  margin-bottom: var(--vSpacer);
+.vSpacer0 {
+  margin-top: var(--vSpacer0);
+  margin-bottom: var(--vSpacer0);
+}
+
+.vSpacer1 {
+  margin-top: var(--vSpacer1);
+  margin-bottom: var(--vSpacer1);
+}
+
+.vSpacer2 {
+  margin-top: var(--vSpacer2);
+  margin-bottom: var(--vSpacer2);
 }
 
 .padLeft {
@@ -33,15 +87,6 @@
 
 .padRight {
   padding-right: var(--padRight) !important;
-}
-
-.textBoxMargin {
-  margin: var(--textBoxMargin);
-}
-
-.textBoxMarginLROnly {
-  margin-left: var(--textBoxMargin) !important;
-  margin-right: var(--textBoxMargin) !important;
 }
 
 .component {
@@ -87,13 +132,17 @@ body * {
 }
 
 #bodyGradient {
+  width: 100%;
   background-color: #03091c;
-  /* background: linear-gradient(to bottom, #03091c, #1a2a4b); */
+  background-size: cover;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #subBody {
-  margin-left: var(--bodyMargin);
-  margin-right: var(--bodyMargin);
+  margin-left: var(--margin0);
+  margin-right: var(--margin0);
 }
 
 #cursorCanvas {

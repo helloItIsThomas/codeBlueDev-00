@@ -43,9 +43,7 @@
         <title id="page-title">{{ title }}</title>
     </head>
     <body>
-
-        {# {% include "layouts/threeFeaturedFilms.njk" %} #}
-        {# {% include "layouts/imageGallery.njk" %} #}
+        {% include "components/navBar.njk" %}
         <div id="bodyGradient">
             <div id="cursorCanvas"></div>
             {{ content | safe }}

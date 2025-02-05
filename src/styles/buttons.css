@@ -1,5 +1,4 @@
 .ctaButton {
-  border: 1px solid white;
   padding: 8px;
   padding-left: 30px;
   padding-right: 30px;
@@ -8,6 +7,9 @@
   border-radius: 50px;
   height: fit-content;
   background-color: transparent;
+  font-family: "cdmono";
+  text-transform: uppercase;
+  font-size: var(--pt14);
 }
 
 .horizontalButtonWrapper {
