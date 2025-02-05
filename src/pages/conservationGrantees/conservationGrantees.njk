@@ -14,7 +14,7 @@ title: "Conservation Grantees"
 <div class="vSpacer1"></div>
 
 {%- for grantee in someData.grantees -%}
-      <div class="grantee margin0LR">
+      <div class="margin0LR">
             <div class="margin1LR">
                   <hr>
                   <div class="threeSevenGrid">
@@ -23,8 +23,13 @@ title: "Conservation Grantees"
                               <img style="mix-blend-mode: screen;" src="{{ grantee.image }}"  class="grantee_logo">
                         </div>
                         <div>
-                              <div class="bs3">{{ grantee.description }}</div>
-                              <button class="ctaButton">VISIT {{ grantee.link }}</button>
+                              <div class="vertGap0"></div>
+                              <div class = "granteeRight">
+                                    <div class="bs3">{{ grantee.description }}</div>
+                                    <div class="vertGap0"></div>
+                                    <button class="ctaButton">VISIT {{ grantee.title }}</button>
+                              </div>
+                              <div class="vertGap0"></div>
                         </div>
                   </div>
             </div>

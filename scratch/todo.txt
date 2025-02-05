@@ -1,22 +1,6 @@
 
-
-
-
-
-
-
-I want to calculate the drawn height of the image being used as the background for bodyGradient,
-then the height of the viewport,
-then find the difference,
-and set the bottom of the gradient to viewport.height - difference.
-
-
-
-
 WEDNESDAY
 
-3:45 - 4:30pm
-• set proper height for the gradient at the bottom of the film header image
 
 4:30pm - 5:00pm
 • turn the page loading screen back on
