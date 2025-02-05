@@ -8,7 +8,15 @@ layout: layouts/base.njk
 ---
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 
-<div class="headerHero" style="background-image: url('{{ film.heroImage }}'); ">
+<script>
+  let bodyGradient = document.getElementById('bodyGradient');
+  bodyGradient.style.backgroundImage = 'url({{ film.heroImage | url }})';
+</script>
+
+<div class ="overlayGrad"></div>
+
+{# <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); "> #}
+<div class="headerHero">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="bm3">FEATURED FILM</div>
@@ -22,9 +30,9 @@ layout: layouts/base.njk
 
 <div class="sevenThreeGrid margin0LR padding1LRLeft ">
   <div>
-    <div class="bs3">{{film.description}}</div>
+    <div class="bs3" style="position: relative;">{{film.description}}</div>
   </div>
-  <div>
+  <div style="position: relative;">
     <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
     <br>
     {% for key, value in film.metadata %}
@@ -49,7 +57,7 @@ layout: layouts/base.njk
   <div class="vSpacer2"></div>
 {% endif %}
 
-<div class="margin0LR padding1LR">
+<div class="margin0LR padding1LR" style="position: relative;">
   <div class="h0_5">WATCH THE TRAILER</div>
 </div>
 

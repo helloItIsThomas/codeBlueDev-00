@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: "The Code Blue Story"
 ---
 <script>
-      const bodyGradient = document.getElementById('bodyGradient');
+      let bodyGradient = document.getElementById('bodyGradient');
       bodyGradient.style.backgroundImage = 'url({{ someData.story.heroImage | url }})';
 </script>
 

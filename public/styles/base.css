@@ -131,6 +131,11 @@ body * {
   color: white;
 }
 
+.zUp2 {
+  position: absolute;
+  z-index: 2;
+}
+
 #bodyGradient {
   width: 100%;
   background-color: #03091c;

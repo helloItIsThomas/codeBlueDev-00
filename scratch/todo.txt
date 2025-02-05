@@ -1,19 +1,27 @@
 
 
 
-TUESDAY / WEDNESDAY
+TUESDAY
 
-• Remove chunky image loading
+WEDNESDAY
 
-• fix film header image
-
-• try to add a gradient to the bottom of the film header image
-
-• finish spacing and margins for things
-
+9am - 10am
 • Change tide data to reflect Matty's new sketch
 
+11am - 1pm
+• finish spacing and margins for things
+
+1pm - 3pm
+• set proper height for the gradient at the bottom of the film header image
+
+3pm - 5pm
 • Plug in Matty's cursor
+
+      ~
+
+• get live link to the site
+
+• turn the page loading screen back on
 
 • Re-implement smooth scroll.
       This is a good reference: https://deeprising.com/documentary/
@@ -25,6 +33,8 @@ POST WEDNESDAY
 • Add awards to all films.
 
 • Finish uploading Featured Media Partner content
+
+• update the arrows on the Featured Media Partner section
 
 POST FRIDAY
 
