@@ -5,10 +5,11 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
 <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"/>
 
 <script type="module" src="/js/setup.js"></script>
-<script type="module" src="/js/cursorSketch.js"></script>
+{# <script type="module" src="/js/cursorSketch.js"></script> #}
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
@@ -43,13 +44,12 @@
         <title id="page-title">{{ title }}</title>
     </head>
     <body>
-
-        {# {% include "layouts/threeFeaturedFilms.njk" %} #}
-        {# {% include "layouts/imageGallery.njk" %} #}
+        {% include "components/navBar.njk" %}
         <div id="bodyGradient">
             <div id="cursorCanvas"></div>
             {{ content | safe }}
         </div>
         {% include "components/footer.njk" %}
+        {% include "components/pageLoadingScreen.njk" %}
     </body>
 </html>

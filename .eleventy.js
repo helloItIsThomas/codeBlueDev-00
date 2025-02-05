@@ -8,6 +8,7 @@ module.exports = function (eleventyConfig) {
     "./node_modules/three": "js/three",
     "./node_modules/p5": "js/p5",
     "./node_modules/pixi.js/dist": "js/pixi",
+    // "./node_modules/pixi-filters/dist": "js/pixi-filters",
     "./node_modules/shader-park-core/dist": "js/shaderpark",
     "./node_modules/shader-park-core/dist": "js/shaderpark",
     "./node_modules/@sanity/client": "js/sanityClient",

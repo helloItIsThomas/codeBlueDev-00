@@ -3,12 +3,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr !important;
   gap: 0.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .threeColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr !important;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .galleryGrid {
@@ -22,16 +28,17 @@
 .threeSevenGrid {
   display: grid;
   grid-template-columns: 3fr 7fr !important;
-  gap: 0.5rem;
+  gap: 4.5rem;
 }
 
 .sevenThreeGrid {
   display: grid;
   grid-template-columns: 7fr 3fr !important;
-  gap: 0.5rem;
+  gap: 8rem;
 }
 
 .sevenFiveGrid {
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 7fr 5fr !important;
   gap: 0.5rem;

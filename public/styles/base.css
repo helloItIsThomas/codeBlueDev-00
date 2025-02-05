@@ -1,20 +1,73 @@
-* div {
-  /* border: 1px solid white; */
-}
-
 * {
   cursor: none !important;
 }
 
 :root {
-  --padLeft: 4rem;
-  --padRight: 4rem;
-  --textBoxMargin: 2rem;
-  --bodyMargin: 3rem;
+  --margin0LR: 4rem;
+  --margin1LR: 6rem;
+  --padding1LR: 6rem;
   --borderRadius: 15px;
+  --vSpacer0: 55px;
+  --vSpacer1: 88px;
+  --vSpacer2: 125px;
 
-  --textBoxMarginLeft: 5%;
-  --vSpacer: 10rem;
+  --padding1LRLeft: calc(var(--padding1LR) / 1);
+  --padding1LRRight: calc(var(--padding1LR) / 1);
+
+  /* FONTS */
+  --pt0: 10px;
+  --pt1: 11px;
+  --pt2: 12px;
+  --pt10: 10px;
+  --pt14: 14px;
+  --pt16: 16px;
+  --pt18: 18px;
+  --pt19: 19px;
+  --pt20: 20px;
+  --pt24: 24px;
+  --pt30: 30px;
+
+  --pt36: 36px;
+  --pt60: 60px;
+  --pt72: 72px;
+  --pt96: 96px;
+}
+
+.vertGap0 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.vertGap1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.margin0LR {
+  box-sizing: border-box;
+  margin-left: var(--margin0LR);
+  margin-right: var(--margin0LR);
+}
+.margin1LR {
+  box-sizing: border-box;
+  margin-left: var(--margin1LR);
+  margin-right: var(--margin1LR);
+}
+.padding1LR {
+  box-sizing: border-box;
+  padding-left: var(--padding1LRLeft);
+  padding-right: var(--padding1LRRight);
+}
+.padding1LRLeft {
+  box-sizing: border-box;
+  padding-left: var(--padding1LRLeft);
+}
+.padding1LRRight {
+  box-sizing: border-box;
+  padding-right: var(--padding1LRRight);
+}
+
+.cheatUp {
+  margin-top: -5%;
 }
 
 .fullHeightWidth {
@@ -22,9 +75,19 @@
   width: 100%;
 }
 
-.vSpacer {
-  margin-top: var(--vSpacer);
-  margin-bottom: var(--vSpacer);
+.vSpacer0 {
+  margin-top: var(--vSpacer0);
+  margin-bottom: var(--vSpacer0);
+}
+
+.vSpacer1 {
+  margin-top: var(--vSpacer1);
+  margin-bottom: var(--vSpacer1);
+}
+
+.vSpacer2 {
+  margin-top: var(--vSpacer2);
+  margin-bottom: var(--vSpacer2);
 }
 
 .padLeft {
@@ -33,15 +96,6 @@
 
 .padRight {
   padding-right: var(--padRight) !important;
-}
-
-.textBoxMargin {
-  margin: var(--textBoxMargin);
-}
-
-.textBoxMarginLROnly {
-  margin-left: var(--textBoxMargin) !important;
-  margin-right: var(--textBoxMargin) !important;
 }
 
 .component {
@@ -86,21 +140,54 @@ body * {
   color: white;
 }
 
+.zUp2 {
+  position: absolute;
+  z-index: 2;
+}
+
+#lineCheck {
+  width: 100%;
+  height: 10px;
+  background-color: red;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  display: none;
+}
+
 #bodyGradient {
-  background: linear-gradient(to bottom, #0c1b4b, #030b22);
+  width: 100%;
+  background-color: #03091c;
+  background-size: cover;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #subBody {
-  margin-left: var(--bodyMargin);
-  margin-right: var(--bodyMargin);
+  margin-left: var(--margin0);
+  margin-right: var(--margin0);
 }
 
 #cursorCanvas {
   pointer-events: none;
   position: fixed;
+  /* position: absolute; */
   z-index: 6;
-  width: 100vw;
-  height: 100vh;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  /* border: 5px solid red; */
+  /* background-color: transparent; */
+  mix-blend-mode: screen;
+}
+
+hr {
+  height: 0.5px; /* Adjust the height to make it thinner */
+  background-color: white; /* Keep the color as red */
+  border: none; /* Remove any default border */
 }
 
 main {

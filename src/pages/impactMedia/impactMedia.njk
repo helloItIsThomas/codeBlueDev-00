@@ -4,16 +4,28 @@ title: "Impact Media"
 ---
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
 <script type="module" src="/js/imgCarousel.js"></script>
-{# https://codepen.io/GreenSock/pen/wvdJEXV #}
-{% from 'macros/headerComp.njk' import headerComp %}
 
-{{ headerComp(someData.headers.impactMedia, someData.impactMedia) }}
+<script>
+      let bodyGradient = document.getElementById('bodyGradient');
+      bodyGradient.style.backgroundImage = 'url({{ someData.impactMedia.heroImage | url }})';
+</script>
+
+{# https://codepen.io/GreenSock/pen/wvdJEXV #}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+{{ staticHeaderComp(someData.headers.impactMedia, someData.impactMedia) }}
 
 {% from 'macros/subFeaturedFilmComp.njk' import sffC %}
-
 {% set thisPartner = someData.mediaPartners[0] %}
 
-<div class="threeFeaturedFilmsComp">
+<div class="vSpacer0"></div>
+<div class="h1_0 margin0LR">
+      <div class="h0_5 margin1LR">
+            OUR FILMS
+      </div>
+</div>
+<div class="vSpacer0"></div>
+
+<div class="threeFeaturedFilmsComp margin0LR">
       <div class="threeColGrid">
             {% for f in someData.films %}
                   {{ sffC(f) }}
@@ -21,27 +33,32 @@ title: "Impact Media"
       </div>
 </div>
 
-<div class="h1_0 textBoxMargin">
-      {{ thisPartner.partnerProject }} by {{ thisPartner.partnerName}}
+<div class="vSpacer1"></div>
+<div class="h0_5 centered">
+      FEATURED MEDIA PARTNER
 </div>
-<div class="imgCarousel">
+<div class="h0_5 _blue centered">
+      {{ thisPartner.partnerProject | upper }} BY {{ thisPartner.partnerName | upper }}
+</div>
+<div class="vSpacer0"></div>
+<div class="imgCarousel margin0LR">
       <div class="slides-container">
             <div class="slides-inner">
                   {% for work in thisPartner.works %}
                         <div class="carouselSlide">
-                              <div class="sevenFiveGrid" >
-                                    <div>
-                                          <img src="{{ work.image.url }}" alt="{{ work.title }}">
-                                    </div>
-                                    <div>
-                                          <div class="b1_0 textBoxMargin">{{work.typeOfMedia}}</div>
-                                          <div class="h1_5 textBoxMargin">{{work.title}}</div>
-                                          <div class="b2_0 textBoxMargin">{{work.description}}</div>
-                                          <button class="ctaButton b1_0 textBoxMarginLROnly">
-                                                <a href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
-                                                      <span>{{work.ctaButton.name}}</span>
-                                                </a>
-                                          </button>
+                              <div class="sevenFiveGrid" style="height: 100%;">
+                                    <div class="slideLeft" style="background-image: url({{ work.image.url }}); background-size: cover; background-position: center;"></div>
+                                    <div class="slideRight">
+                                          <div>
+                                                <div class="bm3">{{work.typeOfMedia}}</div>
+                                                <div class="h1_0">{{work.title}}</div>
+                                                <div class="bs1">{{work.description}}</div>
+                                                <button class="ctaButton ">
+                                                      <a href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
+                                                            <span>{{work.ctaButton.name}}</span>
+                                                      </a>
+                                                </button>
+                                          </div>
                                           <div class="controls">
                                                 <button class="prevButton">Prev</button>
                                                 <button class="nextButton">Next</button>
@@ -52,4 +69,5 @@ title: "Impact Media"
                   {% endfor %}
             </div>
       </div>
-</div>
+</div>q
+

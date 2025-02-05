@@ -5,10 +5,11 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
 <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon"/>
 
 <script type="module" src="/js/setup.js"></script>
-<script type="module" src="/js/cursorSketch.js"></script>
+
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
@@ -43,72 +44,133 @@
         <title id="page-title"></title>
     </head>
     <body>
-
-        
-        
+        <div class="navBar margin0LR">
+      <div class="navLogo">
+            <a href="/index.html">
+                  <img src="/assets/images/logo.svg" alt="Code Blue">
+            </a>
+      </div>
+      <div class="navLinks">
+            <div class="navLink" >
+                  <a href="/pages/impactMedia" data-replace="IMPACT MEDIA">
+                        <span>IMPACT MEDIA</span>
+                  </a>
+            </div>
+            <div class="navLink" >
+                  <a href="/pages/conservationGrantees" data-replace="CONSERVATION GRANTEES">
+                        <span>CONSERVATION GRANTEES</span></a>
+            </div>
+            <div class="navLink">
+                  <a href="/pages/story" data-replace="ABOUT">
+                        <span>ABOUT</span></a>
+            </div>
+      </div>
+</div>
         <div id="bodyGradient">
             <div id="cursorCanvas"></div>
             
 
-<img src="https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg" alt="">
+<script>
+  let bodyGradient = document.getElementById('bodyGradient');
+  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg)';
+</script>
 
-<div class="padLeft padRight">
-  <div class="h0_5 textBoxMargin">
-    FEATURED FILM
-  </div>
-  <div class="h2_0 textBoxMargin">
-    Chasing Coral
-  </div>
-  <div class="b2_0 textBoxMargin sevenThreeGrid">
-    Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
-    <div>
-      <button onclick="location.href='https://www.netflix.com/title/80168188?source=imdb'" class="ctaButton">Watch Now</button>
-      <br>
-      <br>
-      
-        
-          2017
-          <br>
-        
-      
-        
-          English
-          <br>
-        
-      
-        
-          United States
-          <br>
-        
-      
-        
-          93
-          <br>
-        
-      
-        
-      
+<hr id="lineCheck">
+<div id ="overlayGrad"></div>
+<script>
+  const img = new Image();
+  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg';
+  img.onload = function () {
+    console.log("lskdjf")
+    let lineCheck = document.getElementById('lineCheck');
+    lineCheck.style.bottom = `10px`;
+    let overlayGrad = document.getElementById('overlayGrad');
+    const imageWidth = img.width;
+    const imageHeight = img.height;
+    console.log(imageHeight, imageWidth);
+    const imgRatio = imageWidth / imageHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const viewportRatio = viewportWidth / viewportHeight;
+    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
+    lineCheck.style.bottom = `${gradientHeight}px`;
+    overlayGrad.style.bottom = `${gradientHeight}px`;
+  };
+</script>
+
+<div class ="overlayGrad"></div>
+<script></script>
+
+
+<div class="headerHero">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="bm3">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div class="h0_5"></div>
+      <div class="h2_0">Chasing Coral</div>
     </div>
   </div>
 </div>
 
+<div class="vSpacer2"></div>
+
+<div class="sevenThreeGrid margin0LR padding1LRLeft ">
+  <div>
+    <div class="bs3" style="position: relative;">Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.</div>
+  </div>
+  <div style="position: relative;">
+    <button onclick="location.href='https://www.netflix.com/title/80168188?source=imdb'" class="ctaButton">Watch Now</button>
+    <div class="vSpacer0"></div>
+    
+      
+        <div class="bm2">United States</div>
+      
+    
+      
+        <div class="bm2">93</div>
+      
+    
+      
+        <div class="bm2">2017</div>
+      
+    
+      
+        <div class="bm2">English</div>
+      
+    
+      
+    
+  </div>
+</div>
+
+<div class="vSpacer2"></div>
+
 <div class="awardsTicker">
+  
   
 </div>
 
-<div class="padLeft padRight textBoxMargin">
+
+<div class="margin0LR padding1LR" style="position: relative;">
   <div class="h0_5">WATCH THE TRAILER</div>
 </div>
 
-<div class="responsive-iframe textBoxMarginLROnly">
-  <iframe class="" src="https://www.youtube.com/embed/08BVd9UwwyY?si=zSmzuUpLgjoBGkAH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="vSpacer0"></div>
 
+
+
+<div class="responsive-iframe margin0LR">
+  <iframe class="" src="https://www.youtube.com/embed/b6fHA9R2cKI?si=qi0zqcO1WAFHNP5j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-<div class="padLeft padRight textBoxMarginLROnly">
+<div class="vSpacer2"></div>
+
+<div class="margin0LR padding1LR">
   <div class="h0_5">
   IMAGE GALLERY
   </div>
+  <div class="vSpacer0"></div>
   <div class="galleryGrid">
     
       <img src="https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg" alt="">
@@ -121,76 +183,439 @@
     
   </div>
 
+  <div class="vSpacer2"></div>
+
   <div class="h0_5">
     CREDITS
   </div>
-  
-      <div class="threeSevenGrid">
-            <div>
-                  producer
-            </div>
-            
-                  
-                  
-                  
-            
-                  
-                  
-                  
-            
-                  
-                  
-                  
-            
-                  
-                  
-                  
-            
-                  
-                  
-                  
-            
-                  
-                  
-                  
-            
-      </div>
-      <hr>
+
+  <div class="vSpacer0"></div>
 
   
-      <div class="threeSevenGrid">
-            <div>
-                  director
-            </div>
+      
+      
+      
             
                   
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+                        
+                              DIRECTOR
+                        
+                  
+            </div>
+            
+            
                   
                         
                   
-                  Jeff Orlowski-Yang
             
-                  
-                  
                   
             
                   
-                  
+            
                   
             
                   
+            
                   
+            
+            Jeff Orlowski-Yang
+      </div>
+      
+            <hr>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
                   
             
                   
-                  
+            
                   
             
                   
+            
                   
+            
                   
+            
             
       </div>
-      <hr>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
+
+  
+      
+      
+      
+            
+                  
+            
+      
+            
+                  
+            
+      
+            
+                  
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+                        
+                              WRITER
+                        
+                  
+            </div>
+            
+            
+                  
+                        
+                  
+            
+                  
+                        
+                  
+            
+                  
+                        
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            Jeff Orlowski-Yang, Davis Coombe, Vickie Curtis
+      </div>
+      
+            <hr>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+                  
+            
+      
+            
+                  
+            
+      
+            
+                  
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+                        
+                              CAST
+                        
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+                        
+                  
+            
+                  
+                        
+                  
+            
+                  
+                        
+                  
+            
+            Andrew Ackerman, Pim Bongaerts, Neal Cantin
+      </div>
+      
+            <hr>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
+
+  
+      
+      
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+      <div class="threeSevenGrid bs0">
+            <div>
+                  
+            </div>
+            
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+                  
+            
+            
+      </div>
+      
 
 </div>
 
@@ -256,47 +681,15 @@
     
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
       
     
   
-    
-  
   
 
   
   
   
   
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -319,14 +712,50 @@
   
     
   
-    
-  
   
 
   
   
   
   
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
   
     
   
@@ -334,10 +763,6 @@
       
     
   
-    
-  
-    
-  
   
 
   
@@ -346,21 +771,6 @@
   
   
     
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
   
@@ -386,109 +796,9 @@
     
   
     
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
       
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
     
   
   
@@ -508,12 +818,16 @@
   
     
   
+    
+  
   
 
   
   
   
   
+  
+    
   
     
   
@@ -539,6 +853,141 @@
     
   
     
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
       
     
   
@@ -556,25 +1005,40 @@
   
 
 
-<div class="threeFeaturedFilmsComp">
+<div class="vSpacer2"></div>
+
+<div class="margin0LR padding1LR">
+  <div class="h0_5">MORE FEATURED FILMS</div>
+</div>
+
+<div class="vSpacer0"></div>
+
+<div class="threeFeaturedFilmsComp margin0LR">
   <div class="threeColGrid">
     
       
         
+
       <div class="subFeaturedFilmComp">
-            <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png">
-            <div class="b1_0">
-            FILM
-      </div>
+            <a href="/films/the-ghost-fleet">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
+            </a>
+            <div class="bm3">
+                  2018
+            </div>
             <div class="h0_5">
-                  Mission Blue
+                  The Ghost Fleet
             </div>
-            <div class="b2_0">
-                  This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
+            <div class="bs1">
+                  “The film that shocked the world” is now available on Apple TV and Prime Video. Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+
+Bangkok-based Patima Tungpuchayakul, a Thai abolitionist, has committed her life to helping these “lost” men return home. Facing illness, death threats, corruption, and complacency, Patima’s fearless determination for justice inspires her nation and the world.
+
+Code Blue Foundation is proud to have produced this film with Vulcan Productions. We are immensely proud to report that through the course of filming, many of these fishing slaves were reunited with their families.
             </div>
-            <button class="ctaButton b1_0">
-                  <a href="#" data-replace="Watch Now">
-                        <span>Watch Now</span>
+            <button class="ctaButton ">
+                  <a href="/films/the-ghost-fleet" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
                   </a>
             </button>
       </div>
@@ -583,42 +1047,48 @@
     
       
         
-      <div class="subFeaturedFilmComp">
-            <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png">
-            <div class="b1_0">
-            FILM
-      </div>
-            <div class="h0_5">
-                  Deep Rising
-            </div>
-            <div class="b2_0">
-                  The deep sea harbors millions of undiscovered species and stores 80% of the carbon on Earth—and it is under siege. Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier. But this is about more than just defending the deep—it’s our last chance to solve the climate crisis.
-            </div>
-            <button class="ctaButton b1_0">
-                  <a href="#" data-replace="Watch Now">
-                        <span>Watch Now</span>
-                  </a>
-            </button>
-      </div>
 
-      
-    
-      
-        
       <div class="subFeaturedFilmComp">
-            <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png">
-            <div class="b1_0">
-            FILM
-      </div>
+            <a href="/films/gaucho-gaucho">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
+            </a>
+            <div class="bm3">
+                  2024
+            </div>
             <div class="h0_5">
                   Gaucho Gaucho
             </div>
-            <div class="b2_0">
+            <div class="bs1">
                   The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change. The stories follow men and women of different ages, backgrounds and talents who are all united by their fight to remain free. Gauchos are a community suspended in time. Their handmade clothing: woolen ponchos, bombacha trousers and boina hats are signs to the outside world that they will remain unshackled by rules of the modern world. Their connection to the land is something we must all learn from if we hope to survive on this planet.
             </div>
-            <button class="ctaButton b1_0">
-                  <a href="#" data-replace="Visit Website">
-                        <span>Visit Website</span>
+            <button class="ctaButton ">
+                  <a href="/films/gaucho-gaucho" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
+            <a href="/films/the-battle-for-laikipia">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
+            </a>
+            <div class="bm3">
+                  2024
+            </div>
+            <div class="h0_5">
+                  The Battle for Laikipia
+            </div>
+            <div class="bs1">
+                  Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/the-battle-for-laikipia" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
                   </a>
             </button>
       </div>
@@ -627,9 +1097,6 @@
     
   </div>
 </div>
-
-
-
         </div>
         <script type="module" src="/js/parallaxFish.js"></script>
 
@@ -642,43 +1109,43 @@
                     <img src="/assets/images/logo.svg" alt="Code Blue Logo">
                 </div>
                 <div class="footerChild" id="footerCenter">
-                    <div class="b0_5" >PROTECTION AND RESTORATION OF OUR BLUE PLANET THROUGH INNOVATIVE PROJECTS AND STRATEGIC ALLIANCES.</div>
+                    <div class="bser0" >Protection and Restoration of Our Blue Planet through Innovative Projects and Strategic Alliances.</div>
                     <div id="footerCenterChildBottom">
-                        <div class="b1_0">Quick Links
-                        <!---
-                        <div class="b1_0 navLink" >
-                            <a href="/" data-replace="CONSERVATION GRANTEES">
-                            <span>CONSERVATION GRANTEES</span></a>
-                        </div>
-                        -->
+                        <div class="bm0">Quick Links
+                            <div class="vertGap1">
+                                <br>
+                            </div>
                             <ul>
                                 <li>
-                                    <a class="b2_0" href="#link1" data-replace="About Us">
+                                    <a class="bs3" href="#link1" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" href="#link2" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link3" data-replace="Conservation">
+                                    <a class="bs3" href="#link3" data-replace="Conservation">
                                         <span>Conservation</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link4" data-replace="Grantees">
+                                    <a class="bs3" href="#link4" data-replace="Grantees">
                                         <span>Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
                         <div></div>
-                        <div class="b1_0">Contact
+                        <div class="bm0">Contact
+                            <div class="vertGap1">
+                                <br>
+                            </div>
                             <ul>
                                 <li>
-                                    <a class="b2_0" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="b2_0" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>
@@ -689,9 +1156,14 @@
         </div>
         <div class="footerChild" id="footerRight">
             <img id="footerFish" src="/assets/images/fish4.png" alt="Sea Creature">
-            <div class="b1_0" id="footerRightCopy">Copyright 2024 Code Blue Foundation. All rights reserved.</div>
+            <div class="bm3" style="font-weight: 100;" id="footerRightCopy">Copyright 2025 Code Blue Foundation. All rights reserved.</div>
         </div>
     </div>
+</div>
+        <div id="pageLoadingScreen">
+      <div class="pageLoadingScreenContent">
+            <div class="pageLoadingScreenText"></div>
+      </div>
 </div>
     </body>
 </html>

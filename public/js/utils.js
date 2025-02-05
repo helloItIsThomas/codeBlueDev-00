@@ -1,3 +1,5 @@
+import { sv } from "./cursor/variables.js";
+
 function topFunction() {
   const distance = tbc.scrollTop; // Distance from the top
   const maxDistance = tbc.scrollHeight - tbc.clientHeight;
@@ -43,3 +45,14 @@ export async function getJsonDataFromURL(url) {
 export const disableScroll = (event) => {
   event.preventDefault();
 };
+
+document.addEventListener("mousemove", (event) => {
+  // cursorGraphics.x = event.clientX;
+  // cursorGraphics.y = event.clientY;
+
+  // for the new cursor
+  sv.prevMousePos.x = sv.mousePos.x;
+  sv.prevMousePos.y = sv.mousePos.y;
+  sv.mousePos.x = event.clientX;
+  sv.mousePos.y = event.clientY;
+});
