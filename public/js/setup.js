@@ -1,3 +1,5 @@
+import { sv } from "./cursor/variables.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("running general setup");
 
@@ -57,4 +59,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   // SETUP PARALLAX FISH end
 
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+
+  loadShaders();
 });
+
+export async function loadShaders() {
+  console.log(" loading shaders ");
+  const vertexLoader = import.meta.glob("../shaders/vert.vert", {
+    as: "raw",
+  });
+  const fragmentLoader = sv.oneActiveImage
+    ? import.meta.glob("../shaders/single.frag", { as: "raw" })
+    : import.meta.glob("../shaders/single.frag", { as: "raw" });
+
+  const [vertex, fragment] = await Promise.all([
+    vertexLoader["../shaders/vert.vert"](),
+    sv.oneActiveImage
+      ? fragmentLoader["../shaders/single.frag"]()
+      : fragmentLoader["../shaders/single.frag"](),
+  ]);
+
+  return { vertex, fragment };
+}
