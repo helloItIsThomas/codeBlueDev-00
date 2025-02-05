@@ -1,34 +1,36 @@
 
 
 
-TUESDAY
 
 WEDNESDAY
 
-9am - 10am
+9am - 11am
 • Change tide data to reflect Matty's new sketch
 
-11am - 1pm
+11am - 12pm
 • finish spacing and margins for things
 
-1pm - 3pm
-• set proper height for the gradient at the bottom of the film header image
-
-3pm - 5pm
+12pm - 1pm
 • Plug in Matty's cursor
 
       ~
 
-• get live link to the site
+1pm - 2pm
+• set proper height for the gradient at the bottom of the film header image
 
-• turn the page loading screen back on
+      ~   ~
 
+2pm - 3pm
 • Re-implement smooth scroll.
       This is a good reference: https://deeprising.com/documentary/
 
+• turn the page loading screen back on
+
+• merge to main
+
 POST WEDNESDAY
 
-• Mobile
+• Mobile?
 
 • Add awards to all films.
 
