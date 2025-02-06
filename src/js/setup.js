@@ -25,8 +25,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
+  window.scrollTo({
+    top: 0, // Replace with your desired vertical scroll position
+    behavior: "instant",
+  });
   // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
+  document.body.style.overflow = "hidden";
+  window.scrollTo({
+    top: 0, // Replace with your desired vertical scroll position
+    behavior: "instant",
+  });
 
   gsap.from(
     ".h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",
@@ -41,11 +50,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   gsap.to(pageLoadingScreen, {
     opacity: 0,
-    duration: 1,
+    duration: 0.5,
     ease: "power3.out",
     delay: 2,
     onComplete: () => {
       pageLoadingScreen.style.display = "none";
+      document.body.style.overflow = "auto";
     },
   });
 
@@ -62,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     start: "top-=36% center",
     end: "top+=10% center",
     scrub: true,
-    markers: true,
+    markers: false,
   };
 
   gsap.from("#footerFish", {

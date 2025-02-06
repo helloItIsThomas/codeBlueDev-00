@@ -7,37 +7,9 @@ permalink: "films/{{ film.slug.current }}/"
 layout: layouts/base.njk
 ---
 {% from 'macros/filmCreditsComp.njk' import fcc %}
+{% from 'macros/heroImg.njk' import heroImg %}
 
-<script>
-  let bodyGradient = document.getElementById('bodyGradient');
-  bodyGradient.style.backgroundImage = 'url({{ film.heroImage | url }})';
-</script>
-
-<hr id="lineCheck">
-<div id ="overlayGrad"></div>
-<script>
-  const img = new Image();
-  img.src = '{{ film.heroImage | url }}';
-  img.onload = function () {
-    console.log("lskdjf")
-    let lineCheck = document.getElementById('lineCheck');
-    lineCheck.style.bottom = `10px`;
-    let overlayGrad = document.getElementById('overlayGrad');
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    console.log(imageHeight, imageWidth);
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const viewportRatio = viewportWidth / viewportHeight;
-    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
-    lineCheck.style.bottom = `${gradientHeight}px`;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-</script>
-
-<div class ="overlayGrad"></div>
-<script></script>
+{{ heroImg(film.heroImage) }}
 
 {# <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); "> #}
 <div class="headerHero">
@@ -58,7 +30,7 @@ layout: layouts/base.njk
     <div class="bs3" style="position: relative;">{{film.description}}</div>
   </div>
   <div style="position: relative;">
-    <button onclick="location.href='{{ film.ctaButton.link }}'" class="ctaButton">{{ film.ctaButton.name }}</button>
+    <button onclick="window.open('{{ film.ctaButton.link }}', '_blank');" class="ctaButton">{{ film.ctaButton.name }}</button>
     <div class="vSpacer0"></div>
     {% for key, value in film.metadata %}
       {% if key != "awards" %}

@@ -70,36 +70,20 @@
             <div id="cursorCanvas"></div>
             
 
-<script>
-  let bodyGradient = document.getElementById('bodyGradient');
-  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg)';
-</script>
 
-<hr id="lineCheck">
-<div id ="overlayGrad"></div>
-<script>
-  const img = new Image();
-  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg';
-  img.onload = function () {
-    console.log("lskdjf")
-    let lineCheck = document.getElementById('lineCheck');
-    lineCheck.style.bottom = `10px`;
-    let overlayGrad = document.getElementById('overlayGrad');
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    console.log(imageHeight, imageWidth);
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const viewportRatio = viewportWidth / viewportHeight;
-    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
-    lineCheck.style.bottom = `${gradientHeight}px`;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-</script>
 
-<div class ="overlayGrad"></div>
-<script></script>
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg");
+      </script>
+
 
 
 <div class="headerHero">
@@ -120,14 +104,8 @@
     <div class="bs3" style="position: relative;">This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.</div>
   </div>
   <div style="position: relative;">
-    <button onclick="location.href='https://www.netflix.com/title/70308278'" class="ctaButton">Watch Now</button>
+    <button onclick="window.open('https://www.netflix.com/title/70308278', '_blank');" class="ctaButton">Watch Now</button>
     <div class="vSpacer0"></div>
-    
-      
-    
-      
-        <div class="bm2">96</div>
-      
     
       
         <div class="bm2">2014</div>
@@ -139,6 +117,12 @@
     
       
         <div class="bm2">United States</div>
+      
+    
+      
+        <div class="bm2">96</div>
+      
+    
       
     
   </div>
@@ -633,32 +617,15 @@
     
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
       
     
   
-    
-  
-    
-  
   
 
   
   
   
   
-  
-    
   
     
   
@@ -672,25 +639,6 @@
   
   
   
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -700,8 +648,6 @@
   
     
   
-    
-  
   
 
   
@@ -710,25 +656,19 @@
   
   
     
-      
-    
   
     
   
     
   
-    
   
     
-  
   
 
   
   
   
   
-  
-    
   
     
   
@@ -748,11 +688,9 @@
   
   
     
-  
-    
-  
-    
       
+    
+  
     
   
     
@@ -769,15 +707,13 @@
     
   
     
-      
-    
   
     
   
     
   
-    
   
+    
   
 
   
@@ -812,63 +748,6 @@
   
     
   
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
     
@@ -923,11 +802,11 @@
     
   
     
-  
-    
-  
-    
       
+    
+  
+    
+  
     
   
   
@@ -944,7 +823,102 @@
     
   
     
+  
+    
       
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
     
   
     
@@ -1003,31 +977,6 @@
         
 
       <div class="subFeaturedFilmComp">
-            <a href="/films/the-battle-for-laikipia">
-                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
-            </a>
-            <div class="bm3">
-                  2024
-            </div>
-            <div class="h0_5">
-                  The Battle for Laikipia
-            </div>
-            <div class="bs1">
-                  Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
-            </div>
-            <button class="ctaButton ">
-                  <a href="/films/the-battle-for-laikipia" data-replace="LEARN MORE">
-                        <span>LEARN MORE</span>
-                  </a>
-            </button>
-      </div>
-
-      
-    
-      
-        
-
-      <div class="subFeaturedFilmComp">
             <a href="/films/the-ghost-fleet">
                   <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
             </a>
@@ -1046,6 +995,31 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
             </div>
             <button class="ctaButton ">
                   <a href="/films/the-ghost-fleet" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
+            <a href="/films/deep-rising">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+            </a>
+            <div class="bm3">
+                  2023
+            </div>
+            <div class="h0_5">
+                  Deep Rising
+            </div>
+            <div class="bs1">
+                  The deep sea harbors millions of undiscovered species and stores 80% of the carbon on Earth—and it is under siege. Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier. But this is about more than just defending the deep—it’s our last chance to solve the climate crisis.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/deep-rising" data-replace="LEARN MORE">
                         <span>LEARN MORE</span>
                   </a>
             </button>
@@ -1073,20 +1047,16 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -1097,11 +1067,11 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

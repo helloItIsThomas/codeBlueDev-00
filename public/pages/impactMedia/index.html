@@ -71,12 +71,26 @@
             <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
 <script type="module" src="/js/imgCarousel.js"></script>
 
-<script>
-      let bodyGradient = document.getElementById('bodyGradient');
-      bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/070eb48275d9738c49ea91079d7e20b8b00c9cd1-2880x1700.png)';
+
+
+
+<script type="module">
+      import {styleThisPageNavLink} from "../../js/utils.js";
+      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/impactMedia'] span"));
 </script>
 
 
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/070eb48275d9738c49ea91079d7e20b8b00c9cd1-2880x1700.png)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/070eb48275d9738c49ea91079d7e20b8b00c9cd1-2880x1700.png");
+      </script>
 
 
       <div class="headerHero margin0LR">
@@ -99,7 +113,6 @@
                   </div>
             </div>
       </div>
-
 
 
 
@@ -281,14 +294,16 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                                                 <div class="h1_0">Dispatches from the Outlaw Ocean</div>
                                                 <div class="bs1">The high seas are a lawless frontier where crimes such as murder, slavery and environmental destruction are often met with impunity and overlooked by the media. But the ocean is also a place of discovery and reinvention, offering freedom from the constraints of society.</div>
                                                 <button class="ctaButton ">
-                                                      <a href="https://www.theoutlawocean.com/dispatches/" data-replace="View Episodes">
+                                                      <a target="_blank" href="https://www.theoutlawocean.com/dispatches/" data-replace="View Episodes">
                                                             <span>View Episodes</span>
                                                       </a>
                                                 </button>
                                           </div>
                                           <div class="controls">
-                                                <button class="prevButton">Prev</button>
-                                                <button class="nextButton">Next</button>
+                                                <button class="prevButton">
+                                                      <span>Prev</span></button>
+                                                <button class="nextButton">
+                                                      <span>Next</span></button>
                                           </div>
                                     </div>
                               </div>
@@ -303,14 +318,16 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                                                 <div class="h1_0">The Outlaw Ocean Podcast</div>
                                                 <div class="bs1">Relying on more than eight years of reporting at sea on all seven oceans and more than three dozen countries, The Outlaw Ocean is an immersive seven-part audio series.</div>
                                                 <button class="ctaButton ">
-                                                      <a href="https://www.theoutlawocean.com/the-outlaw-ocean-podcast/" data-replace="View Episodes">
+                                                      <a target="_blank" href="https://www.theoutlawocean.com/the-outlaw-ocean-podcast/" data-replace="View Episodes">
                                                             <span>View Episodes</span>
                                                       </a>
                                                 </button>
                                           </div>
                                           <div class="controls">
-                                                <button class="prevButton">Prev</button>
-                                                <button class="nextButton">Next</button>
+                                                <button class="prevButton">
+                                                      <span>Prev</span></button>
+                                                <button class="nextButton">
+                                                      <span>Next</span></button>
                                           </div>
                                     </div>
                               </div>
@@ -339,20 +356,16 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -363,11 +376,11 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

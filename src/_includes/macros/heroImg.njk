@@ -1,0 +1,13 @@
+{% macro heroImg(imgLink) %}
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url({{ imgLink | url }})';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("{{ imgLink | url }}");
+      </script>
+{% endmacro %}

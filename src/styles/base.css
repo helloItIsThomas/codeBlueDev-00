@@ -165,6 +165,10 @@ body * {
   margin-right: var(--margin0);
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 #cursorCanvas {
   pointer-events: none;
   position: fixed;

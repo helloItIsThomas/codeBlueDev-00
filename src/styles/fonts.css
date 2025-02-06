@@ -1,14 +1,19 @@
 @font-face {
-  font-family: "cdmono";
-  src: url("/assets/fonts/mono.ttf");
+  font-family: "cdmono-regular";
+  src: url("/assets/fonts/mono-regular.ttf");
 }
 @font-face {
+  font-family: "cdmono-semiBold";
+  src: url("/assets/fonts/mono-semiBold.ttf");
+}
+
+@font-face {
   font-family: "cdsans";
-  src: url("/assets/fonts/sans.otf");
+  src: url("/assets/fonts/sans.ttf");
 }
 @font-face {
   font-family: "cdserif";
-  src: url("/assets/fonts/serifLight.otf");
+  src: url("/assets/fonts/serif.otf");
 }
 
 ._blue {
@@ -67,24 +72,23 @@
 
 /*        MONO        */
 .bm0 {
-  font-family: "cdmono";
+  font-family: "cdmono-regular";
   text-transform: uppercase;
   font-size: var(--pt10);
 }
 .bm1 {
-  font-family: "cdmono";
+  font-family: "cdmono-semiBold";
   text-transform: uppercase;
   font-size: var(--pt11);
   font-weight: bolder;
 }
 .bm2 {
-  font-family: "cdmono";
+  font-family: "cdmono-regular";
   text-transform: uppercase;
   font-size: var(--pt12);
 }
 .bm3 {
-  font-family: "cdmono";
-  font-weight: bolder;
+  font-family: "cdmono-regular";
   text-transform: uppercase;
   font-size: var(--pt14);
 }

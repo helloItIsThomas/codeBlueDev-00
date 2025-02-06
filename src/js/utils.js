@@ -1,5 +1,20 @@
 import { sv } from "./cursor/variables.js";
 
+// °°°°°°  ____________________  °°°°°°
+// °°°°°°  EVENT LISTENERS BELOW °°°°°°
+document.addEventListener("mousemove", (event) => {
+  // cursorGraphics.x = event.clientX;
+  // cursorGraphics.y = event.clientY;
+
+  // for the new cursor
+  sv.prevMousePos.x = sv.mousePos.x;
+  sv.prevMousePos.y = sv.mousePos.y;
+  sv.mousePos.x = event.clientX;
+  sv.mousePos.y = event.clientY;
+});
+// °°°°°°  EVENT LISTENERS ABOVE °°°°°°
+// °°°°°°  ____________________  °°°°°°
+
 function topFunction() {
   const distance = tbc.scrollTop; // Distance from the top
   const maxDistance = tbc.scrollHeight - tbc.clientHeight;
@@ -46,13 +61,33 @@ export const disableScroll = (event) => {
   event.preventDefault();
 };
 
-document.addEventListener("mousemove", (event) => {
-  // cursorGraphics.x = event.clientX;
-  // cursorGraphics.y = event.clientY;
+export function handleGradientBlend(imgLink) {
+  const overlayGrad = document.getElementById("overlayGrad");
+  const thisImg = new Image();
+  thisImg.src = imgLink;
 
-  // for the new cursor
-  sv.prevMousePos.x = sv.mousePos.x;
-  sv.prevMousePos.y = sv.mousePos.y;
-  sv.mousePos.x = event.clientX;
-  sv.mousePos.y = event.clientY;
-});
+  thisImg.onload = function () {
+    const imageWidth = thisImg.width;
+    const imageHeight = thisImg.height;
+    const imgRatio = imageWidth / imageHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const gradientHeight = viewportHeight - viewportWidth / imgRatio;
+    overlayGrad.style.bottom = `${gradientHeight}px`;
+  };
+
+  window.addEventListener("resize", function () {
+    console.log("resizing");
+    const imageWidth = thisImg.width;
+    const imageHeight = thisImg.height;
+    const imgRatio = imageWidth / imageHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const gradientHeight = viewportHeight - viewportWidth / imgRatio;
+    overlayGrad.style.bottom = `${gradientHeight}px`;
+  });
+}
+
+export function styleThisPageNavLink(link) {
+  link.style.opacity = 1;
+}

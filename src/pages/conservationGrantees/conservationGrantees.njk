@@ -2,13 +2,15 @@
 layout: layouts/base.njk
 title: "Conservation Grantees"
 ---
+{% from 'macros/heroImg.njk' import heroImg %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
-<script>
-      let bodyGradient = document.getElementById('bodyGradient');
-      bodyGradient.style.backgroundImage = 'url({{ someData.conservationGrantees.heroImage | url }})';
+<script type="module">
+      import {styleThisPageNavLink} from "../../js/utils.js";
+      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
 </script>
 
-{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+{{ heroImg(someData.conservationGrantees.heroImage) }}
 {{ staticHeaderComp(someData.headers.grantees, someData.conservationGrantees) }}
 
 <div class="vSpacer1"></div>
@@ -27,7 +29,7 @@ title: "Conservation Grantees"
                               <div class = "granteeRight">
                                     <div class="bs3">{{ grantee.description }}</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT {{ grantee.title }}</button>
+                                    <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title }}</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>

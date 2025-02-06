@@ -70,36 +70,20 @@
             <div id="cursorCanvas"></div>
             
 
-<script>
-  let bodyGradient = document.getElementById('bodyGradient');
-  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp)';
-</script>
 
-<hr id="lineCheck">
-<div id ="overlayGrad"></div>
-<script>
-  const img = new Image();
-  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp';
-  img.onload = function () {
-    console.log("lskdjf")
-    let lineCheck = document.getElementById('lineCheck');
-    lineCheck.style.bottom = `10px`;
-    let overlayGrad = document.getElementById('overlayGrad');
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    console.log(imageHeight, imageWidth);
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const viewportRatio = viewportWidth / viewportHeight;
-    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
-    lineCheck.style.bottom = `${gradientHeight}px`;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-</script>
 
-<div class ="overlayGrad"></div>
-<script></script>
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp");
+      </script>
+
 
 
 <div class="headerHero">
@@ -120,14 +104,8 @@
     <div class="bs3" style="position: relative;">Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.</div>
   </div>
   <div style="position: relative;">
-    <button onclick="location.href=''" class="ctaButton"></button>
+    <button onclick="window.open('', '_blank');" class="ctaButton"></button>
     <div class="vSpacer0"></div>
-    
-      
-    
-      
-        <div class="bm2">Swahili,English</div>
-      
     
       
         <div class="bm2">Kenya</div>
@@ -138,7 +116,13 @@
       
     
       
+    
+      
         <div class="bm2">2024</div>
+      
+    
+      
+        <div class="bm2">Swahili,English</div>
       
     
   </div>
@@ -701,38 +685,6 @@
     
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
       
     
   
@@ -742,29 +694,6 @@
   
   
   
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
   
     
       
@@ -783,14 +712,8 @@
   
     
   
-    
-      
-    
   
     
-  
-    
-  
   
 
   
@@ -799,17 +722,13 @@
   
   
     
-      
-    
   
     
   
     
   
-    
   
     
-  
   
 
   
@@ -824,30 +743,9 @@
     
   
     
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
   
   
     
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
   
 
   
@@ -861,25 +759,6 @@
       
     
   
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
     
   
     
@@ -917,30 +796,11 @@
     
   
     
-      
-    
   
     
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
       
-    
-  
-    
-  
-    
-  
-    
-  
     
   
   
@@ -957,7 +817,83 @@
     
   
     
+  
+    
       
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
     
   
     
@@ -1010,7 +946,45 @@
     
   
     
+  
+    
       
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
     
   
     
@@ -1139,20 +1113,16 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -1163,11 +1133,11 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

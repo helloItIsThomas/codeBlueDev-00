@@ -7,7 +7,7 @@
   border-radius: 50px;
   height: fit-content;
   background-color: transparent;
-  font-family: "cdmono";
+  font-family: "cdmono-semiBold";
   text-transform: uppercase;
   font-size: var(--pt14);
 }

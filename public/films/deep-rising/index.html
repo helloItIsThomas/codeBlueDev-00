@@ -70,36 +70,20 @@
             <div id="cursorCanvas"></div>
             
 
-<script>
-  let bodyGradient = document.getElementById('bodyGradient');
-  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/e419c6fdd6e5923087542281ec28ad60285a4b3b-3700x2026.png)';
-</script>
 
-<hr id="lineCheck">
-<div id ="overlayGrad"></div>
-<script>
-  const img = new Image();
-  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/e419c6fdd6e5923087542281ec28ad60285a4b3b-3700x2026.png';
-  img.onload = function () {
-    console.log("lskdjf")
-    let lineCheck = document.getElementById('lineCheck');
-    lineCheck.style.bottom = `10px`;
-    let overlayGrad = document.getElementById('overlayGrad');
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    console.log(imageHeight, imageWidth);
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const viewportRatio = viewportWidth / viewportHeight;
-    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
-    lineCheck.style.bottom = `${gradientHeight}px`;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-</script>
 
-<div class ="overlayGrad"></div>
-<script></script>
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/e419c6fdd6e5923087542281ec28ad60285a4b3b-3700x2026.png)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/e419c6fdd6e5923087542281ec28ad60285a4b3b-3700x2026.png");
+      </script>
+
 
 
 <div class="headerHero">
@@ -120,7 +104,7 @@
     <div class="bs3" style="position: relative;">The deep sea harbors millions of undiscovered species and stores 80% of the carbon on Earth—and it is under siege. Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier. But this is about more than just defending the deep—it’s our last chance to solve the climate crisis.</div>
   </div>
   <div style="position: relative;">
-    <button onclick="location.href='https://gathr.com/vod/1011554f/deep-rising'" class="ctaButton">Watch Now</button>
+    <button onclick="window.open('https://gathr.com/vod/1011554f/deep-rising', '_blank');" class="ctaButton">Watch Now</button>
     <div class="vSpacer0"></div>
     
       
@@ -136,9 +120,9 @@
       
     
       
-    
-      
         <div class="bm2">60</div>
+      
+    
       
     
   </div>
@@ -620,6 +604,66 @@
   
   
     
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
   
     
   
@@ -671,45 +715,11 @@
     
   
     
-  
-    
       
     
   
     
   
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -760,87 +770,11 @@
     
   
     
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
       
     
   
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -908,8 +842,23 @@
   
   
     
+      
+    
   
     
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
   
     
   
@@ -917,6 +866,29 @@
   
     
       
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
     
   
   
@@ -943,6 +915,31 @@
 
 <div class="threeFeaturedFilmsComp margin0LR">
   <div class="threeColGrid">
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
+            <a href="/films/chasing-coral">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
+            </a>
+            <div class="bm3">
+                  2017
+            </div>
+            <div class="h0_5">
+                  Chasing Coral
+            </div>
+            <div class="bs1">
+                  Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/chasing-coral" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
     
       
         
@@ -994,31 +991,6 @@
 
       
     
-      
-        
-
-      <div class="subFeaturedFilmComp">
-            <a href="/films/mission-blue">
-                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
-            </a>
-            <div class="bm3">
-                  2014
-            </div>
-            <div class="h0_5">
-                  Mission Blue
-            </div>
-            <div class="bs1">
-                  This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
-            </div>
-            <button class="ctaButton ">
-                  <a href="/films/mission-blue" data-replace="LEARN MORE">
-                        <span>LEARN MORE</span>
-                  </a>
-            </button>
-      </div>
-
-      
-    
   </div>
 </div>
         </div>
@@ -1039,20 +1011,16 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -1063,11 +1031,11 @@
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

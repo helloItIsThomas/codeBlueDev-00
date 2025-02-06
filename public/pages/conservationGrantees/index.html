@@ -69,11 +69,25 @@
         <div id="bodyGradient">
             <div id="cursorCanvas"></div>
             
-<script>
-      let bodyGradient = document.getElementById('bodyGradient');
-      bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fdcf5de2125124ec18a2e0b1db7629c7145d5f59-2880x1700.png)';
+
+
+<script type="module">
+      import {styleThisPageNavLink} from "../../js/utils.js";
+      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
 </script>
 
+
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fdcf5de2125124ec18a2e0b1db7629c7145d5f59-2880x1700.png)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/fdcf5de2125124ec18a2e0b1db7629c7145d5f59-2880x1700.png");
+      </script>
 
 
       <div class="headerHero margin0LR">
@@ -111,7 +125,7 @@
                               <div class = "granteeRight">
                                     <div class="bs3">For 50 years, World Wildlife Fund (WWF) has been protecting the future of nature. The world’s leading conservation organization, WWF works in 100 countries and is supported by 5 million people. Code Blue Foundation is a proud supporter of WWF’s unique way of working that merges global reach and scientific insight. It galvanizes action at every level, and ensures the enactment of innovative solutions that benefit people and nature alike.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT World Wildlife Fund</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://www.worldwildlife.org/', '_blank')" class="ctaButton">VISIT World Wildlife Fund</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -134,7 +148,7 @@ They do this by advocating for responsible aquaculture, protecting ecosystems, r
 
 As a member of the Conservation Committee, Code Blue is working towards creating a wild sanctuary for dolphins freed from captivity.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT National Aquarium</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://aqua.org/stories/2023-06-26-sanctuary-state', '_blank')" class="ctaButton">VISIT National Aquarium</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -155,7 +169,7 @@ As a member of the Conservation Committee, Code Blue is working towards creating
 
 WHOI’s mantra states, “If there is no tool to do what needs to be done, we invent one; if there is no experimental method, we devise it. Because, now more than ever, the ocean matters to us all.” Code Blue is supporting WHOI’s newly created Room 71 Communications, headed up by Chasing Coral star Richard Veevers.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT Woods Hole Oceanographic Institution</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://www.whoi.edu/what-we-do/', '_blank')" class="ctaButton">VISIT Woods Hole Oceanographic Institution</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -176,7 +190,7 @@ WHOI’s mantra states, “If there is no tool to do what needs to be done, we i
 
 Currently in production and supported by Code Blue is Surfing Saves. The film uses surfing as a metaphor for life and rebirth. It tells stories of how surfing can save people, and how those individuals go on to rally communities around the world and protect our blue planet.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT The Redford Center</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://www.redfordcenter.org/films/surfing-saves/', '_blank')" class="ctaButton">VISIT The Redford Center</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -195,7 +209,7 @@ Currently in production and supported by Code Blue is Surfing Saves. The film us
                               <div class = "granteeRight">
                                     <div class="bs3">For over 100 years, The Explorers Club has been the de facto club for explorers around the world. With legendary members including Teddy Roosevelt, Edmund Hillary and Sylvia Earle, this international organization is dedicated to the advancement of field exploration and scientific inquiry. The Club&#39;s members have been responsible for carrying the Explorers club flag on an illustrious series of famous firsts: first to the North Pole, first to the South Pole, first to the summit of Mount Everest, first to the deepest point in the ocean, first to the surface of the moon. Code Blue Supports annual World Ocean Week and Climate Week events (every June) &amp; the club’s Awards.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT The Explorers Club</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://www.explorers.org/', '_blank')" class="ctaButton">VISIT The Explorers Club</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -214,7 +228,7 @@ Currently in production and supported by Code Blue is Surfing Saves. The film us
                               <div class = "granteeRight">
                                     <div class="bs3">Media Impact Funders is a membership organization that advances the work of a broad range of funders committed to effective implementation and financial support of media that is in the public interest. As a member, Code Blue collaborates with partners to develop best practices that leverage the power of storytelling to advance environmental conservation.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT Media Impact Funders</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://mediaimpactfunders.org/', '_blank')" class="ctaButton">VISIT Media Impact Funders</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -235,7 +249,7 @@ Currently in production and supported by Code Blue is Surfing Saves. The film us
 
 With over 165 Hope Spots around the world and 200+ partners in the Mission Blue Alliance, Mission Blue’s purpose to defend and explore the ocean is underway. Together, we are committed to inspiring a sea change in awareness and support for marine protected areas spanning ocean depths and sunlit reefs, from the high seas to the coastal mangroves that protect our cities.</div>
                                     <div class="vertGap0"></div>
-                                    <button class="ctaButton">VISIT Mission Blue</button>
+                                    <button style="z-index: 2;" onclick="window.open('https://missionblue.org/', '_blank')" class="ctaButton">VISIT Mission Blue</button>
                               </div>
                               <div class="vertGap0"></div>
                         </div>
@@ -260,20 +274,16 @@ With over 165 Hope Spots around the world and 200+ partners in the Mission Blue 
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -284,11 +294,11 @@ With over 165 Hope Spots around the world and 200+ partners in the Mission Blue 
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

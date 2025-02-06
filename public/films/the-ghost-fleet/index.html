@@ -70,36 +70,20 @@
             <div id="cursorCanvas"></div>
             
 
-<script>
-  let bodyGradient = document.getElementById('bodyGradient');
-  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg)';
-</script>
 
-<hr id="lineCheck">
-<div id ="overlayGrad"></div>
-<script>
-  const img = new Image();
-  img.src = 'https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg';
-  img.onload = function () {
-    console.log("lskdjf")
-    let lineCheck = document.getElementById('lineCheck');
-    lineCheck.style.bottom = `10px`;
-    let overlayGrad = document.getElementById('overlayGrad');
-    const imageWidth = img.width;
-    const imageHeight = img.height;
-    console.log(imageHeight, imageWidth);
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const viewportRatio = viewportWidth / viewportHeight;
-    const gradientHeight = (viewportHeight - (viewportWidth / imgRatio));
-    lineCheck.style.bottom = `${gradientHeight}px`;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-</script>
 
-<div class ="overlayGrad"></div>
-<script></script>
+      <div id ="overlayGrad"></div>
+      <script type="module">
+            import {handleGradientBlend} from "../../js/utils.js";
+
+            if (bodyGradient) {
+                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg)';
+            } else {
+                  let bodyGradient = document.getElementById('bodyGradient');
+            }
+            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg");
+      </script>
+
 
 
 <div class="headerHero">
@@ -124,12 +108,8 @@ Bangkok-based Patima Tungpuchayakul, a Thai abolitionist, has committed her life
 Code Blue Foundation is proud to have produced this film with Vulcan Productions. We are immensely proud to report that through the course of filming, many of these fishing slaves were reunited with their families.</div>
   </div>
   <div style="position: relative;">
-    <button onclick="location.href='https://www.amazon.com/Ghost-Fleet-Patima-Tungpuchayakul/dp/B081R6535W'" class="ctaButton">Watch Now</button>
+    <button onclick="window.open('https://www.amazon.com/Ghost-Fleet-Patima-Tungpuchayakul/dp/B081R6535W', '_blank');" class="ctaButton">Watch Now</button>
     <div class="vSpacer0"></div>
-    
-      
-        <div class="bm2">Thai,English [CC]</div>
-      
     
       
         <div class="bm2">United States</div>
@@ -140,9 +120,13 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
       
     
       
+    
+      
         <div class="bm2">2018</div>
       
     
+      
+        <div class="bm2">Thai,English [CC]</div>
       
     
   </div>
@@ -676,19 +660,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
       
     
   
@@ -701,8 +672,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
   
     
   
@@ -716,10 +685,8 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-      
-    
   
+    
   
 
   
@@ -745,6 +712,96 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
     
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
   
@@ -775,23 +832,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -811,142 +851,9 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
     
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
       
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
     
   
     
@@ -989,6 +896,63 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
       
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
     
   
   
@@ -1020,56 +984,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
         
 
       <div class="subFeaturedFilmComp">
-            <a href="/films/the-battle-for-laikipia">
-                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
-            </a>
-            <div class="bm3">
-                  2024
-            </div>
-            <div class="h0_5">
-                  The Battle for Laikipia
-            </div>
-            <div class="bs1">
-                  Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
-            </div>
-            <button class="ctaButton ">
-                  <a href="/films/the-battle-for-laikipia" data-replace="LEARN MORE">
-                        <span>LEARN MORE</span>
-                  </a>
-            </button>
-      </div>
-
-      
-    
-      
-        
-
-      <div class="subFeaturedFilmComp">
-            <a href="/films/mission-blue">
-                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
-            </a>
-            <div class="bm3">
-                  2014
-            </div>
-            <div class="h0_5">
-                  Mission Blue
-            </div>
-            <div class="bs1">
-                  This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
-            </div>
-            <button class="ctaButton ">
-                  <a href="/films/mission-blue" data-replace="LEARN MORE">
-                        <span>LEARN MORE</span>
-                  </a>
-            </button>
-      </div>
-
-      
-    
-      
-        
-
-      <div class="subFeaturedFilmComp">
             <a href="/films/deep-rising">
                   <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
             </a>
@@ -1084,6 +998,56 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
             </div>
             <button class="ctaButton ">
                   <a href="/films/deep-rising" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
+            <a href="/films/gaucho-gaucho">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
+            </a>
+            <div class="bm3">
+                  2024
+            </div>
+            <div class="h0_5">
+                  Gaucho Gaucho
+            </div>
+            <div class="bs1">
+                  The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change. The stories follow men and women of different ages, backgrounds and talents who are all united by their fight to remain free. Gauchos are a community suspended in time. Their handmade clothing: woolen ponchos, bombacha trousers and boina hats are signs to the outside world that they will remain unshackled by rules of the modern world. Their connection to the land is something we must all learn from if we hope to survive on this planet.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/gaucho-gaucho" data-replace="LEARN MORE">
+                        <span>LEARN MORE</span>
+                  </a>
+            </button>
+      </div>
+
+      
+    
+      
+        
+
+      <div class="subFeaturedFilmComp">
+            <a href="/films/the-battle-for-laikipia">
+                  <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
+            </a>
+            <div class="bm3">
+                  2024
+            </div>
+            <div class="h0_5">
+                  The Battle for Laikipia
+            </div>
+            <div class="bs1">
+                  Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
+            </div>
+            <button class="ctaButton ">
+                  <a href="/films/the-battle-for-laikipia" data-replace="LEARN MORE">
                         <span>LEARN MORE</span>
                   </a>
             </button>
@@ -1111,20 +1075,16 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="About Us">
+                                    <a class="bs3" target="_blank" href="/pages/story" data-replace="About Us">
                                         <span>About Us</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="Impact Media">
+                                    <a class="bs3" target="_blank" href="/pages/impactMedia" data-replace="Impact Media">
                                         <span>Impact Media</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link3" data-replace="Conservation">
-                                        <span>Conservation</span></a>
-                                </li>
-                                <li>
-                                    <a class="bs3" href="#link4" data-replace="Grantees">
-                                        <span>Grantees</span></a>
+                                    <a class="bs3" target="_blank" href="/pages/conservationGrantees" data-replace="Conservation Grantees">
+                                        <span>Conservation Grantees</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -1135,11 +1095,11 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                             </div>
                             <ul>
                                 <li>
-                                    <a class="bs3" href="#link1" data-replace="contact@codeblue.org">
+                                    <a class="bs3" target="_blank" href="#link1" data-replace="contact@codeblue.org">
                                         <span>contact@codeblue.org</span></a>
                                 </li>
                                 <li>
-                                    <a class="bs3" href="#link2" data-replace="LinkedIn">
+                                    <a class="bs3" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" data-replace="LinkedIn">
                                         <span>LinkedIn</span></a>
                                 </li>
                             </ul>

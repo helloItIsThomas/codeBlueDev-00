@@ -4,17 +4,18 @@ title: "Impact Media"
 ---
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
 <script type="module" src="/js/imgCarousel.js"></script>
+{% from 'macros/heroImg.njk' import heroImg %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+{% from 'macros/subFeaturedFilmComp.njk' import sffC %}
 
-<script>
-      let bodyGradient = document.getElementById('bodyGradient');
-      bodyGradient.style.backgroundImage = 'url({{ someData.impactMedia.heroImage | url }})';
+<script type="module">
+      import {styleThisPageNavLink} from "../../js/utils.js";
+      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/impactMedia'] span"));
 </script>
 
-{# https://codepen.io/GreenSock/pen/wvdJEXV #}
-{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+{{ heroImg(someData.impactMedia.heroImage) }}
 {{ staticHeaderComp(someData.headers.impactMedia, someData.impactMedia) }}
 
-{% from 'macros/subFeaturedFilmComp.njk' import sffC %}
 {% set thisPartner = someData.mediaPartners[0] %}
 
 <div class="vSpacer0"></div>
@@ -54,14 +55,16 @@ title: "Impact Media"
                                                 <div class="h1_0">{{work.title}}</div>
                                                 <div class="bs1">{{work.description}}</div>
                                                 <button class="ctaButton ">
-                                                      <a href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
+                                                      <a target="_blank" href="{{work.ctaButton.link}}" data-replace="{{work.ctaButton.name}}">
                                                             <span>{{work.ctaButton.name}}</span>
                                                       </a>
                                                 </button>
                                           </div>
                                           <div class="controls">
-                                                <button class="prevButton">Prev</button>
-                                                <button class="nextButton">Next</button>
+                                                <button class="prevButton">
+                                                      <span>Prev</span></button>
+                                                <button class="nextButton">
+                                                      <span>Next</span></button>
                                           </div>
                                     </div>
                               </div>

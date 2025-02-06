@@ -2,12 +2,15 @@
 layout: layouts/base.njk
 title: "The Code Blue Story"
 ---
-<script>
-      let bodyGradient = document.getElementById('bodyGradient');
-      bodyGradient.style.backgroundImage = 'url({{ someData.story.heroImage | url }})';
+{% from 'macros/heroImg.njk' import heroImg %}
+{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+
+<script type="module">
+      import {styleThisPageNavLink} from "../../js/utils.js";
+      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/story'] span"));
 </script>
 
-{% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
+{{ heroImg(someData.conservationGrantees.heroImage) }}
 {{ staticHeaderComp(someData.headers.story, someData.story) }}
 
 <div class="vSpacer1"></div>

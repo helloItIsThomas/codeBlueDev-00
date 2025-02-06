@@ -121,4 +121,22 @@ img {
 .prevButton,
 .nextButton {
   color: black;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+.prevButton span,
+.nextButton span {
+  display: none;
+}
+
+.prevButton {
+  background-image: url("/assets/icons/arrowLeft.svg");
+}
+.nextButton {
+  background-image: url("/assets/icons/arrowRight.svg");
 }

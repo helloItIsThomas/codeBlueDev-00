@@ -1,43 +1,49 @@
 
 POST WEDNESDAY
 
-• Blending all header images in with the body
+• Load in all the font weights and update the font styles accordingly.
 
-• Blend footer in with the body
-
-• Check all links are working
+• style buttons
 
 • For the mission section, it would be good to have a max width container for the text boxes.
 Maybe it’s 1400, try this and play around with it.
 
-• Text rendering property we can add to make it less chunky
-
-• Load in all the font weights and update the font styles accordingly.
-
-• add lock to the screen on loading
-
 • Add a condensed description field to the CMS
 • Replace the text field of the image thumbnails with the new condensed description field
-
-• Implement sphere code
-      (Matty will send this code)
 
 • Add awards to all films.
 
 • Finish uploading Featured Media Partner content
 
-• update the arrows on the Featured Media Partner section
-
 • Re-implement smooth scroll.
       This is a good reference: https://deeprising.com/documentary/
 
+• add email service and plug in to all contact links / buttons
+
+• add 404 page and a mobile under construction page.
+
+
+
+››› ››› ››› ››› ››› ››› ›››
+››  DEPENDENT ON MATTY  ›››
+››› ››› ››› ››› ››› ››› ›››
+
 • Make the logo a bit bigger on the splashChange the text to the splash and then the graph to the second bit
+
+• Implement sphere code
+      (Matty will send this code)
+
+• Implement cursor changes
+
+• Implement line dot size changes
 
 –––
 POST FRIDAY
 –––
 
 • Mobile
+
+• populate home page with CMS content where appropriate.
 
 • Make the desired film link (the one from the embed code) easier to get (aka not pull out the line from the iframe code).
 
@@ -46,3 +52,5 @@ POST FRIDAY
 • Try to get the slug to auto-generate and remove it from the UI.
 
 • Put required on the necessary fields.
+
+• Blend footer in with the body
