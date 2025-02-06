@@ -1,6 +1,3 @@
-// gsap.registerPlugin(Draggable);
-console.log("hello from imgCarousel.js");
-
 var slideDelay = 2.5;
 var slideDuration = 0.3;
 var snapX;

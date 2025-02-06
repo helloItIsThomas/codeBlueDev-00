@@ -87,8 +87,6 @@ export const sketch = (p) => {
       p.textFont(mono);
       p.textSize(16);
 
-      // const aveHighLevel = data.datums.datums[1].value;
-      // const aveLowLevel = data.datums.datums[7].value;
       let seaLevel;
       let fillCol;
 
@@ -136,35 +134,24 @@ export const sketch = (p) => {
 
           p.fill(fillCol, opacity);
           p.circle(particle.x, particle.y, particle.size);
-
-          // if (particle.checkMouseover()) {
-          // callOut.style.opacity = "1";
-          // callOut.style.top = `${p.mouseY - callOut.offsetHeight}px`;
-          // callOut.style.left = `${p.mouseX - callOut.offsetWidth / 2}px`;
-          // console.log("mouseover");
-          // } else {
-          // setTimeout(() => {
-          // callOut.style.opacity = "0";
-          // }, 1000);
-          // }
         }
         p.fill(255);
         if (n == 1) {
           p.fill(p.color("#104eb2"));
-          p.text("HISTORIC", p.width * 0.3, dataYOff);
+          p.text("HISTORIC", p.width * 0.05, dataYOff);
         } else {
           p.fill(p.color(255));
-          p.text("TODAY", p.width * 0.3, dataYOff);
+          p.text("TODAY", p.width * 0.05, dataYOff);
         }
       }
 
       p.fill(255, 160);
-      p.text(`Location: ${data.name}`, textXOff, p.height - 190);
-      p.text(
-        `Sea Level: ${data.currentData.highest} ft`,
-        textXOff,
-        p.height - 160
-      );
+      // p.text(`Location: ${data.name}`, textXOff, p.height - 190);
+      // p.text(
+      // `Sea Level: ${data.currentData.highest} ft`,
+      // textXOff,
+      // p.height - 160
+      // );
 
       zoff += noiseSpeed;
       // })

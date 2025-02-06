@@ -20,6 +20,10 @@
   color: #18d8f9;
 }
 
+.centerType {
+  text-align: center;
+}
+
 /* .b0_5 { */
 /* font-family: "cdserif"; */
 /* font-size: clamp(1.2rem, 1vw, 2.25rem); */
@@ -44,8 +48,7 @@
   /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
 }
 
-.h1_0,
-.h1_0 ._blue {
+.h1_0 {
   font-size: var(--pt60);
   font-family: "cdserif";
   /* font-size: clamp(2.8rem, 5vw, 4.5rem); */

@@ -6,17 +6,17 @@ title: "Code Blue"
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 <script type="module" src="/js/setupSplash.js"></script>
-<script type="module" src="/js/splashSketch.js"></script>
+<script type="module" src="/js/tideSketch.js"></script>
 {# <script type="module" src="/js/sphereSketch.js"></script> #}
 
 <div class="centered" id="splash">
     <div class="background" id="splashVideo">
         <video src="/assets/images/splashBG.mp4" autoplay loop muted></video>
     </div>
-    <div id="splashCanvas"></div>
     <div id="splashForeground"></div>
     <div id="loadingScreen"></div>
     <div class="h1_0" id="splashSVG">
+        <div class="h1_0 centerType" id="splashStatement">Protection and Restoration of our<span class="_blue"> Blue Planet </span>through Innovative Projects and Strategic Alliances.</div>
         <canvas id="lottieCanvas"></canvas>
     </div>
     <div class="arrowCTA bm0" id="splashCTA">
@@ -27,7 +27,7 @@ title: "Code Blue"
             </svg>
         </div>
     </div>
-    <div id="splashCallOut" class="bm0">THESE DOTS REFLECT THE REAL-TIME SEA <br> LEVEL AT A NOAA STATION CLOSEST TO YOU, <br> A VISUAL REMINDER OF EVER-RISING SEA LEVELS.</div>
+    {# <div id="splashCallOut" class="bm0">THESE DOTS REFLECT THE REAL-TIME SEA <br> LEVEL AT A NOAA STATION CLOSEST TO YOU, <br> A VISUAL REMINDER OF EVER-RISING SEA LEVELS.</div> #}
 </div>
 
 {% include "components/homeSections/purpose.njk" %}

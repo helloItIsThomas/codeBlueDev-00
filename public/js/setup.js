@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // SETUP LENIS start
-  // const lenis = new Lenis({
-  // autoRaf: true,
-  // });
-  // lenis.on("scroll", (e) => {});
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+  lenis.on("scroll", (e) => {});
   // SETUP LENIS end
 
   // SETUP PARALLAX FISH start
