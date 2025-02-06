@@ -1,16 +1,26 @@
 
-WEDNESDAY
-
-
-4:30pm - 5:00pm
-• turn the page loading screen back on
-• merge to main
-• Re-implement smooth scroll.
-      This is a good reference: https://deeprising.com/documentary/
-
 POST WEDNESDAY
 
-• Mobile
+• Blending all header images in with the body
+
+• Blend footer in with the body
+
+• Check all links are working
+
+• For the mission section, it would be good to have a max width container for the text boxes.
+Maybe it’s 1400, try this and play around with it.
+
+• Text rendering property we can add to make it less chunky
+
+• Load in all the font weights and update the font styles accordingly.
+
+• add lock to the screen on loading
+
+• Add a condensed description field to the CMS
+• Replace the text field of the image thumbnails with the new condensed description field
+
+• Implement sphere code
+      (Matty will send this code)
 
 • Add awards to all films.
 
@@ -18,7 +28,16 @@ POST WEDNESDAY
 
 • update the arrows on the Featured Media Partner section
 
+• Re-implement smooth scroll.
+      This is a good reference: https://deeprising.com/documentary/
+
+• Make the logo a bit bigger on the splashChange the text to the splash and then the graph to the second bit
+
+–––
 POST FRIDAY
+–––
+
+• Mobile
 
 • Make the desired film link (the one from the embed code) easier to get (aka not pull out the line from the iframe code).
 

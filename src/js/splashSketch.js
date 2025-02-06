@@ -17,13 +17,39 @@ export const sketch = (p) => {
   const amplitude = 120;
   let mono;
   let tideData = v.tideData;
+  let callOut;
+
+  class Particle {
+    constructor(x, y, size) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+    }
+
+    checkMouseover() {
+      const hitboxRadius = this.size / 2 + 40;
+      if (
+        p.mouseX > this.x - hitboxRadius &&
+        p.mouseX < this.x + hitboxRadius &&
+        p.mouseY > this.y - hitboxRadius &&
+        p.mouseY < this.y + hitboxRadius
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 
   p.preload = () => {
     mono = p.loadFont("/assets/fonts/mono.ttf");
   };
 
   p.setup = () => {
-    p.noCursor();
+    callOut = document.getElementById("splashCallOut");
+    console.log(callOut);
+    p.pixelDensity(2);
+    // p.noCursor();
     let splashCanvas = document.getElementById("splashCanvas");
     let splashCanvasWidth = splashCanvas.clientWidth; // Get width of splashCanvas
     let splashCanvasHeight = splashCanvas.clientHeight; // Get height of splashCanvas
@@ -48,11 +74,13 @@ export const sketch = (p) => {
     const numParticles = calculateNumParticles();
 
     for (let i = 0; i < numParticles; i++) {
-      particles.push({
-        x: p.map(i, 0, numParticles - 1, 0, p.width),
-        y: p.height / 2,
-        size: p.random(2.5, 4),
-      });
+      particles.push(
+        new Particle(
+          p.map(i, 0, numParticles - 1, 0, p.width),
+          p.height / 2,
+          p.random(2.5, 4)
+        )
+      );
     }
   }
 
@@ -66,10 +94,6 @@ export const sketch = (p) => {
       p.textFont(mono);
       p.textSize(16);
 
-      // console.log(data.firstData.year, data.firstData.highest);
-      // console.log(data.lastData.year, data.lastData.highest);
-
-      var localTimeZoneOffset = new Date().getTimezoneOffset();
       // const aveHighLevel = data.datums.datums[1].value;
       // const aveLowLevel = data.datums.datums[7].value;
       let seaLevel;
@@ -81,7 +105,7 @@ export const sketch = (p) => {
           fillCol = p.color(255, 255, 255);
         } else {
           seaLevel = parseFloat(data.historicData.lowest); // + parseFloat(data.datums.datums[5].value);
-          fillCol = p.color(0, 0, 255);
+          fillCol = p.color("#104eb2");
         }
         const dataYOff = p.map(
           seaLevel,
@@ -119,10 +143,21 @@ export const sketch = (p) => {
 
           p.fill(fillCol, opacity);
           p.circle(particle.x, particle.y, particle.size);
+
+          if (particle.checkMouseover()) {
+            callOut.style.opacity = "1";
+            callOut.style.top = `${p.mouseY - callOut.offsetHeight}px`;
+            callOut.style.left = `${p.mouseX - callOut.offsetWidth / 2}px`;
+            console.log("mouseover");
+          } else {
+            setTimeout(() => {
+              callOut.style.opacity = "0";
+            }, 1000);
+          }
         }
         p.fill(255);
         if (n == 1) {
-          p.fill(p.color(0, 0, 255));
+          p.fill(p.color("#104eb2"));
           p.text("HISTORIC", p.width * 0.3, dataYOff);
         } else {
           p.fill(p.color(255));

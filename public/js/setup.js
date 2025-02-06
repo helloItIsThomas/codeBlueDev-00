@@ -59,22 +59,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   // SETUP PARALLAX FISH start
   const footerScrollTrigger = {
     trigger: "#footer",
-    start: "top-=25% center",
-    end: "top+=15% center",
+    start: "top-=36% center",
+    end: "top+=10% center",
     scrub: true,
-    markers: false,
+    markers: true,
   };
 
   gsap.from("#footerFish", {
     scrollTrigger: footerScrollTrigger,
-    y: 100,
-    ease: "power1.inOut",
+    duration: 2,
+    top: "30px",
+    ease: "sine.inOut",
   });
 
   gsap.from("#footer", {
     scrollTrigger: footerScrollTrigger,
-    backgroundPosition: "85% 85%",
-    ease: "power1.inOut",
+    duration: 2,
+    backgroundPosition: "0px 1000px",
+    ease: "sine.inOut",
   });
   // SETUP PARALLAX FISH end
 
@@ -97,7 +99,7 @@ async function mySetup() {
   });
 
   const cursorCanvas = document.getElementById("cursorCanvas");
-  cursorCanvas.appendChild(sv.pApp.canvas);
+  // cursorCanvas.appendChild(sv.pApp.canvas);
 
   const spinnyBG = await Assets.load("/assets/images/dot2.png");
 
