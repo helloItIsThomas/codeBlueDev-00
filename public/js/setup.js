@@ -21,7 +21,12 @@ import { render } from "./cursor/render.js";
 import { Triangle } from "./cursor/triangle.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  console.log("running general setup");
+  // SETUP LENIS start
+  sv.lenis = new Lenis({
+    autoRaf: true,
+  });
+  sv.lenis.on("scroll", (e) => {});
+  // SETUP LENIS end
 
   const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
@@ -32,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
   document.body.style.overflow = "hidden";
+  sv.lenis.stop();
   window.scrollTo({
     top: 0, // Replace with your desired vertical scroll position
     behavior: "instant",
@@ -58,13 +64,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.body.style.overflow = "auto";
     },
   });
-
-  // SETUP LENIS start
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
-  lenis.on("scroll", (e) => {});
-  // SETUP LENIS end
 
   // SETUP PARALLAX FISH start
   const footerScrollTrigger = {

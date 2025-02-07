@@ -5,6 +5,7 @@ export const sv = {
   totalTriangles: 200,
   mousePos: { x: 0, y: 0 },
   prevMousePos: { x: 0, y: 0 },
+  lenis: null,
 };
 
 export const gui = {

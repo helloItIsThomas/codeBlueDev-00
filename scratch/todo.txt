@@ -1,16 +1,6 @@
 
 THURSDAY
 
-• swap the p5 sketch and the text on the splash screen
-
-• For the mission section, it would be good to have a max width container for the text boxes.
-Maybe it’s 1400, try this and play around with it.
-
-• Add a condensed description field to the CMS
-• Replace the text field of the image thumbnails with the new condensed description field
-
-• Get Lenis to stop when we hide overflow on the screen.
-
 • Add viewport aware movement to the content on all pages ( https://deeprising.com/documentary/ )
 
 • add 404 page and a mobile under construction page. 
@@ -20,30 +10,24 @@ Maybe it’s 1400, try this and play around with it.
 • Get the menu to hide on scroll on all pages.
 
 • Finish uploading Featured Media Partner content
-
-
   
 ››› ››› ››› ››› ››› ››› ›››
 ››  DEPENDENT ON MATTY  ›››
 ››› ››› ››› ››› ››› ››› ›››
 
-• Add awards to all films.
+• Implement bio cursor changes
 
-• Make the logo a bit bigger on the splashChange the text to the splash and then the graph to the second bit
-
-• Implement sphere code
-      (Matty will send this code)
-
-• Implement cursor changes
-
-• Implement line dot size changes
-
+• For the mission section, it would be good to have a max width container for the text boxes.
+Maybe it’s 1400, try this and play around with it.
+      I think this is more of a problem with the text size than the container.
 
 –––
 POST FRIDAY
 –––
 
 • Mobile
+
+• Add awards to all films.
 
 • populate home page with CMS content where appropriate.
 

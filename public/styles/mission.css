@@ -1,6 +1,9 @@
 #mission {
   display: flex;
   align-items: center;
+  height: 100vh;
+  width: auto;
+  box-sizing: border-box;
 }
 
 #missionCopy {

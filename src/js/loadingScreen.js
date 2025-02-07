@@ -2,6 +2,7 @@ import { setupToContainer } from "./sectionJump.js";
 import { disableScroll } from "./utils.js";
 import { getTideData } from "./pullData.js";
 import { v } from "./variables.js";
+import { sv } from "./cursor/variables.js";
 
 // test for test branch
 // a second test for test branch
@@ -47,7 +48,7 @@ function splashTextToggle() {
   const splashCTA = document.getElementById("splashCTA");
   gsap.to(logoCanvas, {
     opacity: 0,
-    delay: 1,
+    delay: 0,
     duration: 1,
     ease: "power3.inOut",
     onComplete: () => {
@@ -59,6 +60,9 @@ function splashTextToggle() {
         duration: 1,
         ease: "power3.inOut",
         stagger: 0.5,
+        onComplete: () => {
+          sv.lenis.start();
+        },
       });
     },
   });

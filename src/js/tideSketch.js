@@ -68,11 +68,7 @@ export const sketch = (p) => {
 
     for (let i = 0; i < numParticles; i++) {
       particles.push(
-        new Particle(
-          p.map(i, 0, numParticles - 1, 0, p.width),
-          p.height / 2,
-          p.random(2.5, 4)
-        )
+        new Particle(p.map(i, 0, numParticles - 5, 0, p.width), p.height / 2, 3)
       );
     }
   }
