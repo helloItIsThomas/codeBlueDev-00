@@ -1,6 +1,7 @@
 .headerHero {
   box-sizing: border-box;
-  /* width: calc(100% - (var(--margin0LR) * 2)); */
+  /* width: calc(100% - (var(--margin0LR) * 2));   */
+
   position: relative;
   height: 100%;
   padding-top: 20vh;
