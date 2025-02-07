@@ -8,15 +8,16 @@ import { sv } from "./cursor/variables.js";
 // a second test for test branch
 
 export async function initLoadingScreen(_logoLottie) {
+  window.scrollTo({
+    top: 0, // Replace with your desired vertical scroll position
+    behavior: "instant",
+  });
+
   const timer = {
     val: 0,
   };
-  const tideData = await getTideData();
-  v.tideData = tideData;
-  const tideDataLocation = document.getElementById("tideDataLocation");
-  tideDataLocation.textContent = tideData.name;
-  const tideDataSeaLevel = document.getElementById("tideDataSeaLevel");
-  tideDataSeaLevel.textContent = tideData.currentData.highest;
+  // const tideData = await getTideData();
+  // v.tideData = tideData;
 
   gsap.to(timer, {
     val: 1.0,
@@ -27,19 +28,33 @@ export async function initLoadingScreen(_logoLottie) {
     onComplete: () => {
       gsap.to(loadingScreen, {
         opacity: 0,
-        duration: 0.5,
+        duration: 3.5,
         ease: "power3.inOut",
         onComplete: () => {
           loadingScreen.style.display = "none";
           document.body.style.overflow = "auto";
-          window.removeEventListener("wheel", disableScroll);
-          splashTextToggle();
+          unlockSplash();
         },
       });
     },
   });
 
   setupToContainer();
+}
+
+function unlockSplash() {
+  const splashCTA = document.getElementById("splashCTA");
+  splashCTA.style.display = "flex";
+  gsap.to(splashCTA, {
+    opacity: 1,
+    delay: 0,
+    duration: 1,
+    ease: "power3.inOut",
+    onComplete: () => {
+      sv.lenis.start();
+      window.removeEventListener("wheel", disableScroll);
+    },
+  });
 }
 
 function splashTextToggle() {

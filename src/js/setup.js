@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
+  sv.lenis.stop();
+
   window.scrollTo({
     top: 0, // Replace with your desired vertical scroll position
     behavior: "instant",
@@ -37,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
   document.body.style.overflow = "hidden";
-  sv.lenis.stop();
   window.scrollTo({
     top: 0, // Replace with your desired vertical scroll position
     behavior: "instant",
@@ -62,7 +63,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     onComplete: () => {
       pageLoadingScreen.style.display = "none";
       document.body.style.overflow = "auto";
-      // sv.lenis.start();
     },
   });
 

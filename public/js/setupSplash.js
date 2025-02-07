@@ -3,12 +3,12 @@ import { initLoadingScreen } from "./loadingScreen.js";
 import { disableScroll } from "./utils.js";
 import { DotLottie } from "https://cdn.jsdelivr.net/npm/@lottiefiles/dotlottie-web/+esm";
 import { getTideData } from "./pullData.js";
-import { sketch } from "./tideSketch.js";
+// import { sketch } from "./tideSketch.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const logoLottie = await setupSplash();
   await initLoadingScreen(logoLottie);
-  new p5(sketch, "tideCanvas");
+  // new p5(sketch, "tideCanvas");
 });
 
 export async function setupSplash() {
