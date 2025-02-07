@@ -109,7 +109,7 @@ export const sketch = (p) => {
           const xoff = p.map(particle.x, 0, p.width, 0, noiseScale);
           const mainNoise = p.noise(xoff, zoff);
           const subtleNoise =
-            p.noise(xoff * 2 * n * 3, zoff * 0.5 * n) * n * 0.1;
+            p.noise(xoff * 2 * i * 3, zoff * 0.5 * n) * i * 0.1 * 1.3;
           const yoff = p.map(
             mainNoise + subtleNoise,
             0,
@@ -134,7 +134,11 @@ export const sketch = (p) => {
         p.fill(255);
         if (n == 1) {
           p.fill(p.color("#104eb2"));
-          p.text("HISTORIC", p.width * 0.05, dataYOff);
+          p.text(
+            "HISTORIC: " + data.historicData.year,
+            p.width * 0.05,
+            dataYOff
+          );
         } else {
           p.fill(p.color(255));
           p.text("TODAY", p.width * 0.05, dataYOff);
