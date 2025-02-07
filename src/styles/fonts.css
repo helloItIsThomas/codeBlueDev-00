@@ -24,29 +24,10 @@
   text-align: center;
 }
 
-/* .b0_5 { */
-/* font-family: "cdserif"; */
-/* font-size: clamp(1.2rem, 1vw, 2.25rem); */
-/* } */
-/* .b1_0 { */
-/* font-family: "cdmono"; */
-/* font-size: clamp(0.9rem, 1vw, 1.2rem); */
-/* /////  line-height: clamp(0.9rem, 1vw, 1.2rem); */
-/* color: white; */
-/* } */
-/* .b2_0 { */
-/* font-family: "cdsans"; */
-/* font-size: clamp(0.8rem, 1vw, 2rem); */
-/* ////// line-height: clamp(1.5rem, 1vw, 2rem); */
-/* color: white; */
-/* } */
-
 .h0_5 {
   font-size: var(--pt36);
   font-family: "cdserif";
   line-height: 0.95;
-  /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
-  /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
 }
 
 .hFeaturedPartnership {
@@ -59,24 +40,18 @@
   font-size: var(--pt60);
   font-family: "cdserif";
   line-height: 0.95;
-  /* font-size: clamp(2.8rem, 5vw, 4.5rem); */
-  /* line-height: clamp(2.3rem, 5vw, 4rem); */
 }
 
 .h1_5 {
   font-size: var(--pt72);
   font-family: "cdserif";
   line-height: 0.95;
-  /* font-size: clamp(3rem, 5vw, 5rem); */
-  /* line-height: clamp(3rem, 5vw, 4.5rem); */
 }
 
 .h2_0 {
   font-size: var(--pt96);
   font-family: "cdserif";
   line-height: 0.95;
-  /* font-size: clamp(3.3rem, 5vw, 5.5rem); */
-  /* line-height: clamp(2.3rem, 5vw, 4rem); */
 }
 
 /* *****************  */

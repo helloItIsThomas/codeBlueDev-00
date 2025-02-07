@@ -11,22 +11,90 @@
   --padding1LRRight: calc(var(--padding1LR) / 1);
 
   /* FONTS */
-  --pt0: 10px;
-  --pt1: 11px;
-  --pt2: 12px;
-  --pt10: 10px;
-  --pt14: 14px;
-  --pt16: 16px;
-  --pt18: 18px;
-  --pt19: 19px;
-  --pt20: 20px;
-  --pt24: 24px;
-  --pt30: 30px;
+  /* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
+  --pt0: 0.625em; /* 10px; */
+  --pt1: 0.6875em; /* 11px; */
+  --pt2: 0.75em; /* 12px; */
+  --pt10: 0.625em; /* 10px; */
+  --pt14: 0.875em; /* 14px; */
+  --pt16: 1em; /* 16px; */
+  --pt18: 1.125em; /* 18px; */
+  --pt19: 1.1875em; /* 19px; */
+  --pt20: 1.25em; /* 20px; */
+  --pt24: 1.5em; /* 24px; */
+  --pt30: 1.875em; /* 30px; */
 
-  --pt36: 36px;
-  --pt60: 60px;
-  --pt72: 72px;
-  --pt96: 96px;
+  --pt36: 2.25em; /* 36px;*/
+  --pt60: 3.75em; /* 60px;*/
+  --pt72: 4.5em; /* 72px;*/
+  --pt96: 6em; /* 96px;*/
+
+  /* FONT CLAMP ATTEMPT */
+
+  /* --lowSclr: 0.1; */
+  /* --highSclr: 1.9; */
+
+  /* --pt0: clamp( */
+  /* calc(0.625em * var(--lowSclr)), */
+  /* 0.625em, */
+  /* calc(0.625em) * var(--highSclr) */
+  /* ); */
+  /* --pt1: clamp( */
+  /* calc(0.6875em * var(--lowSclr)), */
+  /* 0.6875em, */
+  /* calc(0.6875em * var(--highSclr)) */
+  /* ); */
+  /* --pt2: clamp( */
+  /* calc(0.75em * var(--lowSclr)), */
+  /* 0.75em, */
+  /* calc(0.75em) * var(--highSclr) */
+  /* ); */
+  /* --pt10: clamp( */
+  /* calc(0.625em * var(--lowSclr)), */
+  /* 0.625em, */
+  /* calc(0.625em * var(--highSclr)) */
+  /* ); */
+  /* --pt14: clamp( */
+  /* calc(0.875em * var(--lowSclr)), */
+  /* 0.875em, */
+  /* calc(0.875em) * var(--highSclr) */
+  /* ); */
+  /* --pt16: clamp(calc(1em * var(--lowSclr)), 1em, calc(1em * var(--highSclr))); */
+  /* --pt18: clamp( */
+  /* calc(1.125em * var(--lowSclr)), */
+  /* 1.125em, */
+  /* calc(1.125em * var(--highSclr)) */
+  /* ); */
+  /* --pt19: clamp( */
+  /* calc(1.1875em * var(--lowSclr)), */
+  /* 1.1875em, */
+  /* calc(1.1875em * var(--highSclr)) */
+  /* ); */
+  /* --pt20: clamp( */
+  /* calc(1.25em * var(--lowSclr)), */
+  /* 1.25em, */
+  /* calc(1.25em * var(--highSclr)) */
+  /* ); */
+  /* --pt24: clamp( */
+  /* calc(1.5em * var(--lowSclr)), */
+  /* 1.5em, */
+  /* calc(1.5em * var(--highSclr)) */
+  /* ); */
+  /* --pt30: clamp( */
+  /* calc(1.875em * var(--lowSclr)), */
+  /* 1.875em, */
+  /* calc(1.875em * var(--highSclr)) */
+  /* ); */
+
+  /* --pt36: clamp( */
+  /* 2.25em * var(--lowSclr), */
+  /* 2.25em, */
+  /* clamp(2.25em * var(--highSclr)) */
+  /* ); */
+  /* --pt60: clamp(3.75em * var(--lowSclr), 3.75em, 3.75em * var(--highSclr)); */
+  /* --pt72: clamp(4.5em * var(--lowSclr), 4.5em, 4.5em * var(--highSclr)); */
+  /* --pt96: clamp(6em * var(--lowSclr), 6em, 6em * var(--highSclr)); */
+  /* */
 }
 
 .vertGap0 {
