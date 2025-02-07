@@ -1,19 +1,19 @@
 @font-face {
   font-family: "cdmono-regular";
-  src: url("/assets/fonts/mono-regular.ttf");
+  src: url("/assets/fonts/GeistMono-Light.ttf");
 }
 @font-face {
   font-family: "cdmono-semiBold";
-  src: url("/assets/fonts/mono-semiBold.ttf");
+  src: url("/assets/fonts/GeistMono-Medium.ttf");
 }
 
 @font-face {
   font-family: "cdsans";
-  src: url("/assets/fonts/sans-light.ttf");
+  src: url("/assets/fonts/Geist-Thin.ttf");
 }
 @font-face {
   font-family: "cdserif";
-  src: url("/assets/fonts/serif.otf");
+  src: url("/assets/fonts/Albra-Thin.otf");
 }
 
 ._blue {
@@ -47,6 +47,12 @@
   line-height: 0.95;
   /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
   /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
+}
+
+.hFeaturedPartnership {
+  font-size: 45px;
+  font-family: "cdserif";
+  line-height: 0.95;
 }
 
 .h1_0 {
@@ -85,7 +91,6 @@
 .bm1 {
   font-family: "cdmono-semiBold";
   font-size: var(--pt11);
-  font-weight: bolder;
 }
 .bm2 {
   font-family: "cdmono-regular";
@@ -98,42 +103,39 @@
 
 /*        SANS        */
 .bs0 {
+  font-weight: 600;
   font-family: "cdsans";
-  font-weight: light;
   font-size: var(--pt16);
 }
 .bs1 {
+  font-weight: 600;
   font-family: "cdsans";
-  font-weight: 100;
   font-size: var(--pt18);
 }
 .bs2 {
+  font-weight: 600;
   font-family: "cdsans";
-  font-weight: light;
   color: #104eb2;
   font-size: var(--pt19);
 }
 .bs3 {
+  font-weight: 600;
   font-family: "cdsans";
-  font-weight: light;
   font-size: var(--pt20);
 }
 
 /*        SERIF        */
 .bser0 {
   font-family: "cdserif";
-  font-weight: light;
   font-size: var(--pt20);
 }
 .bser1 {
   font-family: "cdserif";
-  font-weight: light;
   text-decoration: underline;
   font-size: var(--pt24);
 }
 .bser2 {
   font-family: "cdserif";
-  font-weight: light;
   font-size: var(--pt30);
   line-height: 1.3;
 }

@@ -20,7 +20,7 @@ module.exports = async function () {
 
   async function getGrantees() {
     const grantees = await client.fetch(
-      '*[_type == "grantee"]{title, link, "image": image.asset->url, "description": pt::text(description)}'
+      '*[_type == "grantee"] | order(_createdAt desc) {title, link, "image": image.asset->url, "description": pt::text(description)}'
     );
     return grantees;
   }
