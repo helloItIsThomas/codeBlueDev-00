@@ -2,7 +2,7 @@
 .twoColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr !important;
-  gap: 1.5rem;
+  gap: 3rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;

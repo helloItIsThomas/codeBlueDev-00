@@ -9,6 +9,20 @@ var nextButtons = document.querySelectorAll(".nextButton");
 // var nextButton = document.querySelector("#nextButton");
 var progressWrap = gsap.utils.wrap(0, 1);
 
+var slidesInner = document.querySelectorAll(".slides-inner");
+var maxHeight = 0;
+var maxSlide = null;
+slides.forEach(function (slide) {
+  var slideHeight = slide.offsetHeight;
+  if (slideHeight > maxHeight) {
+    maxHeight = slideHeight;
+    maxSlide = slide;
+  }
+});
+
+var firstSlideHeight = maxSlide.offsetHeight;
+slidesInner[0].style.height = firstSlideHeight + "px";
+
 var numSlides = slides.length;
 
 gsap.set(slides, {

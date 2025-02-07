@@ -78,36 +78,10 @@ title: "Impact Media"
       {{ thisPartner.partnerProject | upper }} BY {{ thisPartner.partnerName | upper }}
 </div>
 <div class="vSpacer0"></div>
-<div class="imgCarousel margin0LR">
-      <div class="slides-container">
-            <div class="slides-inner">
-                  {% for work in thisPartner.works %}
-                        <div class="carouselSlide">
-                              <div class="sevenFiveGrid" style="height: 100%;">
-                                    <div class="slideLeft" style="background-image: url({{ work.image.url }}); background-size: cover; background-position: center;"></div>
-                                    <div class="slideRight">
-                                          <div>
-                                                <div class="bm3">{{work.typeOfMedia}}</div>
-                                                <div class="vertGap1"></div>
-                                                <div class="h1_0">{{work.title}}</div>
-                                                <div class="vertGap1"></div>
-                                                <div class="bs1">{{work.description}}</div>
-                                                <div class="vertGap1"></div>
-                                                <button class="ctaButton ">
-                                                      <a target="_blank" href="{{work.ctaButton.link}}" >
-                                                            {{work.ctaButton.name}}
-                                                      </a>
-                                                </button>
-                                          </div>
-                                          <div class="controls">
-                                                <button class="prevButton"></button>
-                                                <button class="nextButton"></button>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
-                  {% endfor %}
-            </div>
-      </div>
-</div>q
 
+{# {% from 'macros/featuredMediaPartner-original.njk' import fmpOriginalComp %} #}
+{# {{ fmpOriginalComp(thisPartner) }} #}
+{% from 'macros/featuredMediaPartner.njk' import fmpComp %}
+slikdjf
+{{ fmpComp(thisPartner) }}
+sldkjf
