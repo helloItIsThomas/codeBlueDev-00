@@ -42,3 +42,14 @@ POST FRIDAY
 • Blend footer in with the body
 
 • add email service and plug in to all contact links / buttons
+
+• Replace the whales image with the video on the Deep Rising thing on the home page.
+
+• Make the cta buttons lock to the same height on the film grids.
+
+• Make the films on the grid on Impact Media in chronological order
+
+• Add an Impact section to each film and to the CMS. Matty to design?
+
+• "The squid fishing thing" should be added to the podcast scroll, and maybe other things (check my notes)
+
