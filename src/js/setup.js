@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     onComplete: () => {
       pageLoadingScreen.style.display = "none";
       document.body.style.overflow = "auto";
+      // sv.lenis.start();
     },
   });
 

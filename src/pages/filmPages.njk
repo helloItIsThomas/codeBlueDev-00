@@ -9,6 +9,42 @@ layout: layouts/base.njk
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 {% from 'macros/heroImg.njk' import heroImg %}
 
+<script type="module">
+  import {sv} from "/js/cursor/variables.js";
+  document.addEventListener("DOMContentLoaded", async () => {
+    const pageLoadingScreen = document.getElementById("pageLoadingScreen");
+
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
+    // pageLoadingScreen.style.display = "none";
+    pageLoadingScreen.style.display = "block";
+    document.body.style.overflow = "hidden";
+    sv
+      .lenis
+      .stop();
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
+
+    gsap.to(pageLoadingScreen, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+      delay: 2,
+      onComplete: () => {
+        pageLoadingScreen.style.display = "none";
+        document.body.style.overflow = "auto";
+        sv
+          .lenis
+          .start();
+      }
+    });
+  });
+</script>
+
 {{ heroImg(film.heroImage) }}
 
 {# <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); "> #}
