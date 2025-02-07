@@ -18,6 +18,7 @@
   height: 100%;
   max-height: 32vh;
   pointer-events: none;
+  border: 1px solid red;
 }
 
 #splashForeground {

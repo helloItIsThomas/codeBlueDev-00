@@ -109,7 +109,8 @@ export const sketch = (p) => {
           const xoff = p.map(particle.x, 0, p.width, 0, noiseScale);
           const mainNoise = p.noise(xoff, zoff);
           const subtleNoise =
-            p.noise(xoff * 2 * i * 3, zoff * 0.5 * n) * i * 0.1 * 1.3;
+            // p.noise(xoff * 2 * n * 3, zoff * 0.5 * n) * n * 0.5;
+            p.noise(xoff * 2 * 1 * 3, zoff * 0.5 * 1) * 1 * 0.5;
           const yoff = p.map(
             mainNoise + subtleNoise,
             0,
