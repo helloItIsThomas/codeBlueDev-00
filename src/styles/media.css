@@ -130,6 +130,11 @@ img {
   height: 50px;
 }
 
+.prevButton:hover,
+.nextButton:hover {
+  cursor: pointer;
+}
+
 .prevButton span,
 .nextButton span {
   display: none;
