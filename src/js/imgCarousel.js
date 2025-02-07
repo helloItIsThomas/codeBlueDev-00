@@ -1,124 +1,73 @@
-var slideDelay = 2.5;
-var slideDuration = 0.3;
-var snapX;
-
-var slides = document.querySelectorAll(".carouselSlide");
-var prevButtons = document.querySelectorAll(".prevButton");
-var nextButtons = document.querySelectorAll(".nextButton");
-// var prevButton = document.querySelector("#prevButton");
-// var nextButton = document.querySelector("#nextButton");
-var progressWrap = gsap.utils.wrap(0, 1);
-
-var slidesInner = document.querySelectorAll(".slides-inner");
-var maxHeight = 0;
-var maxSlide = null;
-slides.forEach(function (slide) {
-  var slideHeight = slide.offsetHeight;
-  if (slideHeight > maxHeight) {
-    maxHeight = slideHeight;
-    maxSlide = slide;
+class ImageCarousel {
+  constructor() {
+    this.slides = document.querySelector(".slides");
+    this.images = document.querySelectorAll(".slides .carouselSlide");
+    this.prevButton = document.querySelector(".prev");
+    this.nextButton = document.querySelector(".next");
+    this.currentIndex = 1;
+    this.totalImages = this.images.length;
+    this.imageWidth = this.images[0].clientWidth;
+    this.isAnimating = false; // Flag to prevent rapid clicks
+    this.setupCarousel();
+    this.addEventListeners();
   }
-});
 
-var firstSlideHeight = maxSlide.offsetHeight;
-slidesInner[0].style.height = firstSlideHeight + "px";
+  setupCarousel() {
+    // Clone first and last images for infinite looping
+    const firstClone = this.images[0].cloneNode(true);
+    const lastClone = this.images[this.totalImages - 1].cloneNode(true);
+    this.slides.appendChild(firstClone);
+    this.slides.insertBefore(lastClone, this.slides.firstChild);
+    this.images = document.querySelectorAll(".slides img"); // Update images NodeList
+    this.currentIndex = 1;
+    // Set initial position
+    gsap.set(this.slides, { x: -this.imageWidth * this.currentIndex });
+  }
 
-var numSlides = slides.length;
+  addEventListeners() {
+    this.nextButton.addEventListener("click", () => this.next());
+    this.prevButton.addEventListener("click", () => this.prev());
+    // Disable transitionend since GSAP handles animations
+  }
 
-gsap.set(slides, {
-  xPercent: (i) => i * 100,
-});
+  next() {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.currentIndex++;
+    this.animateSlide(() => {
+      if (this.currentIndex === this.totalImages + 1) {
+        // Reset to first real image
+        gsap.set(this.slides, { x: -this.imageWidth });
+        this.currentIndex = 1;
+      }
+      this.isAnimating = false;
+    });
+  }
 
-var wrap = gsap.utils.wrap(-100, (numSlides - 1) * 100);
-var timer = gsap.delayedCall(slideDelay, autoPlay);
+  prev() {
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.currentIndex--;
+    this.animateSlide(() => {
+      if (this.currentIndex === 0) {
+        // Reset to last real image
+        gsap.set(this.slides, { x: -this.imageWidth * this.totalImages });
+        this.currentIndex = this.totalImages;
+      }
+      this.isAnimating = false;
+    });
+  }
 
-var animation = gsap.to(slides, {
-  xPercent: "+=" + numSlides * 100,
-  duration: 1,
-  ease: "none",
-  paused: true,
-  repeat: -1,
-  modifiers: {
-    xPercent: wrap,
-  },
-});
-
-var proxy = document.createElement("div");
-var slideAnimation = gsap.to({}, {});
-var slideWidth = 0;
-var wrapWidth = 0;
-resize();
-
-// var draggable = new Draggable(proxy, {
-// trigger: ".slides-container",
-// onPress: updateDraggable,
-// onDrag: updateProgress,
-// onThrowUpdate: updateProgress,
-// snap: {
-// x: snapX,
-// },
-// });
-
-window.addEventListener("resize", resize);
-
-prevButtons.forEach(function (prevButton) {
-  prevButton.addEventListener("click", function () {
-    animateSlides(1);
-    console.log("prev button clicked");
-  });
-});
-
-nextButtons.forEach(function (nextButton) {
-  nextButton.addEventListener("click", function () {
-    console.log("next button clicked");
-    animateSlides(-1);
-  });
-});
-
-function updateDraggable() {
-  timer.restart(true);
-  slideAnimation.kill();
-  this.update();
+  animateSlide(onCompleteCallback) {
+    gsap.to(this.slides, {
+      x: -this.imageWidth * this.currentIndex,
+      duration: 0.5,
+      ease: "power2.inOut",
+      onComplete: onCompleteCallback,
+    });
+  }
 }
 
-function animateSlides(direction) {
-  timer.restart(true);
-  slideAnimation.kill();
-
-  var x = snapX(gsap.getProperty(proxy, "x") + direction * slideWidth);
-
-  slideAnimation = gsap.to(proxy, {
-    x: x,
-    ease: "power3.inOut",
-    duration: slideDuration,
-    onUpdate: updateProgress,
-  });
-}
-
-function autoPlay() {
-  // if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
-  // timer.restart(true);
-  // } else {
-  // animateSlides(-1);
-  // }
-  animateSlides(-1);
-}
-
-function updateProgress() {
-  animation.progress(progressWrap(gsap.getProperty(proxy, "x") / wrapWidth));
-}
-
-function resize() {
-  var norm = gsap.getProperty(proxy, "x") / wrapWidth || 0;
-
-  slideWidth = slides[0].offsetWidth;
-  wrapWidth = slideWidth * numSlides;
-  snapX = gsap.utils.snap(slideWidth);
-
-  gsap.set(proxy, {
-    x: norm * wrapWidth,
-  });
-
-  animateSlides(0);
-  slideAnimation.progress(1);
-}
+document.addEventListener("DOMContentLoaded", () => {
+  new ImageCarousel();
+});

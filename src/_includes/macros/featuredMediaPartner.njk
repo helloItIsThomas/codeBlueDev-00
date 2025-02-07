@@ -1,8 +1,9 @@
 {% macro fmpComp(thisPartner) %}
-      <div class="slides-inner">
-            {% for work in thisPartner.works %}
-                  <div class="carouselSlide">
-                        <div class="sevenFiveGrid">
+
+      <div class="carousel">
+            <div class="slides">
+                  {% for work in thisPartner.works %}
+                        <div class="carouselSlide sevenFiveGrid">
                               <div class="slideLeft" style="background-image: url({{ work.image.url }}); background-size: cover; background-position: center;"></div>
                               <div class="slideRight">
                                     <div>
@@ -24,7 +25,12 @@
                                     </div>
                               </div>
                         </div>
-                  </div>
-            {% endfor %}
+                  {% endfor %}
+                  {# <img src="images/image1.jpg" alt="Image 1"> #}
+                  {# <img src="images/image2.jpg" alt="Image 2"> #}
+                  {# <img src="images/image3.jpg" alt="Image 3"> #}
+            </div>
+            <button class="prev">Prev</button>
+            <button class="next">Next</button>
       </div>
 {% endmacro %}
