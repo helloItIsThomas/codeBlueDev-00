@@ -70,6 +70,7 @@ async function getClosestStation(_stationList) {
           }
         });
         resolve(closestStation);
+
         // Find Closest Station End
       },
       (error) => {

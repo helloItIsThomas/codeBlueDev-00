@@ -48,7 +48,7 @@ function splashTextToggle() {
   const splashCTA = document.getElementById("splashCTA");
   gsap.to(logoCanvas, {
     opacity: 0,
-    delay: 0,
+    delay: 3,
     duration: 1,
     ease: "power3.inOut",
     onComplete: () => {
