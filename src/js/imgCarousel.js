@@ -2,8 +2,10 @@ class ImageCarousel {
   constructor() {
     this.slides = document.querySelector(".slides");
     this.images = document.querySelectorAll(".slides .carouselSlide");
-    this.prevButton = document.querySelector(".prev");
-    this.nextButton = document.querySelector(".next");
+    // this.prevButton = document.querySelector("button.prev");
+    // this.nextButton = document.querySelector("button.next");
+    this.prevButtons = document.querySelectorAll("button.prev");
+    this.nextButtons = document.querySelectorAll("button.next");
     this.currentIndex = 1;
     this.totalImages = this.images.length;
     this.imageWidth = this.images[0].clientWidth;
@@ -18,16 +20,28 @@ class ImageCarousel {
     const lastClone = this.images[this.totalImages - 1].cloneNode(true);
     this.slides.appendChild(firstClone);
     this.slides.insertBefore(lastClone, this.slides.firstChild);
-    this.images = document.querySelectorAll(".slides img"); // Update images NodeList
+    this.images = document.querySelectorAll(".slides carouselSlide"); // Update images NodeList
     this.currentIndex = 1;
     // Set initial position
     gsap.set(this.slides, { x: -this.imageWidth * this.currentIndex });
   }
 
   addEventListeners() {
-    this.nextButton.addEventListener("click", () => this.next());
-    this.prevButton.addEventListener("click", () => this.prev());
-    // Disable transitionend since GSAP handles animations
+    this.nextButtons.forEach((button) => {
+      button.addEventListener("click", () => this.next());
+    });
+    this.prevButtons.forEach((button) => {
+      button.addEventListener("click", () => this.prev());
+    });
+    window.addEventListener("resize", () => this.handleResize());
+  }
+
+  handleResize() {
+    this.images = document.querySelectorAll(".slides .carouselSlide");
+    // Recalculate image width
+    this.imageWidth = this.images[0].clientWidth;
+    // Update the position of slides
+    gsap.set(this.slides, { x: -this.imageWidth * this.currentIndex });
   }
 
   next() {

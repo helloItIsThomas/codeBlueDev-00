@@ -64,10 +64,10 @@ img {
 
 .carousel {
   position: relative;
-  width: 600px;
+  width: 100%;
   margin: 50px auto;
   overflow: hidden;
-  border: 2px solid #ccc;
+  /* border: 2px solid #ccc; */
   border-radius: 10px;
 }
 
@@ -77,32 +77,9 @@ img {
 }
 
 .slides .carouselSlide {
-  width: 600px;
+  width: 100%;
   flex-shrink: 0;
   user-select: none;
-}
-
-button.prev {
-  position: absolute;
-  top: 30%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-button.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
 }
 
 .slideLeft {
@@ -115,21 +92,20 @@ button.next {
 }
 
 .slideRight {
-  /* padding: 5rem; */
   position: relative;
   height: 100%;
   width: 100%;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .controls {
-  padding: 10px;
   display: flex;
 }
 
-.prevButton,
-.nextButton {
+button.prev,
+button.next {
   color: black;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -137,21 +113,22 @@ button.next {
   border: none;
   width: 50px;
   height: 50px;
+  z-index: 2;
 }
 
-.prevButton:hover,
-.nextButton:hover {
+button.prev:hover,
+button.next:hover {
   cursor: pointer;
 }
 
-.prevButton span,
-.nextButton span {
+button.prev span,
+button.next span {
   display: none;
 }
 
-.prevButton {
+button.prev {
   background-image: url("/assets/icons/arrowLeft.svg");
 }
-.nextButton {
+button.next {
   background-image: url("/assets/icons/arrowRight.svg");
 }
