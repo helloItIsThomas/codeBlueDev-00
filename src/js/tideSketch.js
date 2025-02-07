@@ -98,8 +98,8 @@ export const sketch = (p) => {
           seaLevel,
           -2.0, // aveLowLevel,
           2.0, // aveHighLevel,
-          p.height * 0.01,
-          p.height * 0.99,
+          p.height * 0.1,
+          p.height * 0.9,
           -2.0, // aveLowLevel,
           2.0 // aveHighLevel
         );
