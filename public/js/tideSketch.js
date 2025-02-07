@@ -41,7 +41,7 @@ export const sketch = (p) => {
   }
 
   p.preload = () => {
-    mono = p.loadFont("/assets/fonts/mono.ttf");
+    mono = p.loadFont("/assets/fonts/mono-light.ttf");
   };
 
   p.setup = () => {
