@@ -17,7 +17,7 @@
 }
 
 ._blue {
-  color: #18d8f9;
+  color: #1555be;
 }
 
 .centerType {
@@ -44,6 +44,7 @@
 .h0_5 {
   font-size: var(--pt36);
   font-family: "cdserif";
+  line-height: 0.95;
   /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
   /* font-size: clamp(1.6rem, 1vw, 2.8rem); */
 }
@@ -51,6 +52,7 @@
 .h1_0 {
   font-size: var(--pt60);
   font-family: "cdserif";
+  line-height: 0.95;
   /* font-size: clamp(2.8rem, 5vw, 4.5rem); */
   /* line-height: clamp(2.3rem, 5vw, 4rem); */
 }
@@ -58,6 +60,7 @@
 .h1_5 {
   font-size: var(--pt72);
   font-family: "cdserif";
+  line-height: 0.95;
   /* font-size: clamp(3rem, 5vw, 5rem); */
   /* line-height: clamp(3rem, 5vw, 4.5rem); */
 }
@@ -65,6 +68,7 @@
 .h2_0 {
   font-size: var(--pt96);
   font-family: "cdserif";
+  line-height: 0.95;
   /* font-size: clamp(3.3rem, 5vw, 5.5rem); */
   /* line-height: clamp(2.3rem, 5vw, 4rem); */
 }
@@ -76,23 +80,19 @@
 /*        MONO        */
 .bm0 {
   font-family: "cdmono-regular";
-  text-transform: uppercase;
   font-size: var(--pt10);
 }
 .bm1 {
   font-family: "cdmono-semiBold";
-  text-transform: uppercase;
   font-size: var(--pt11);
   font-weight: bolder;
 }
 .bm2 {
   font-family: "cdmono-regular";
-  text-transform: uppercase;
   font-size: var(--pt12);
 }
 .bm3 {
   font-family: "cdmono-regular";
-  text-transform: uppercase;
   font-size: var(--pt14);
 }
 

@@ -6,43 +6,42 @@ title: "Conservation Grantees"
 {% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
 <script type="module">
-      import {styleThisPageNavLink} from "../../js/utils.js";
-      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
+  import {styleThisPageNavLink} from "../../js/utils.js";
+  styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
 </script>
 <script type="module">
-      import {sv} from "/js/cursor/variables.js";
-      document.addEventListener("DOMContentLoaded", async () => {
-            const pageLoadingScreen = document.getElementById("pageLoadingScreen");
+  import {sv} from "/js/cursor/variables.js";
+  document.addEventListener("DOMContentLoaded", async () => {
+    const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
-            window.scrollTo({
-                  top: 0, // Replace with your desired vertical scroll position
-                  behavior: "instant"
-            });
-            // pageLoadingScreen.style.display = "none";
-            pageLoadingScreen.style.display = "block";
-            document.body.style.overflow = "hidden";
-            sv
-                  .lenis
-                  .stop();
-            window.scrollTo({
-                  top: 0, // Replace with your desired vertical scroll position
-                  behavior: "instant"
-            });
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
+    pageLoadingScreen.style.display = "block";
+    document.body.style.overflow = "hidden";
+    sv
+      .lenis
+      .stop();
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
 
-            gsap.to(pageLoadingScreen, {
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power3.out",
-                  delay: 2,
-                  onComplete: () => {
-                        pageLoadingScreen.style.display = "none";
-                        document.body.style.overflow = "auto";
-                        sv
-                              .lenis
-                              .start();
-                  }
-            });
-      });
+    gsap.to(pageLoadingScreen, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+      delay: 2,
+      onComplete: () => {
+        pageLoadingScreen.style.display = "none";
+        document.body.style.overflow = "auto";
+        sv
+          .lenis
+          .start();
+      }
+    });
+  });
 </script>
 
 {{ heroImg(someData.conservationGrantees.heroImage) }}
@@ -51,24 +50,24 @@ title: "Conservation Grantees"
 <div class="vSpacer1"></div>
 
 {%- for grantee in someData.grantees -%}
-      <div class="margin0LR">
-            <div class="margin1LR">
-                  <hr>
-                  <div class="threeSevenGrid">
-                        <div >
-                              <h1 class="h0_5">{{ grantee.title }}</h1>
-                              <img style="mix-blend-mode: screen;" src="{{ grantee.image }}"  class="grantee_logo">
-                        </div>
-                        <div>
-                              <div class="vertGap0"></div>
-                              <div class = "granteeRight">
-                                    <div class="bs3">{{ grantee.description }}</div>
-                                    <div class="vertGap0"></div>
-                                    <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title }}</button>
-                              </div>
-                              <div class="vertGap0"></div>
-                        </div>
-                  </div>
-            </div>
+  <div class="margin0LR">
+    <div class="margin1LR">
+      <hr>
+      <div class="threeSevenGrid">
+        <div >
+          <h1 class="h0_5">{{ grantee.title }}</h1>
+          <img style="mix-blend-mode: screen;" src="{{ grantee.image }}"  class="grantee_logo">
+        </div>
+        <div>
+          <div class="vertGap0"></div>
+          <div class = "granteeRight">
+            <div class="bs3">{{ grantee.description }}</div>
+            <div class="vertGap0"></div>
+            <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title }}</button>
+          </div>
+          <div class="vertGap0"></div>
+        </div>
       </div>
+    </div>
+  </div>
 {%- endfor -%}
