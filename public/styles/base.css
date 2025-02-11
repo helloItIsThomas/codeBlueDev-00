@@ -35,17 +35,21 @@
   --heroTitle: 96px;
   --heroDescription: 20px;
   --heroPhotoCredit: 10px;
-  --heroMediaType: 14px;
+  --mediaType: 14px;
   --serifSubtitle: 36px;
   --heroMetadata: 12px;
-  --creditCopy: 16px;
+  --creditsSectionCopy: 16px;
   --ctaButtonTitle: 14px;
+  --navTitle: 14px;
+  --monoSubtitle: 14px;
   --bodyCopySmaller: 17px;
   --bodyCopyBigger: 20px;
   --longBigSerifCopy: 30px;
   --smallShortSerifCopy: 20px;
   --purposeStatement: 72px;
   --compSubtitle: 60px;
+  --footerLinks: 20px;
+  --footerCopyright: 12px;
 }
 
 .vertGap0 {

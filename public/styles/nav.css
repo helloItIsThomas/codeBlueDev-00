@@ -29,7 +29,7 @@
 
 .navLinks {
   font-family: "cdmono-semiBold";
-  font-size: var(--pt14);
+  font-size: var(--navTitle);
   display: flex;
   flex-direction: row;
 }

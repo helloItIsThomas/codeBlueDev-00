@@ -5,19 +5,19 @@
                         <div class="twoColGrid">
                               <div>
                                     {% if headers.subTitle %}
-                                          <div class="bm3">{{headers.subTitle}}</div>
+                                          <div class="monoSubtitle">{{headers.subTitle | upper}}</div>
                                           <div class="vertGap1"></div>
                                     {% endif %}
-                                    <div class="h2_0">{{headers.title}}</div>
+                                    <div class="heroTitle">{{headers.title}}</div>
                                     {%if headers.subDescription %}
                                           <div class="vSpacer0"></div>
-                                          <div class="bs3">{{headers.subDescription}}</div>
+                                          <div class="heroDescription">{{headers.subDescription}}</div>
                                     {% endif %}
                               </div>
                         </div>
                         {% if page.imageCredit %}
                               <div class="vertGap1"></div>
-                              <div class="bm0">PHOTO: {{page.imageCredit | upper}}</div>
+                              <div class="heroPhotoCredit">PHOTO: {{page.imageCredit | upper}}</div>
                         {% endif %}
                   </div>
             </div>
