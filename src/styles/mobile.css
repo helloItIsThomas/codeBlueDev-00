@@ -124,6 +124,19 @@
 }
 /* end of media query */
 
+#hamburgerMenu {
+  border: 1px solid red;
+}
+
+#hamburgerMenu:hover {
+  cursor: pointer;
+}
+
+.mobileMenuNavLinks {
+  font-family: "cdsans";
+  font-size: var(--mobileMenuNavLinks);
+}
+
 .stack {
   display: flex;
   flex-direction: column;

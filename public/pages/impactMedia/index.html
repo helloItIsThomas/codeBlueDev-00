@@ -46,7 +46,8 @@
     <title id="page-title">Impact Media</title>
   </head>
   <body>
-    <div class="navBar margin0LR">
+    <div class="desktopOnlyBlock">
+      <div class="navBar margin0LR">
       <div class="navLogo">
             <a href="/index.html">
                   <img src="/assets/images/logo.svg" alt="Code Blue">
@@ -70,6 +71,19 @@
             </div>
       </div>
 </div>
+    </div>
+    <div class="mobileOnlyBlock">
+      <div class="navBar margin0LR">
+      <div id="hamburgerMenu">
+            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+      </div>
+      <div class="navLogo">
+            <a href="/index.html">
+                  <img src="/assets/images/logo.svg" alt="Code Blue">
+            </a>
+      </div>
+</div>
+    </div>
     <div id="bodyGradient">
       <div id="cursorCanvas"></div>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
@@ -79,44 +93,44 @@
 
 
 <script type="module">
-      import {sv} from "/js/cursor/variables.js";
-      document.addEventListener("DOMContentLoaded", async () => {
-            const pageLoadingScreen = document.getElementById("pageLoadingScreen");
+  import {sv} from "/js/cursor/variables.js";
+  document.addEventListener("DOMContentLoaded", async () => {
+    const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
-            window.scrollTo({
-                  top: 0, // Replace with your desired vertical scroll position
-                  behavior: "instant"
-            });
-            // pageLoadingScreen.style.display = "none";
-            pageLoadingScreen.style.display = "block";
-            document.body.style.overflow = "hidden";
-            sv
-                  .lenis
-                  .stop();
-            window.scrollTo({
-                  top: 0, // Replace with your desired vertical scroll position
-                  behavior: "instant"
-            });
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
+    // pageLoadingScreen.style.display = "none";
+    pageLoadingScreen.style.display = "block";
+    document.body.style.overflow = "hidden";
+    sv
+      .lenis
+      .stop();
+    window.scrollTo({
+      top: 0, // Replace with your desired vertical scroll position
+      behavior: "instant"
+    });
 
-            gsap.to(pageLoadingScreen, {
-                  opacity: 0,
-                  duration: 0.5,
-                  ease: "power3.out",
-                  delay: 2,
-                  onComplete: () => {
-                        pageLoadingScreen.style.display = "none";
-                        document.body.style.overflow = "auto";
-                        sv
-                              .lenis
-                              .start();
-                  }
-            });
-      });
+    gsap.to(pageLoadingScreen, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+      delay: 2,
+      onComplete: () => {
+        pageLoadingScreen.style.display = "none";
+        document.body.style.overflow = "auto";
+        sv
+          .lenis
+          .start();
+      }
+    });
+  });
 </script>
 
 <script type="module">
-      import {styleThisPageNavLink} from "../../js/utils.js";
-      styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/impactMedia'] span"));
+  import {styleThisPageNavLink} from "../../js/nav.js";
+  styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/impactMedia'] span"));
 </script>
 
 
@@ -159,7 +173,7 @@
 
 <div class="vSpacer2"></div>
 <div class="h1_0 margin0LR">
-      <div class="serifSubtitle margin1LR">
+  <div class="serifSubtitle margin1LR">
             OUR FILMS
       </div>
 </div>
@@ -167,9 +181,9 @@
 <div class="serifSubtitle_spaceBelow"></div>
 
 <div class="threeFeaturedFilmsComp margin0LR">
-      <div class="threeColGrid mobileOnly_Padding1LR">
-            
-                  
+  <div class="threeColGrid mobileOnly_Padding1LR">
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/the-ghost-fleet">
@@ -200,9 +214,9 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-                  
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/gaucho-gaucho">
@@ -233,9 +247,9 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-                  
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/deep-rising">
@@ -266,9 +280,9 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-                  
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/chasing-coral">
@@ -299,9 +313,9 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-                  
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/the-battle-for-laikipia">
@@ -332,9 +346,9 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-                  
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+      
       <div class="subFeaturedFilmComp">
             <div>
                   <a href="/films/mission-blue">
@@ -365,19 +379,19 @@
             </div>
       </div>
 
-                  <div class="vertGap2 mobileOnlyBlock"></div>
-            
-      </div>
+      <div class="vertGap2 mobileOnlyBlock"></div>
+    
+  </div>
 </div>
 
 <div class="vSpacer1"></div>
 <div class="carouselTitle">
-      <div class="serifSubtitle centered">
+  <div class="serifSubtitle centered">
       FEATURED MEDIA PARTNER
 </div>
-      <div class="serifSubtitle _blue centered">
-            THE OUTLAW OCEAN BY IAN URBINA
-      </div>
+  <div class="serifSubtitle _blue centered">
+    THE OUTLAW OCEAN BY IAN URBINA
+  </div>
 </div>
 <div class="serifSubtitle_spaceBelow"></div>
 
@@ -542,6 +556,35 @@
     <div id="pageLoadingScreen">
       <div class="pageLoadingScreenContent">
             <div class="pageLoadingScreenText"></div>
+      </div>
+</div>
+
+    <div id="mobileMenu">
+      <div class="mobileMenuChild" id="mobileMenuChild0">
+            <ul>
+                  <li>
+                        <a class="mobileMenuNavLinks" href="/pages/story">About Us</a>
+                  </li>
+                  <li>
+                        <a class="mobileMenuNavLinks" href="/pages/impactMedia" >Impact Media</a>
+                  </li>
+                  <li>
+                        <a class="mobileMenuNavLinks" href="/pages/conservationGrantees" >Conservation Grantees</a>
+                  </li>
+            </ul>
+      </div>
+      <div class="footerLinkTitle mobileMenuChild" id="mobileMenuChild1">
+            <div class="vertGap0"></div>
+            <ul>
+                  CONTACT
+                  <li>
+                        <a class="footerLinks" href="#link1">jane@kachmermanagement.com</a>
+                  </li>
+                  <li>
+                        <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
+                  </li>
+            </ul>
+            <div class="vertGap1"></div>
       </div>
 </div>
   </body>

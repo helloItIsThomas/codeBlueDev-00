@@ -87,7 +87,3 @@ export function handleGradientBlend(imgLink) {
     overlayGrad.style.bottom = `${gradientHeight}px`;
   });
 }
-
-export function styleThisPageNavLink(link) {
-  link.style.opacity = 1;
-}

@@ -46,7 +46,12 @@
     <title id="page-title">{{ title }}</title>
   </head>
   <body>
-    {% include "components/navBar.njk" %}
+    <div class="desktopOnlyBlock">
+      {% include "components/navBar.njk" %}
+    </div>
+    <div class="mobileOnlyBlock">
+      {% include "components/navBar_mobile.njk" %}
+    </div>
     <div id="bodyGradient">
       <div id="cursorCanvas"></div>
       {{ content | safe }}
@@ -54,5 +59,7 @@
     {% include "components/footer.njk" %}
     {% include "components/mobileFooter.njk" %}
     {% include "components/pageLoadingScreen.njk" %}
+
+    {% include "components/mobileMenu.njk" %}
   </body>
 </html>
