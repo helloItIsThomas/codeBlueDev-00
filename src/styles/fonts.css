@@ -98,6 +98,10 @@
   font-family: "cdsans";
   font-size: var(--footerLinks);
 }
+.footerLinkTitle {
+  font-family: "cdmono-semiBold";
+  font-size: var(--footerLinkTitle);
+}
 .footerCopyright {
   font-family: "cdsans";
   font-size: var(--footerCopyright);

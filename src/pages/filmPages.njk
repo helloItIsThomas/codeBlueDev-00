@@ -51,26 +51,25 @@ layout: layouts/base.njk
 <div class="headerHero">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
-      <div class="bm3">FEATURED FILM</div>
+      <div class="mediaType">FEATURED FILM</div>
       <div class="vertGap0"></div>
-      <div class="h0_5">{{film.subTitle}}</div>
-      <div class="h2_0">{{film.title}}</div>
+      <div>{{film.subTitle}}</div>
+      <div class="heroTitle">{{film.title}}</div>
     </div>
   </div>
 </div>
 
-<div class="vSpacer2"></div>
+<div class="vSpacer2 desktopOnlyBlock"></div>
+<div class="vSpacer0 mobileOnlyBlock"></div>
 
-<div class="sevenThreeGrid margin0LR padding1LRLeft ">
-  <div>
-    <div class="bs3" style="position: relative;">{{film.description}}</div>
-  </div>
+<div class="sevenThreeGrid margin0LR padding1LR">
+  <div class="heroDescription" style="position: relative;">{{film.description}}</div>
   <div style="position: relative;">
-    <button onclick="window.open('{{ film.ctaButton.link }}', '_blank');" class="ctaButton">{{ film.ctaButton.name }}</button>
+    <button onclick="window.open('{{ film.ctaButton.link }}', '_blank');" class="ctaButton">{{ film.ctaButton.name | upper }}</button>
     <div class="vSpacer0"></div>
     {% for key, value in film.metadata %}
       {% if key != "awards" %}
-        <div class="bm2">{{ value }}</div>
+        <div class="heroMetadata">{{ value }}</div>
       {% endif %}
     {% endfor %}
   </div>
@@ -90,10 +89,10 @@ layout: layouts/base.njk
 {% endif %}
 
 <div class="margin0LR padding1LR" style="position: relative;">
-  <div class="h0_5">WATCH THE TRAILER</div>
+  <div class="serifSubtitle">WATCH THE TRAILER</div>
 </div>
 
-<div class="vSpacer0"></div>
+<div class="serifSubtitle_spaceBelow"></div>
 {# https://www.youtube.com/embed/t_O5Y8FWXpE?si=Lmak45m0oyMXDryB #}
 {# the link must be from the embed code like the above #}
 
@@ -104,10 +103,10 @@ layout: layouts/base.njk
 <div class="vSpacer2"></div>
 
 <div class="margin0LR padding1LR">
-  <div class="h0_5">
+  <div class="serifSubtitle">
   IMAGE GALLERY
   </div>
-  <div class="vSpacer0"></div>
+  <div class="serifSubtitle_spaceBelow"></div>
   <div class="galleryGrid">
     {% for image in film.galleryImages %}
       <img src="{{ image.url }}" alt="{{ image.alt }}">
@@ -116,11 +115,11 @@ layout: layouts/base.njk
 
   <div class="vSpacer2"></div>
 
-  <div class="h0_5">
+  <div class="serifSubtitle">
     CREDITS
   </div>
 
-  <div class="vSpacer0"></div>
+  <div class="serifSubtitle_spaceBelow"></div>
 
   {{ fcc(film.credits, "director") }}
   {{ fcc(film.credits, "editor") }}
@@ -177,16 +176,17 @@ layout: layouts/base.njk
 <div class="vSpacer2"></div>
 
 <div class="margin0LR padding1LR">
-  <div class="h0_5">MORE FEATURED FILMS</div>
+  <div class="serifSubtitle">MORE FEATURED FILMS</div>
 </div>
 
-<div class="vSpacer0"></div>
+<div class="serifSubtitle_spaceBelow"></div>
 
 <div class="threeFeaturedFilmsComp margin0LR">
-  <div class="threeColGrid">
+  <div class="threeColGrid mobileOnly_Padding1LR">
     {% for i in threeUniqueValues %}
       {% if notThisFilm[i] %}
         {{ sffC(notThisFilm[i]) }}
+        <div class="vertGap2 mobileOnlyBlock"></div>
       {% endif %}
     {% endfor %}
   </div>

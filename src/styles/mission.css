@@ -1,9 +1,12 @@
 #mission {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   width: auto;
   box-sizing: border-box;
+  position: relative;
+  border: 2px solid blue;
 }
 
 #missionCopy {
@@ -15,14 +18,15 @@
   height: 100%;
   width: 100%;
   min-width: 50px;
-  min-height: 50px;
+  border: 2px solid orange;
+  min-height: 30em;
 }
 
 #missionRight iframe {
   height: 100%;
   width: 100%;
   z-index: 1000;
-  position: absolute;
+  /* position: absolute; */
 }
 
 #waterOrb {

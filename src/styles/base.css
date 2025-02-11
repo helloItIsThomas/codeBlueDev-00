@@ -6,6 +6,7 @@
   --vSpacer0: 55px;
   --vSpacer1: 88px;
   --vSpacer2: 125px;
+  --serifSubtitle_spaceBelow: 55px;
 
   --padding1LRLeft: calc(var(--padding1LR) / 1);
   --padding1LRRight: calc(var(--padding1LR) / 1);
@@ -33,6 +34,7 @@
   --purposeStatement: 72px;
   --compSubtitle: 60px;
   --footerLinks: 20px;
+  --footerLinkTitle: 10px;
   --footerCopyright: 12px;
 }
 
@@ -95,6 +97,10 @@
 .vSpacer2 {
   margin-top: var(--vSpacer2);
   margin-bottom: var(--vSpacer2);
+}
+
+.serifSubtitle_spaceBelow {
+  margin-bottom: var(--serifSubtitle_spaceBelow);
 }
 
 .padLeft {
@@ -205,6 +211,19 @@ hr {
   height: 0.5px; /* Adjust the height to make it thinner */
   background-color: white; /* Keep the color as red */
   border: none; /* Remove any default border */
+}
+
+.desktopOnlyBlock {
+  display: block;
+}
+.desktopOnlyFlex {
+  display: flex;
+}
+.mobileOnlyFlex {
+  display: none;
+}
+.mobileOnlyBlock {
+  display: none;
 }
 
 main {

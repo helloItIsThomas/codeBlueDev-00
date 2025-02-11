@@ -54,18 +54,20 @@ title: "Impact Media"
 
 {% set thisPartner = someData.mediaPartners[0] %}
 
-<div class="vSpacer0"></div>
+<div class="vSpacer2"></div>
 <div class="h1_0 margin0LR">
       <div class="serifSubtitle margin1LR">
             OUR FILMS
       </div>
 </div>
-<div class="vSpacer0"></div>
+
+<div class="serifSubtitle_spaceBelow"></div>
 
 <div class="threeFeaturedFilmsComp margin0LR">
-      <div class="threeColGrid">
+      <div class="threeColGrid mobileOnly_Padding1LR">
             {% for f in someData.films %}
                   {{ sffC(f) }}
+                  <div class="vertGap2 mobileOnlyBlock"></div>
             {% endfor %}
       </div>
 </div>
@@ -79,7 +81,7 @@ title: "Impact Media"
             {{ thisPartner.partnerProject | upper }} BY {{ thisPartner.partnerName | upper }}
       </div>
 </div>
-<div class="vSpacer0"></div>
+<div class="serifSubtitle_spaceBelow"></div>
 
 {% from 'macros/featuredMediaPartner.njk' import fmpComp %}
 {{ fmpComp(thisPartner) }}
