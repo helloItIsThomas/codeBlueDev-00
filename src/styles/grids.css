@@ -13,13 +13,13 @@
 
 .threeColGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 }
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr;
   object-fit: cover;
   object-position: center;
   gap: 0.5rem;
@@ -27,20 +27,26 @@
 
 .threeSevenGrid {
   display: grid;
-  grid-template-columns: 3fr 7fr !important;
+  grid-template-columns: 3fr 7fr;
+  gap: 4.5rem;
+}
+
+.threeSevenGridMobile {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
   gap: 4.5rem;
 }
 
 .sevenThreeGrid {
   display: grid;
-  grid-template-columns: 7fr 3fr !important;
+  grid-template-columns: 7fr 3fr;
   gap: 8rem;
 }
 
 .sevenFiveGrid {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 7fr 5fr !important;
+  grid-template-columns: 7fr 5fr;
   gap: 0.5rem;
 }
 

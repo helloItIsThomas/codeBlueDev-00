@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     markers: false,
   };
 
-  gsap.from("#footerFish", {
+  gsap.from(".footerFish", {
     scrollTrigger: footerScrollTrigger,
     duration: 2,
     top: "30px",

@@ -114,3 +114,61 @@
   font-size: var(--pt30);
   line-height: 1.3;
 }
+
+/* NEW FONT STYLES */
+
+.heroTitle {
+  font-family: "cdserif";
+  font-size: var(--heroTitle);
+}
+.heroDescription {
+  font-family: "cdsans";
+  font-size: var(--heroDescription);
+}
+.heroPhotoCredit {
+  font-family: "cdmono-regular";
+  font-size: var(--heroPhotoCredit);
+}
+.heroMediaType {
+  font-family: "cdmono-semiBold";
+  font-size: var(--heroMediaType);
+}
+.heroMetadata {
+  font-family: "cdmono-regular";
+  font-size: var(--heroMetadata);
+}
+.serifSubtitle {
+  font-family: "cdserif";
+  font-size: var(--serifSubtitle);
+}
+.creditCopy {
+  font-family: "cdsans";
+  font-size: var(--creditCopy);
+}
+.ctaButtonTitle {
+  font-family: "cdmono-semiBold";
+  font-size: var(--ctaButtonTitle);
+}
+.bodyCopySmaller {
+  font-family: "cdsans";
+  font-size: var(--bodyCopySmaller);
+}
+.bodyCopyBigger {
+  font-family: "cdsans";
+  font-size: var(--bodyCopyBigger);
+}
+.longBigSerifCopy {
+  font-family: "cdserif";
+  font-size: var(--longBigSerifCopy);
+}
+.smallShortSerifCopy {
+  font-size: var(--smallShortSerifCopy);
+}
+.purposeStatement {
+  font-family: "cdserif";
+  font-size: var(--purposeStatement);
+}
+.compSubtitle {
+  font-family: "cdserif";
+  font-size: var(--compSubtitle);
+}

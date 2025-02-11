@@ -16,6 +16,10 @@
   padding: 2.5rem;
 }
 
+#mobileFooter {
+  display: none;
+}
+
 #footer #wrapper {
   display: flex;
   flex-direction: row;
@@ -58,8 +62,13 @@
   /* background-color: red; */
   padding-bottom: 2.5rem !important;
   transform: translate3d(0, 0, 0);
-  mix-blend-mode: screen;
+  /* mix-blend-mode: screen; */
 }
+
+.footerFishContainer {
+  mix-blend-mode: screen !important;
+}
+
 #footerRight img {
   padding-left: 10%;
   /* mix-blend-mode: hard-light; */
@@ -71,6 +80,10 @@
 }
 #footerRightCopy {
   text-align: right;
+}
+
+.textAlignLeft {
+  text-align: left;
 }
 
 .footerChild {
