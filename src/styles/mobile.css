@@ -12,12 +12,15 @@
     --margin1LR: 1.5rem;
     --padding1LR: 1.5rem;
     --borderRadius: 3.5px;
-    --vSpacer0: 12px;
-    --vSpacer1: 22px;
-    --vSpacer2: 30px;
+    /* --vSpacer0: 12px; */
+    /* --vSpacer1: 22px; */
+    /* --vSpacer2: 30px; */
 
-    --pt36: 36px;
-    --pt96: 64px;
+    --serifSubtitle: 36px;
+    --heroTitle: 64px;
+    --heroDescription: 26px;
+    --smallShortSerifCopy: 24px;
+    --purposeStatement: 28px;
 
     --padding1LRLeft: calc(var(--padding1LR) / 1);
     --padding1LRRight: calc(var(--padding1LR) / 1);
@@ -47,6 +50,42 @@
     display: grid;
     grid-template-columns: 1fr !important;
     gap: 0rem !important;
+  }
+
+  .carouselTitle {
+    display: none !important;
+  }
+
+  .carousel {
+    display: none !important;
+  }
+
+  .twoColGrid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 3rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .granteeRight .ctaButton {
+    width: 100% !important;
+  }
+
+  .galleryGrid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    object-fit: cover;
+    object-position: center;
+    gap: 0.5rem;
+  }
+
+  #purposeStatement {
+    padding: 0 10% !important;
   }
 }
 /* end of media query */

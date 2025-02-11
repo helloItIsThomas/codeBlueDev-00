@@ -1,11 +1,15 @@
 /* 2 Column Horizontal Grid */
-.twoColGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 3rem;
+
+* {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
+}
+
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   hyphens: auto;
   width: 100%;
   box-sizing: border-box;

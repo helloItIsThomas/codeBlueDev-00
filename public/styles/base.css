@@ -15,22 +15,6 @@
 
   /* FONTS */
   /* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
-  --pt0: 10px; /* 0.625em; */
-  --pt1: 11px; /* 0.6875em; */
-  --pt2: 12px; /* 0.75em; */
-  --pt10: 10px; /* 0.625em; */
-  --pt14: 14px; /* 0.875em; */
-  --pt16: 16px; /* 1em; */
-  --pt18: 18px; /* 1.125em; */
-  --pt19: 19px; /* 1.1875em; */
-  --pt20: 20px; /* 1.25em ; */
-  --pt24: 24px; /*  1.5em*/
-  --pt30: 30px; /*  1.875em*/
-
-  --pt36: 36px; /*2.25em;*/ /* 36px;*/
-  --pt60: 60px; /* 3.75em ;*/
-  --pt72: 72px; /*4.5em; 72px;*/
-  --pt96: 96px; /* 6em; 96px;*/
 
   --heroTitle: 96px;
   --heroDescription: 20px;
@@ -59,6 +43,10 @@
 .vertGap1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.vertGap2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .margin0LR {
