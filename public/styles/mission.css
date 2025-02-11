@@ -13,26 +13,14 @@
   width: 90%;
 }
 
-#missionRight {
+.missionRight {
   position: relative;
-  height: 100%;
   width: 100%;
   min-width: 50px;
-  border: 2px solid orange;
-  min-height: 30em;
-}
-
-#missionRight iframe {
   height: 100%;
-  width: 100%;
-  z-index: 1000;
-  /* position: absolute; */
-}
-
-#waterOrb {
-  height: auto !important;
-  width: 100% !important;
-  border: none;
-  background-color: transparent;
-  mix-blend-mode: multiply;
+  min-height: 20em;
+  max-height: 100vh !important;
+  /* height: 100% !important; */
+  border: 2px solid orange;
+  /* min-height: 3em; */
 }

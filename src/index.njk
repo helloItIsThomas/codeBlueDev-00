@@ -42,7 +42,13 @@ title: "Code Blue"
 We can still stop the destruction of our planet's last pristine wilderness. The seabed is humanity’s birthright, not a resource for the profit of just a few. Join the world's largest ocean dispute now.</div>
         </div>
         <div class="vSpacer0"></div>
-        {% include "components/homeSections/featuredFilm.njk" %}
+        <div class="mobileOnlyBlock">
+            {# {% include "components/homeSections/featuredFilm_mobile.njk" %} #}
+            {% include "macros/featuredCompHome_mobile.njk" %}
+        </div>
+        <div class="desktopOnlyBlock">
+            {% include "components/homeSections/featuredFilm.njk" %}
+        </div>
     </div>
 
     <div class="componentContainer margin0LR">
@@ -50,6 +56,12 @@ We can still stop the destruction of our planet's last pristine wilderness. The 
             <div class="serifSubtitle"> FEATURED PARTNERSHIPS</div>
             <div class="serifSubtitle_spaceBelow"></div>
         </div>
-        {% include "components/homeSections/featuredPartnerships.njk" %}
+        <div class="mobileOnlyBlock">
+            {# {% include "components/homeSections/featuredPartnerships_mobile.njk" %} #}
+            {% include "macros/featuredCompHome_mobile.njk" %}
+        </div>
+        <div class="desktopOnlyBlock">
+            {% include "components/homeSections/featuredPartnerships.njk" %}
+        </div>
     </div>
 </div>

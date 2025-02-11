@@ -23,6 +23,7 @@
     --smallShortSerifCopy: 24px;
     --purposeStatement: 28px;
     --footerLinkTitle: 10px;
+    --compSubtitle: 30px;
 
     --padding1LRLeft: calc(var(--padding1LR) / 1);
     --padding1LRRight: calc(var(--padding1LR) / 1);
