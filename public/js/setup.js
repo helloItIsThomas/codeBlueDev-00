@@ -95,7 +95,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   mySetup();
 
-  handleSlidingTextBox();
+  const granteeRights = document.querySelectorAll(".granteeRight");
+  granteeRights.forEach((gr) => {
+    handleSlidingTextBox(gr);
+  });
 });
 
 async function mySetup() {

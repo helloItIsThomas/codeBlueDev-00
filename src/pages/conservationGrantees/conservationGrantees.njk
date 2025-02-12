@@ -52,20 +52,31 @@ title: "Conservation Grantees"
 {%- for grantee in someData.grantees -%}
       <div class="margin0LR">
             <div class="margin1LR">
+                  <div class="vSpacer1"></div>
                   <hr>
                   <div class="threeSevenGrid">
                         <div class="granteeLeft">
                               <img style="mix-blend-mode: screen;" src="{{ grantee.image }}"  class="grantee_logo">
                         </div>
                         <div>
-                              <div class = "granteeRight">
+                              <div class="granteeRight">
                                     <div class="granteeRightTextContainer">
-                                          <div class="bodyCopyBigger mobileOnlyBlock">{{ grantee.description }}
-                                          </div>
-                                          <div class="slidingTextBoxOverflowGradient mobileOnlyBlock"></div>
+                                          <div class="bodyCopyBigger mobileOnlyBlock">{{ grantee.description }}</div>
+                                          <div class="slidingTextBoxOverflowGradient"></div>
                                           <div class="bodyCopyBigger desktopOnlyBlock">{{ grantee.description }}</div>
                                     </div>
                                     <div class="vertGap0"></div>
+
+                                    <div class="expandTextArrow">
+                                          <div id="downArrow" class="mobileOnlyBlock">
+                                                <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg">
+                                                      <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="vSpacer0"></div>
+
                                     <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
                               </div>
                         </div>

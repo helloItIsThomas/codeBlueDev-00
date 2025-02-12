@@ -1,28 +1,44 @@
-export function handleSlidingTextBox() {
-  console.log("slidingTextBox.js loaded");
+const granteeRights = document.querySelectorAll(".granteeRight");
 
-  const textBoxes = document.querySelectorAll(".granteeRightTextContainer");
-  console.log(textBoxes.length);
+granteeRights.forEach((gr) => {
+  const expandTextArrow = gr.querySelector(".expandTextArrow");
+  expandTextArrow.addEventListener("click", () => {
+    console.log("clicked");
+    const textBox = gr.querySelector(".granteeRightTextContainer");
+    const gradient = gr.querySelector(".slidingTextBoxOverflowGradient");
+    console.log(textBox);
 
-  textBoxes.forEach((textBox) => {
-    textBox.scrollTop = 0;
-    if (isOverflowing(textBox)) {
-      textBox.classList.add("slidingTextBoxOverflow");
-      console.log("YES OVERFLOW");
-      textBox.querySelector(".slidingTextBoxOverflowGradient").style.display =
-        "block";
-    } else {
-      textBox.classList.remove("slidingTextBoxOverflow");
-      console.log("NO OVERFLOW");
-      textBox.querySelector(".slidingTextBoxOverflowGradient").style.display =
-        "none";
-    }
+    const isExpanded = textBox.classList.toggle("full");
+    gsap.to(textBox, {
+      maxHeight: isExpanded ? "5000px" : "300px",
+      duration: 1,
+      ease: "power3.inOut",
+      onUpdate: () => {
+        gsap.to(gradient, {
+          opacity: isExpanded ? 0 : 1,
+          ease: "power2.inOut",
+        });
+      },
+      onComplete: () => {
+        handleSlidingTextBox(gr);
+      },
+    });
   });
+});
+
+export function handleSlidingTextBox(gr) {
+  const textBox = gr.querySelector(".granteeRightTextContainer");
+  const gradient = gr.querySelector(".slidingTextBoxOverflowGradient");
+  textBox.scrollTop = 0;
+  if (isOverflowing(textBox)) {
+    gradient.style.display = "block";
+    console.log("HIDE");
+  } else {
+    gradient.style.display = "none";
+    console.log("SHOW");
+  }
 }
 
 function isOverflowing(element) {
-  console.log(element);
-  console.log(element.scrollHeight);
-  console.log(element.offsetHeight);
   return element.scrollHeight > element.offsetHeight;
 }
