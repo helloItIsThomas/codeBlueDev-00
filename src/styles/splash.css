@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh !important;
   z-index: 7;
+  pointer-events: none;
 }
 
 #splash video {
@@ -18,7 +19,6 @@
   width: 100vw;
   height: 100%;
   max-height: 32vh;
-  pointer-events: none;
 }
 
 #splashForeground {

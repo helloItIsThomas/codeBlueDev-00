@@ -150,8 +150,6 @@ body {
 }
 
 @media (max-width: var(--ultraWideBreakpoint)) {
-  body {
-  }
 }
 
 body * {

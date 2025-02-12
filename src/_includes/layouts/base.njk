@@ -58,10 +58,10 @@
     <div class="mobileOnlyBlock">
       {% include "components/navBar_mobile.njk" %}
     </div>
-    <div id="bodyGradient">
-      <div class="desktopOnlyBlock" id="cursorCanvas"></div>
-      {{ content | safe }}
-    </div>
+    {# <div id="bodyGradient"> #}
+    <div class="desktopOnlyBlock" id="cursorCanvas"></div>
+    {{ content | safe }}
+    {# </div> #}
     {% include "components/footer.njk" %}
     {% include "components/mobileFooter.njk" %}
     {% include "components/pageLoadingScreen.njk" %}
