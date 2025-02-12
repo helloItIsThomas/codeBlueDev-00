@@ -1,5 +1,6 @@
 .ctaButton {
   padding: 8px;
+  padding-top: 11px;
   padding-left: 20px;
   padding-right: 20px;
   width: fit-content;
@@ -12,6 +13,10 @@
   font-size: var(--ctaButtonTitle);
   transition: background-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
+
+  white-space: nowrap; /* Prevents text from breaking in the middle of words */
+  overflow-wrap: break-word; /* Allows breaking at word boundaries */
+  word-wrap: break-word; /* Ensures compatibility with older browsers */
 }
 
 .ctaButton:hover {

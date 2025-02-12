@@ -17,8 +17,8 @@ import {
 
 import { BloomFilter, GlowFilter } from "/js/pixi-filters/pixi-filters.mjs";
 
-import { loadShaders } from "./cursor/loadShaders.js";
 import { render } from "./cursor/render.js";
+import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -140,9 +140,10 @@ async function mySetup() {
       Math.random() * sv.pApp.screen.height,
       Math.random() * 0.05
     );
+    console.log("made a new triangle");
   }
 
-  const cellW = 5;
+  const cellW = 2;
   const cellH = cellW;
   const geometry = new Geometry({
     topology: "triangle-strip",

@@ -1,37 +1,15 @@
 
-NOT CURRENTLY RESPONSIVE:
-- Header Hero text
-- Featured Media Partner section on Impact Media page
-       should be 2/2 instead of 7/3
-- page margins
-- footer links (they wrap and should not)
-- Film Page margin between the two columns (description and metadata)
-- buttons should only wrap on word, not in the middle of a word.
-- Purpose Statement needs to always stay within 100vh and 100vw no matter what.
-- Set a max width for the Mission Section so that the max word count is never too long.
 
-IF THE FONT SCALING DOESNT WORK
-   It is probably smart to make a size in between desktop and mobile.
-   It should look good on desktops but just be a little more forgiving.
+• make sure all z axises are correct, so things like the gradient going over text / image doesnt happen.
 
 SITE
-• Mobile
-   • update film page background image so its the right crop and size and stuff.
-• Make sure the hero gradient does not fuck up on resizing or elsewhere.
 • Fix shitty text collapsing thing AFTER all other mobile stuff is done.
    Including supporting page resizing.
 
-CURSOR STUFF – 3/4 pm
-The cursor dots are too big, make them literally a spec.
-Slow them down.
-Make them last much shorter.
-Make sure they wrap, not leave the scene.
-Make it so that it doesnt happen on the landing module, all other things.
-
-
 DONE DONE DONE
 DONE DONE DONE
 DONE DONE DONE
+- Header Hero text?
 DONE DONE DONE
 DONE DONE DONE
 DONE DONE DONE

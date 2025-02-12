@@ -11,4 +11,6 @@ uniform float mouseVelocity;
 
 void main() {
     gl_FragColor = texture2D(myTexture, vUV) * (vAlpha);
+    // gl_FragColor = texture2D(myTexture, vUV);
+    // gl_FragColor = vec4(1.0, 0.0, mousePosX, 1.0);
 }

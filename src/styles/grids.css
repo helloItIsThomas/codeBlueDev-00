@@ -44,7 +44,7 @@
 .sevenThreeGrid {
   display: grid;
   grid-template-columns: 7fr 3fr;
-  gap: 8rem;
+  gap: 5em;
 }
 
 .sevenFiveGrid {

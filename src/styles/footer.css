@@ -109,10 +109,17 @@
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0px;
   margin-bottom: 20%;
+  gap: 1em;
 }
 
 #footerCenterChildBottom * {
   padding: 0px;
   margin: 0px;
   text-align: left;
+  white-space: nowrap;
+}
+
+.noTextWrapList {
+  text-wrap: nowrap;
+  white-space: nowrap;
 }
