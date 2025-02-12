@@ -124,10 +124,13 @@ a span {
 }
 
 #mobileMenu {
+  background-image: url("/assets/images/marineSnow.png");
+  background-size: cover;
+  background-position: center;
   /* position: absolute; */
+  display: none;
   position: fixed;
   /* display: flex; */
-  display: none;
   flex-direction: column;
   z-index: 4;
   top: 0;
