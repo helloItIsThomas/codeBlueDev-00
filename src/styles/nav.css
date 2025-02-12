@@ -14,8 +14,9 @@
   padding-bottom: calc(var(--margin0) / 2);
 
   top: 0;
-  pointer-events: auto;
   z-index: 10;
+
+  pointer-events: none;
 }
 .navBar img {
   height: 2rem;
@@ -100,6 +101,10 @@ a:hover::after {
 a span {
   display: inline-block;
   transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.navLogo {
+  pointer-events: auto;
 }
 
 .navLogo a::before,

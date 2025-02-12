@@ -151,7 +151,6 @@ body {
 
 @media (max-width: var(--ultraWideBreakpoint)) {
   body {
-    border: 5px solid green;
   }
 }
 
@@ -194,7 +193,6 @@ a:hover {
 }
 
 #cursorCanvas {
-  pointer-events: none;
   position: fixed;
   /* position: absolute; */
   z-index: 6;
@@ -203,6 +201,7 @@ a:hover {
   width: 200px;
   height: 200px;
   mix-blend-mode: screen;
+  pointer-events: none !important;
 }
 
 hr {

@@ -23,6 +23,7 @@
   background-color: #081545;
   border-color: #081545;
   color: white;
+  cursor: pointer;
 }
 
 .ctaButton a {
