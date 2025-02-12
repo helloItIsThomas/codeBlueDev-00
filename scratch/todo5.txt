@@ -2,13 +2,8 @@
 SITE
 • Mobile
 
-CMS
-• "The squid fishing thing" should be added to the Featured Media Partner section.
-      https://www.theoutlawocean.com/investigations/china-the-superpower-of-seafood/squid-fleet/
-
 ETC
-• Thomas to "design" simple Impact section on the film page according to Rob's text.
-      Thomas to implement on site + CMS.
+• Thomas to implement test content for impact on CMS and site.
 • Matty to iterate on bioluminescence cursor.
 
 WEDNESDAY MEETING
