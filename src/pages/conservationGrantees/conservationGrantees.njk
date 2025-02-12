@@ -52,7 +52,8 @@ title: "Conservation Grantees"
 {%- for grantee in someData.grantees -%}
       <div class="margin0LR">
             <div class="margin1LR">
-                  <div class="vSpacer1"></div>
+                  {# <div class="vSpacer1"></div> #}
+                  <div class=""></div>
                   <hr>
                   <div class="threeSevenGrid">
                         <div class="granteeLeft">
@@ -75,9 +76,9 @@ title: "Conservation Grantees"
                                           </div>
                                     </div>
 
-                                    <div class="vSpacer0"></div>
-
                                     <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
+
+                                    <div class="vertGap0"></div>
                               </div>
                         </div>
                   </div>

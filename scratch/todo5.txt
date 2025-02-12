@@ -1,23 +1,19 @@
 
 
-• make sure all z axises are correct, so things like the gradient going over text / image doesnt happen.
+• find a better way to make sure the gradient doesnt cover up things.
+currently the reason it is not covering things is because is animating .h2_0, .h1_0, .h0_5, .h1_5, .bm0, etc in setup
 
-SITE
-• Fix shitty text collapsing thing AFTER all other mobile stuff is done.
+• Fix shitty text collapsing thing.
    Including supporting page resizing.
 
-DONE DONE DONE
-DONE DONE DONE
-DONE DONE DONE
-- Header Hero text?
-DONE DONE DONE
-DONE DONE DONE
-DONE DONE DONE
+
+WEDNESDAY MEETING
+- See if we want to add an in-between style for the header hero text.
+
 
 THURSDAY
-• Set up a new email address for the email service.
+• Set up a new email address for the email service and finalize email service.
 • Port site to cloudflare.
-• Finalize email service.
 • Populate home page with CMS content where appropriate ( INCLUDING WHALE VID that is on the old wordpress database rn )
 
 POST FRIDAY
