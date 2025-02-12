@@ -47,8 +47,7 @@ layout: layouts/base.njk
 
 {{ heroImg(film.heroImage) }}
 
-{# <div class="headerHero" style="background-image: url('{{ film.heroImage }}'); "> #}
-<div class="headerHero">
+<div class="mobileHeaderHero mobileOnlyBlock">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="mediaType">FEATURED FILM</div>
@@ -59,8 +58,21 @@ layout: layouts/base.njk
   </div>
 </div>
 
-<div class="vSpacer2 desktopOnlyBlock"></div>
-<div class="vSpacer0 mobileOnlyBlock"></div>
+<div class="desktopHeaderHeroImg desktopOnlyBlock"></div>
+
+<div class="desktopHeaderHero desktopOnlyBlock">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="mediaType">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div>{{film.subTitle}}</div>
+      <div class="heroTitle">{{film.title}}</div>
+    </div>
+  </div>
+</div>
+
+{# <div class="vSpacer2 desktopOnlyBlock"></div> #}
+{# <div class="vSpacer0 mobileOnlyBlock"></div> #}
 
 <div class="sevenThreeGrid margin0LR padding1LR">
   <div class="heroDescription" style="position: relative;">{{film.description}}</div>

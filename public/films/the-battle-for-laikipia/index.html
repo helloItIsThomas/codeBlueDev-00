@@ -132,21 +132,69 @@
 </script>
 
 
-      <div id ="overlayGrad"></div>
       <script type="module">
-            import {handleGradientBlend} from "../../js/utils.js";
-
-            if (bodyGradient) {
-                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp)';
-            } else {
-                  let bodyGradient = document.getElementById('bodyGradient');
+            const img = new Image();
+            img.src = "https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp";
+            img.onload = () => {
+                  console.log("img loaded");
+                  updateHeroImage(img.width, img.height);
             }
-            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp");
+
+            const updateHeroImage = (_imgWidth, _imgHeight) => {
+                  const mediaQuery = window.matchMedia('(max-width: 768px)');
+                  if (mediaQuery.matches) {
+                        const heroImg = document.querySelector('.mobileHeaderHero');
+                        setupOverlayDiv(heroImg);
+                  } else {
+                        const heroImg = document.querySelector('.desktopHeaderHeroImg');
+                        const newHeight = findBGImageHeight(_imgWidth, _imgHeight, heroImg);
+
+                        heroImg.style.height = `${newHeight}px`;
+                        setupOverlayDiv(heroImg);
+                  }
+            };
+            window.addEventListener('resize', () => {
+                  updateHeroImage(img.width, img.height);
+            });
+
+            function findBGImageHeight(_imgWidth, _imgHeight, heroImg) {
+                  let aspectRatio = _imgWidth / _imgHeight;
+
+                  const windowWidth = window.innerWidth;
+                  const windowHeight = window.innerHeight;
+
+                  console.log("img width: " + _imgWidth)
+                  console.log("img height: " + _imgHeight)
+
+                  let newHeight = Math.floor(windowWidth / aspectRatio);
+
+                  return newHeight;
+            }
+
+            function setupOverlayDiv(heroImg) {
+                  if (heroImg.querySelector('.overlayDiv')) {
+                        heroImg
+                              .querySelector('.overlayDiv')
+                              .remove();
+                  }
+                  const overlayDiv = document.createElement('div');
+                  overlayDiv
+                        .classList
+                        .add('overlayDiv');
+                  overlayDiv.style.position = 'absolute';
+                  overlayDiv.style.top = '0';
+                  overlayDiv.style.left = '0';
+                  overlayDiv.style.width = '100%';
+                  overlayDiv.style.height = '100%';
+                  overlayDiv.style.zIndex = '0'; // Ensure it's behind other content
+                  overlayDiv.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #030b22)';
+                  heroImg.appendChild(overlayDiv);
+                  heroImg.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/ccd07fa42577dc73bab23a918d2dfcc7c7275791-2048x1152.webp)';
+            }
       </script>
 
 
-
-<div class="headerHero">
+<div class="mobileHeaderHero mobileOnlyBlock">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="mediaType">FEATURED FILM</div>
@@ -157,8 +205,21 @@
   </div>
 </div>
 
-<div class="vSpacer2 desktopOnlyBlock"></div>
-<div class="vSpacer0 mobileOnlyBlock"></div>
+<div class="desktopHeaderHeroImg desktopOnlyBlock"></div>
+
+<div class="desktopHeaderHero desktopOnlyBlock">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="mediaType">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div></div>
+      <div class="heroTitle">The Battle for Laikipia</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div class="sevenThreeGrid margin0LR padding1LR">
   <div class="heroDescription" style="position: relative;">In the Laikipia region of Kenya, it’s dry. Very dry. It hasn’t rained for 18 months, creating a desperate situation and bad feeling between the indigenous herders who have grazed in the area for centuries and the white landowners who have stayed in Kenya after the independence. They have erected electric fences that block the herders’ traditional grazing routes and hired soldiers to keep the herders’ animals away. A situation that escalates as the drought lengthens and a political election approaches, eventually leading to violence against animals, black herders and white landowners alike.
@@ -179,13 +240,13 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
       
     
       
+    
+      
         <div class="heroMetadata">2024</div>
       
     
       
         <div class="heroMetadata">Swahili,English</div>
-      
-    
       
     
   </div>
@@ -746,6 +807,79 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
   
@@ -764,8 +898,10 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
     
   
-  
     
+      
+    
+  
   
 
   
@@ -793,47 +929,11 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
-  
-    
       
     
   
     
   
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -842,8 +942,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
   
-  
-    
   
     
   
@@ -865,46 +963,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
       
     
   
@@ -922,13 +980,11 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
+  
+    
+  
+    
       
-    
-  
-    
-  
-    
-  
     
   
   
@@ -941,34 +997,13 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
-      
-    
   
     
   
     
   
-    
-  
-  
-
-  
-  
-  
-  
   
     
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
   
 
   
@@ -1034,13 +1069,13 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
-  
-    
-  
-    
-  
-    
       
+    
+  
+    
+  
+    
+  
     
   
     
@@ -1053,15 +1088,15 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
-  
-    
-  
-    
-  
-    
-  
-    
       
+    
+  
+    
+  
+    
+  
+    
+  
     
   
   
@@ -1093,28 +1128,63 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/mission-blue">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
+                  <a href="/films/chasing-coral">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2014
+                              2017
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Mission Blue
+                              Chasing Coral
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
+                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/mission-blue" >
+                        <a href="/films/chasing-coral" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2023
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Deep Rising
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/deep-rising" >
                         LEARN MORE
                   </a>
                   </button>
@@ -1150,41 +1220,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
                         <a href="/films/gaucho-gaucho" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2017
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Chasing Coral
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
                         LEARN MORE
                   </a>
                   </button>

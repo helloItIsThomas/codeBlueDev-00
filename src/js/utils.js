@@ -60,30 +60,3 @@ export async function getJsonDataFromURL(url) {
 export const disableScroll = (event) => {
   event.preventDefault();
 };
-
-export function handleGradientBlend(imgLink) {
-  const overlayGrad = document.getElementById("overlayGrad");
-  const thisImg = new Image();
-  thisImg.src = imgLink;
-
-  thisImg.onload = function () {
-    const imageWidth = thisImg.width;
-    const imageHeight = thisImg.height;
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const gradientHeight = viewportHeight - viewportWidth / imgRatio;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  };
-
-  window.addEventListener("resize", function () {
-    console.log("resizing");
-    const imageWidth = thisImg.width;
-    const imageHeight = thisImg.height;
-    const imgRatio = imageWidth / imageHeight;
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const gradientHeight = viewportHeight - viewportWidth / imgRatio;
-    overlayGrad.style.bottom = `${gradientHeight}px`;
-  });
-}

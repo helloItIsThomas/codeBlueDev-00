@@ -132,21 +132,69 @@
 </script>
 
 
-      <div id ="overlayGrad"></div>
       <script type="module">
-            import {handleGradientBlend} from "../../js/utils.js";
-
-            if (bodyGradient) {
-                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg)';
-            } else {
-                  let bodyGradient = document.getElementById('bodyGradient');
+            const img = new Image();
+            img.src = "https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg";
+            img.onload = () => {
+                  console.log("img loaded");
+                  updateHeroImage(img.width, img.height);
             }
-            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg");
+
+            const updateHeroImage = (_imgWidth, _imgHeight) => {
+                  const mediaQuery = window.matchMedia('(max-width: 768px)');
+                  if (mediaQuery.matches) {
+                        const heroImg = document.querySelector('.mobileHeaderHero');
+                        setupOverlayDiv(heroImg);
+                  } else {
+                        const heroImg = document.querySelector('.desktopHeaderHeroImg');
+                        const newHeight = findBGImageHeight(_imgWidth, _imgHeight, heroImg);
+
+                        heroImg.style.height = `${newHeight}px`;
+                        setupOverlayDiv(heroImg);
+                  }
+            };
+            window.addEventListener('resize', () => {
+                  updateHeroImage(img.width, img.height);
+            });
+
+            function findBGImageHeight(_imgWidth, _imgHeight, heroImg) {
+                  let aspectRatio = _imgWidth / _imgHeight;
+
+                  const windowWidth = window.innerWidth;
+                  const windowHeight = window.innerHeight;
+
+                  console.log("img width: " + _imgWidth)
+                  console.log("img height: " + _imgHeight)
+
+                  let newHeight = Math.floor(windowWidth / aspectRatio);
+
+                  return newHeight;
+            }
+
+            function setupOverlayDiv(heroImg) {
+                  if (heroImg.querySelector('.overlayDiv')) {
+                        heroImg
+                              .querySelector('.overlayDiv')
+                              .remove();
+                  }
+                  const overlayDiv = document.createElement('div');
+                  overlayDiv
+                        .classList
+                        .add('overlayDiv');
+                  overlayDiv.style.position = 'absolute';
+                  overlayDiv.style.top = '0';
+                  overlayDiv.style.left = '0';
+                  overlayDiv.style.width = '100%';
+                  overlayDiv.style.height = '100%';
+                  overlayDiv.style.zIndex = '0'; // Ensure it's behind other content
+                  overlayDiv.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #030b22)';
+                  heroImg.appendChild(overlayDiv);
+                  heroImg.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/d8380b364d5c497a1cd6b771a5175fe3cb5ca6e6-1296x730.jpg)';
+            }
       </script>
 
 
-
-<div class="headerHero">
+<div class="mobileHeaderHero mobileOnlyBlock">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="mediaType">FEATURED FILM</div>
@@ -157,8 +205,21 @@
   </div>
 </div>
 
-<div class="vSpacer2 desktopOnlyBlock"></div>
-<div class="vSpacer0 mobileOnlyBlock"></div>
+<div class="desktopHeaderHeroImg desktopOnlyBlock"></div>
+
+<div class="desktopHeaderHero desktopOnlyBlock">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="mediaType">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div></div>
+      <div class="heroTitle">The Ghost Fleet</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div class="sevenThreeGrid margin0LR padding1LR">
   <div class="heroDescription" style="position: relative;">Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
@@ -171,21 +232,21 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
     <div class="vSpacer0"></div>
     
       
-        <div class="heroMetadata">89</div>
-      
-    
-      
-    
-      
-        <div class="heroMetadata">2018</div>
-      
-    
-      
         <div class="heroMetadata">Thai,English [CC]</div>
       
     
       
+    
+      
         <div class="heroMetadata">United States</div>
+      
+    
+      
+        <div class="heroMetadata">89</div>
+      
+    
+      
+        <div class="heroMetadata">2018</div>
       
     
   </div>
@@ -730,41 +791,9 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
       
+    
+  
     
   
   
@@ -780,18 +809,12 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
-    
-  
   
 
   
   
   
   
-  
-    
   
     
       
@@ -799,56 +822,12 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
   
 
   
   
   
   
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
   
     
   
@@ -867,10 +846,19 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
+  
     
+  
+
+  
+  
+  
+  
   
     
       
+    
+  
     
   
     
@@ -881,29 +869,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
   
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
   
     
   
@@ -928,29 +893,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
   
 
   
@@ -964,10 +906,112 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
     
       
     
   
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
     
   
   
@@ -997,32 +1041,13 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-      
-    
   
     
   
     
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
       
-    
-  
-    
-  
-    
-  
     
   
     
@@ -1075,76 +1100,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/the-battle-for-laikipia">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2024
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              The Battle for Laikipia
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/the-battle-for-laikipia" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2017
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Chasing Coral
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
                   <a href="/films/gaucho-gaucho">
                         <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
                   </a>
@@ -1167,6 +1122,76 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
                         <a href="/films/gaucho-gaucho" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2023
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Deep Rising
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/deep-rising" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/the-battle-for-laikipia">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2024
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              The Battle for Laikipia
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/the-battle-for-laikipia" >
                         LEARN MORE
                   </a>
                   </button>

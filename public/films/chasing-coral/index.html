@@ -132,21 +132,69 @@
 </script>
 
 
-      <div id ="overlayGrad"></div>
       <script type="module">
-            import {handleGradientBlend} from "../../js/utils.js";
-
-            if (bodyGradient) {
-                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg)';
-            } else {
-                  let bodyGradient = document.getElementById('bodyGradient');
+            const img = new Image();
+            img.src = "https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg";
+            img.onload = () => {
+                  console.log("img loaded");
+                  updateHeroImage(img.width, img.height);
             }
-            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg");
+
+            const updateHeroImage = (_imgWidth, _imgHeight) => {
+                  const mediaQuery = window.matchMedia('(max-width: 768px)');
+                  if (mediaQuery.matches) {
+                        const heroImg = document.querySelector('.mobileHeaderHero');
+                        setupOverlayDiv(heroImg);
+                  } else {
+                        const heroImg = document.querySelector('.desktopHeaderHeroImg');
+                        const newHeight = findBGImageHeight(_imgWidth, _imgHeight, heroImg);
+
+                        heroImg.style.height = `${newHeight}px`;
+                        setupOverlayDiv(heroImg);
+                  }
+            };
+            window.addEventListener('resize', () => {
+                  updateHeroImage(img.width, img.height);
+            });
+
+            function findBGImageHeight(_imgWidth, _imgHeight, heroImg) {
+                  let aspectRatio = _imgWidth / _imgHeight;
+
+                  const windowWidth = window.innerWidth;
+                  const windowHeight = window.innerHeight;
+
+                  console.log("img width: " + _imgWidth)
+                  console.log("img height: " + _imgHeight)
+
+                  let newHeight = Math.floor(windowWidth / aspectRatio);
+
+                  return newHeight;
+            }
+
+            function setupOverlayDiv(heroImg) {
+                  if (heroImg.querySelector('.overlayDiv')) {
+                        heroImg
+                              .querySelector('.overlayDiv')
+                              .remove();
+                  }
+                  const overlayDiv = document.createElement('div');
+                  overlayDiv
+                        .classList
+                        .add('overlayDiv');
+                  overlayDiv.style.position = 'absolute';
+                  overlayDiv.style.top = '0';
+                  overlayDiv.style.left = '0';
+                  overlayDiv.style.width = '100%';
+                  overlayDiv.style.height = '100%';
+                  overlayDiv.style.zIndex = '0'; // Ensure it's behind other content
+                  overlayDiv.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #030b22)';
+                  heroImg.appendChild(overlayDiv);
+                  heroImg.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/4921a5b8c583fa532191a97a098d1fe9be3e8ec6-1920x1080.jpg)';
+            }
       </script>
 
 
-
-<div class="headerHero">
+<div class="mobileHeaderHero mobileOnlyBlock">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="mediaType">FEATURED FILM</div>
@@ -157,18 +205,27 @@
   </div>
 </div>
 
-<div class="vSpacer2 desktopOnlyBlock"></div>
-<div class="vSpacer0 mobileOnlyBlock"></div>
+<div class="desktopHeaderHeroImg desktopOnlyBlock"></div>
+
+<div class="desktopHeaderHero desktopOnlyBlock">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="mediaType">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div></div>
+      <div class="heroTitle">Chasing Coral</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div class="sevenThreeGrid margin0LR padding1LR">
   <div class="heroDescription" style="position: relative;">Chasing Coral follows a team of divers, scientists, and photographers around the world as they attempt to capture the rapid disappearance of coral reefs, primarily caused by rising ocean temperatures leading to widespread coral bleaching events, using advanced underwater cameras and time-lapse photography to document this ecological crisis in real-time;</div>
   <div style="position: relative;">
     <button onclick="window.open('https://www.netflix.com/title/80168188?source=imdb', '_blank');" class="ctaButton">WATCH NOW</button>
     <div class="vSpacer0"></div>
-    
-      
-        <div class="heroMetadata">93</div>
-      
     
       
         <div class="heroMetadata">2017</div>
@@ -179,9 +236,13 @@
       
     
       
+        <div class="heroMetadata">United States</div>
+      
     
       
-        <div class="heroMetadata">United States</div>
+        <div class="heroMetadata">93</div>
+      
+    
       
     
   </div>
@@ -711,33 +772,9 @@
   
   
     
-      
-    
-  
-  
-
-  
-  
-  
   
   
     
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
   
 
   
@@ -757,13 +794,28 @@
   
   
   
-  
-    
   
     
       
     
   
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
     
   
   
@@ -806,6 +858,23 @@
   
   
     
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
   
     
   
@@ -844,9 +913,9 @@
     
   
     
-      
-    
   
+    
+      
     
   
     
@@ -865,83 +934,7 @@
     
   
     
-  
-    
-  
-    
       
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
     
   
     
@@ -977,11 +970,11 @@
     
   
     
+  
+    
+  
+    
       
-    
-  
-    
-  
     
   
     
@@ -1015,11 +1008,87 @@
     
   
     
+  
+    
       
     
   
     
   
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
     
   
     
@@ -1053,28 +1122,28 @@
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/mission-blue">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
+                  <a href="/films/gaucho-gaucho">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2014
+                              2024
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Mission Blue
+                              Gaucho Gaucho
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
+                              The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/mission-blue" >
+                        <a href="/films/gaucho-gaucho" >
                         LEARN MORE
                   </a>
                   </button>
@@ -1123,28 +1192,28 @@
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/deep-rising">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+                  <a href="/films/the-ghost-fleet">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2023
+                              2018
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Deep Rising
+                              The Ghost Fleet
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
+                              Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/deep-rising" >
+                        <a href="/films/the-ghost-fleet" >
                         LEARN MORE
                   </a>
                   </button>

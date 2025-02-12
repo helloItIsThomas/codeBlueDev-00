@@ -132,21 +132,69 @@
 </script>
 
 
-      <div id ="overlayGrad"></div>
       <script type="module">
-            import {handleGradientBlend} from "../../js/utils.js";
-
-            if (bodyGradient) {
-                  bodyGradient.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg)';
-            } else {
-                  let bodyGradient = document.getElementById('bodyGradient');
+            const img = new Image();
+            img.src = "https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg";
+            img.onload = () => {
+                  console.log("img loaded");
+                  updateHeroImage(img.width, img.height);
             }
-            handleGradientBlend("https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg");
+
+            const updateHeroImage = (_imgWidth, _imgHeight) => {
+                  const mediaQuery = window.matchMedia('(max-width: 768px)');
+                  if (mediaQuery.matches) {
+                        const heroImg = document.querySelector('.mobileHeaderHero');
+                        setupOverlayDiv(heroImg);
+                  } else {
+                        const heroImg = document.querySelector('.desktopHeaderHeroImg');
+                        const newHeight = findBGImageHeight(_imgWidth, _imgHeight, heroImg);
+
+                        heroImg.style.height = `${newHeight}px`;
+                        setupOverlayDiv(heroImg);
+                  }
+            };
+            window.addEventListener('resize', () => {
+                  updateHeroImage(img.width, img.height);
+            });
+
+            function findBGImageHeight(_imgWidth, _imgHeight, heroImg) {
+                  let aspectRatio = _imgWidth / _imgHeight;
+
+                  const windowWidth = window.innerWidth;
+                  const windowHeight = window.innerHeight;
+
+                  console.log("img width: " + _imgWidth)
+                  console.log("img height: " + _imgHeight)
+
+                  let newHeight = Math.floor(windowWidth / aspectRatio);
+
+                  return newHeight;
+            }
+
+            function setupOverlayDiv(heroImg) {
+                  if (heroImg.querySelector('.overlayDiv')) {
+                        heroImg
+                              .querySelector('.overlayDiv')
+                              .remove();
+                  }
+                  const overlayDiv = document.createElement('div');
+                  overlayDiv
+                        .classList
+                        .add('overlayDiv');
+                  overlayDiv.style.position = 'absolute';
+                  overlayDiv.style.top = '0';
+                  overlayDiv.style.left = '0';
+                  overlayDiv.style.width = '100%';
+                  overlayDiv.style.height = '100%';
+                  overlayDiv.style.zIndex = '0'; // Ensure it's behind other content
+                  overlayDiv.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #030b22)';
+                  heroImg.appendChild(overlayDiv);
+                  heroImg.style.backgroundImage = 'url(https://cdn.sanity.io/images/6jpkko0l/production/fbe1425d052b5387bce27d70ae8bc74d92a3bdf1-5444x3658.jpg)';
+            }
       </script>
 
 
-
-<div class="headerHero">
+<div class="mobileHeaderHero mobileOnlyBlock">
   <div class="headerTop margin0LR padding1LR">
     <div class="headerText">
       <div class="mediaType">FEATURED FILM</div>
@@ -157,8 +205,21 @@
   </div>
 </div>
 
-<div class="vSpacer2 desktopOnlyBlock"></div>
-<div class="vSpacer0 mobileOnlyBlock"></div>
+<div class="desktopHeaderHeroImg desktopOnlyBlock"></div>
+
+<div class="desktopHeaderHero desktopOnlyBlock">
+  <div class="headerTop margin0LR padding1LR">
+    <div class="headerText">
+      <div class="mediaType">FEATURED FILM</div>
+      <div class="vertGap0"></div>
+      <div></div>
+      <div class="heroTitle">Mission Blue</div>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div class="sevenThreeGrid margin0LR padding1LR">
   <div class="heroDescription" style="position: relative;">Legendary oceanographer and TED prize winner Dr. Sylvia Earle is on a mission to save our oceans. Mission Blue is part action-adventure, part expose of an Eco-disaster. More than 100 scientists, philanthropists and activists gather in the Galapagos Islands to help fulfill Dr. Earle&#39;s lifelong wish: build a global network of marine protected areas such as underwater national parks, to protect the natural systems that keep humans alive. As the expedition ends, the Deep Water Horizon oil well explodes. With oil gushing into the Gulf of Mexico, Sylvia and an environmental dream team race around the world trying to defend her &#39;Hope Spots&#39;.</div>
@@ -167,21 +228,21 @@
     <div class="vSpacer0"></div>
     
       
-        <div class="heroMetadata">United States</div>
-      
-    
-      
-        <div class="heroMetadata">96</div>
-      
-    
-      
         <div class="heroMetadata">2014</div>
+      
+    
       
     
       
         <div class="heroMetadata">English</div>
       
     
+      
+        <div class="heroMetadata">United States</div>
+      
+    
+      
+        <div class="heroMetadata">96</div>
       
     
   </div>
@@ -689,6 +750,21 @@
     
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
       
@@ -719,30 +795,13 @@
     
   
     
-      
-    
   
     
   
     
   
   
-
-  
-  
-  
-  
-  
     
-  
-    
-  
-    
-      
-    
-  
-    
-  
   
 
   
@@ -760,12 +819,16 @@
   
     
   
+    
+  
   
 
   
   
   
   
+  
+    
   
     
       
@@ -794,38 +857,6 @@
       
     
   
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -845,21 +876,6 @@
   
     
   
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
     
   
   
@@ -870,21 +886,6 @@
   
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
   
     
   
@@ -913,6 +914,84 @@
       
     
   
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
   
 
   
@@ -927,9 +1006,11 @@
     
   
     
-  
+      
+    
   
     
+  
   
 
   
@@ -997,41 +1078,6 @@
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/the-ghost-fleet">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2018
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              The Ghost Fleet
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/the-ghost-fleet" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
                   <a href="/films/gaucho-gaucho">
                         <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
                   </a>
@@ -1054,6 +1100,41 @@
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
                         <a href="/films/gaucho-gaucho" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/chasing-coral">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2017
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Chasing Coral
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/chasing-coral" >
                         LEARN MORE
                   </a>
                   </button>
