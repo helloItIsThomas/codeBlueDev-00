@@ -215,16 +215,16 @@ hr {
 }
 
 .desktopOnlyBlock {
-  display: block;
+  display: block !important;
 }
 .desktopOnlyFlex {
-  display: flex;
+  display: flex !important;
 }
 .mobileOnlyFlex {
-  display: none;
+  display: none !important;
 }
 .mobileOnlyBlock {
-  display: none;
+  display: none !important;
 }
 
 main {

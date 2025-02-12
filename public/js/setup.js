@@ -1,4 +1,5 @@
 import { sv } from "./cursor/variables.js";
+import { handleSlidingTextBox } from "./slidingTextBox.js";
 // import { cursorSetup } from "./cursor/cursorSketch.js";
 import {
   Application,
@@ -93,6 +94,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
   mySetup();
+
+  handleSlidingTextBox();
 });
 
 async function mySetup() {

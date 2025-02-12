@@ -59,7 +59,12 @@ title: "Conservation Grantees"
                         </div>
                         <div>
                               <div class = "granteeRight">
-                                    <div class="bodyCopyBigger">{{ grantee.description }}</div>
+                                    <div class="granteeRightTextContainer">
+                                          <div class="bodyCopyBigger mobileOnlyBlock">{{ grantee.description }}
+                                          </div>
+                                          <div class="slidingTextBoxOverflowGradient mobileOnlyBlock"></div>
+                                          <div class="bodyCopyBigger desktopOnlyBlock">{{ grantee.description }}</div>
+                                    </div>
                                     <div class="vertGap0"></div>
                                     <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
                               </div>
