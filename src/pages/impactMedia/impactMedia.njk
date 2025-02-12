@@ -65,7 +65,8 @@ title: "Impact Media"
 
 <div class="threeFeaturedFilmsComp margin0LR">
   <div class="threeColGrid mobileOnly_Padding1LR">
-    {% for f in someData.films %}
+
+    {% for f in someData.films | sort(attribute = 'metadata.year') | reverse %}
       {{ sffC(f) }}
       <div class="vertGap2 mobileOnlyBlock"></div>
     {% endfor %}
