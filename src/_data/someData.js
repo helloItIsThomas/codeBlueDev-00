@@ -18,6 +18,13 @@ module.exports = async function () {
     type: "json", // we’ll parse JSON for you
   });
 
+  async function getHome() {
+    const home = await client.fetch(
+      '*[_type == "home"] {"video": video.asset->url}'
+    );
+    return home;
+  }
+
   async function getGrantees() {
     const grantees = await client.fetch(
       '*[_type == "grantee"] | order(_createdAt desc) {title, link, "image": image.asset->url, "description": pt::text(description)}'
@@ -90,6 +97,7 @@ module.exports = async function () {
   const headers = getHeaders();
   const conservationGrantees = await getConservationGrantees();
   const impactMedia = await getImpactMedia();
+  const home = await getHome();
   return {
     json,
     grantees,
@@ -99,5 +107,6 @@ module.exports = async function () {
     headers,
     conservationGrantees,
     impactMedia,
+    home,
   };
 };
