@@ -54,7 +54,16 @@ export function initAwardTicker(awardsTickerContainer, awardsTicker) {
   manageTicker();
 
   // Add resize event listener with debounce
-  window.addEventListener("resize", debounce(manageTicker));
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      if (window.innerWidth !== previousWidth) {
+        previousWidth = window.innerWidth;
+        manageTicker();
+      }
+    })
+  );
+  let previousWidth = window.innerWidth; // Store the initial width
 
   // ----- Awards Ticker Code End -----
 }
