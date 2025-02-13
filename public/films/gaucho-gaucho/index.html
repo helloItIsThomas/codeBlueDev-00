@@ -95,9 +95,15 @@
     
 
 
+
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
+  import {initAwardTicker} from "/js/awardticker.js";
+  const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
+  const awardsTicker = document.querySelector(".awardsTicker");
+
   document.addEventListener("DOMContentLoaded", async () => {
+    initAwardTicker(awardsTickerContainer, awardsTicker);
     const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
     window.scrollTo({
@@ -225,10 +231,6 @@
     <div class="vSpacer0"></div>
     
       
-        <div class="heroMetadata">2024</div>
-      
-    
-      
     
       
         <div class="heroMetadata">Spanish,English,Hebrew Subtitles</div>
@@ -242,33 +244,40 @@
         <div class="heroMetadata">85</div>
       
     
+      
+        <div class="heroMetadata">2024</div>
+      
+    
   </div>
 </div>
 
 <div class="vSpacer2"></div>
 
-<div class="awardsTicker">
-  
-  
+<div class="awardsTickerContainer">
+  <div class="awardsTicker">
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/73ebd0beca83ec4d2f9f2289795fd86ffeaeb46f-319x209.png" alt="AFI Fest Official Selection">
-  
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/a1c1a85f720cbcc9c8b57580f6f8f9cc8b007bdd-341x223.png" alt="Morelia International Film Festival Official Selection 2024">
-  
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/73ebd0beca83ec4d2f9f2289795fd86ffeaeb46f-319x209.png" alt="AFI Fest Official Selection">
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/50c27b2c51af6eaef5f347607090afc6ca178722-374x209.png" alt="Sundance U.S Documentary Special Jury Award 2024">
-  
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/a1c1a85f720cbcc9c8b57580f6f8f9cc8b007bdd-341x223.png" alt="Morelia International Film Festival Official Selection 2024">
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/881e6f6a9933ca1f19a6722ccb5b29a020792e6e-354x209.png" alt="Letterboxd Piazza Grande Award 2024">
-  
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/50c27b2c51af6eaef5f347607090afc6ca178722-374x209.png" alt="Sundance U.S Documentary Special Jury Award 2024">
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/7ffa9da85348c2a8b95791d15378796bd442441f-255x223.png" alt="DOC NYC Official Selection 2024">
-  
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/881e6f6a9933ca1f19a6722ccb5b29a020792e6e-354x209.png" alt="Letterboxd Piazza Grande Award 2024">
     
-    <img src="https://cdn.sanity.io/images/6jpkko0l/production/7a42dc1c8f89e5564d123c0ff64645c62973ec98-292x223.png" alt="CPH DOX Official Selection 2024">
-  
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/7ffa9da85348c2a8b95791d15378796bd442441f-255x223.png" alt="DOC NYC Official Selection 2024">
+    
+      
+      <img class="awardImg" src="https://cdn.sanity.io/images/6jpkko0l/production/7a42dc1c8f89e5564d123c0ff64645c62973ec98-292x223.png" alt="CPH DOX Official Selection 2024">
+    
+  </div>
 </div>
+
 
   <div class="vSpacer2"></div>
 
@@ -809,9 +818,33 @@
   
   
     
+      
+    
+  
+  
+
+  
+  
+  
   
   
     
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
   
 
   
@@ -835,11 +868,58 @@
     
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
   
   
     
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
   
 
   
@@ -882,108 +962,6 @@
   
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -1007,9 +985,9 @@
     
   
     
-  
-    
       
+    
+  
     
   
   
@@ -1060,11 +1038,49 @@
     
   
     
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
   
     
       
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
     
   
     
@@ -1096,30 +1112,11 @@
   
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
   
     
       
+    
+  
     
   
     
@@ -1154,28 +1151,28 @@
     
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2017
+                              2023
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Chasing Coral
+                              Deep Rising
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
+                        <a href="/films/deep-rising" >
                         LEARN MORE
                   </a>
                   </button>
@@ -1193,63 +1190,28 @@
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2017
+                              2023
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Chasing Coral
+                              Deep Rising
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/the-battle-for-laikipia">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2024
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              The Battle for Laikipia
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/the-battle-for-laikipia" >
+                        <a href="/films/deep-rising" >
                         LEARN MORE
                   </a>
                   </button>
@@ -1285,6 +1247,41 @@
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
                         <a href="/films/mission-blue" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/the-ghost-fleet">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2018
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              The Ghost Fleet
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/the-ghost-fleet" >
                         LEARN MORE
                   </a>
                   </button>

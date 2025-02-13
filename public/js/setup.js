@@ -140,7 +140,6 @@ async function mySetup() {
       Math.random() * sv.pApp.screen.height,
       Math.random() * 0.05
     );
-    console.log("made a new triangle");
   }
 
   const cellW = 2;

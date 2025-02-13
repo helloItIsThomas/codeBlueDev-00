@@ -6,12 +6,18 @@ pagination:
 permalink: "films/{{ film.slug.current }}/"
 layout: layouts/base.njk
 ---
+
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 {% from 'macros/heroImg.njk' import heroImg %}
 
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
+  import {initAwardTicker} from "/js/awardticker.js";
+  const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
+  const awardsTicker = document.querySelector(".awardsTicker");
+
   document.addEventListener("DOMContentLoaded", async () => {
+    initAwardTicker(awardsTickerContainer, awardsTicker);
     const pageLoadingScreen = document.getElementById("pageLoadingScreen");
 
     window.scrollTo({
@@ -89,13 +95,16 @@ layout: layouts/base.njk
 
 <div class="vSpacer2"></div>
 
-<div class="awardsTicker">
-  {% set areAwards = false %}
-  {% for award in film.metadata.awards %}
-    {% set areAwards = true %}
-    <img src="{{ award.award.graphic.url }}" alt="{{ award.award.name }}">
-  {% endfor %}
+<div class="awardsTickerContainer">
+  <div class="awardsTicker">
+    {% set areAwards = false %}
+    {% for award in film.metadata.awards %}
+      {% set areAwards = true %}
+      <img class="awardImg" src="{{ award.award.graphic.url }}" alt="{{ award.award.name }}">
+    {% endfor %}
+  </div>
 </div>
+
 {% if areAwards %}
   <div class="vSpacer2"></div>
 {% endif %}

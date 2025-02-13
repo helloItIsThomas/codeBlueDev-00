@@ -4,7 +4,9 @@ Do updates to the other cursor for tomorrow so rob can compare.
 • Fix shitty text collapsing thing.
    Including supporting page resizing.
 
-Don’t remove the podcast player to mobile.
+fix the sizing of the awards on mobile
+
+Do the home page things for mobile.
 
 Make the parallax action more notable on desktop and put it in on mobile.
 
