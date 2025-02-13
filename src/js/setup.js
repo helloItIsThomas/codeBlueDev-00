@@ -115,7 +115,7 @@ async function mySetup() {
   });
 
   const cursorCanvas = document.getElementById("cursorCanvas");
-  // cursorCanvas.appendChild(sv.pApp.canvas);
+  cursorCanvas.appendChild(sv.pApp.canvas);
 
   const spinnyBG = await Assets.load("/assets/images/dot2.png");
 
