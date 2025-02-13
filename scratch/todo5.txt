@@ -1,20 +1,5 @@
 
 
-• find a better way to make sure the gradient doesnt cover up things.
-currently the reason it is not covering things is because is animating .h2_0, .h1_0, .h0_5, .h1_5, .bm0, etc in setup
-
-• Fix shitty text collapsing thing.
-   Including supporting page resizing.
-
-
-WEDNESDAY MEETING
-- See if we want to add an in-between style for the header hero text.
-
-
-THURSDAY
-• Set up a new email address for the email service and finalize email service.
-• Port site to cloudflare.
-• Populate home page with CMS content where appropriate ( INCLUDING WHALE VID that is on the old wordpress database rn )
 
 POST FRIDAY
 • Make sure all images crop correctly (aka there are no aspect ratio issues with oddly shaped images)

@@ -193,7 +193,15 @@ layout: layouts/base.njk
 
 <div class="serifSubtitle_spaceBelow"></div>
 
-<div class="threeFeaturedFilmsComp margin0LR">
+<div class="margin0LR mobileOnlyBlock">
+  {% set i = threeUniqueValues[0] %}
+  {% if notThisFilm[i] %}
+    {{ sffC(notThisFilm[i]) }}
+    <div class="vertGap2 mobileOnlyBlock"></div>
+  {% endif %}
+</div>
+
+<div class="threeFeaturedFilmsComp margin0LR desktopOnlyBlock">
   <div class="threeColGrid mobileOnly_Padding1LR">
     {% for i in threeUniqueValues %}
       {% if notThisFilm[i] %}

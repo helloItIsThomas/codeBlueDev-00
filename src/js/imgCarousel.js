@@ -2,14 +2,18 @@ class ImageCarousel {
   constructor() {
     this.slides = document.querySelector(".slides");
     this.images = document.querySelectorAll(".slides .carouselSlide");
-    // this.prevButton = document.querySelector("button.prev");
-    // this.nextButton = document.querySelector("button.next");
     this.prevButtons = document.querySelectorAll("button.prev");
     this.nextButtons = document.querySelectorAll("button.next");
     this.currentIndex = 1;
     this.totalImages = this.images.length;
     this.imageWidth = this.images[0].clientWidth;
     this.isAnimating = false; // Flag to prevent rapid clicks
+
+    // Touch event properties
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+    this.touchThreshold = 50;
+
     this.setupCarousel();
     this.addEventListeners();
   }
@@ -34,6 +38,10 @@ class ImageCarousel {
       button.addEventListener("click", () => this.prev());
     });
     window.addEventListener("resize", () => this.handleResize());
+
+    this.slides.addEventListener("touchstart", (e) => this.handleTouchStart(e));
+    this.slides.addEventListener("touchmove", (e) => this.handleTouchMove(e));
+    this.slides.addEventListener("touchend", (e) => this.handleTouchEnd(e));
   }
 
   handleResize() {
@@ -79,6 +87,28 @@ class ImageCarousel {
       ease: "power2.inOut",
       onComplete: onCompleteCallback,
     });
+  }
+
+  handleTouchStart(e) {
+    this.touchStartX = e.touches[0].clientX;
+  }
+
+  handleTouchMove(e) {
+    this.touchEndX = e.touches[0].clientX;
+  }
+
+  handleTouchEnd(e) {
+    const touchDeltaX = this.touchEndX - this.touchStartX;
+    if (Math.abs(touchDeltaX) > this.touchThreshold) {
+      if (touchDeltaX < 0) {
+        this.next();
+      } else {
+        this.prev();
+      }
+    }
+    // Reset values
+    this.touchStartX = 0;
+    this.touchEndX = 0;
   }
 }
 

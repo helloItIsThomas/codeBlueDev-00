@@ -59,12 +59,22 @@
     gap: 0rem !important;
   }
 
-  .carouselTitle {
-    display: none !important;
+  .carouselSlide.sevenFiveGrid .slideLeft {
+    width: auto !important;
+    min-height: 200px !important;
   }
 
-  .carousel {
-    display: none !important;
+  .carouselSlide.sevenFiveGrid .slideRight {
+    width: 100% !important;
+  }
+
+  .carouselSlide.sevenFiveGrid {
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    /* grid-template-columns: 1fr !important; */
+    /* grid-template-columns: 2fr 3fr; */
+    gap: 0.5rem;
   }
 
   .twoColGrid {
