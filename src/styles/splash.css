@@ -101,3 +101,7 @@
 #lottieCanvas {
   transform: scale(0.9);
 }
+
+#splashVideo {
+  pointer-events: none;
+}
