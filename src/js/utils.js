@@ -1,5 +1,5 @@
 import { sv } from "./cursor/variables.js";
-
+import { updateSlidingTextBoxes } from "./slidingTextBox.js";
 // °°°°°°  ____________________  °°°°°°
 // °°°°°°  EVENT LISTENERS BELOW °°°°°°
 document.addEventListener("mousemove", (event) => {
@@ -60,3 +60,7 @@ export async function getJsonDataFromURL(url) {
 export const disableScroll = (event) => {
   event.preventDefault();
 };
+
+window.addEventListener("resize", () => {
+  updateSlidingTextBoxes();
+});

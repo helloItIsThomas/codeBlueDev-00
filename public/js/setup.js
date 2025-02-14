@@ -1,6 +1,4 @@
 import { sv } from "./cursor/variables.js";
-import { handleSlidingTextBox } from "./slidingTextBox.js";
-// import { cursorSetup } from "./cursor/cursorSketch.js";
 import {
   Application,
   Assets,
@@ -20,6 +18,7 @@ import { BloomFilter, GlowFilter } from "/js/pixi-filters/pixi-filters.mjs";
 import { render } from "./cursor/render.js";
 import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
+import { updateSlidingTextBoxes } from "./slidingTextBox.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   // SETUP LENIS start
@@ -131,10 +130,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   mySetup();
 
-  const granteeRights = document.querySelectorAll(".granteeRight");
-  granteeRights.forEach((gr) => {
-    handleSlidingTextBox(gr);
-  });
+  updateSlidingTextBoxes();
 });
 
 async function mySetup() {
