@@ -43,8 +43,8 @@
   overflow-wrap: break-word; /* Breaks long words to prevent overflow */
   overflow-wrap: normal;
   word-break: normal; /* Prevents breaking within words */
-  hyphens: auto; /* Adds hyphens where appropriate for better text flow */
 }
+
 .heroDescription {
   font-family: "cdsans";
   font-size: var(--heroDescription);
@@ -121,6 +121,8 @@
 .footerLinks {
   font-family: "cdsans";
   font-size: var(--footerLinks);
+  hyphens: none;
+  white-space: nowrap;
 }
 .footerLinkTitle {
   font-family: "cdmono-semiBold";
