@@ -4,13 +4,7 @@
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   background: none;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 0 auto;
   width: 100%;
-  /* max-width: 500px; */
-  font-size: 18px;
-  line-height: 1.6;
 }
 
 .magicTextContainer.expanded {

@@ -96,6 +96,7 @@
 
 
 
+
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
   import {initAwardTicker} from "/js/awardticker.js";
@@ -225,18 +226,35 @@
 
 
 <div class="sevenThreeGrid margin0LR padding1LR">
-  <div class="heroDescription" style="position: relative;">In the Laikipia region of Kenya, it’s dry. Very dry. It hasn’t rained for 18 months, creating a desperate situation and bad feeling between the indigenous herders who have grazed in the area for centuries and the white landowners who have stayed in Kenya after the independence. They have erected electric fences that block the herders’ traditional grazing routes and hired soldiers to keep the herders’ animals away. A situation that escalates as the drought lengthens and a political election approaches, eventually leading to violence against animals, black herders and white landowners alike.
+  
+  <div class="heroDescription" style="position: relative;">
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      In the Laikipia region of Kenya, it’s dry. Very dry. It hasn’t rained for 18 months, creating a desperate situation and bad feeling between the indigenous herders who have grazed in the area for centuries and the white landowners who have stayed in Kenya after the independence. They have erected electric fences that block the herders’ traditional grazing routes and hired soldiers to keep the herders’ animals away. A situation that escalates as the drought lengthens and a political election approaches, eventually leading to violence against animals, black herders and white landowners alike.
 
 
 
-Following the desperate herders of the Samburu tribe and nervous landowners, ‘The Battle for Laikipia’ tells a thrilling and paradoxical story of the complicated legacy of British colonialism and yet another of the many consequences of climate change. The Samburu tribe drink the cow’s milk, eat its meat, give it as a gift and are buried in its skin, while many of the landowners were born and raised in Kenya and need all the grass for their own cattle.</div>
+Following the desperate herders of the Samburu tribe and nervous landowners, ‘The Battle for Laikipia’ tells a thrilling and paradoxical story of the complicated legacy of British colonialism and yet another of the many consequences of climate change. The Samburu tribe drink the cow’s milk, eat its meat, give it as a gift and are buried in its skin, while many of the landowners were born and raised in Kenya and need all the grass for their own cattle.
+    </div>
+    <button
+        class="caret-button"
+        aria-label="Expand text"
+        aria-expanded="false"
+      >
+      <span class="caret">▼</span>
+    </button>
+  </div>
+
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
+
+</div>
   <div style="position: relative;">
     <button onclick="window.open('https://www.docnyc.net/film/the-battle-for-laikipia/', '_blank');" class="ctaButton">LEARN MORE</button>
     <div class="vSpacer0"></div>
-    
-      
-        <div class="heroMetadata">94</div>
-      
     
       
     
@@ -250,6 +268,10 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
       
         <div class="heroMetadata">Kenya</div>
+      
+    
+      
+        <div class="heroMetadata">94</div>
       
     
   </div>
@@ -813,11 +835,39 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
   
     
   
   
     
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
   
 
   
@@ -860,30 +910,13 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
-  
-    
-  
-    
       
     
   
-  
-
-  
-  
-  
-  
-  
     
   
     
   
-    
-  
-    
-  
-  
-    
   
 
   
@@ -901,16 +934,12 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
     
   
-    
-  
   
 
   
   
   
   
-  
-    
   
     
   
@@ -930,17 +959,32 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
-  
-    
-  
-    
-  
-    
-  
-    
       
     
   
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
   
 
   
@@ -977,101 +1021,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
     
   
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -1125,6 +1074,63 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
     
   
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
     
   
     
@@ -1168,6 +1174,41 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
         
       <div class="subFeaturedFilmComp">
             <div>
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2023
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Deep Rising
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/deep-rising" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="vertGap2 mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
                   <a href="/films/mission-blue">
                         <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
                   </a>
@@ -1203,63 +1244,28 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/the-ghost-fleet">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
+                  <a href="/films/chasing-coral">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2018
+                              2017
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              The Ghost Fleet
+                              Chasing Coral
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/the-ghost-fleet" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/gaucho-gaucho">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2024
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Gaucho Gaucho
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/gaucho-gaucho" >
+                        <a href="/films/chasing-coral" >
                         LEARN MORE
                   </a>
                   </button>

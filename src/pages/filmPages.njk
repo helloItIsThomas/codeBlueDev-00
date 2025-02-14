@@ -9,6 +9,7 @@ layout: layouts/base.njk
 
 {% from 'macros/filmCreditsComp.njk' import fcc %}
 {% from 'macros/heroImg.njk' import heroImg %}
+{% from 'macros/smartTextBox.njk' import smartTextBox %}
 
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
@@ -81,7 +82,8 @@ layout: layouts/base.njk
 {# <div class="vSpacer0 mobileOnlyBlock"></div> #}
 
 <div class="sevenThreeGrid margin0LR padding1LR">
-  <div class="heroDescription" style="position: relative;">{{film.description}}</div>
+  {# <div class="heroDescription" style="position: relative;">{{film.description}}</div> #}
+  <div class="heroDescription" style="position: relative;">{{smartTextBox(film.description)}}</div>
   <div style="position: relative;">
     <button onclick="window.open('{{ film.ctaButton.link }}', '_blank');" class="ctaButton">{{ film.ctaButton.name | upper }}</button>
     <div class="vSpacer0"></div>
