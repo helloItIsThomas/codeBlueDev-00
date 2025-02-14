@@ -41,6 +41,7 @@
 
   white-space: normal; /* Allows text to wrap normally */
   overflow-wrap: break-word; /* Breaks long words to prevent overflow */
+  overflow-wrap: normal;
   word-break: normal; /* Prevents breaking within words */
   hyphens: auto; /* Adds hyphens where appropriate for better text flow */
 }
