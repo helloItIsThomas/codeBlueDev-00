@@ -64,6 +64,13 @@
   font-family: "cdserif";
   font-size: var(--serifSubtitle);
 }
+
+.serifSubtitle_blue {
+  font-family: "cdserif";
+  color: #1555be;
+  font-size: calc(var(--serifSubtitle) * 0.95);
+}
+
 .monoSubtitle {
   font-family: "cdmono-semiBold";
   font-size: var(--monoSubtitle);

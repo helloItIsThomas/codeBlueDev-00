@@ -107,6 +107,8 @@ img {
 
 .controls {
   display: flex;
+  width: auto;
+  justify-content: space-between;
 }
 
 button.prev,

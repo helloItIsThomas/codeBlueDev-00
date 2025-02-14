@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh !important;
   z-index: 7;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 #splash video {
@@ -103,13 +103,13 @@
 }
 
 #splashVideo {
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 #splashImage {
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  /* pointer-events: none; */
   background-image: url("/assets/images/deepRising-splash.png");
   background-size: cover;
   background-position: center;

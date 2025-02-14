@@ -18,6 +18,15 @@
 
   pointer-events: none;
 }
+
+#burgerIcon {
+  display: block;
+}
+
+#burgerWavyIcon {
+  display: none;
+}
+
 .navBar img {
   height: 2rem;
   width: auto;

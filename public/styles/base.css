@@ -80,8 +80,13 @@
   margin-top: -5%;
 }
 
-.fullHeightWidth {
+.fullHeightWidthPurpose {
   height: 100vh;
+  width: 100%;
+}
+
+.halfHeight {
+  height: 50vh;
   width: 100%;
 }
 
@@ -199,7 +204,7 @@ a:hover {
   width: 200px;
   height: 200px;
   mix-blend-mode: screen;
-  pointer-events: none !important;
+  /* pointer-events: none !important; */
 }
 
 hr {

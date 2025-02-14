@@ -44,10 +44,10 @@ function isOverflowing(element) {
   const textBox = element.querySelector(".granteeRightTextContainer");
   const overflowing = textBox.scrollHeight > textBox.offsetHeight;
   if (overflowing) {
-    // element.querySelector(".expandTextArrow").style.display = "block";
-    // element.querySelector(".slidingTextBoxOverflowGradient").style.opacity = 1;
+    element.querySelector(".expandTextArrow").style.display = "block";
+    element.querySelector(".slidingTextBoxOverflowGradient").style.opacity = 1;
   } else {
-    // element.querySelector(".expandTextArrow").style.display = "none";
-    // element.querySelector(".slidingTextBoxOverflowGradient").style.opacity = 0;
+    element.querySelector(".expandTextArrow").style.display = "none";
+    element.querySelector(".slidingTextBoxOverflowGradient").style.opacity = 0;
   }
 }

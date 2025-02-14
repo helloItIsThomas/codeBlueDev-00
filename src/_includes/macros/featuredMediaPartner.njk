@@ -3,6 +3,10 @@
             <div class="slides">
                   {% for work in thisPartner.works %}
                         <div class="carouselSlide sevenFiveGrid">
+                              <div class="controls margin0LR">
+                                    <button class="prev"></button>
+                                    <button class="next"></button>
+                              </div>
                               <div class="slideLeft margin0LR" style="background-image: url({{ work.image.url }}); background-size: cover; background-position: center;"></div>
                               <div class="slideRight padding1LR">
                                     <div class="slideRightContents">
@@ -21,11 +25,6 @@
                                                       {{work.ctaButton.name | upper}}
                                                 </a>
                                           </button>
-                                          <div class="vertGap1"></div>
-                                          <div class="controls">
-                                                <button class="prev"></button>
-                                                <button class="next"></button>
-                                          </div>
                                     </div>
                               </div>
                         </div>

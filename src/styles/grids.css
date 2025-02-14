@@ -15,6 +15,15 @@
   box-sizing: border-box;
 }
 
+.twoColGridMission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  hyphens: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .threeColGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
