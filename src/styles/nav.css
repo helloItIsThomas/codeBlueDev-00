@@ -16,7 +16,7 @@
   top: 0;
   z-index: 10;
 
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .navBar img {
   height: 2rem;
@@ -24,7 +24,7 @@
 }
 
 .navBar * {
-  pointer-events: auto;
+  /* pointer-events: auto; */
   gap: 1rem;
 }
 
