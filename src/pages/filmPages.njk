@@ -34,8 +34,7 @@ layout: layouts/base.njk
     });
     // pageLoadingScreen.style.display = "none";
     pageLoadingScreen.style.display = "block";
-    document.body.style.overflow = "auto";
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     sv
       .lenis
       .stop();
@@ -51,7 +50,6 @@ layout: layouts/base.njk
       delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
-        // document.body.style.overflow = "visible";
         document.body.style.overflow = "auto";
         pageLoadingScreen.style.pointerEvents = "auto";
         sv

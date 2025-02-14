@@ -14,7 +14,7 @@ export function toggleMobileMenu() {
 
     if (mobileMenu.style.display === "none") {
       mobileMenu.style.display = "flex";
-      // document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
       burgerIcon.style.display = "none";
       burgerWavyIcon.style.display = "block";
       sv.lenis.stop();

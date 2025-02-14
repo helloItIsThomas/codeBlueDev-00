@@ -32,8 +32,7 @@ export async function initLoadingScreen(_logoLottie) {
         ease: "power3.inOut",
         onComplete: () => {
           loadingScreen.style.display = "none";
-          // document.body.style.overflow = "visible";
-          document.body.style.overflow = "scroll";
+          document.body.style.overflow = "auto";
           unlockSplash();
         },
       });

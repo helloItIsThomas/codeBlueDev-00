@@ -6,7 +6,6 @@ export function initAwardTicker(awardsTickerContainer, awardsTicker) {
     // Reset any inline styles and cloned content
     awardsTicker.style.animation = "";
     awardsTicker.innerHTML = awardsTicker.dataset.originalContent;
-    console.log(";laskdfl;s");
     awardsTicker.style.width = "100%";
 
     let isAnimating = false;
