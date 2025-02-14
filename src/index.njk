@@ -36,6 +36,7 @@ title: "Code Blue"
 
 <div id="subBody">
     <div class="componentContainer margin0LR">
+        <div class="vSpacer1"></div>
         <div class="twoColGrid">
             <div class="serifSubtitle padding1LRLeft">FEATURED<br>FILM</div>
 
@@ -45,28 +46,24 @@ title: "Code Blue"
 We can still stop the destruction of our planet's last pristine wilderness. The seabed is humanity’s birthright, not a resource for the profit of just a few. Join the world's largest ocean dispute now.</div>
         </div>
         <div class="vSpacer0"></div>
-        <div class="mobileOnlyBlock">
-            {# {% include "components/homeSections/featuredFilm_mobile.njk" %} #}
-            {# {% include "macros/featuredCompHome_mobile.njk" %} #}
-            {# {% include "components/homeSections/featuredFilm.njk" %} #}
+        <div class="mobileOnlyBlock margin0LR">
+            {% include "components/homeSections/featuredFilm_mobile.njk" %}
         </div>
         <div class="desktopOnlyBlock">
             {% include "components/homeSections/featuredFilm.njk" %}
         </div>
     </div>
-
+    <div class="vSpacer1"></div>
     <div class="componentContainer margin0LR">
-        <div class="centered">
-            <div class="serifSubtitle"> FEATURED PARTNERSHIPS</div>
-            <div class="serifSubtitle_spaceBelow"></div>
-        </div>
-        <div class="mobileOnlyBlock">
-            {# {% include "components/homeSections/featuredPartnerships_mobile.njk" %} #}
-            {# {% include "macros/featuredCompHome_mobile.njk" %} #}
-            {# {% include "components/homeSections/featuredPartnerships.njk" %} #}
+        <div class="serifSubtitle margin0LR mobileOnlyBlock"> FEATURED PARTNERSHIPS</div>
+        <div class="serifSubtitle centered desktopOnlyBlock"> FEATURED PARTNERSHIPS</div>
+        <div class="serifSubtitle_spaceBelow"></div>
+        <div class="mobileOnlyBlock margin0LR">
+            {% include "components/homeSections/featuredPartnerships_mobile.njk" %}
         </div>
         <div class="desktopOnlyBlock">
             {% include "components/homeSections/featuredPartnerships.njk" %}
         </div>
     </div>
+    <div class="vSpacer1"></div>
 </div>

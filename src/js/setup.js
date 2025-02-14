@@ -68,23 +68,59 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // SETUP PARALLAX FISH start
-  const footerScrollTrigger = {
-    trigger: "#footer",
+  // const mobileFooterScrollTrigger = {
+  //   trigger: "#mobileFooter",
+  //   start: "top-=36% center",
+  //   end: "top+=10% center",
+  //   scrub: true,
+  //   markers: true,
+  // };
+  // gsap.from("#mobileFooterFish", {
+  //   scrollTrigger: mobileFooterScrollTrigger,
+  //   duration: 2,
+  //   top: "30px",
+  //   ease: "sine.inOut",
+  // });
+  // gsap.from("#mobileFooter", {
+  //   scrollTrigger: mobileFooterScrollTrigger,
+  //   duration: 2,
+  //   backgroundPosition: "0px 1000px",
+  //   ease: "sine.inOut",
+  // });
+  // const desktopFooterScrollTrigger = {
+  //   trigger: "#footer",
+  //   start: "top-=36% center",
+  //   end: "top+=10% center",
+  //   scrub: true,
+  //   markers: true,
+  // };
+  // gsap.from("#desktopFooterFish", {
+  //   scrollTrigger: desktopFooterScrollTrigger,
+  //   duration: 2,
+  //   top: "30px",
+  //   ease: "sine.inOut",
+  // });
+  // gsap.from("#footer", {
+  //   scrollTrigger: desktopFooterScrollTrigger,
+  //   duration: 2,
+  //   backgroundPosition: "0px 1000px",
+  //   ease: "sine.inOut",
+  // });
+  const myScrollTrigger = {
+    trigger: ".footer",
     start: "top-=36% center",
     end: "top+=10% center",
     scrub: true,
     markers: false,
   };
-
   gsap.from(".footerFish", {
-    scrollTrigger: footerScrollTrigger,
+    scrollTrigger: myScrollTrigger,
     duration: 2,
     top: "30px",
     ease: "sine.inOut",
   });
-
-  gsap.from("#footer", {
-    scrollTrigger: footerScrollTrigger,
+  gsap.from(".footer", {
+    scrollTrigger: myScrollTrigger,
     duration: 2,
     backgroundPosition: "0px 1000px",
     ease: "sine.inOut",

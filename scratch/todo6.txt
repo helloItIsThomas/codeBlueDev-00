@@ -1,18 +1,12 @@
 
-Do updates to the other cursor for tomorrow so rob can compare.
 
 • Fix shitty text collapsing thing.
    Including supporting page resizing.
-
-fix the sizing of the awards on mobile
-
-Do the home page things for mobile.
-
-Make the parallax action more notable on desktop and put it in on mobile.
-
+   
 Swap out all long text on mobile with text collapse component.
 
-• Port site to cloudflare.
+
+• Merge to main
 
 --- --- ---
 
@@ -22,3 +16,5 @@ Swap out all long text on mobile with text collapse component.
 
 • find a better way to make sure the gradient doesnt cover up things.
 currently the reason it is not covering things is because is animating .h2_0, .h1_0, .h0_5, .h1_5, .bm0, etc in setup
+
+• Port site to cloudflare.
