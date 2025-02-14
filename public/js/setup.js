@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     delay: 2,
     onComplete: () => {
       pageLoadingScreen.style.display = "none";
-      document.body.style.overflow = "auto";
+      // document.body.style.overflow = "visible";
+      document.body.style.overflow = "scroll";
     },
   });
 

@@ -50,7 +50,8 @@ layout: layouts/base.njk
       delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
-        document.body.style.overflow = "visible";
+        // document.body.style.overflow = "visible";
+        document.body.style.overflow = "scroll";
         pageLoadingScreen.style.pointerEvents = "auto";
         sv
           .lenis

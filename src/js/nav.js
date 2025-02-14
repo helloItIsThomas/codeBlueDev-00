@@ -33,7 +33,8 @@ export function toggleMobileMenu() {
         opacity: 0,
         onComplete: () => {
           mobileMenu.style.display = "none";
-          document.body.style.overflow = "auto";
+          // document.body.style.overflow = "visible";
+          document.body.style.overflow = "scroll";
           sv.lenis.start();
         },
       });
