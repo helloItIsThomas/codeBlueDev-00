@@ -1,9 +1,17 @@
+import { v } from "./variables.js";
+
 const granteeRights = document.querySelectorAll(".granteeRight");
 
 export function updateSlidingTextBoxes() {
+  // console.log("updating sliding text boxes");
   const granteeRights = document.querySelectorAll(".granteeRight");
   granteeRights.forEach((gr) => {
-    isOverflowing(gr);
+    // const tb = gr.querySelector(".granteeRightTextContainer");
+    // granteeRightTextContainer.max - height;
+    // if (!v.isMobile) {
+    // tb.style.maxHeight = "5000px";
+    // }
+    // isOverflowing(gr);
   });
 }
 
@@ -35,7 +43,6 @@ expandTextArrows.forEach((expandTextArrow) => {
 function isOverflowing(element) {
   const textBox = element.querySelector(".granteeRightTextContainer");
   const overflowing = textBox.scrollHeight > textBox.offsetHeight;
-  console.log("overflowing", overflowing);
   if (overflowing) {
     element.querySelector(".expandTextArrow").style.display = "block";
     element.querySelector(".slidingTextBoxOverflowGradient").style.opacity = 1;

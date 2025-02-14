@@ -1,4 +1,5 @@
 import { sv } from "./cursor/variables.js";
+import { v } from "./variables.js";
 import {
   Application,
   Assets,
@@ -19,6 +20,22 @@ import { render } from "./cursor/render.js";
 import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
 import { updateSlidingTextBoxes } from "./slidingTextBox.js";
+
+// update variable when screen changes between desktop and mobile.
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    v.isMobile = true;
+    console.log("is mobile: ", v.isMobile);
+  } else {
+    v.isMobile = false;
+    console.log("is mobile: ", v.isMobile);
+  }
+}
+// Initial check
+handleMediaQueryChange(mediaQuery);
+// Listen for changes
+mediaQuery.addEventListener("change", handleMediaQueryChange);
 
 document.addEventListener("DOMContentLoaded", async () => {
   // SETUP LENIS start

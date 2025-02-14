@@ -61,6 +61,10 @@ export const disableScroll = (event) => {
   event.preventDefault();
 };
 
+let resizeTimeout;
 window.addEventListener("resize", () => {
-  updateSlidingTextBoxes();
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    updateSlidingTextBoxes();
+  }, 200); // Adjust the debounce delay as needed
 });
