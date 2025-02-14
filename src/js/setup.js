@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   gsap.from(
-    ".h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",
+    ".ctaButton, .h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",
     {
       y: 15,
       duration: 0.5,
