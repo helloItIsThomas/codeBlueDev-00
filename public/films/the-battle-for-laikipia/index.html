@@ -99,9 +99,16 @@
 
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
+  import {v} from "/js/variables.js";
   import {initAwardTicker} from "/js/awardticker.js";
   const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
   const awardsTicker = document.querySelector(".awardsTicker");
+
+  if (v.isMobile) {
+    //document.querySelector(".mobileHeaderHero").style.display = "block";
+  } else {
+    //document.querySelector(".desktopHeaderHero").style.display = "block";
+  }
 
   document.addEventListener("DOMContentLoaded", async () => {
     initAwardTicker(awardsTickerContainer, awardsTicker);
@@ -126,10 +133,11 @@
       opacity: 0,
       duration: 0.5,
       ease: "power3.out",
-      delay: 2,
+      delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
+        pageLoadingScreen.style.pointerEvents = "none";
         sv
           .lenis
           .start();
@@ -222,11 +230,7 @@
   </div>
 </div>
 
-
-
-
 <div class="sevenThreeGrid margin0LR padding1LR">
-  
   <div class="heroDescription mobileOnlyBlock" style="position: relative;">
   <div class="magicTextContainer">
     <div class="magicText" style="white-space: pre-line;">
@@ -262,14 +266,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     <div class="vSpacer0"></div>
     
       
-        <div class="heroMetadata">2024</div>
-      
-    
-      
-        <div class="heroMetadata">Swahili,English</div>
-      
-    
-      
         <div class="heroMetadata">Kenya</div>
       
     
@@ -277,6 +273,14 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
         <div class="heroMetadata">94</div>
       
     
+      
+    
+      
+        <div class="heroMetadata">2024</div>
+      
+    
+      
+        <div class="heroMetadata">Swahili,English</div>
       
     
   </div>
@@ -298,8 +302,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
 </div>
 
 <div class="serifSubtitle_spaceBelow"></div>
-
-
 
 <div class="responsive-iframe margin0LR">
   <iframe class="" src="https://www.youtube.com/embed/cKrmAEDC5fc?si=89icAPJ1X_n9UaIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -829,37 +831,20 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
-  
-  
+      
     
+  
   
 
   
   
   
   
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
   
     
       
     
   
-    
-  
   
 
   
@@ -868,6 +853,15 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
     
+  
+  
+    
+  
+
+  
+  
+  
+  
   
     
   
@@ -890,6 +884,51 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
       
     
   
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
     
   
   
@@ -915,80 +954,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
   
   
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -1014,6 +979,42 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
       
     
   
@@ -1036,25 +1037,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
   
     
       
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
     
   
   
@@ -1124,9 +1106,9 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
     
   
     
-  
-    
       
+    
+  
     
   
     
@@ -1189,41 +1171,6 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/mission-blue">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2014
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Mission Blue
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/mission-blue" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
                   <a href="/films/gaucho-gaucho">
                         <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
                   </a>
@@ -1281,6 +1228,41 @@ Following the desperate herders of the Samburu tribe and nervous landowners, ‘
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
                         <a href="/films/the-ghost-fleet" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/mission-blue">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2014
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Mission Blue
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/mission-blue" >
                         LEARN MORE
                   </a>
                   </button>

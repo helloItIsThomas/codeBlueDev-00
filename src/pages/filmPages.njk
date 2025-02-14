@@ -13,9 +13,16 @@ layout: layouts/base.njk
 
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
+  import {v} from "/js/variables.js";
   import {initAwardTicker} from "/js/awardticker.js";
   const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
   const awardsTicker = document.querySelector(".awardsTicker");
+
+  if (v.isMobile) {
+    //document.querySelector(".mobileHeaderHero").style.display = "block";
+  } else {
+    //document.querySelector(".desktopHeaderHero").style.display = "block";
+  }
 
   document.addEventListener("DOMContentLoaded", async () => {
     initAwardTicker(awardsTickerContainer, awardsTicker);
@@ -40,10 +47,11 @@ layout: layouts/base.njk
       opacity: 0,
       duration: 0.5,
       ease: "power3.out",
-      delay: 2,
+      delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
+        pageLoadingScreen.style.pointerEvents = "none";
         sv
           .lenis
           .start();
@@ -78,11 +86,7 @@ layout: layouts/base.njk
   </div>
 </div>
 
-{# <div class="vSpacer2 desktopOnlyBlock"></div> #}
-{# <div class="vSpacer0 mobileOnlyBlock"></div> #}
-
 <div class="sevenThreeGrid margin0LR padding1LR">
-  {# <div class="heroDescription" style="position: relative;">{{film.description}}</div> #}
   <div class="heroDescription mobileOnlyBlock" style="position: relative;">{{smartTextBox(film.description)}}</div>
   <div class="heroDescription desktopOnlyBlock" style="position: relative;">{{film.description}}</div>
   <div style="position: relative;">
@@ -117,8 +121,6 @@ layout: layouts/base.njk
 </div>
 
 <div class="serifSubtitle_spaceBelow"></div>
-{# https://www.youtube.com/embed/t_O5Y8FWXpE?si=Lmak45m0oyMXDryB #}
-{# the link must be from the embed code like the above #}
 
 <div class="responsive-iframe margin0LR">
   <iframe class="" src="{{ film.trailerLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

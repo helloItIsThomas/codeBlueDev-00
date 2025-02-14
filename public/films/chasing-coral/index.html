@@ -99,9 +99,16 @@
 
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
+  import {v} from "/js/variables.js";
   import {initAwardTicker} from "/js/awardticker.js";
   const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
   const awardsTicker = document.querySelector(".awardsTicker");
+
+  if (v.isMobile) {
+    //document.querySelector(".mobileHeaderHero").style.display = "block";
+  } else {
+    //document.querySelector(".desktopHeaderHero").style.display = "block";
+  }
 
   document.addEventListener("DOMContentLoaded", async () => {
     initAwardTicker(awardsTickerContainer, awardsTicker);
@@ -126,10 +133,11 @@
       opacity: 0,
       duration: 0.5,
       ease: "power3.out",
-      delay: 2,
+      delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
+        pageLoadingScreen.style.pointerEvents = "none";
         sv
           .lenis
           .start();
@@ -222,11 +230,7 @@
   </div>
 </div>
 
-
-
-
 <div class="sevenThreeGrid margin0LR padding1LR">
-  
   <div class="heroDescription mobileOnlyBlock" style="position: relative;">
   <div class="magicTextContainer">
     <div class="magicText" style="white-space: pre-line;">
@@ -254,10 +258,6 @@
     <div class="vSpacer0"></div>
     
       
-        <div class="heroMetadata">2017</div>
-      
-    
-      
         <div class="heroMetadata">English</div>
       
     
@@ -269,6 +269,10 @@
     
       
         <div class="heroMetadata">93</div>
+      
+    
+      
+        <div class="heroMetadata">2017</div>
       
     
   </div>
@@ -290,8 +294,6 @@
 </div>
 
 <div class="serifSubtitle_spaceBelow"></div>
-
-
 
 <div class="responsive-iframe margin0LR">
   <iframe class="" src="https://www.youtube.com/embed/b6fHA9R2cKI?si=qi0zqcO1WAFHNP5j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -812,38 +814,6 @@
   
   
     
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
       
     
   
@@ -860,27 +830,6 @@
   
     
   
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
   
     
   
@@ -889,10 +838,6 @@
   
   
   
-  
-    
-  
-    
   
     
       
@@ -917,8 +862,19 @@
   
     
   
+  
+
+  
+  
+  
+  
+  
     
   
+    
+  
+    
+      
     
   
   
@@ -934,12 +890,8 @@
   
     
   
-    
-      
-    
   
     
-  
   
 
   
@@ -950,53 +902,13 @@
     
   
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
   
     
   
     
   
   
-
-  
-  
-  
-  
-  
     
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
   
 
   
@@ -1043,6 +955,8 @@
   
   
     
+  
+    
       
     
   
@@ -1052,6 +966,99 @@
   
     
   
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
     
   
   
@@ -1085,30 +1092,11 @@
     
   
     
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
   
     
       
+    
+  
     
   
   
@@ -1167,6 +1155,41 @@
         
       <div class="subFeaturedFilmComp">
             <div>
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2023
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Deep Rising
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/deep-rising" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
                   <a href="/films/gaucho-gaucho">
                         <img src="https://cdn.sanity.io/images/6jpkko0l/production/5084db8aa845d0d99ad2e2f9ef02ca288af45dcc-854x1274.png" alt="Gaucho Gaucho poster">
                   </a>
@@ -1202,63 +1225,28 @@
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/the-ghost-fleet">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/109f733d6a528810fca853cf62a6ee007d9a25d1-1000x1464.jpg" alt="The Ghost Fleet poster">
+                  <a href="/films/mission-blue">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2018
+                              2014
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              The Ghost Fleet
+                              Mission Blue
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/the-ghost-fleet" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/deep-rising">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2023
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Deep Rising
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/deep-rising" >
+                        <a href="/films/mission-blue" >
                         LEARN MORE
                   </a>
                   </button>
