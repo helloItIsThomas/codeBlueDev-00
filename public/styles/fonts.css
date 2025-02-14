@@ -107,7 +107,11 @@
 #purposeStatement {
   font-family: "cdserif";
   padding: 0 20% !important;
-  font-size: clamp(1.5em, 3vw, 4em);
+  font-size: clamp(
+    2em,
+    5vw,
+    var(--purposeStatement)
+  ); /* Responsive font size that scales with viewport width */
 }
 .compSubtitle {
   font-family: "cdserif";

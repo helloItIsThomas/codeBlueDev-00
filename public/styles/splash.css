@@ -62,7 +62,17 @@
 }
 
 #upArrow {
-  animation: oscillate 2s ease-in-out infinite;
+  animation: oscillate2 2s ease-in-out infinite;
+}
+
+@keyframes oscillate2 {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes oscillate {
