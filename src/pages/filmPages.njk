@@ -209,7 +209,7 @@ layout: layouts/base.njk
   {% set i = threeUniqueValues[0] %}
   {% if notThisFilm[i] %}
     {# {{ sffC(notThisFilm[i]) }} #}
-    <div class="vertGap2 mobileOnlyBlock"></div>
+    <div class="mobileOnlyBlock"></div>
   {% endif %}
 </div>
 
@@ -218,7 +218,7 @@ layout: layouts/base.njk
     {% for i in threeUniqueValues %}
       {% if notThisFilm[i] %}
         {{ sffC(notThisFilm[i]) }}
-        <div class="vertGap2 mobileOnlyBlock"></div>
+        <div class="mobileOnlyBlock"></div>
       {% endif %}
     {% endfor %}
   </div>
