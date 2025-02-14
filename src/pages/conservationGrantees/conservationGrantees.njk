@@ -4,7 +4,7 @@ title: "Conservation Grantees"
 ---
 {% from 'macros/heroImg.njk' import heroImg %}
 {% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
-
+{% from 'macros/smartTextBox.njk' import smartTextBox %}
 <script type="module">
       import {styleThisPageNavLink} from "../../js/nav.js";
       styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
@@ -62,19 +62,12 @@ title: "Conservation Grantees"
                         <div>
                               <div class="granteeRight">
                                     <div class="granteeRightTextContainer">
-                                          <div class="bodyCopyBigger mobileOnlyBlock">{{ grantee.description }}</div>
-                                          <div class="slidingTextBoxOverflowGradient"></div>
-                                          <div class="bodyCopyBigger desktopOnlyBlock">{{ grantee.description }}</div>
+                                          <div class="bodyCopyBigger mobileOnlyBlock">
+                                                {{ smartTextBox(grantee.description) }}
+                                          </div>
+                                          <div class="bodyCopyBigger desktopOnlyBlock h1_0">{{ grantee.description }}</div>
                                     </div>
                                     <div class="vertGap0"></div>
-
-                                    <div class="expandTextArrow">
-                                          <div class="textBoxArrow" id="downArrow" class="mobileOnlyBlock">
-                                                <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg">
-                                                      <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
-                                                </div>
-                                          </div>
-                                    </div>
 
                                     <button onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
 

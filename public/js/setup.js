@@ -19,7 +19,6 @@ import { BloomFilter, GlowFilter } from "/js/pixi-filters/pixi-filters.mjs";
 import { render } from "./cursor/render.js";
 import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
-import { updateSlidingTextBoxes } from "./slidingTextBox.js";
 
 // update variable when screen changes between desktop and mobile.
 const mediaQuery = window.matchMedia("(max-width: 768px)");
@@ -34,7 +33,6 @@ function handleMediaQueryChange(event) {
 }
 // Initial check
 handleMediaQueryChange(mediaQuery);
-// Listen for changes
 mediaQuery.addEventListener("change", handleMediaQueryChange);
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -68,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       duration: 0.5,
       ease: "power1.inOut",
       stagger: 0.05,
-      delay: 1.9,
+      delay: 2.9,
     }
   );
 
@@ -146,8 +144,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
   mySetup();
-
-  updateSlidingTextBoxes();
 });
 
 async function mySetup() {
