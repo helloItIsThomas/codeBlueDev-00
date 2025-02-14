@@ -21,19 +21,17 @@ import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
 
 // update variable when screen changes between desktop and mobile.
-const mediaQuery = window.matchMedia("(max-width: 768px)");
-function handleMediaQueryChange(event) {
-  if (event.matches) {
-    v.isMobile = true;
-    console.log("is mobile: ", v.isMobile);
-  } else {
-    v.isMobile = false;
-    console.log("is mobile: ", v.isMobile);
-  }
-}
+// const mediaQuery = window.matchMedia("(max-width: 768px)");
+// function handleMediaQueryChange(event) {
+// if (event.matches) {
+// v.isMobile = true;
+// } else {
+// v.isMobile = false;
+// }
+// }
 // Initial check
-handleMediaQueryChange(mediaQuery);
-mediaQuery.addEventListener("change", handleMediaQueryChange);
+// handleMediaQueryChange(mediaQuery);
+// mediaQuery.addEventListener("change", handleMediaQueryChange);
 
 document.addEventListener("DOMContentLoaded", async () => {
   // SETUP LENIS start

@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh !important;
   z-index: 7;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 #splash video {
@@ -42,6 +42,7 @@
 #splashCTA {
   display: none;
   opacity: 0;
+  pointer-events: auto;
 }
 
 .arrowCTA {
