@@ -61,6 +61,10 @@
   animation: oscillate 2s ease-in-out infinite;
 }
 
+#upArrow {
+  animation: oscillate 2s ease-in-out infinite;
+}
+
 @keyframes oscillate {
   0%,
   100% {

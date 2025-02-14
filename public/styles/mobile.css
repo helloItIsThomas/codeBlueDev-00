@@ -78,7 +78,7 @@
   }
 
   .fullHeightWidthPurpose {
-    height: 100vh;
+    height: 20em;
     width: 100%;
   }
 
@@ -186,6 +186,7 @@
   margin: 0;
 }
 
-.footerLogo {
+.mobileFooterLogo {
   bottom: 0;
+  opacity: 0;
 }
