@@ -1,5 +1,6 @@
 .ctaButton {
   padding: 8px;
+  padding-top: 11px;
   padding-left: 20px;
   padding-right: 20px;
   width: fit-content;
@@ -9,7 +10,7 @@
   border: 1px solid white;
   font-family: "cdmono-semiBold";
   text-decoration: none;
-  font-size: var(--pt14);
+  font-size: var(--ctaButtonTitle);
   transition: background-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
 }
@@ -18,6 +19,7 @@
   background-color: #081545;
   border-color: #081545;
   color: white;
+  cursor: pointer;
 }
 
 .ctaButton a {

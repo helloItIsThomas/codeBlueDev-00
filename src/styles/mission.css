@@ -1,34 +1,25 @@
 #mission {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   width: auto;
   box-sizing: border-box;
+  position: relative;
 }
 
 #missionCopy {
-  width: 60%;
+  width: 90%;
+  max-width: 30em;
 }
 
-#missionRight {
+.missionRight {
   position: relative;
-  height: 100%;
   width: 100%;
   min-width: 50px;
-  min-height: 50px;
-}
-
-#missionRight iframe {
   height: 100%;
-  width: 100%;
-  z-index: 1000;
-  position: absolute;
-}
-
-#waterOrb {
-  height: auto !important;
-  width: 100% !important;
-  border: none;
-  background-color: transparent;
-  mix-blend-mode: multiply;
+  min-height: 20em;
+  max-height: 100vh !important;
+  /* height: 100% !important; */
+  /* min-height: 3em; */
 }

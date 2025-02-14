@@ -1,5 +1,5 @@
 import { sv } from "./cursor/variables.js";
-// import { cursorSetup } from "./cursor/cursorSketch.js";
+import { v } from "./variables.js";
 import {
   Application,
   Assets,
@@ -16,9 +16,26 @@ import {
 
 import { BloomFilter, GlowFilter } from "/js/pixi-filters/pixi-filters.mjs";
 
-import { loadShaders } from "./cursor/loadShaders.js";
 import { render } from "./cursor/render.js";
+import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
+import { updateSlidingTextBoxes } from "./slidingTextBox.js";
+
+// update variable when screen changes between desktop and mobile.
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    v.isMobile = true;
+    console.log("is mobile: ", v.isMobile);
+  } else {
+    v.isMobile = false;
+    console.log("is mobile: ", v.isMobile);
+  }
+}
+// Initial check
+handleMediaQueryChange(mediaQuery);
+// Listen for changes
+mediaQuery.addEventListener("change", handleMediaQueryChange);
 
 document.addEventListener("DOMContentLoaded", async () => {
   // SETUP LENIS start
@@ -45,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   gsap.from(
-    ".h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",
+    ".ctaButton, .h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",
     {
       y: 15,
       duration: 0.5,
@@ -67,23 +84,59 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // SETUP PARALLAX FISH start
-  const footerScrollTrigger = {
-    trigger: "#footer",
+  // const mobileFooterScrollTrigger = {
+  //   trigger: "#mobileFooter",
+  //   start: "top-=36% center",
+  //   end: "top+=10% center",
+  //   scrub: true,
+  //   markers: true,
+  // };
+  // gsap.from("#mobileFooterFish", {
+  //   scrollTrigger: mobileFooterScrollTrigger,
+  //   duration: 2,
+  //   top: "30px",
+  //   ease: "sine.inOut",
+  // });
+  // gsap.from("#mobileFooter", {
+  //   scrollTrigger: mobileFooterScrollTrigger,
+  //   duration: 2,
+  //   backgroundPosition: "0px 1000px",
+  //   ease: "sine.inOut",
+  // });
+  // const desktopFooterScrollTrigger = {
+  //   trigger: "#footer",
+  //   start: "top-=36% center",
+  //   end: "top+=10% center",
+  //   scrub: true,
+  //   markers: true,
+  // };
+  // gsap.from("#desktopFooterFish", {
+  //   scrollTrigger: desktopFooterScrollTrigger,
+  //   duration: 2,
+  //   top: "30px",
+  //   ease: "sine.inOut",
+  // });
+  // gsap.from("#footer", {
+  //   scrollTrigger: desktopFooterScrollTrigger,
+  //   duration: 2,
+  //   backgroundPosition: "0px 1000px",
+  //   ease: "sine.inOut",
+  // });
+  const myScrollTrigger = {
+    trigger: ".footer",
     start: "top-=36% center",
     end: "top+=10% center",
     scrub: true,
     markers: false,
   };
-
-  gsap.from("#footerFish", {
-    scrollTrigger: footerScrollTrigger,
+  gsap.from(".footerFish", {
+    scrollTrigger: myScrollTrigger,
     duration: 2,
     top: "30px",
     ease: "sine.inOut",
   });
-
-  gsap.from("#footer", {
-    scrollTrigger: footerScrollTrigger,
+  gsap.from(".footer", {
+    scrollTrigger: myScrollTrigger,
     duration: 2,
     backgroundPosition: "0px 1000px",
     ease: "sine.inOut",
@@ -93,6 +146,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
   mySetup();
+
+  updateSlidingTextBoxes();
 });
 
 async function mySetup() {
@@ -136,7 +191,7 @@ async function mySetup() {
     );
   }
 
-  const cellW = 5;
+  const cellW = 2;
   const cellH = cellW;
   const geometry = new Geometry({
     topology: "triangle-strip",

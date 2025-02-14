@@ -8,6 +8,10 @@
   width: 100%;
   object-fit: cover; /* This will ensure the image fills the space and crops if needed */
 }
+.centered .background video {
+  width: 100%;
+  object-fit: cover; /* This will ensure the image fills the space and crops if needed */
+}
 
 #featuredFilmForeground {
   position: absolute;

@@ -26,6 +26,10 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       output: "public",
     },
+    devOptions: {
+      host: "10.0.0.57",
+      port: 8080,
+    },
     // The 'watch' option enables Eleventy to automatically rebuild the site when files change.
     watch: true,
   };

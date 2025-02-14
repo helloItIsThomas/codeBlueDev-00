@@ -1,0 +1,20 @@
+
+
+• Fix shitty text collapsing thing.
+   Including supporting page resizing.
+   
+Swap out all long text on mobile with text collapse component.
+
+
+• Merge to main
+
+--- --- ---
+
+• Populate home page with CMS content where appropriate ( INCLUDING WHALE VID that is on the old wordpress database rn )
+
+• Set up a new email address for the email service and finalize email service.
+
+• find a better way to make sure the gradient doesnt cover up things.
+currently the reason it is not covering things is because is animating .h2_0, .h1_0, .h0_5, .h1_5, .bm0, etc in setup
+
+• Port site to cloudflare.

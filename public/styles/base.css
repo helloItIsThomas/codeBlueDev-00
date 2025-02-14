@@ -1,32 +1,42 @@
 :root {
-  --margin0LR: 4rem;
-  --margin1LR: 6rem;
-  --padding1LR: 6rem;
+  --margin0LR: 3rem;
+  --margin1LR: 4.5rem;
+  --padding1LR: 4.5rem;
   --borderRadius: 15px;
   --vSpacer0: 55px;
   --vSpacer1: 88px;
   --vSpacer2: 125px;
+  --serifSubtitle_spaceBelow: 55px;
 
   --padding1LRLeft: calc(var(--padding1LR) / 1);
   --padding1LRRight: calc(var(--padding1LR) / 1);
 
-  /* FONTS */
-  --pt0: 10px;
-  --pt1: 11px;
-  --pt2: 12px;
-  --pt10: 10px;
-  --pt14: 14px;
-  --pt16: 16px;
-  --pt18: 18px;
-  --pt19: 19px;
-  --pt20: 20px;
-  --pt24: 24px;
-  --pt30: 30px;
+  /* --mobileBreakpoint: 768px; */
+  /* --ultraWideBreakpoint: 1920px; */
 
-  --pt36: 36px;
-  --pt60: 60px;
-  --pt72: 72px;
-  --pt96: 96px;
+  /* FONTS */
+  /* https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/ */
+
+  --heroTitle: 96px;
+  --heroDescription: 20px;
+  --heroPhotoCredit: 10px;
+  --mediaType: 14px;
+  --serifSubtitle: 36px;
+  --heroMetadata: 12px;
+  --creditsSectionCopy: 16px;
+  --ctaButtonTitle: 14px;
+  --navTitle: 14px;
+  --monoSubtitle: 14px;
+  --bodyCopySmaller: 17px;
+  --bodyCopyBigger: 20px;
+  --longBigSerifCopy: 30px;
+  --smallShortSerifCopy: 20px;
+  --purposeStatement: 72px;
+  --compSubtitle: 60px;
+  --footerLinks: 20px;
+  --mobileMenuNavLinks: 30px;
+  --footerLinkTitle: 10px;
+  --footerCopyright: 12px;
 }
 
 .vertGap0 {
@@ -36,6 +46,10 @@
 .vertGap1 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.vertGap2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .margin0LR {
@@ -86,6 +100,10 @@
   margin-bottom: var(--vSpacer2);
 }
 
+.serifSubtitle_spaceBelow {
+  margin-bottom: var(--serifSubtitle_spaceBelow);
+}
+
 .padLeft {
   padding-left: var(--padLeft) !important;
 }
@@ -99,7 +117,7 @@
 }
 
 .componentContainer {
-  padding-top: 10rem;
+  /* padding-top: 10rem; */
 }
 
 .reducedVerticalMargin {
@@ -129,6 +147,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #030b22;
+}
+
+@media (max-width: var(--ultraWideBreakpoint)) {
 }
 
 body * {
@@ -170,24 +191,34 @@ a:hover {
 }
 
 #cursorCanvas {
-  pointer-events: none;
   position: fixed;
   /* position: absolute; */
   z-index: 6;
-  z-index: 60;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  /* border: 5px solid red; */
-  /* background-color: transparent; */
   mix-blend-mode: screen;
+  pointer-events: none !important;
 }
 
 hr {
   height: 0.5px; /* Adjust the height to make it thinner */
   background-color: white; /* Keep the color as red */
   border: none; /* Remove any default border */
+}
+
+.desktopOnlyBlock {
+  display: block !important;
+}
+.desktopOnlyFlex {
+  display: flex !important;
+}
+.mobileOnlyFlex {
+  display: none !important;
+}
+.mobileOnlyBlock {
+  display: none !important;
 }
 
 main {

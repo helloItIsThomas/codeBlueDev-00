@@ -6,7 +6,7 @@ title: "Conservation Grantees"
 {% from 'macros/staticHeaderComp.njk' import staticHeaderComp %}
 
 <script type="module">
-      import {styleThisPageNavLink} from "../../js/utils.js";
+      import {styleThisPageNavLink} from "../../js/nav.js";
       styleThisPageNavLink(document.querySelector(".navLinks a[href='/pages/conservationGrantees'] span"));
 </script>
 <script type="module">
@@ -52,16 +52,33 @@ title: "Conservation Grantees"
 {%- for grantee in someData.grantees -%}
       <div class="margin0LR">
             <div class="margin1LR">
+                  {# <div class="vSpacer1"></div> #}
+                  <div class=""></div>
                   <hr>
                   <div class="threeSevenGrid">
                         <div class="granteeLeft">
                               <img style="mix-blend-mode: screen;" src="{{ grantee.image }}"  class="grantee_logo">
                         </div>
                         <div>
-                              <div class = "granteeRight">
-                                    <div class="bs3">{{ grantee.description }}</div>
+                              <div class="granteeRight">
+                                    <div class="granteeRightTextContainer">
+                                          <div class="bodyCopyBigger mobileOnlyBlock">{{ grantee.description }}</div>
+                                          <div class="slidingTextBoxOverflowGradient"></div>
+                                          <div class="bodyCopyBigger desktopOnlyBlock">{{ grantee.description }}</div>
+                                    </div>
                                     <div class="vertGap0"></div>
-                                    <button style="z-index: 2;" onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
+
+                                    <div class="expandTextArrow">
+                                          <div class="textBoxArrow" id="downArrow" class="mobileOnlyBlock">
+                                                <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg">
+                                                      <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <button onclick="window.open('{{ grantee.link }}', '_blank')" class="ctaButton">VISIT {{ grantee.title | upper }}</button>
+
+                                    <div class="vertGap0"></div>
                               </div>
                         </div>
                   </div>
