@@ -96,10 +96,9 @@
   }
 
   .twoColGridMission {
-    /* display: grid; */
-    /* grid-template-columns: 1fr !important; */
-    display: flex !important;
-    flex-direction: column !important;
+    display: grid;
+    grid-template-columns: 1fr !important;
+
     gap: 3rem;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -107,6 +106,17 @@
     hyphens: auto;
     width: 100%;
     box-sizing: border-box;
+    /* display: grid; */
+    /* grid-template-columns: 1fr !important; */
+    /* display: flex !important; */
+    /* flex-direction: column !important; */
+    /* gap: 3rem; */
+    /* overflow-wrap: break-word; */
+    /* word-wrap: break-word; */
+    /* word-break: break-word; */
+    /* hyphens: auto; */
+    /* width: 100%; */
+    /* box-sizing: border-box; */
   }
 
   /* .granteeRight .ctaButton { */
