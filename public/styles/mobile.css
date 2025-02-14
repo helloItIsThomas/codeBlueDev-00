@@ -99,7 +99,7 @@
     /* display: grid; */
     /* grid-template-columns: 1fr !important; */
     display: flex !important;
-    flex-direction: column-reverse !important;
+    flex-direction: column !important;
     gap: 3rem;
     overflow-wrap: break-word;
     word-wrap: break-word;
