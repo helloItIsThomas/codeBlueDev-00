@@ -14,7 +14,7 @@ export function toggleMobileMenu() {
 
     if (mobileMenu.style.display === "none") {
       mobileMenu.style.display = "flex";
-      // document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
       burgerIcon.style.display = "none";
       burgerWavyIcon.style.display = "block";
       sv.lenis.stop();
@@ -33,8 +33,7 @@ export function toggleMobileMenu() {
         opacity: 0,
         onComplete: () => {
           mobileMenu.style.display = "none";
-          // document.body.style.overflow = "visible";
-          document.body.style.overflow = "scroll";
+          document.body.style.overflow = "auto";
           sv.lenis.start();
         },
       });
