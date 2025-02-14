@@ -73,7 +73,7 @@ a img:hover {
 }
 
 a {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   display: inline-block;
 }

@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
-  document.body.style.overflow = "hidden";
+  // document.body.style.overflow = "hidden";
   window.scrollTo({
     top: 0, // Replace with your desired vertical scroll position
     behavior: "instant",
