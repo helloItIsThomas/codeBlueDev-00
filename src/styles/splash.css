@@ -106,6 +106,10 @@
 #splashVideo {
   width: 100%;
   height: 100%;
+  background-image: url("http://codebluefoundation.org/wp-content/themes/code_blue/_video/video.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   /* pointer-events: none; */
 }
 
@@ -113,8 +117,8 @@
   width: 100%;
   height: 100%;
   /* pointer-events: none; */
-  background-image: url("http://codebluefoundation.org/wp-content/themes/code_blue/_video/video.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* background-image: url("http://codebluefoundation.org/wp-content/themes/code_blue/_video/video.jpg"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
 }

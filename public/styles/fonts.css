@@ -69,7 +69,7 @@
 .serifSubtitle_blue {
   font-family: "cdserif";
   color: #1555be;
-  font-size: calc(var(--serifSubtitle) * 0.95);
+  font-size: calc(var(--serifSubtitle) * 0.85);
 }
 
 .monoSubtitle {
