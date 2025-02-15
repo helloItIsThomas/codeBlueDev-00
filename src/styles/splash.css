@@ -136,3 +136,20 @@
   /* background-position: center; */
   /* background-repeat: no-repeat; */
 }
+
+.splineViewer {
+  border: 1px solid red;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  height: 100vh;
+  padding: 10%;
+  opacity: 0;
+}
+/*  */
+/* #splineViewer * { */
+/* box-sizing: border-box; */
+/* width: 100% !important; */
+/* height: 100% !important; */
+/* } */
+/*  */
