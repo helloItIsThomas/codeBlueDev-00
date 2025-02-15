@@ -6,6 +6,7 @@ import { getTideData } from "./pullData.js";
 // import { sketch } from "./tideSketch.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("SETUPSPLASH");
   const logoLottie = await setupSplash();
   await initLoadingScreen(logoLottie);
   // new p5(sketch, "tideCanvas");
