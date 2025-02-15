@@ -13,7 +13,6 @@
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/slidingTextBox.js"></script>
 <script type="module">
   import {toggleMobileMenu} from "/js/nav.js";
   toggleMobileMenu();
@@ -81,7 +80,8 @@
     <div class="mobileOnlyBlock">
       <div class="navBar margin0LR">
       <div id="hamburgerMenu">
-            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerIcon" src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerWavyIcon" src="/assets/icons/burger-wavy.svg" alt="Menu"></img>
       </div>
       <div class="navLogo">
             <a href="/index.html">
@@ -96,11 +96,19 @@
 
 
 
+
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
-  import {initAwardTicker} from "/js/awardticker.js";
+  import {v} from "/js/variables.js";
+  import {initAwardTicker} from "/js/awardTicker.js";
   const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
   const awardsTicker = document.querySelector(".awardsTicker");
+
+  if (v.isMobile) {
+    //document.querySelector(".mobileHeaderHero").style.display = "block";
+  } else {
+    //document.querySelector(".desktopHeaderHero").style.display = "block";
+  }
 
   document.addEventListener("DOMContentLoaded", async () => {
     initAwardTicker(awardsTickerContainer, awardsTicker);
@@ -125,10 +133,11 @@
       opacity: 0,
       duration: 0.5,
       ease: "power3.out",
-      delay: 2,
+      delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
+        pageLoadingScreen.style.pointerEvents = "auto";
         sv
           .lenis
           .start();
@@ -221,11 +230,33 @@
   </div>
 </div>
 
-
-
-
 <div class="sevenThreeGrid margin0LR padding1LR">
-  <div class="heroDescription" style="position: relative;">Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+  <div class="heroDescription mobileOnlyBlock" style="position: relative;">
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
+
+Bangkok-based Patima Tungpuchayakul, a Thai abolitionist, has committed her life to helping these “lost” men return home. Facing illness, death threats, corruption, and complacency, Patima’s fearless determination for justice inspires her nation and the world.
+
+Code Blue Foundation is proud to have produced this film with Vulcan Productions. We are immensely proud to report that through the course of filming, many of these fishing slaves were reunited with their families.
+      <button
+    class="caret-button"
+    aria-label="Expand text"
+    aria-expanded="false"
+    >
+        <span class="caret">▼</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
+
+</div>
+  <div class="heroDescription desktopOnlyBlock" style="position: relative;">Ghost Fleet follows a small clad of activists who risk their lives on remote Indonesian islands, fighting to grant freedom to the enslaved fishermen who meet the world’s insatiable appetite for seafood.
 
 Bangkok-based Patima Tungpuchayakul, a Thai abolitionist, has committed her life to helping these “lost” men return home. Facing illness, death threats, corruption, and complacency, Patima’s fearless determination for justice inspires her nation and the world.
 
@@ -247,9 +278,9 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
       
     
       
-    
-      
         <div class="heroMetadata">89</div>
+      
+    
       
     
   </div>
@@ -271,8 +302,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
 </div>
 
 <div class="serifSubtitle_spaceBelow"></div>
-
-
 
 <div class="responsive-iframe margin0LR">
   <iframe class="" src="https://www.youtube.com/embed/t_O5Y8FWXpE?si=Lmak45m0oyMXDryB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -797,22 +826,24 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
       
     
   
     
   
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
     
   
   
@@ -821,55 +852,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
   
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
   
     
       
@@ -894,10 +876,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
-    
-  
   
 
   
@@ -913,10 +891,6 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
-  
-    
-  
   
 
   
@@ -930,134 +904,14 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
-    
   
     
-      
-    
-  
   
 
   
   
   
   
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-      
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
   
     
   
@@ -1081,6 +935,21 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
     
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
   
     
       
@@ -1100,6 +969,19 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
     
   
     
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
   
     
       
@@ -1107,6 +989,127 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
     
   
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
   
 
 
@@ -1123,7 +1126,7 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
 
 <div class="vSpacer2"></div>
 
-<div class="margin0LR padding1LR">
+<div class="margin0LR padding1LR desktopOnlyBlock">
   <div class="serifSubtitle">MORE FEATURED FILMS</div>
 </div>
 
@@ -1133,37 +1136,7 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   
   
     
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2017
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Chasing Coral
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-    <div class="vertGap2 mobileOnlyBlock"></div>
+    <div class="mobileOnlyBlock"></div>
   
 </div>
 
@@ -1174,70 +1147,35 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
         
       <div class="subFeaturedFilmComp">
             <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
+                  <a href="/films/deep-rising">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/faf29a920346302a814d207dd82ae3432a55234d-854x1274.png" alt="Deep Rising poster">
                   </a>
             </div>
             <div class="subFeaturedFilmCompBottomHalf" >
                   <div>
                         <div class="mediaType">
-                              2017
+                              2023
                         </div>
                         <div class="vertGap0"></div>
                         <div class="serifSubtitle">
-                              Chasing Coral
+                              Deep Rising
                         </div>
                         <div class="vertGap0"></div>
                         <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
+                              Deep Rising, a new film narrated by Jason Momoa, exposes the corrupt corporations racing to mine this fragile ecosystem and follows the passionate activists, scientists, and politicians fighting to protect our planet&#39;s final frontier.
                         </div>
                         <div class="vertGap0"></div>
                   </div>
                   <div class="vertGap0"></div>
                   <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
+                        <a href="/films/deep-rising" >
                         LEARN MORE
                   </a>
                   </button>
             </div>
       </div>
 
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/mission-blue">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2014
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Mission Blue
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/mission-blue" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
+        <div class="mobileOnlyBlock"></div>
       
     
       
@@ -1272,12 +1210,48 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
             </div>
       </div>
 
-        <div class="vertGap2 mobileOnlyBlock"></div>
+        <div class="mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/mission-blue">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/615b44571684f0d857026590ee794b898111f35e-854x1274.png" alt="Mission Blue poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2014
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              Mission Blue
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              This documentary follows oceanographer Sylvia Earle&#39;s campaign to save the world&#39;s oceans from threats such as overfishing and toxic waste.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/mission-blue" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="mobileOnlyBlock"></div>
       
     
   </div>
 </div>
     
+    <div class="vSpacer2"></div>
     <div id="footer" class="footer">
   <div id="wrapper">
     <div class="footerChild" id="footerLeftCenter">
@@ -1316,7 +1290,7 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
               </div>
               <ul>
                 <li class="noTextWrapList">
-                  <a class="footerLinks" target="_blank" href="#link1">
+                  <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
                                         bonjour@codebluefoundation.org</a>
                 </li>
                 <li class="noTextWrapList">
@@ -1339,7 +1313,7 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   <div id="wrapper" class="margin0LR">
     <div >
       <div class="threeSevenGridMobile footerFishContainer" style="align-items: flex-end !important; justify-content: bottom !important;">
-        <img class="footerLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
+        <img class="mobileFooterLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
         <img class="footerFish" id="mobileFooterFish" src="/assets/images/fish4.png" alt="Sea Creature">
       </div>
       <div class="vSpacer1"></div>
@@ -1365,7 +1339,8 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
       <div class="vertGap0"></div>
       <ul>
         <li>
-          <a class="footerLinks" target="_blank" href="#link1">bonjour@codebluefoundation.org</a>
+          <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
         </li>
         <li>
           <a class="footerLinks" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
@@ -1378,8 +1353,10 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
   </div>
 </div>
     <div id="pageLoadingScreen">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+
       <div class="pageLoadingScreenContent">
-            <div class="pageLoadingScreenText"></div>
+            
       </div>
 </div>
 
@@ -1402,7 +1379,8 @@ Code Blue Foundation is proud to have produced this film with Vulcan Productions
             <ul>
                   CONTACT
                   <li>
-                        <a class="footerLinks" href="#link1">bonjour@codebluefoundation.org</a>
+                        <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
                   </li>
                   <li>
                         <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>

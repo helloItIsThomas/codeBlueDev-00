@@ -13,7 +13,6 @@
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/slidingTextBox.js"></script>
 <script type="module">
   import {toggleMobileMenu} from "/js/nav.js";
   toggleMobileMenu();
@@ -81,7 +80,8 @@
     <div class="mobileOnlyBlock">
       <div class="navBar margin0LR">
       <div id="hamburgerMenu">
-            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerIcon" src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerWavyIcon" src="/assets/icons/burger-wavy.svg" alt="Menu"></img>
       </div>
       <div class="navLogo">
             <a href="/index.html">
@@ -93,6 +93,7 @@
     
     <div class="desktopOnlyBlock" id="cursorCanvas"></div>
     
+
 
 
 <script type="module">
@@ -110,7 +111,7 @@
     });
     // pageLoadingScreen.style.display = "none";
     pageLoadingScreen.style.display = "block";
-    document.body.style.overflow = "hidden";
+    //document.body.style.overflow = "hidden";
     sv
       .lenis
       .stop();
@@ -198,9 +199,6 @@
   <div class="mobileHeaderHero mobileOnlyBlock">
     <div class="headerTop margin0LR padding1LR">
       <div class="headerText">
-        
-        
-        
         <div>
           
             <div class="monoSubtitle">ABOUT US</div>
@@ -243,7 +241,36 @@
 
 <div class="vSpacer1"></div>
 
-<div class="margin0LR h1_0">
+<div class="margin0LR h1_0 mobileOnlyBlock">
+  <div class="longBigSerifCopy margin1LR">
+    
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      The Code Blue Charitable Foundation was founded in 2006 to fund innovative projects that promote protection, restoration and resilience of critical ocean habitats, and support initiatives that facilitate climate stability. We support science, exploration, and media communications, with the goal of driving support for the protection of ecosystems that are critical to the survival of humanity.
+
+
+Code Blue also works to reduce harmful greenhouse gases that drive climate change and ocean acidification, while protecting invaluable ocean ecosystems such as mangroves, which sequester 4x more carbon than rainforests. Now more than ever, an understanding of our dependence on these natural systems is needed to chart a path toward a healthy and abundant future for mankind, and all life on our blue planet.  
+      <button
+    class="caret-button"
+    aria-label="Expand text"
+    aria-expanded="false"
+    >
+        <span class="caret">▼</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
+
+
+  </div>
+</div>
+
+<div class="margin0LR h1_0 desktopOnlyBlock">
   <div class="longBigSerifCopy margin1LR">
     The Code Blue Charitable Foundation was founded in 2006 to fund innovative projects that promote protection, restoration and resilience of critical ocean habitats, and support initiatives that facilitate climate stability. We support science, exploration, and media communications, with the goal of driving support for the protection of ecosystems that are critical to the survival of humanity.
 
@@ -261,14 +288,42 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
       <div class="vertGap1"></div>
       <img class="h1_0" src="https://cdn.sanity.io/images/6jpkko0l/production/cc5a643adfea3619b70530ef12d08dca8202e1b7-550x542.png" alt="Photograph of Shari">
     </div>
-    <div class="bodyCopyBigger h1_0">
+    <div class="bodyCopyBigger h1_0 mobileOnlyBlock" style="white-space: pre-line;">
       <div class="vertGap2"></div>
       
-                  Shari is founder and President of Code Blue Foundation, Secretary/Trustee of the Summit Charitable Foundation, founding board member of Mission Blue, and on the Board of Trustees of Woods Hole Oceanographic Institute. Shari is also a member of the National Geographic Impact Story Lab Advisory Council, World Wildlife Fund’s National Council, and Advisory Council of Focused on Nature. As a producer, Shari has worked on renowned environmental films including as an Executive Producer on Mission Blue and Chasing Coral on Netflix. She is also Executive Producer on Anote’s Ark, Sharkwater Extinction and Ghost Fleet. Most recently, Shari is Executive Producer on the newly released film, Deep Rising which premiered at Sundance in 2023, and also on Gaucho Gaucho and Battle For Laikipia which premiered at Sundance in 2024. <br><br> A graduate of NYU with a BA in Sociology, Shari worked as Design Director and Senior Stylist for Ralph Lauren in New York for nine years before moving to San Francisco to be Esprit’s Visual Director. She later founded the environmental fashion and home furnishings store Worldware in San Francisco in 1994. Worldware was one of the first cutting-edge lifestyle stores with an environmental focus. She sold the business in 2001 to devote herself full-time to her conservation work. Shari also studied advanced photography at International Center of Photography in NY, and has a Producing Certification from UCLA Film School. 
-            </div>
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      Shari is founder and President of Code Blue Foundation, Secretary/Trustee of the Summit Charitable Foundation, founding board member of Mission Blue, and on the Board of Trustees of Woods Hole Oceanographic Institute. Shari is also a member of the National Geographic Impact Story Lab Advisory Council, World Wildlife Fund’s National Council, and Advisory Council of Focused on Nature. As a producer, Shari has worked on renowned environmental films including as an Executive Producer on Mission Blue and Chasing Coral on Netflix. She is also Executive Producer on Anote’s Ark, Sharkwater Extinction and Ghost Fleet. Most recently, Shari is Executive Producer on the newly released film, Deep Rising which premiered at Sundance in 2023, and also on Gaucho Gaucho and Battle For Laikipia which premiered at Sundance in 2024. 
+
+ A graduate of NYU with a BA in Sociology, Shari worked as Design Director and Senior Stylist for Ralph Lauren in New York for nine years before moving to San Francisco to be Esprit’s Visual Director. She later founded the environmental fashion and home furnishings store Worldware in San Francisco in 1994. Worldware was one of the first cutting-edge lifestyle stores with an environmental focus. She sold the business in 2001 to devote herself full-time to her conservation work. Shari also studied advanced photography at International Center of Photography in NY, and has a Producing Certification from UCLA Film School. 
+      <button
+    class="caret-button"
+    aria-label="Expand text"
+    aria-expanded="false"
+    >
+        <span class="caret">▼</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
+
+
+    </div>
+    <div class="bodyCopyBigger h1_0 desktopOnlyBlock" style="white-space: pre-line;">
+      <div class="vertGap2"></div>
+      Shari is founder and President of Code Blue Foundation, Secretary/Trustee of the Summit Charitable Foundation, founding board member of Mission Blue, and on the Board of Trustees of Woods Hole Oceanographic Institute. Shari is also a member of the National Geographic Impact Story Lab Advisory Council, World Wildlife Fund’s National Council, and Advisory Council of Focused on Nature. As a producer, Shari has worked on renowned environmental films including as an Executive Producer on Mission Blue and Chasing Coral on Netflix. She is also Executive Producer on Anote’s Ark, Sharkwater Extinction and Ghost Fleet. Most recently, Shari is Executive Producer on the newly released film, Deep Rising which premiered at Sundance in 2023, and also on Gaucho Gaucho and Battle For Laikipia which premiered at Sundance in 2024. 
+
+ A graduate of NYU with a BA in Sociology, Shari worked as Design Director and Senior Stylist for Ralph Lauren in New York for nine years before moving to San Francisco to be Esprit’s Visual Director. She later founded the environmental fashion and home furnishings store Worldware in San Francisco in 1994. Worldware was one of the first cutting-edge lifestyle stores with an environmental focus. She sold the business in 2001 to devote herself full-time to her conservation work. Shari also studied advanced photography at International Center of Photography in NY, and has a Producing Certification from UCLA Film School. 
+    </div>
   </div>
 </div>
     
+    <div class="vSpacer2"></div>
     <div id="footer" class="footer">
   <div id="wrapper">
     <div class="footerChild" id="footerLeftCenter">
@@ -307,7 +362,7 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
               </div>
               <ul>
                 <li class="noTextWrapList">
-                  <a class="footerLinks" target="_blank" href="#link1">
+                  <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
                                         bonjour@codebluefoundation.org</a>
                 </li>
                 <li class="noTextWrapList">
@@ -330,7 +385,7 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
   <div id="wrapper" class="margin0LR">
     <div >
       <div class="threeSevenGridMobile footerFishContainer" style="align-items: flex-end !important; justify-content: bottom !important;">
-        <img class="footerLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
+        <img class="mobileFooterLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
         <img class="footerFish" id="mobileFooterFish" src="/assets/images/fish4.png" alt="Sea Creature">
       </div>
       <div class="vSpacer1"></div>
@@ -356,7 +411,8 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
       <div class="vertGap0"></div>
       <ul>
         <li>
-          <a class="footerLinks" target="_blank" href="#link1">bonjour@codebluefoundation.org</a>
+          <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
         </li>
         <li>
           <a class="footerLinks" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
@@ -369,8 +425,10 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
   </div>
 </div>
     <div id="pageLoadingScreen">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+
       <div class="pageLoadingScreenContent">
-            <div class="pageLoadingScreenText"></div>
+            
       </div>
 </div>
 
@@ -393,7 +451,8 @@ Code Blue also works to reduce harmful greenhouse gases that drive climate chang
             <ul>
                   CONTACT
                   <li>
-                        <a class="footerLinks" href="#link1">bonjour@codebluefoundation.org</a>
+                        <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
                   </li>
                   <li>
                         <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>

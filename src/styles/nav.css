@@ -16,8 +16,17 @@
   top: 0;
   z-index: 10;
 
-  pointer-events: none;
+  /* pointer-events: none; */
 }
+
+#burgerIcon {
+  display: block;
+}
+
+#burgerWavyIcon {
+  display: none;
+}
+
 .navBar img {
   height: 2rem;
   width: auto;
@@ -62,7 +71,7 @@ a img:hover {
 }
 
 a {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   display: inline-block;
 }

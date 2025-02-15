@@ -13,7 +13,6 @@
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/slidingTextBox.js"></script>
 <script type="module">
   import {toggleMobileMenu} from "/js/nav.js";
   toggleMobileMenu();
@@ -81,7 +80,8 @@
     <div class="mobileOnlyBlock">
       <div class="navBar margin0LR">
       <div id="hamburgerMenu">
-            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerIcon" src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerWavyIcon" src="/assets/icons/burger-wavy.svg" alt="Menu"></img>
       </div>
       <div class="navLogo">
             <a href="/index.html">
@@ -96,11 +96,19 @@
 
 
 
+
 <script type="module">
   import {sv} from "/js/cursor/variables.js";
-  import {initAwardTicker} from "/js/awardticker.js";
+  import {v} from "/js/variables.js";
+  import {initAwardTicker} from "/js/awardTicker.js";
   const awardsTickerContainer = document.querySelector(".awardsTickerContainer");
   const awardsTicker = document.querySelector(".awardsTicker");
+
+  if (v.isMobile) {
+    //document.querySelector(".mobileHeaderHero").style.display = "block";
+  } else {
+    //document.querySelector(".desktopHeaderHero").style.display = "block";
+  }
 
   document.addEventListener("DOMContentLoaded", async () => {
     initAwardTicker(awardsTickerContainer, awardsTicker);
@@ -125,10 +133,11 @@
       opacity: 0,
       duration: 0.5,
       ease: "power3.out",
-      delay: 2,
+      delay: 1,
       onComplete: () => {
         pageLoadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
+        pageLoadingScreen.style.pointerEvents = "auto";
         sv
           .lenis
           .start();
@@ -221,14 +230,40 @@
   </div>
 </div>
 
-
-
-
 <div class="sevenThreeGrid margin0LR padding1LR">
-  <div class="heroDescription" style="position: relative;">The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change. The stories follow men and women of different ages, backgrounds and talents who are all united by their fight to remain free. Gauchos are a community suspended in time. Their handmade clothing: woolen ponchos, bombacha trousers and boina hats are signs to the outside world that they will remain unshackled by rules of the modern world. Their connection to the land is something we must all learn from if we hope to survive on this planet.</div>
+  <div class="heroDescription mobileOnlyBlock" style="position: relative;">
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change. The stories follow men and women of different ages, backgrounds and talents who are all united by their fight to remain free. Gauchos are a community suspended in time. Their handmade clothing: woolen ponchos, bombacha trousers and boina hats are signs to the outside world that they will remain unshackled by rules of the modern world. Their connection to the land is something we must all learn from if we hope to survive on this planet.
+      <button
+    class="caret-button"
+    aria-label="Expand text"
+    aria-expanded="false"
+    >
+        <span class="caret">▼</span>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
+
+</div>
+  <div class="heroDescription desktopOnlyBlock" style="position: relative;">The documentary film GAUCHO GAUCHO introduces the world to a group of legendary gauchos (or South American cowboys) who live apart from modern society. The film weaves together tales of gauchos confronting the fragility of their existence in the face of unprecedented change. The stories follow men and women of different ages, backgrounds and talents who are all united by their fight to remain free. Gauchos are a community suspended in time. Their handmade clothing: woolen ponchos, bombacha trousers and boina hats are signs to the outside world that they will remain unshackled by rules of the modern world. Their connection to the land is something we must all learn from if we hope to survive on this planet.</div>
   <div style="position: relative;">
     <button onclick="window.open('https://www.michaeldweck.com/films/gaucho-gaucho', '_blank');" class="ctaButton">VISIT WEBSITE</button>
     <div class="vSpacer0"></div>
+    
+      
+        <div class="heroMetadata">USA, Argentina</div>
+      
+    
+      
+        <div class="heroMetadata">85</div>
+      
     
       
         <div class="heroMetadata">2024</div>
@@ -238,14 +273,6 @@
     
       
         <div class="heroMetadata">Spanish,English,Hebrew Subtitles</div>
-      
-    
-      
-        <div class="heroMetadata">USA, Argentina</div>
-      
-    
-      
-        <div class="heroMetadata">85</div>
       
     
   </div>
@@ -287,8 +314,6 @@
 </div>
 
 <div class="serifSubtitle_spaceBelow"></div>
-
-
 
 <div class="responsive-iframe margin0LR">
   <iframe class="" src="https://www.youtube.com/embed/08BVd9UwwyY?si=yIBrvvNuPGBJpBz_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -829,69 +854,7 @@
   
   
     
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
       
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-  
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-  
-    
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
     
   
     
@@ -909,10 +872,6 @@
   
     
   
-    
-  
-    
-  
   
 
   
@@ -926,20 +885,12 @@
   
     
   
-    
-  
-    
-  
   
 
   
   
   
   
-  
-    
-  
-    
   
     
   
@@ -953,10 +904,6 @@
   
   
   
-  
-    
-  
-    
   
     
   
@@ -981,6 +928,66 @@
   
     
   
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
     
   
     
@@ -1000,10 +1007,8 @@
   
     
   
-    
-      
-    
   
+    
   
 
   
@@ -1035,9 +1040,9 @@
     
   
     
-  
-    
       
+    
+  
     
   
     
@@ -1075,28 +1080,9 @@
     
   
     
-  
-    
       
     
   
-  
-
-  
-  
-  
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-      
     
   
   
@@ -1126,15 +1112,34 @@
   
   
     
+      
+    
+  
+    
   
     
   
     
+  
+    
+  
+  
+
+  
+  
+  
+  
   
     
   
     
       
+    
+  
+    
+  
+    
+  
     
   
   
@@ -1153,7 +1158,7 @@
 
 <div class="vSpacer2"></div>
 
-<div class="margin0LR padding1LR">
+<div class="margin0LR padding1LR desktopOnlyBlock">
   <div class="serifSubtitle">MORE FEATURED FILMS</div>
 </div>
 
@@ -1163,37 +1168,7 @@
   
   
     
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/chasing-coral">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/29e44f773d2f03dd9898f9b9582d3db2b2fc84e4-854x1274.png" alt="Chasing Coral poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2017
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              Chasing Coral
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Divers, scientists and photographers around the world mount an epic underwater campaign to document the disappearance of coral reefs.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/chasing-coral" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-    <div class="vertGap2 mobileOnlyBlock"></div>
+    <div class="mobileOnlyBlock"></div>
   
 </div>
 
@@ -1232,42 +1207,7 @@
             </div>
       </div>
 
-        <div class="vertGap2 mobileOnlyBlock"></div>
-      
-    
-      
-        
-      <div class="subFeaturedFilmComp">
-            <div>
-                  <a href="/films/the-battle-for-laikipia">
-                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
-                  </a>
-            </div>
-            <div class="subFeaturedFilmCompBottomHalf" >
-                  <div>
-                        <div class="mediaType">
-                              2024
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="serifSubtitle">
-                              The Battle for Laikipia
-                        </div>
-                        <div class="vertGap0"></div>
-                        <div class="bodyCopySmaller">
-                              Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
-                        </div>
-                        <div class="vertGap0"></div>
-                  </div>
-                  <div class="vertGap0"></div>
-                  <button class="ctaButton ">
-                        <a href="/films/the-battle-for-laikipia" >
-                        LEARN MORE
-                  </a>
-                  </button>
-            </div>
-      </div>
-
-        <div class="vertGap2 mobileOnlyBlock"></div>
+        <div class="mobileOnlyBlock"></div>
       
     
       
@@ -1302,12 +1242,48 @@
             </div>
       </div>
 
-        <div class="vertGap2 mobileOnlyBlock"></div>
+        <div class="mobileOnlyBlock"></div>
+      
+    
+      
+        
+      <div class="subFeaturedFilmComp">
+            <div>
+                  <a href="/films/the-battle-for-laikipia">
+                        <img src="https://cdn.sanity.io/images/6jpkko0l/production/9929bea75b11c6fcd23b4f0e84b6c5bd45aa5aeb-1000x1482.jpg" alt="The Battle for Laikipia poster">
+                  </a>
+            </div>
+            <div class="subFeaturedFilmCompBottomHalf" >
+                  <div>
+                        <div class="mediaType">
+                              2024
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="serifSubtitle">
+                              The Battle for Laikipia
+                        </div>
+                        <div class="vertGap0"></div>
+                        <div class="bodyCopySmaller">
+                              Unresolved historical injustices and climate change raise the stakes in a generations-old conflict between Indigenous pastoralists and white landowners in Laikipia, Kenya, a wildlife conservation haven.
+                        </div>
+                        <div class="vertGap0"></div>
+                  </div>
+                  <div class="vertGap0"></div>
+                  <button class="ctaButton ">
+                        <a href="/films/the-battle-for-laikipia" >
+                        LEARN MORE
+                  </a>
+                  </button>
+            </div>
+      </div>
+
+        <div class="mobileOnlyBlock"></div>
       
     
   </div>
 </div>
     
+    <div class="vSpacer2"></div>
     <div id="footer" class="footer">
   <div id="wrapper">
     <div class="footerChild" id="footerLeftCenter">
@@ -1346,7 +1322,7 @@
               </div>
               <ul>
                 <li class="noTextWrapList">
-                  <a class="footerLinks" target="_blank" href="#link1">
+                  <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
                                         bonjour@codebluefoundation.org</a>
                 </li>
                 <li class="noTextWrapList">
@@ -1369,7 +1345,7 @@
   <div id="wrapper" class="margin0LR">
     <div >
       <div class="threeSevenGridMobile footerFishContainer" style="align-items: flex-end !important; justify-content: bottom !important;">
-        <img class="footerLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
+        <img class="mobileFooterLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
         <img class="footerFish" id="mobileFooterFish" src="/assets/images/fish4.png" alt="Sea Creature">
       </div>
       <div class="vSpacer1"></div>
@@ -1395,7 +1371,8 @@
       <div class="vertGap0"></div>
       <ul>
         <li>
-          <a class="footerLinks" target="_blank" href="#link1">bonjour@codebluefoundation.org</a>
+          <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
         </li>
         <li>
           <a class="footerLinks" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
@@ -1408,8 +1385,10 @@
   </div>
 </div>
     <div id="pageLoadingScreen">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+
       <div class="pageLoadingScreenContent">
-            <div class="pageLoadingScreenText"></div>
+            
       </div>
 </div>
 
@@ -1432,7 +1411,8 @@
             <ul>
                   CONTACT
                   <li>
-                        <a class="footerLinks" href="#link1">bonjour@codebluefoundation.org</a>
+                        <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
                   </li>
                   <li>
                         <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>

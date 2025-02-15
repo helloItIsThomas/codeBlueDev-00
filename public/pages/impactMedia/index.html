@@ -13,7 +13,6 @@
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/slidingTextBox.js"></script>
 <script type="module">
   import {toggleMobileMenu} from "/js/nav.js";
   toggleMobileMenu();
@@ -81,7 +80,8 @@
     <div class="mobileOnlyBlock">
       <div class="navBar margin0LR">
       <div id="hamburgerMenu">
-            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerIcon" src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerWavyIcon" src="/assets/icons/burger-wavy.svg" alt="Menu"></img>
       </div>
       <div class="navLogo">
             <a href="/index.html">
@@ -109,7 +109,7 @@
     });
     // pageLoadingScreen.style.display = "none";
     pageLoadingScreen.style.display = "block";
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
     sv
       .lenis
       .stop();
@@ -202,9 +202,6 @@
   <div class="mobileHeaderHero mobileOnlyBlock">
     <div class="headerTop margin0LR padding1LR">
       <div class="headerText">
-        
-        
-        
         <div>
           
           <div class="heroTitle">Impact Media</div>
@@ -467,8 +464,9 @@
   <div class="serifSubtitle centered">
     FEATURED MEDIA PARTNER
   </div>
-  <div class="serifSubtitle _blue centered">
-    THE OUTLAW OCEAN BY IAN URBINA
+  <div class="serifSubtitle_blue centered">
+    THE OUTLAW OCEAN<br>BY
+    IAN URBINA
   </div>
 </div>
 <div class="serifSubtitle_spaceBelow"></div>
@@ -481,8 +479,12 @@
                         <div class="carouselSlide sevenFiveGrid">
                               <div class="slideLeft margin0LR" style="background-image: url(https://cdn.sanity.io/images/6jpkko0l/production/adfdf232e22e95de9fb57b8148a0358c5de10078-1414x1222.png); background-size: cover; background-position: center;"></div>
                               <div class="slideRight padding1LR">
+                                    <div class="controls">
+                                          <button class="prev"></button>
+                                          <button class="next"></button>
+                                    </div>
                                     <div class="slideRightContents">
-                                          <div class="vSpacer0"></div>
+                                          <div class="vertGap0"></div>
                                           <div class="mediaType">10-PART SHORT FILM SERIES</div>
                                           <div class="vertGap1"></div>
                                           <div class="compSubtitle">Dispatches from the Outlaw Ocean</div>
@@ -497,11 +499,6 @@
                                                       VIEW EPISODES
                                                 </a>
                                           </button>
-                                          <div class="vertGap1"></div>
-                                          <div class="controls">
-                                                <button class="prev"></button>
-                                                <button class="next"></button>
-                                          </div>
                                     </div>
                               </div>
                         </div>
@@ -509,8 +506,12 @@
                         <div class="carouselSlide sevenFiveGrid">
                               <div class="slideLeft margin0LR" style="background-image: url(https://cdn.sanity.io/images/6jpkko0l/production/89741b6bd342f199410bec7f8f3a70ab774de0a0-1024x1024.webp); background-size: cover; background-position: center;"></div>
                               <div class="slideRight padding1LR">
+                                    <div class="controls">
+                                          <button class="prev"></button>
+                                          <button class="next"></button>
+                                    </div>
                                     <div class="slideRightContents">
-                                          <div class="vSpacer0"></div>
+                                          <div class="vertGap0"></div>
                                           <div class="mediaType">AUDIO SERIES</div>
                                           <div class="vertGap1"></div>
                                           <div class="compSubtitle">The Outlaw Ocean Podcast</div>
@@ -525,11 +526,6 @@
                                                       VIEW EPISODES
                                                 </a>
                                           </button>
-                                          <div class="vertGap1"></div>
-                                          <div class="controls">
-                                                <button class="prev"></button>
-                                                <button class="next"></button>
-                                          </div>
                                     </div>
                               </div>
                         </div>
@@ -537,8 +533,12 @@
                         <div class="carouselSlide sevenFiveGrid">
                               <div class="slideLeft margin0LR" style="background-image: url(https://cdn.sanity.io/images/6jpkko0l/production/3ec5e8e4b0f9d9d45851972b60829a7689d2ebc1-3090x1490.png); background-size: cover; background-position: center;"></div>
                               <div class="slideRight padding1LR">
+                                    <div class="controls">
+                                          <button class="prev"></button>
+                                          <button class="next"></button>
+                                    </div>
                                     <div class="slideRightContents">
-                                          <div class="vSpacer0"></div>
+                                          <div class="vertGap0"></div>
                                           <div class="mediaType">DOCUMENTARY</div>
                                           <div class="vertGap1"></div>
                                           <div class="compSubtitle">Squid Fleet</div>
@@ -553,11 +553,6 @@
                                                       LEARN MORE
                                                 </a>
                                           </button>
-                                          <div class="vertGap1"></div>
-                                          <div class="controls">
-                                                <button class="prev"></button>
-                                                <button class="next"></button>
-                                          </div>
                                     </div>
                               </div>
                         </div>
@@ -566,6 +561,7 @@
       </div>
 
     
+    <div class="vSpacer2"></div>
     <div id="footer" class="footer">
   <div id="wrapper">
     <div class="footerChild" id="footerLeftCenter">
@@ -604,7 +600,7 @@
               </div>
               <ul>
                 <li class="noTextWrapList">
-                  <a class="footerLinks" target="_blank" href="#link1">
+                  <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
                                         bonjour@codebluefoundation.org</a>
                 </li>
                 <li class="noTextWrapList">
@@ -627,7 +623,7 @@
   <div id="wrapper" class="margin0LR">
     <div >
       <div class="threeSevenGridMobile footerFishContainer" style="align-items: flex-end !important; justify-content: bottom !important;">
-        <img class="footerLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
+        <img class="mobileFooterLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
         <img class="footerFish" id="mobileFooterFish" src="/assets/images/fish4.png" alt="Sea Creature">
       </div>
       <div class="vSpacer1"></div>
@@ -653,7 +649,8 @@
       <div class="vertGap0"></div>
       <ul>
         <li>
-          <a class="footerLinks" target="_blank" href="#link1">bonjour@codebluefoundation.org</a>
+          <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
         </li>
         <li>
           <a class="footerLinks" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
@@ -666,8 +663,10 @@
   </div>
 </div>
     <div id="pageLoadingScreen">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+
       <div class="pageLoadingScreenContent">
-            <div class="pageLoadingScreenText"></div>
+            
       </div>
 </div>
 
@@ -690,7 +689,8 @@
             <ul>
                   CONTACT
                   <li>
-                        <a class="footerLinks" href="#link1">bonjour@codebluefoundation.org</a>
+                        <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
                   </li>
                   <li>
                         <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>

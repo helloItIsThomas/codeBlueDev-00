@@ -1,46 +1,51 @@
-.expandTextArrow:hover {
-  cursor: pointer;
-}
-
-.granteeRightTextContainer {
-  height: 100%;
-  /* max-height: 200px; */
+.magicTextContainer {
   position: relative;
-  overflow-y: hidden;
-  /* transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); */
-}
-
-.granteeRightTextContainer.full {
-  /* background: linear-gradient( */
-  /* to bottom, */
-  /* rgba(255, 255, 255, 0) 0%, */
-  /* #040b21 100% */
-  /* ); */
-  /* max-height: 5000px; */
-  /* transition: max-height 2s ease-in-out; */
-}
-
-.expandTextArrow {
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background: none;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
 }
 
-.slidingTextBoxOverflowGradient {
+.magicTextContainer.expanded {
+  max-height: 2000px;
+}
+
+.caret-button {
   position: absolute;
   bottom: 0;
-  display: none;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.caret {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.caret-button.expanded .caret {
+  transform: rotate(180deg);
+}
+
+/* Gradient to replace PNG */
+.magicTextContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 50%;
-  width: 100%;
-  opacity: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    #040b21 100%
-  );
+  height: 100px;
+  background: linear-gradient(transparent, #030b22);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.magicTextContainer.expanded::after {
+  opacity: 0;
 }

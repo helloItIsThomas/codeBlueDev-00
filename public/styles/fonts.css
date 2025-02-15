@@ -41,9 +41,10 @@
 
   white-space: normal; /* Allows text to wrap normally */
   overflow-wrap: break-word; /* Breaks long words to prevent overflow */
+  overflow-wrap: normal;
   word-break: normal; /* Prevents breaking within words */
-  hyphens: auto; /* Adds hyphens where appropriate for better text flow */
 }
+
 .heroDescription {
   font-family: "cdsans";
   font-size: var(--heroDescription);
@@ -64,6 +65,13 @@
   font-family: "cdserif";
   font-size: var(--serifSubtitle);
 }
+
+.serifSubtitle_blue {
+  font-family: "cdserif";
+  color: #1555be;
+  font-size: calc(var(--serifSubtitle) * 0.85);
+}
+
 .monoSubtitle {
   font-family: "cdmono-semiBold";
   font-size: var(--monoSubtitle);
@@ -98,7 +106,6 @@
 }
 #purposeStatement {
   font-family: "cdserif";
-  font-size: var(--purposeStatement);
   padding: 0 20% !important;
   font-size: clamp(
     2em,
@@ -113,6 +120,8 @@
 .footerLinks {
   font-family: "cdsans";
   font-size: var(--footerLinks);
+  hyphens: none;
+  white-space: nowrap;
 }
 .footerLinkTitle {
   font-family: "cdmono-semiBold";

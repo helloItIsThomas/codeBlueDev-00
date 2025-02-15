@@ -13,7 +13,6 @@
 
 <script type="module" src="/js/mobileDetection.js"></script>
 <script type="module" src="/js/utils.js"></script>
-<script type="module" src="/js/slidingTextBox.js"></script>
 <script type="module">
   import {toggleMobileMenu} from "/js/nav.js";
   toggleMobileMenu();
@@ -81,7 +80,8 @@
     <div class="mobileOnlyBlock">
       <div class="navBar margin0LR">
       <div id="hamburgerMenu">
-            <img src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerIcon" src="/assets/icons/hamburger.svg" alt="Menu"></img>
+            <img id="burgerWavyIcon" src="/assets/icons/burger-wavy.svg" alt="Menu"></img>
       </div>
       <div class="navLogo">
             <a href="/index.html">
@@ -95,6 +95,7 @@
     
 Hello from contact
     
+    <div class="vSpacer2"></div>
     <div id="footer" class="footer">
   <div id="wrapper">
     <div class="footerChild" id="footerLeftCenter">
@@ -133,7 +134,7 @@ Hello from contact
               </div>
               <ul>
                 <li class="noTextWrapList">
-                  <a class="footerLinks" target="_blank" href="#link1">
+                  <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
                                         bonjour@codebluefoundation.org</a>
                 </li>
                 <li class="noTextWrapList">
@@ -156,7 +157,7 @@ Hello from contact
   <div id="wrapper" class="margin0LR">
     <div >
       <div class="threeSevenGridMobile footerFishContainer" style="align-items: flex-end !important; justify-content: bottom !important;">
-        <img class="footerLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
+        <img class="mobileFooterLogo" src="/assets/images/logo.svg" alt="Code Blue Logo">
         <img class="footerFish" id="mobileFooterFish" src="/assets/images/fish4.png" alt="Sea Creature">
       </div>
       <div class="vSpacer1"></div>
@@ -182,7 +183,8 @@ Hello from contact
       <div class="vertGap0"></div>
       <ul>
         <li>
-          <a class="footerLinks" target="_blank" href="#link1">bonjour@codebluefoundation.org</a>
+          <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
         </li>
         <li>
           <a class="footerLinks" target="_blank" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>
@@ -195,8 +197,10 @@ Hello from contact
   </div>
 </div>
     <div id="pageLoadingScreen">
+      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
+
       <div class="pageLoadingScreenContent">
-            <div class="pageLoadingScreenText"></div>
+            
       </div>
 </div>
 
@@ -219,7 +223,8 @@ Hello from contact
             <ul>
                   CONTACT
                   <li>
-                        <a class="footerLinks" href="#link1">bonjour@codebluefoundation.org</a>
+                        <a class="footerLinks" href="mailto:bonjour@codebluefoundation.org">
+                                        bonjour@codebluefoundation.org</a>
                   </li>
                   <li>
                         <a class="footerLinks" href="https://www.linkedin.com/in/shari-sant-b0509a47/" >LinkedIn</a>

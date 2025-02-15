@@ -1,5 +1,4 @@
 import { sv } from "./cursor/variables.js";
-import { updateSlidingTextBoxes } from "./slidingTextBox.js";
 // °°°°°°  ____________________  °°°°°°
 // °°°°°°  EVENT LISTENERS BELOW °°°°°°
 document.addEventListener("mousemove", (event) => {
@@ -64,7 +63,5 @@ export const disableScroll = (event) => {
 let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    updateSlidingTextBoxes();
-  }, 200); // Adjust the debounce delay as needed
+  resizeTimeout = setTimeout(() => {}, 200); // Adjust the debounce delay as needed
 });

@@ -1,96 +1,21 @@
-{# we should be able to count the number of lines #}
-{# a piece of text and its target text box will generate #}
-{# by getting the width of the target text box, then getting the width of the entire string of text. #}
-{# 237 / 50 = 4.74 #}
-{# Then we divide the width of the text box by the width of the text #}
-{# and round up. #}
-{# predictedLines = 5. #}
-{# that should give us the number of lines. #}
-{#  #}
-{# If predictedLines > maxLines, #}
-{# we set max-height of the text box to (fontSize * lineHeight) * maxLines, #}
-{# and overflow to hidden. #}
-{#  #}
-{# Then, we make the arrow button gsap change the height of the text box #}
-{# from this max height to (predictedLines * (fontSize * lineHeight)) #}
+{% macro smartTextBox(copy) %}
+  <div class="magicTextContainer">
+    <div class="magicText" style="white-space: pre-line;">
+      {{ copy }}
+      <button
+    class="caret-button"
+    aria-label="Expand text"
+    aria-expanded="false"
+    >
+        <span class="caret">▼</span>
+      </button>
+    </div>
+  </div>
 
-{# {% macro smartTextBox(grantee, index) %}
-      {% set index = index - 1 %}
-      <div>
-            <div class="smartTextBoxContainer bodyCopyBigger" id="smartTextBoxContainer{{ index }}">
-                  {{ grantee.description }}
-            </div>
-            <div class="vertGap0"></div>
-            <div class="expandTextArrow">
-                  <div id="downArrow" class="mobileOnlyBlock">
-                        down
-                        <svg width="15" height="9" viewBox="0 0 15 9" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M1 1L7.5 7.5L14 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                  </div>
-            </div>
-      </div>
-      <script type="module">
-            import {v} from "/js/variables.js";
+  <script type="module">
+    import {initializeExpandCollapse} from "../../js/smartTextBox.js";
+    console.log("smartTextBox.njk");
+    document.addEventListener("DOMContentLoaded", initializeExpandCollapse);
+  </script>
 
-            function smartTextBoxFunc() {
-
-                  console.log("running smartTextBoxFunc");
-
-                  const myStyle = document.querySelector(".bodyCopyBigger");
-                  const maxLines = 5;
-
-                  const computedStyle = window.getComputedStyle(myStyle);
-
-                  let myFont = {
-                        fontFamily: computedStyle.fontFamily,
-                        fontSize: parseFloat(computedStyle.fontSize),
-                        textAndLeadHeight: parseFloat(computedStyle.lineHeight)
-                  };
-
-                  let textBox = document.getElementById("smartTextBoxContainer{{index}}");
-                  const textCopy = textBox.textContent;
-                  const textBoxWidth = textBox.offsetWidth;
-                  const {width: textWidth, lines: predictedLines} = getStringWidth(textCopy, myFont, textBoxWidth);
-
-                  if (predictedLines > maxLines) {
-                        textBox.style.height = myFont.textAndLeadHeight * maxLines + "px";
-                        console.log("CROP");
-                        textBox.style.border = "3px solid orange";
-                  } else {
-                        textBox.style.height = myFont.textAndLeadHeight * (predictedLines + 1) + "px";
-                        console.log("NO CROP");
-                        textBox.style.border = "3px solid blue";
-                  }
-
-                  function getStringWidth(text, font, containerWidth) {
-                        let span = document.createElement('span');
-                        span.style.position = "absolute";
-                        span.style.width = `${containerWidth}px`; // Set fixed width to allow wrapping
-                        span.style.whiteSpace = "normal"; // Allow text wrapping
-                        span.style.visibility = "hidden"; // Hide the span while measuring
-                        span.style.fontSize = font.fontSize;
-                        span.style.fontFamily = font.fontFamily;
-                        span.textContent = text;
-                        document
-                              .body
-                              .appendChild(span); // Add to DOM temporarily
-
-                        // Split the text into lines
-                        const lines = span.offsetHeight / parseFloat(font.textAndLeadHeight);
-                        document
-                              .body
-                              .removeChild(span); // Remove from DOM
-
-                        return {width: span.offsetWidth, lines: Math.ceil(lines)};
-                  }
-            }
-
-            smartTextBoxFunc();
-
-            window.addEventListener('resize', () => {
-                  clearTimeout(v.smartTextBoxDebounceTimer);
-                  v.smartTextBoxDebounceTimer = setTimeout(smartTextBoxFunc, 200); // Adjust the delay as needed
-            });
-      </script>
-{% endmacro %} #}
+{% endmacro %}

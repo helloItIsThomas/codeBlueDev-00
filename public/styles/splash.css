@@ -42,6 +42,7 @@
 #splashCTA {
   display: none;
   opacity: 0;
+  pointer-events: auto;
 }
 
 .arrowCTA {
@@ -60,6 +61,20 @@
   animation: oscillate 2s ease-in-out infinite;
 }
 
+#upArrow {
+  animation: oscillate2 2s ease-in-out infinite;
+}
+
+@keyframes oscillate2 {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @keyframes oscillate {
   0%,
   100% {
@@ -71,7 +86,7 @@
 }
 
 #loadingScreen {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: absolute;
   top: 0;
   left: 0;
@@ -103,15 +118,38 @@
 }
 
 #splashVideo {
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  background-image: url("http://codebluefoundation.org/wp-content/themes/code_blue/_video/video.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* pointer-events: none; */
 }
 
 #splashImage {
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  background-image: url("/assets/images/deepRising-splash.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* pointer-events: none; */
+  /* background-image: url("http://codebluefoundation.org/wp-content/themes/code_blue/_video/video.jpg"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
 }
+
+.splineViewer {
+  border: 1px solid red;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  height: 100vh;
+  padding: 10%;
+  opacity: 0;
+}
+/*  */
+/* #splineViewer * { */
+/* box-sizing: border-box; */
+/* width: 100% !important; */
+/* height: 100% !important; */
+/* } */
+/*  */

@@ -21,8 +21,8 @@ export async function setupSplash() {
     behavior: "instant",
   });
   const loadingScreen = document.getElementById("loadingScreen");
-  loadingScreen.style.overflow = "hidden"; // Prevent scrolling
-  document.body.style.overflow = "hidden"; // Lock the body scroll
+  // loadingScreen.style.overflow = "hidden"; // Prevent scrolling
+  // document.body.style.overflow = "hidden"; // Lock the body scroll
   loadingScreen.scrollTo(0, 0); // Scroll to the top of the loading screen
 
   // LOAD logoLottie start
