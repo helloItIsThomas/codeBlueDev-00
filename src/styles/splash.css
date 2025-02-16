@@ -138,13 +138,14 @@
 }
 
 .splineViewer {
+  position: relative;
   border: 1px solid red;
-  width: 100vw;
-  overflow: hidden;
-  position: absolute;
-  height: 100vh;
-  padding: 10%;
-  opacity: 0;
+  /* width: 100vw; */
+  /* z-index: 10; */
+  /* overflow: hidden; */
+  /* position: absolute; */
+  /* height: 100vh; */
+  /* opacity: 0; */
 }
 /*  */
 /* #splineViewer * { */
