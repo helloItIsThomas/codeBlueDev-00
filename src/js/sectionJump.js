@@ -54,10 +54,10 @@ export function setupToContainer() {
   splashArrow.addEventListener("click", () => {
     toContainer("purpose");
   });
-  const purposeArrow = document.getElementById("purposeCTA");
-  purposeArrow.addEventListener("click", () => {
-    toContainer("mission");
-  });
+  // const purposeArrow = document.getElementById("purposeCTA");
+  // purposeArrow.addEventListener("click", () => {
+  // toContainer("mission");
+  // });
 }
 
 function toContainer(container) {

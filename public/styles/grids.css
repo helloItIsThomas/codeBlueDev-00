@@ -80,6 +80,10 @@
   justify-content: center;
 }
 
+.textAlignCenter {
+  text-align: center;
+}
+
 .alignVertCenter {
   align-items: center;
 }
