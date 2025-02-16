@@ -57,11 +57,25 @@
   justify-content: center;
 }
 
+.spinCTASplash {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
 .arrowCTA #downArrow {
   animation: oscillate 2s ease-in-out infinite;
 }
 
 #upArrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   animation: oscillate2 2s ease-in-out infinite;
 }
 
@@ -83,6 +97,15 @@
   50% {
     transform: translateY(10px);
   }
+}
+
+.pageLoadingScreenContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 #loadingScreen {
@@ -153,3 +176,10 @@
 /* height: 100% !important; */
 /* } */
 /*  */
+
+.spinningText {
+  opacity: 0.5;
+}
+
+#percentLoaded {
+}
