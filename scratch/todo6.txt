@@ -5,12 +5,6 @@
    
 Swap out all long text on mobile with text collapse component.
 
-
-We don’t have to do the protection and restoration thing as full screen, let’s reduct the padding.
-~ 50%
-
-Let’s put the orb above the mission.
-
 Make the gap between featured film and mission smaller
 
 Put the film above the text and collapse the text for the featured film section.

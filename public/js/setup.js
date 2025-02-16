@@ -21,17 +21,17 @@ import { loadShaders } from "./cursor/loadShaders.js";
 import { Triangle } from "./cursor/triangle.js";
 
 // update variable when screen changes between desktop and mobile.
-// const mediaQuery = window.matchMedia("(max-width: 768px)");
-// function handleMediaQueryChange(event) {
-// if (event.matches) {
-// v.isMobile = true;
-// } else {
-// v.isMobile = false;
-// }
-// }
-// Initial check
-// handleMediaQueryChange(mediaQuery);
-// mediaQuery.addEventListener("change", handleMediaQueryChange);
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    v.isMobile = true;
+  } else {
+    v.isMobile = false;
+  }
+}
+
+handleMediaQueryChange(mediaQuery);
+mediaQuery.addEventListener("change", handleMediaQueryChange);
 
 document.addEventListener("DOMContentLoaded", async () => {
   // SETUP LENIS start
@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     top: 0, // Replace with your desired vertical scroll position
     behavior: "instant",
   });
-  // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
   document.body.style.overflow = "hidden";
   window.scrollTo({
@@ -70,9 +69,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   gsap.to(pageLoadingScreen, {
     opacity: 0,
-    duration: 0.5,
+    duration: 1.0,
     ease: "power3.out",
-    delay: 2,
+    delay: 3,
     onComplete: () => {
       pageLoadingScreen.style.display = "none";
       document.body.style.overflow = "auto";
@@ -185,7 +184,7 @@ async function mySetup() {
     );
   }
 
-  const cellW = 2;
+  const cellW = 3;
   const cellH = cellW;
   const geometry = new Geometry({
     topology: "triangle-strip",
