@@ -1,8 +1,7 @@
 <div class="margin0LR" id="mission">
   <div id="missionBackground">
-    <video autoplay muted loop>
-      <source src="/assets/video/MissionBlue-trailer.mp4" type="video/mp4"/>
-    </video>
+
+    <video src="{{ someData.home[0].missionVideo | url }}" muted loop playsinline autoplay controls="false"></video>
   </div>
   <div id="missionForeground" class="padding1LR ">
     <div>
