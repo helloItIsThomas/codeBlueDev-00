@@ -98,10 +98,19 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script type="module" src="/js/setupSplash.js"></script>
 
+<script type="module">
+      const video = document.getElementById("bgVideoSplash");
+      document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                  video.play();
+            }, 3000); // Video will start playing after 3 seconds
+      });
+</script>
+
 <div class="centered" id="splash">
       <div class="background" id="splashVideo">
             <div>
-                  <video class="bgVideo" src="https://cdn.sanity.io/files/6jpkko0l/production/e75f38efdb974905e2eb1f3f1c2789a5c58ddd3f.mov" muted loop playsinline autoplay></video>
+                  <video class="bgVideo" id="bgVideoSplash" src="https://cdn.sanity.io/files/6jpkko0l/production/e75f38efdb974905e2eb1f3f1c2789a5c58ddd3f.mov" muted loop playsinline></video>
             </div>
       </div>
       <div id="splashForeground"></div>
