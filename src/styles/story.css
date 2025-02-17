@@ -11,3 +11,21 @@
   padding-left: 0;
   border-radius: 20px;
 }
+
+#storyOrbContainer {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  min-width: 50px;
+  min-height: 50px;
+  max-height: 50vh !important;
+}
