@@ -23,6 +23,11 @@ img {
   border-radius: 0.5rem;
 }
 
+.bgVideo {
+  touch-action: none;
+  pointer-events: none;
+}
+
 .myVideo {
   object-fit: cover;
 }
