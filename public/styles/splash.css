@@ -114,7 +114,9 @@
 }
 
 #lottieCanvas {
-  transform: scale(0.9);
+  /* transform: scale(0.9); */
+  /* transform: scale(min(clamp(0.1, 1vw, 2vw), clamp(0.1, 1vh, 2vh))); */
+  transform: scale(0.9) !important;
 }
 
 #splashVideo {
