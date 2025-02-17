@@ -7,12 +7,11 @@ title: "Code Blue"
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script type="module" src="/js/setupSplash.js"></script>
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.68/build/spline-viewer.js"></script>
 
 <div class="centered" id="splash">
       <div class="background" id="splashVideo">
-            <div class="desktopOnlyBlock">
-                  <video src="{{ someData.home[0].splashVideo | url }}" muted loop playsinline autoplay controls="false"></video>
+            <div>
+                  <video src="{{ someData.home[0].splashVideo | url }}" muted loop playsinline autoplay ></video>
             </div>
             {# <div class="mobileOnlyBlock" id="splashImage"></div> #}
       </div>

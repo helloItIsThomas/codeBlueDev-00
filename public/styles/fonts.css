@@ -106,10 +106,10 @@
 }
 #purposeStatement {
   font-family: "cdserif";
-  padding: 0 20% !important;
+  padding: 0 10% !important;
   font-size: clamp(
-    2em,
-    5vw,
+    1.5em,
+    min(5vw, 5vh),
     var(--purposeStatement)
   ); /* Responsive font size that scales with viewport width */
 }
