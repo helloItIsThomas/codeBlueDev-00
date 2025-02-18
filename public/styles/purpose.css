@@ -26,6 +26,36 @@
 }
 
 #purposeStatement {
+  opacity: 0.777;
+}
+
+#upArrowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-end;
+  padding-bottom: 2.5em;
+}
+
+#upArrow {
+  animation: oscillate2 2s ease-in-out infinite;
+}
+
+.spinningText {
+  opacity: 0.5;
+}
+
+@keyframes oscillate2 {
+  0%,
+  100% {
+    transform: translateY(-6px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .tideDataText {

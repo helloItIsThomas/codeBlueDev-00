@@ -101,7 +101,6 @@
 <script type="module">
       const video = document.getElementById("bgVideoSplash");
       document.addEventListener("DOMContentLoaded", () => {
-            console.log("DOING THE THING NOW");
             setTimeout(function () {
                   var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
                   if (scrollPos < 1) {
@@ -147,6 +146,14 @@
     <div class="centerType" id="purposeStatement">Protection and restoration of our<span class="_blue" > blue planet </span>through innovative projects and strategic alliances.</div>
     <div class="splineViewerContainer">
       <spline-viewer class="splineViewer" loading="eager" url="https://prod.spline.design/odoegjhObaZER2iN/scene.splinecode"></spline-viewer>
+    </div>
+    <div id="upArrowContainer">
+      <div id="upArrow">
+        <svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7.5L7.5 1L14 7.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="spinningText">Spin</div>
     </div>
   </div>
 </div>
