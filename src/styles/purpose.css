@@ -68,6 +68,7 @@
 
 .splineViewerContainer {
   position: relative;
+  z-index: 1000;
   /* max-height: 100% !important; */
   min-width: 50px;
   min-height: 50px;
