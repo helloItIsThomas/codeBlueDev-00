@@ -3,12 +3,6 @@ __
 NON ORB LOADING SCREEN
 __
 
-Add a fallback static image for the splash screen in case low power mode is on or some other thing is preventing autoplay
-
-Put an image behind the text on the non-loading-screen-orb version
-
-Fix the bug where the screen locks in the wrong place on mobile refresh
-
 
 __
 S2
@@ -20,4 +14,8 @@ Get rid of the contact button for the Our Mission bit for desktop and mobile.
 Add a fallback static image for the splash screen in case low power mode is on or some other thing is preventing autoplay
 
 Fix the bug where the screen locks in the wrong place on mobile refresh
+
+verify home logo sizes
+
+
 

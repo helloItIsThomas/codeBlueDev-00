@@ -18,8 +18,7 @@ export async function setupSplash() {
   window.addEventListener("wheel", disableScroll, { passive: false });
   window.scrollTo({
     top: 0,
-    left: 0,
-    behavior: "instant",
+    behavior: "auto", // Changed to a valid value
   });
   const loadingScreen = document.getElementById("loadingScreen");
   // loadingScreen.style.overflow = "hidden"; // Prevent scrolling
@@ -30,7 +29,7 @@ export async function setupSplash() {
   const logoLottie = new DotLottie({
     autoplay: false,
     loop: false,
-    canvas: document.getElementById("lottieCanvas"),
+    canvas: document.querySelector(".lottieCanvas"),
     src: "/assets/lottie/logo.lottie",
   });
   await new Promise((resolve) => {

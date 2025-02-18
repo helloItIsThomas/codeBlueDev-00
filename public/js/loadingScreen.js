@@ -9,8 +9,8 @@ import { sv } from "./cursor/variables.js";
 
 export async function initLoadingScreen(_logoLottie) {
   window.scrollTo({
-    top: 0, // Replace with your desired vertical scroll position
-    behavior: "instant",
+    top: 0,
+    behavior: "auto", // Changed to a valid value
   });
 
   const timer = {
@@ -61,7 +61,7 @@ function unlockSplash() {
 
 function splashTextToggle() {
   const text = document.getElementById("splashStatement");
-  const logoCanvas = document.getElementById("lottieCanvas");
+  const logoCanvas = document.querySelector(".lottieCanvas");
   const splashCTA = document.getElementById("splashCTA");
   gsap.to(logoCanvas, {
     opacity: 0,

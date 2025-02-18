@@ -45,17 +45,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   sv.lenis.stop();
 
-  window.scrollTo({
-    top: 0, // Replace with your desired vertical scroll position
-    behavior: "instant",
-  });
   // pageLoadingScreen.style.display = "none";
   pageLoadingScreen.style.display = "block";
   document.body.style.overflow = "hidden";
-  window.scrollTo({
-    top: 0, // Replace with your desired vertical scroll position
-    behavior: "instant",
-  });
 
   gsap.from(
     ".ctaButton, .h2_0, .h1_0, .h0_5, .h1_5, .bm0, .bm1, .bm2, .bm3, .bs0, .bs1, .bs2, .bs3, .bser0, .bser1, .bser2, .bser3, hr",

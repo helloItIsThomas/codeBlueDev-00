@@ -152,6 +152,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #030b22;
+  overflow-x: hidden;
 }
 
 @media (max-width: var(--ultraWideBreakpoint)) {

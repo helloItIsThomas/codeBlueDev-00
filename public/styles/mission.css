@@ -5,6 +5,10 @@
   min-height: 80vh;
 }
 
+#missionTitle {
+  padding-top: 1em;
+}
+
 #missionBackground {
   position: absolute;
   bottom: 0;
